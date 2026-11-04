@@ -1,28 +1,3 @@
 <resources>
-    <string name="app_name">Engrisk</string>
-    <string name="lesson">Bài học</string>
-    <string name="vocabulary">Từ vựng</string>
-    <string name="progress">Tiến trình</string>
-    <string name="account">Tài khoản</string>
-    <string name="prompt_beginner_description_lesson_fragment">Khóa học cơ bản cho người mới bắt đầu! Học các từ vựng và cấu trúc cơ bản</string>
-    <string name="prompt_intermediate_description_lesson_fragment">Khóa học trung cấp giúp bạn nâng cao kỹ năng tiếng Anh của mình</string>
-    <string name="prompt_advanced_description_lesson_fragment">Khóa học nâng cao giúp bạn trở thành người sử dụng tiếng Anh thành thạo</string>
-    <string name="prompt_beginner_title_lesson_fragment">Beginner</string>
-    <string name="prompt_intermediate_title_lesson_fragment">Intermediate</string>
-    <string name="prompt_advanced_title_lesson_fragment">Advanced</string>
-    <string name="action_start_lesson">Start Lesson</string>
-    <string name="title_beginner_lesson_fragment">Beginner</string>
-    <string name="title_intermediate_lesson_fragment">Intermediate</string>
-    <string name="title_advanced_lesson_fragment">Advanced</string>
-    <string name="prompt_connect_us">Connect with Engrisk</string>
-    <string name="prompt_no_account">Chưa có tài khoản? <![CDATA[<b>Đăng ký ngay</b>]]></string>
-    <string name="prompt_have_account">Đã có tài khoản? <![CDATA[<b>Đăng nhập ngay</b>]]></string>
-    <string name="action_login">Đăng nhập</string>
-    <string name="prompt_hint_password">Mật khẩu</string>
-    <string name="prompt_hint_email">Email</string>
-    <string name="prompt_welcome_login">Chào mừng đến với Engrisk!</string>
-    <string name="prompt_hint_confirm_password">Xác nhận mật khẩu</string>
-    <string name="action_register">Đăng ký</string>
-    <string name="string_welcom_register">Tạo tài khoản mới</string>
-    <string name="prompt_no_lesson">Chưa có bài học cho cấp độ này</string>
+    <string name="app_name">SpeakEasy</string>
 </resources>

@@ -1,0 +1,104 @@
+{
+  "stories": [
+    {
+      "id": "station",
+      "title": "Lost at the Station",
+      "titleVi": "Lạc ở nhà ga",
+      "emoji": "🚉",
+      "category": "travel",
+      "characters": [
+        { "name": "Narrator", "pitch": 1.0 },
+        { "name": "Mia", "pitch": 1.3 },
+        { "name": "Officer", "pitch": 0.8 }
+      ],
+      "items": [
+        { "type": "line", "speaker": "Narrator", "en": "Mia is in London for the first time. The station is huge and very busy.", "vi": "Mia đến London lần đầu. Nhà ga rất lớn và đông đúc." },
+        { "type": "line", "speaker": "Mia", "en": "Excuse me, I'm a bit lost. Where's platform nine?", "vi": "Xin lỗi, tôi hơi bị lạc. Sân ga số chín ở đâu ạ?" },
+        { "type": "line", "speaker": "Officer", "en": "Platform nine? It's just past the coffee shop, on your left.", "vi": "Sân ga số chín à? Ngay sau quán cà phê, bên tay trái cô." },
+        { "type": "question", "q": "Sân ga số chín ở đâu?", "options": ["Next to the ticket office", "Past the coffee shop, on the left", "Upstairs, on the right"], "answer": 1 },
+        { "type": "line", "speaker": "Mia", "en": "Great, thanks! Is the train to Oxford on time?", "vi": "Tuyệt, cảm ơn! Tàu đi Oxford có đúng giờ không ạ?" },
+        { "type": "line", "speaker": "Officer", "en": "I'm afraid it's running about twenty minutes late.", "vi": "Tiếc là nó trễ khoảng hai mươi phút." },
+        { "type": "question", "q": "Chuyện gì xảy ra với chuyến tàu?", "options": ["It's cancelled", "It's twenty minutes late", "It left early"], "answer": 1 },
+        { "type": "line", "speaker": "Mia", "en": "Oh no. Well, at least I have time for a coffee.", "vi": "Ôi không. Thôi, ít ra mình có thời gian uống cà phê." },
+        { "type": "line", "speaker": "Officer", "en": "That's the spirit! Have a lovely trip.", "vi": "Đúng tinh thần đó! Chúc cô đi vui vẻ." },
+        { "type": "question", "q": "“That's the spirit!” nghĩa là gì?", "options": ["Bạn nghĩ tích cực vậy là tốt!", "Có ma ở đây!", "Bạn đi nhầm rồi!"], "answer": 0 },
+        { "type": "line", "speaker": "Narrator", "en": "Mia smiles and heads to the coffee shop. Being lost isn't so bad after all.", "vi": "Mia mỉm cười đi tới quán cà phê. Hoá ra bị lạc cũng không tệ lắm." }
+      ]
+    },
+    {
+      "id": "presentation",
+      "title": "The Big Presentation",
+      "titleVi": "Buổi thuyết trình quan trọng",
+      "emoji": "📊",
+      "category": "work",
+      "characters": [
+        { "name": "Narrator", "pitch": 1.0 },
+        { "name": "Linh", "pitch": 1.25 },
+        { "name": "Mark", "pitch": 0.75 }
+      ],
+      "items": [
+        { "type": "line", "speaker": "Narrator", "en": "It's Monday morning. Linh has a big presentation at ten.", "vi": "Sáng thứ Hai. Linh có buổi thuyết trình quan trọng lúc mười giờ." },
+        { "type": "line", "speaker": "Mark", "en": "Morning, Linh! Are you ready for the client meeting?", "vi": "Chào Linh! Em sẵn sàng cho buổi họp với khách chưa?" },
+        { "type": "line", "speaker": "Linh", "en": "Almost. I'm a little nervous, to be honest.", "vi": "Gần xong rồi ạ. Thật lòng là em hơi lo." },
+        { "type": "question", "q": "Linh cảm thấy thế nào?", "options": ["Excited", "A little nervous", "Very tired"], "answer": 1 },
+        { "type": "line", "speaker": "Mark", "en": "Don't worry. You know this project better than anyone.", "vi": "Đừng lo. Em hiểu dự án này hơn ai hết." },
+        { "type": "line", "speaker": "Linh", "en": "Thanks. Could you take a quick look at my slides?", "vi": "Cảm ơn anh. Anh xem qua slide giúp em được không?" },
+        { "type": "line", "speaker": "Mark", "en": "Sure. Hmm, slide five has too much text. Keep it simple.", "vi": "Được. Hmm, slide năm nhiều chữ quá. Làm đơn giản thôi." },
+        { "type": "question", "q": "Mark góp ý gì?", "options": ["Add more pictures to every slide", "Slide five has too much text", "Start the meeting earlier"], "answer": 1 },
+        { "type": "line", "speaker": "Linh", "en": "Good point. I'll fix it right away.", "vi": "Ý hay ạ. Em sửa ngay." },
+        { "type": "question", "q": "Câu nào lịch sự để nhận góp ý?", "options": ["You're wrong.", "Good point, I'll fix it.", "I don't care."], "answer": 1 },
+        { "type": "line", "speaker": "Narrator", "en": "At ten, Linh walks in with simple slides and a big smile. The client loves it.", "vi": "Mười giờ, Linh bước vào với slide gọn gàng và nụ cười tươi. Khách hàng rất thích." }
+      ]
+    },
+    {
+      "id": "coffee-mixup",
+      "title": "The Wrong Coffee",
+      "titleVi": "Nhầm cà phê",
+      "emoji": "☕",
+      "category": "life",
+      "characters": [
+        { "name": "Narrator", "pitch": 1.0 },
+        { "name": "Ben", "pitch": 0.85 },
+        { "name": "Barista", "pitch": 1.3 }
+      ],
+      "items": [
+        { "type": "line", "speaker": "Narrator", "en": "Ben is in a hurry. He orders his usual coffee.", "vi": "Ben đang vội. Anh gọi ly cà phê quen thuộc." },
+        { "type": "line", "speaker": "Ben", "en": "Hi, can I get a large oat latte, no sugar?", "vi": "Chào, cho mình một ly latte sữa yến mạch cỡ lớn, không đường nhé?" },
+        { "type": "line", "speaker": "Barista", "en": "Sure thing. That'll be four fifty.", "vi": "Có ngay. Bốn đô năm mươi nhé." },
+        { "type": "question", "q": "Ben gọi món gì?", "options": ["A small black coffee", "A large oat latte, no sugar", "A hot chocolate"], "answer": 1 },
+        { "type": "line", "speaker": "Narrator", "en": "Ben takes a sip. It's very, very sweet.", "vi": "Ben nhấp một ngụm. Ngọt lịm luôn." },
+        { "type": "line", "speaker": "Ben", "en": "Sorry, I think this one has sugar in it.", "vi": "Xin lỗi, hình như ly này có đường." },
+        { "type": "question", "q": "Ben sẽ nói gì để phàn nàn lịch sự?", "options": ["This is terrible!", "Sorry, I think this one has sugar in it.", "Give me my money!"], "answer": 1 },
+        { "type": "line", "speaker": "Barista", "en": "Oh, I'm so sorry! I'll make you a new one right now.", "vi": "Ôi, xin lỗi anh! Em làm ly mới ngay." },
+        { "type": "line", "speaker": "Ben", "en": "No worries, it happens.", "vi": "Không sao, chuyện thường mà." },
+        { "type": "question", "q": "“No worries, it happens” nghĩa là gì?", "options": ["Không sao, ai cũng có lúc nhầm", "Tôi rất lo lắng", "Lần sau đừng làm vậy"], "answer": 0 },
+        { "type": "line", "speaker": "Narrator", "en": "Two minutes later, Ben gets the right coffee, and a free cookie.", "vi": "Hai phút sau, Ben nhận đúng ly cà phê, kèm một chiếc bánh quy miễn phí." }
+      ]
+    },
+    {
+      "id": "party",
+      "title": "The Surprise Party",
+      "titleVi": "Bữa tiệc bất ngờ",
+      "emoji": "🎂",
+      "category": "social",
+      "characters": [
+        { "name": "Narrator", "pitch": 1.0 },
+        { "name": "Anna", "pitch": 1.3 },
+        { "name": "Tom", "pitch": 0.8 }
+      ],
+      "items": [
+        { "type": "line", "speaker": "Narrator", "en": "Anna and Tom are planning a surprise party for their friend Jess.", "vi": "Anna và Tom đang lên kế hoạch tiệc bất ngờ cho cô bạn Jess." },
+        { "type": "line", "speaker": "Anna", "en": "Jess's birthday is on Saturday. Are you free that evening?", "vi": "Sinh nhật Jess vào thứ Bảy. Tối đó cậu rảnh không?" },
+        { "type": "line", "speaker": "Tom", "en": "Yeah, count me in! Where should we do it?", "vi": "Có, tính cả mình! Mình tổ chức ở đâu nhỉ?" },
+        { "type": "question", "q": "Tom có đi dự tiệc không?", "options": ["Yes, he's in", "No, he's busy", "He's not sure"], "answer": 0 },
+        { "type": "line", "speaker": "Anna", "en": "How about my place? I'll handle the food.", "vi": "Ở nhà mình nhé? Mình lo đồ ăn." },
+        { "type": "line", "speaker": "Tom", "en": "Perfect. I'll get the cake and keep Jess busy until eight.", "vi": "Tuyệt. Mình mua bánh và giữ chân Jess đến tám giờ." },
+        { "type": "question", "q": "Tom sẽ làm gì?", "options": ["Cook the food", "Get the cake and keep Jess busy", "Send the invitations"], "answer": 1 },
+        { "type": "line", "speaker": "Anna", "en": "Just don't spill the beans!", "vi": "Nhớ đừng để lộ bí mật đấy!" },
+        { "type": "question", "q": "“Don't spill the beans” nghĩa là gì?", "options": ["Đừng làm đổ đậu", "Đừng để lộ bí mật", "Đừng đến muộn"], "answer": 1 },
+        { "type": "line", "speaker": "Tom", "en": "My lips are sealed.", "vi": "Mình kín miệng lắm." },
+        { "type": "line", "speaker": "Narrator", "en": "On Saturday, Jess opens the door. Everyone shouts: Surprise! She almost cries with joy.", "vi": "Thứ Bảy, Jess mở cửa. Mọi người hô: Bất ngờ chưa! Cô ấy suýt khóc vì vui." }
+      ]
+    }
+  ]
+}

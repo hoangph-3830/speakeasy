@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Engrisk"
+rootProject.name = "SpeakEasy"
 include(":app")
