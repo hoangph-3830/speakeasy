@@ -1,0 +1,139 @@
+{
+  "lessons": [
+    {
+      "id": "th",
+      "title": "Âm /θ/ và /ð/ (th)",
+      "ipa": "/θ/ /ð/",
+      "emoji": "👅",
+      "tip": "Đặt đầu lưỡi nhẹ giữa hai hàm răng rồi thổi hơi ra. /θ/ (think) chỉ có hơi, /ð/ (they) rung cổ họng. Người Việt hay đọc thành /t/, /s/ hoặc /d/.",
+      "pairs": [["think", "sink"], ["three", "tree"], ["thank", "tank"], ["mouth", "mouse"], ["they", "day"], ["thin", "tin"]],
+      "sentences": [
+        { "en": "Thank you for thinking of me.", "vi": "Cảm ơn bạn đã nghĩ đến mình." },
+        { "en": "I think the weather is better on Thursday.", "vi": "Mình nghĩ thời tiết thứ Năm đẹp hơn." },
+        { "en": "My brother and father are together.", "vi": "Anh trai và bố mình đang ở cùng nhau." }
+      ]
+    },
+    {
+      "id": "ending",
+      "title": "Âm cuối (ending sounds)",
+      "ipa": "/s/ /t/ /k/ /f/",
+      "emoji": "🔚",
+      "tip": "Tiếng Việt hay nuốt âm cuối, nhưng trong tiếng Anh âm cuối đổi cả nghĩa của từ. Kết thúc từ rõ ràng: bật nhẹ /t/, /k/, xì hơi /s/, cắn môi /f/.",
+      "pairs": [["rice", "rye"], ["life", "lie"], ["bike", "buy"], ["make", "may"], ["weeks", "week"], ["note", "no"]],
+      "sentences": [
+        { "en": "I like rice and fruits.", "vi": "Mình thích cơm và trái cây." },
+        { "en": "She takes the bus to work.", "vi": "Cô ấy đi xe buýt đi làm." },
+        { "en": "It's nice to meet you.", "vi": "Rất vui được gặp bạn." }
+      ]
+    },
+    {
+      "id": "i-ee",
+      "title": "/ɪ/ ngắn và /iː/ dài",
+      "ipa": "/ɪ/ /iː/",
+      "emoji": "🐑",
+      "tip": "/iː/ (sheep) kéo dài, môi bành ra như đang cười. /ɪ/ (ship) ngắn, thả lỏng, hơi giống 'i' pha 'ê'. Đọc nhầm là 'ship' (con tàu) thành 'sheep' (con cừu)!",
+      "pairs": [["ship", "sheep"], ["live", "leave"], ["sit", "seat"], ["fill", "feel"], ["hit", "heat"], ["bin", "bean"]],
+      "sentences": [
+        { "en": "Please sit in this seat.", "vi": "Mời bạn ngồi ghế này." },
+        { "en": "I feel it's time to leave.", "vi": "Mình thấy đã đến lúc phải đi." },
+        { "en": "The ship is big, not the sheep.", "vi": "Con tàu mới to, không phải con cừu." }
+      ]
+    },
+    {
+      "id": "ae-e",
+      "title": "/æ/ và /e/",
+      "ipa": "/æ/ /e/",
+      "emoji": "😮",
+      "tip": "/æ/ (bad) mở miệng rộng, hạ hàm dưới, như nói 'a' và 'e' cùng lúc. /e/ (bed) miệng mở vừa, giống 'e' tiếng Việt.",
+      "pairs": [["bad", "bed"], ["man", "men"], ["sad", "said"], ["pan", "pen"], ["bag", "beg"], ["had", "head"]],
+      "sentences": [
+        { "en": "That man has a black bag.", "vi": "Người đàn ông đó có cái túi đen." },
+        { "en": "Can I have a pen, please?", "vi": "Cho mình xin cây bút nhé?" },
+        { "en": "Don't be sad, it's not bad.", "vi": "Đừng buồn, không tệ đâu." }
+      ]
+    },
+    {
+      "id": "sh-s",
+      "title": "/ʃ/ và /s/",
+      "ipa": "/ʃ/ /s/",
+      "emoji": "🤫",
+      "tip": "/ʃ/ (she) chu môi tròn ra trước, lưỡi lùi về sau, như khi nói 'suỵt'. /s/ (see) môi bành, đầu lưỡi gần răng trên.",
+      "pairs": [["she", "see"], ["ship", "sip"], ["shoe", "sue"], ["sheet", "seat"], ["shell", "sell"], ["shave", "save"]],
+      "sentences": [
+        { "en": "She sells shoes at the shop.", "vi": "Cô ấy bán giày ở cửa hàng." },
+        { "en": "Should I sit here?", "vi": "Mình ngồi đây được không?" },
+        { "en": "I'm sure it's the same size.", "vi": "Mình chắc nó cùng cỡ." }
+      ]
+    },
+    {
+      "id": "l-n",
+      "title": "/l/ và /n/",
+      "ipa": "/l/ /n/",
+      "emoji": "💡",
+      "tip": "/l/ đầu lưỡi chạm lợi trên, hơi thoát ra hai bên lưỡi, không qua mũi. /n/ hơi thoát qua mũi. Bịt mũi thử: /l/ vẫn nói được, /n/ thì không.",
+      "pairs": [["light", "night"], ["lot", "not"], ["line", "nine"], ["lap", "nap"], ["lock", "knock"], ["low", "no"]],
+      "sentences": [
+        { "en": "Turn on the light at night.", "vi": "Bật đèn vào buổi tối nhé." },
+        { "en": "I'd love a lot of noodles.", "vi": "Mình muốn thật nhiều mì." },
+        { "en": "Please call me later.", "vi": "Gọi lại cho mình sau nhé." }
+      ]
+    },
+    {
+      "id": "r-l",
+      "title": "/r/ và /l/",
+      "ipa": "/r/ /l/",
+      "emoji": "🐯",
+      "tip": "/r/ (right) cong đầu lưỡi về sau, không chạm vòm miệng, môi hơi tròn. /l/ (light) đầu lưỡi chạm lợi trên. Đừng rung lưỡi như 'r' tiếng Việt.",
+      "pairs": [["right", "light"], ["read", "lead"], ["rock", "lock"], ["fry", "fly"], ["grass", "glass"], ["pray", "play"]],
+      "sentences": [
+        { "en": "Turn right at the traffic light.", "vi": "Rẽ phải ở đèn giao thông." },
+        { "en": "I really like reading.", "vi": "Mình rất thích đọc sách." },
+        { "en": "Please play the radio.", "vi": "Mở đài lên đi." }
+      ]
+    },
+    {
+      "id": "ch-sh",
+      "title": "/tʃ/ và /ʃ/",
+      "ipa": "/tʃ/ /ʃ/",
+      "emoji": "🪑",
+      "tip": "/tʃ/ (chair) bắt đầu bằng /t/ rồi bật ra 'ch' mạnh. /ʃ/ (share) chỉ là hơi kéo dài, không có tiếng bật.",
+      "pairs": [["chair", "share"], ["chip", "ship"], ["cheap", "sheep"], ["watch", "wash"], ["catch", "cash"], ["chop", "shop"]],
+      "sentences": [
+        { "en": "Can I share your chair?", "vi": "Mình ngồi chung ghế với bạn được không?" },
+        { "en": "Let's watch the match.", "vi": "Cùng xem trận đấu nhé." },
+        { "en": "This shop is cheap.", "vi": "Cửa hàng này rẻ." }
+      ]
+    },
+    {
+      "id": "linking",
+      "title": "Nối âm & nói nhanh",
+      "ipa": "linking",
+      "emoji": "🔗",
+      "tip": "Người bản xứ nối phụ âm cuối với nguyên âm đầu của từ sau và nói rút gọn: 'check it out' nghe như 'che-ki-dout', 'going to' thành 'gonna'. Nghe kỹ cách nối rồi nói theo.",
+      "pairs": [],
+      "sentences": [
+        { "en": "Check it out!", "vi": "Xem cái này đi!", "sounds": "che-ki-dout" },
+        { "en": "What do you want to do?", "vi": "Bạn muốn làm gì?", "sounds": "whaddaya wanna do" },
+        { "en": "I'm going to get a cup of coffee.", "vi": "Mình sẽ đi lấy một cốc cà phê.", "sounds": "I'm gonna ge-da cuppa coffee" },
+        { "en": "Did you eat yet?", "vi": "Bạn ăn chưa?", "sounds": "didja eat yet" },
+        { "en": "Turn it off.", "vi": "Tắt nó đi.", "sounds": "tur-ni-doff" },
+        { "en": "Let me know.", "vi": "Cho mình biết nhé.", "sounds": "lemme know" }
+      ]
+    },
+    {
+      "id": "stress",
+      "title": "Trọng âm & ngữ điệu",
+      "ipa": "STRESS",
+      "emoji": "🎵",
+      "tip": "Âm tiết in HOA được nhấn: nói to hơn, dài hơn, cao hơn. Trong câu, nhấn vào từ mang nghĩa; câu hỏi Yes/No lên giọng ở cuối, câu hỏi Wh- xuống giọng.",
+      "pairs": [],
+      "sentences": [
+        { "en": "Can I see the photograph?", "vi": "Cho mình xem bức ảnh nhé?", "sounds": "can i SEE the PHO-to-graph ↗" },
+        { "en": "I love photography.", "vi": "Mình mê nhiếp ảnh.", "sounds": "i LOVE pho-TO-gra-phy" },
+        { "en": "Where are you from?", "vi": "Bạn đến từ đâu?", "sounds": "WHERE are you FROM ↘" },
+        { "en": "Are you coming tonight?", "vi": "Tối nay bạn đến không?", "sounds": "are you COM-ing to-NIGHT ↗" },
+        { "en": "It's an important meeting.", "vi": "Đó là cuộc họp quan trọng.", "sounds": "it's an im-POR-tant MEET-ing" }
+      ]
+    }
+  ]
+}
