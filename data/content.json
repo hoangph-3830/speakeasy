@@ -1,0 +1,2239 @@
+{
+  "categories": [
+    {
+      "id": "work",
+      "name": "Công việc",
+      "nameEn": "Work",
+      "emoji": "💼",
+      "color": "#5EC8F2"
+    },
+    {
+      "id": "life",
+      "name": "Đời sống",
+      "nameEn": "Daily life",
+      "emoji": "🏡",
+      "color": "#7BDCB5"
+    },
+    {
+      "id": "travel",
+      "name": "Du lịch",
+      "nameEn": "Travel",
+      "emoji": "✈️",
+      "color": "#FFB38A"
+    },
+    {
+      "id": "social",
+      "name": "Giao lưu",
+      "nameEn": "Socializing",
+      "emoji": "🎉",
+      "color": "#B9A6F7"
+    }
+  ],
+  "topics": [
+    {
+      "id": "first-day",
+      "category": "work",
+      "title": "First day at work",
+      "titleVi": "Ngày đầu đi làm",
+      "emoji": "👋",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "Hi, I'm Lan. I just joined the marketing team.",
+          "vi": "Chào, mình là Lan. Mình mới vào team marketing.",
+          "tip": "Giới thiệu tên + vị trí là đủ, không cần dài."
+        },
+        {
+          "en": "Nice to meet you. What do you do here?",
+          "vi": "Rất vui được gặp bạn. Bạn làm gì ở đây?"
+        },
+        {
+          "en": "Could you show me where the meeting room is?",
+          "vi": "Bạn chỉ giúp mình phòng họp ở đâu được không?"
+        },
+        {
+          "en": "Who should I ask if I have questions?",
+          "vi": "Nếu có câu hỏi thì mình nên hỏi ai?"
+        },
+        {
+          "en": "I'm still getting used to everything.",
+          "vi": "Mình vẫn đang làm quen với mọi thứ.",
+          "tip": "get used to + V-ing / N: quen với"
+        },
+        {
+          "en": "Thanks for your help. I really appreciate it.",
+          "vi": "Cảm ơn bạn đã giúp. Mình rất trân trọng."
+        }
+      ],
+      "words": [
+        {
+          "word": "colleague",
+          "ipa": "/ˈkɒliːɡ/",
+          "vi": "đồng nghiệp",
+          "example": "My colleagues are very friendly."
+        },
+        {
+          "word": "department",
+          "ipa": "/dɪˈpɑːtmənt/",
+          "vi": "phòng ban",
+          "example": "Which department are you in?"
+        },
+        {
+          "word": "manager",
+          "ipa": "/ˈmænɪdʒə/",
+          "vi": "quản lý",
+          "example": "My manager is in a meeting."
+        },
+        {
+          "word": "join",
+          "ipa": "/dʒɔɪn/",
+          "vi": "gia nhập",
+          "example": "I joined the company last week."
+        },
+        {
+          "word": "schedule",
+          "ipa": "/ˈʃedjuːl/",
+          "vi": "lịch trình",
+          "example": "What's your schedule today?"
+        },
+        {
+          "word": "badge",
+          "ipa": "/bædʒ/",
+          "vi": "thẻ nhân viên",
+          "example": "Don't forget your badge."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Tom (colleague)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hi! You must be new here.",
+            "vi": "Chào! Chắc bạn là người mới nhỉ."
+          },
+          {
+            "s": "B",
+            "en": "Yes, I'm Lan. Today is my first day.",
+            "vi": "Vâng, mình là Lan. Hôm nay là ngày đầu của mình."
+          },
+          {
+            "s": "A",
+            "en": "Welcome! I'm Tom from the sales team.",
+            "vi": "Chào mừng! Mình là Tom bên team sales."
+          },
+          {
+            "s": "B",
+            "en": "Nice to meet you, Tom. What do you do here?",
+            "vi": "Rất vui được gặp bạn, Tom. Bạn làm gì ở đây?"
+          },
+          {
+            "s": "A",
+            "en": "I look after our big clients. How about you?",
+            "vi": "Mình phụ trách các khách hàng lớn. Còn bạn?"
+          },
+          {
+            "s": "B",
+            "en": "I just joined the marketing team.",
+            "vi": "Mình mới vào team marketing."
+          },
+          {
+            "s": "A",
+            "en": "Great. Let me know if you need anything.",
+            "vi": "Tuyệt. Cần gì cứ nói mình nhé."
+          },
+          {
+            "s": "B",
+            "en": "Thanks for your help. I really appreciate it.",
+            "vi": "Cảm ơn bạn. Mình rất trân trọng."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I am new.",
+          "natural": "I just started here this week.",
+          "vi": "Mình mới bắt đầu làm ở đây tuần này.",
+          "note": "Người bản xứ hay nói 'just started' thay vì 'I am new'."
+        },
+        {
+          "plain": "Please help me.",
+          "natural": "Could you give me a hand with this?",
+          "vi": "Bạn giúp mình việc này một tay được không?",
+          "note": "'give someone a hand' = giúp một tay."
+        },
+        {
+          "plain": "I don't understand.",
+          "natural": "Sorry, I'm not sure I follow.",
+          "vi": "Xin lỗi, mình chưa theo kịp lắm.",
+          "note": "Lịch sự và tự nhiên hơn 'I don't understand'."
+        }
+      ]
+    },
+    {
+      "id": "meeting",
+      "category": "work",
+      "title": "In a meeting",
+      "titleVi": "Trong cuộc họp",
+      "emoji": "🗓️",
+      "level": "B1",
+      "phrases": [
+        {
+          "en": "Let's get started, shall we?",
+          "vi": "Chúng ta bắt đầu nhé?"
+        },
+        {
+          "en": "Can I add something here?",
+          "vi": "Tôi bổ sung một chút được không?",
+          "tip": "Cách lịch sự để xin ngắt lời."
+        },
+        {
+          "en": "Sorry, could you say that again?",
+          "vi": "Xin lỗi, bạn nói lại được không?"
+        },
+        {
+          "en": "I agree with you on that point.",
+          "vi": "Tôi đồng ý với bạn ở điểm đó."
+        },
+        {
+          "en": "I see it a little differently.",
+          "vi": "Tôi nhìn nhận hơi khác một chút.",
+          "tip": "Phản đối nhẹ nhàng, tránh nói 'You are wrong'."
+        },
+        {
+          "en": "Let's follow up on this by Friday.",
+          "vi": "Hãy cập nhật việc này trước thứ Sáu nhé."
+        }
+      ],
+      "words": [
+        {
+          "word": "agenda",
+          "ipa": "/əˈdʒendə/",
+          "vi": "chương trình họp",
+          "example": "Let's look at the agenda."
+        },
+        {
+          "word": "deadline",
+          "ipa": "/ˈdedlaɪn/",
+          "vi": "hạn chót",
+          "example": "The deadline is next Monday."
+        },
+        {
+          "word": "update",
+          "ipa": "/ˈʌpdeɪt/",
+          "vi": "cập nhật",
+          "example": "Can you give us a quick update?"
+        },
+        {
+          "word": "suggest",
+          "ipa": "/səˈdʒest/",
+          "vi": "đề xuất",
+          "example": "I suggest we wait a week."
+        },
+        {
+          "word": "priority",
+          "ipa": "/praɪˈɒrəti/",
+          "vi": "ưu tiên",
+          "example": "This is our top priority."
+        },
+        {
+          "word": "task",
+          "ipa": "/tɑːsk/",
+          "vi": "nhiệm vụ",
+          "example": "Who will take this task?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Manager",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Let's get started. Can you give us a quick update?",
+            "vi": "Bắt đầu nhé. Bạn cập nhật nhanh được không?"
+          },
+          {
+            "s": "B",
+            "en": "Sure. The design is almost finished.",
+            "vi": "Vâng. Phần thiết kế gần xong rồi ạ."
+          },
+          {
+            "s": "A",
+            "en": "Great. Are we still on track for the deadline?",
+            "vi": "Tốt. Chúng ta vẫn kịp hạn chót chứ?"
+          },
+          {
+            "s": "B",
+            "en": "I think we need two more days for testing.",
+            "vi": "Tôi nghĩ cần thêm hai ngày để kiểm thử."
+          },
+          {
+            "s": "A",
+            "en": "Hmm, that's a bit tight. Any ideas?",
+            "vi": "Hmm, hơi gấp nhỉ. Có ý tưởng gì không?"
+          },
+          {
+            "s": "B",
+            "en": "I suggest we test the main features first.",
+            "vi": "Tôi đề xuất kiểm thử các tính năng chính trước."
+          },
+          {
+            "s": "A",
+            "en": "Good idea. Let's follow up on this by Friday.",
+            "vi": "Ý hay. Cập nhật lại việc này trước thứ Sáu nhé."
+          },
+          {
+            "s": "B",
+            "en": "No problem. I'll send everyone an email.",
+            "vi": "Không vấn đề gì. Tôi sẽ gửi email cho mọi người."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I want to say something.",
+          "natural": "If I could just jump in here...",
+          "vi": "Cho tôi xen vào một chút...",
+          "note": "'jump in' = chen vào cuộc nói chuyện."
+        },
+        {
+          "plain": "I don't agree.",
+          "natural": "I'm not so sure about that.",
+          "vi": "Tôi không chắc lắm về điều đó.",
+          "note": "Cách phản đối mềm mỏng."
+        },
+        {
+          "plain": "We finish now.",
+          "natural": "Let's wrap it up here.",
+          "vi": "Chúng ta kết thúc ở đây nhé.",
+          "note": "'wrap up' = kết thúc, tổng kết."
+        }
+      ]
+    },
+    {
+      "id": "interview",
+      "category": "work",
+      "title": "Job interview",
+      "titleVi": "Phỏng vấn xin việc",
+      "emoji": "🤝",
+      "level": "B1",
+      "phrases": [
+        {
+          "en": "Thank you for having me today.",
+          "vi": "Cảm ơn anh/chị đã mời tôi hôm nay."
+        },
+        {
+          "en": "I have three years of experience in sales.",
+          "vi": "Tôi có ba năm kinh nghiệm trong bán hàng."
+        },
+        {
+          "en": "My biggest strength is solving problems.",
+          "vi": "Điểm mạnh lớn nhất của tôi là giải quyết vấn đề."
+        },
+        {
+          "en": "I'm looking for a chance to grow.",
+          "vi": "Tôi đang tìm cơ hội để phát triển."
+        },
+        {
+          "en": "Could you tell me more about the team?",
+          "vi": "Anh/chị nói thêm về đội nhóm được không?",
+          "tip": "Luôn chuẩn bị 1-2 câu hỏi ngược lại nhà tuyển dụng."
+        },
+        {
+          "en": "When can I expect to hear from you?",
+          "vi": "Khi nào tôi có thể nhận phản hồi ạ?"
+        }
+      ],
+      "words": [
+        {
+          "word": "experience",
+          "ipa": "/ɪkˈspɪəriəns/",
+          "vi": "kinh nghiệm",
+          "example": "Do you have any experience?"
+        },
+        {
+          "word": "strength",
+          "ipa": "/streŋθ/",
+          "vi": "điểm mạnh",
+          "example": "Teamwork is my strength."
+        },
+        {
+          "word": "weakness",
+          "ipa": "/ˈwiːknəs/",
+          "vi": "điểm yếu",
+          "example": "What is your weakness?"
+        },
+        {
+          "word": "salary",
+          "ipa": "/ˈsæləri/",
+          "vi": "lương",
+          "example": "What salary do you expect?"
+        },
+        {
+          "word": "position",
+          "ipa": "/pəˈzɪʃn/",
+          "vi": "vị trí",
+          "example": "I'm applying for this position."
+        },
+        {
+          "word": "skill",
+          "ipa": "/skɪl/",
+          "vi": "kỹ năng",
+          "example": "Communication is an important skill."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Interviewer",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Thanks for coming. Please tell me about yourself.",
+            "vi": "Cảm ơn bạn đã đến. Hãy giới thiệu về bản thân."
+          },
+          {
+            "s": "B",
+            "en": "I have three years of experience in sales.",
+            "vi": "Tôi có ba năm kinh nghiệm trong bán hàng."
+          },
+          {
+            "s": "A",
+            "en": "Why do you want this position?",
+            "vi": "Tại sao bạn muốn vị trí này?"
+          },
+          {
+            "s": "B",
+            "en": "I'm looking for a chance to grow.",
+            "vi": "Tôi đang tìm cơ hội để phát triển."
+          },
+          {
+            "s": "A",
+            "en": "What is your biggest strength?",
+            "vi": "Điểm mạnh lớn nhất của bạn là gì?"
+          },
+          {
+            "s": "B",
+            "en": "My biggest strength is solving problems.",
+            "vi": "Điểm mạnh lớn nhất của tôi là giải quyết vấn đề."
+          },
+          {
+            "s": "A",
+            "en": "Do you have any questions for us?",
+            "vi": "Bạn có câu hỏi nào cho chúng tôi không?"
+          },
+          {
+            "s": "B",
+            "en": "Yes. Could you tell me more about the team?",
+            "vi": "Có ạ. Anh/chị nói thêm về đội nhóm được không?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I am a hard worker.",
+          "natural": "I'm someone who takes ownership of my work.",
+          "vi": "Tôi là người luôn chịu trách nhiệm với công việc của mình.",
+          "note": "Cụ thể và chuyên nghiệp hơn 'hard worker'."
+        },
+        {
+          "plain": "I want more money.",
+          "natural": "I'm looking for a package in line with the market.",
+          "vi": "Tôi mong mức đãi ngộ phù hợp với thị trường.",
+          "note": "'package' = gói lương thưởng."
+        },
+        {
+          "plain": "Thank you for the interview.",
+          "natural": "I really enjoyed our conversation today.",
+          "vi": "Tôi rất thích buổi trò chuyện hôm nay."
+        }
+      ]
+    },
+    {
+      "id": "phone-call",
+      "category": "work",
+      "title": "Business phone call",
+      "titleVi": "Gọi điện công việc",
+      "emoji": "📞",
+      "level": "B1",
+      "phrases": [
+        {
+          "en": "Hello, this is Minh from ABC Company.",
+          "vi": "Xin chào, tôi là Minh từ công ty ABC.",
+          "tip": "Trên điện thoại dùng 'This is...', không dùng 'I am...'."
+        },
+        {
+          "en": "May I speak to Ms. Johnson, please?",
+          "vi": "Cho tôi nói chuyện với chị Johnson được không?"
+        },
+        {
+          "en": "I'm calling about the order we sent.",
+          "vi": "Tôi gọi về đơn hàng chúng tôi đã gửi."
+        },
+        {
+          "en": "Could you hold on a moment?",
+          "vi": "Bạn chờ máy một chút được không?"
+        },
+        {
+          "en": "Can I leave a message?",
+          "vi": "Tôi để lại lời nhắn được không?"
+        },
+        {
+          "en": "Sorry, the line is bad. Could you speak up?",
+          "vi": "Xin lỗi, đường truyền kém. Bạn nói to hơn được không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "call back",
+          "ipa": "/kɔːl bæk/",
+          "vi": "gọi lại",
+          "example": "I'll call you back later."
+        },
+        {
+          "word": "message",
+          "ipa": "/ˈmesɪdʒ/",
+          "vi": "lời nhắn",
+          "example": "She left a message for you."
+        },
+        {
+          "word": "available",
+          "ipa": "/əˈveɪləbl/",
+          "vi": "rảnh, có mặt",
+          "example": "Is he available now?"
+        },
+        {
+          "word": "order",
+          "ipa": "/ˈɔːdə/",
+          "vi": "đơn hàng",
+          "example": "Your order is on the way."
+        },
+        {
+          "word": "extension",
+          "ipa": "/ɪkˈstenʃn/",
+          "vi": "số máy lẻ",
+          "example": "My extension is 204."
+        },
+        {
+          "word": "confirm",
+          "ipa": "/kənˈfɜːm/",
+          "vi": "xác nhận",
+          "example": "Can you confirm the date?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Receptionist",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Good morning, Green Tech. How can I help you?",
+            "vi": "Chào buổi sáng, Green Tech xin nghe. Tôi giúp gì được ạ?"
+          },
+          {
+            "s": "B",
+            "en": "Hello, this is Minh from ABC Company.",
+            "vi": "Xin chào, tôi là Minh từ công ty ABC."
+          },
+          {
+            "s": "A",
+            "en": "Hi Minh. Who would you like to speak to?",
+            "vi": "Chào anh Minh. Anh muốn gặp ai ạ?"
+          },
+          {
+            "s": "B",
+            "en": "May I speak to Ms. Johnson, please?",
+            "vi": "Cho tôi nói chuyện với chị Johnson được không?"
+          },
+          {
+            "s": "A",
+            "en": "I'm sorry, she's not available right now.",
+            "vi": "Xin lỗi, chị ấy hiện không có mặt."
+          },
+          {
+            "s": "B",
+            "en": "Can I leave a message?",
+            "vi": "Tôi để lại lời nhắn được không?"
+          },
+          {
+            "s": "A",
+            "en": "Of course. What's it about?",
+            "vi": "Tất nhiên. Về việc gì ạ?"
+          },
+          {
+            "s": "B",
+            "en": "I'm calling about the order we sent.",
+            "vi": "Tôi gọi về đơn hàng chúng tôi đã gửi."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Wait.",
+          "natural": "Bear with me a second.",
+          "vi": "Chờ tôi một chút nhé.",
+          "note": "'Bear with me' = xin kiên nhẫn chờ."
+        },
+        {
+          "plain": "I will call again.",
+          "natural": "I'll try you again later.",
+          "vi": "Tôi sẽ gọi lại cho bạn sau.",
+          "note": "'try someone' = gọi thử cho ai đó."
+        },
+        {
+          "plain": "Speak louder.",
+          "natural": "Sorry, you're breaking up a bit.",
+          "vi": "Xin lỗi, tiếng bạn bị ngắt quãng.",
+          "note": "'breaking up' = sóng chập chờn."
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "category": "life",
+      "title": "At the coffee shop",
+      "titleVi": "Ở quán cà phê",
+      "emoji": "☕",
+      "level": "A1",
+      "phrases": [
+        {
+          "en": "Can I get a latte, please?",
+          "vi": "Cho tôi một ly latte nhé.",
+          "tip": "'Can I get...' rất tự nhiên khi gọi món ở Mỹ."
+        },
+        {
+          "en": "Could I have it with less sugar?",
+          "vi": "Cho tôi ít đường được không?"
+        },
+        {
+          "en": "For here or to go?",
+          "vi": "Uống ở đây hay mang đi?"
+        },
+        {
+          "en": "To go, please.",
+          "vi": "Mang đi nhé."
+        },
+        {
+          "en": "How much is it?",
+          "vi": "Bao nhiêu tiền vậy?"
+        },
+        {
+          "en": "Can I pay by card?",
+          "vi": "Tôi trả bằng thẻ được không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "medium",
+          "ipa": "/ˈmiːdiəm/",
+          "vi": "cỡ vừa",
+          "example": "A medium tea, please."
+        },
+        {
+          "word": "iced",
+          "ipa": "/aɪst/",
+          "vi": "có đá",
+          "example": "I'd like an iced coffee."
+        },
+        {
+          "word": "receipt",
+          "ipa": "/rɪˈsiːt/",
+          "vi": "hoá đơn",
+          "example": "Do you need a receipt?"
+        },
+        {
+          "word": "change",
+          "ipa": "/tʃeɪndʒ/",
+          "vi": "tiền thừa",
+          "example": "Here's your change."
+        },
+        {
+          "word": "straw",
+          "ipa": "/strɔː/",
+          "vi": "ống hút",
+          "example": "No straw, please."
+        },
+        {
+          "word": "menu",
+          "ipa": "/ˈmenjuː/",
+          "vi": "thực đơn",
+          "example": "Can I see the menu?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Barista",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hi there! What can I get for you?",
+            "vi": "Chào bạn! Bạn muốn dùng gì?"
+          },
+          {
+            "s": "B",
+            "en": "Can I get a latte, please?",
+            "vi": "Cho tôi một ly latte nhé."
+          },
+          {
+            "s": "A",
+            "en": "Sure. What size would you like?",
+            "vi": "Vâng. Bạn muốn cỡ nào?"
+          },
+          {
+            "s": "B",
+            "en": "Medium, with less sugar.",
+            "vi": "Cỡ vừa, ít đường."
+          },
+          {
+            "s": "A",
+            "en": "For here or to go?",
+            "vi": "Uống ở đây hay mang đi?"
+          },
+          {
+            "s": "B",
+            "en": "To go, please. How much is it?",
+            "vi": "Mang đi nhé. Bao nhiêu tiền vậy?"
+          },
+          {
+            "s": "A",
+            "en": "That's four fifty.",
+            "vi": "Bốn đô năm mươi xu."
+          },
+          {
+            "s": "B",
+            "en": "Can I pay by card?",
+            "vi": "Tôi trả bằng thẻ được không?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I want a coffee.",
+          "natural": "Could I grab a coffee?",
+          "vi": "Cho mình một ly cà phê nhé?",
+          "note": "'grab' = lấy nhanh, rất thân mật."
+        },
+        {
+          "plain": "No sugar.",
+          "natural": "Can I get that without sugar?",
+          "vi": "Cho mình không đường nhé?"
+        },
+        {
+          "plain": "Thank you, goodbye.",
+          "natural": "Thanks, have a good one!",
+          "vi": "Cảm ơn, chúc một ngày tốt lành!",
+          "note": "'Have a good one' dùng được mọi lúc trong ngày."
+        }
+      ]
+    },
+    {
+      "id": "shopping",
+      "category": "life",
+      "title": "Shopping for clothes",
+      "titleVi": "Mua sắm quần áo",
+      "emoji": "🛍️",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "I'm just looking, thanks.",
+          "vi": "Tôi chỉ xem thôi, cảm ơn.",
+          "tip": "Câu 'cứu cánh' khi nhân viên đến hỏi."
+        },
+        {
+          "en": "Do you have this in a smaller size?",
+          "vi": "Cái này có cỡ nhỏ hơn không?"
+        },
+        {
+          "en": "Where is the fitting room?",
+          "vi": "Phòng thử đồ ở đâu?"
+        },
+        {
+          "en": "It's a bit too tight.",
+          "vi": "Nó hơi chật quá."
+        },
+        {
+          "en": "Is this on sale?",
+          "vi": "Cái này có đang giảm giá không?"
+        },
+        {
+          "en": "I'll take it.",
+          "vi": "Tôi lấy cái này."
+        }
+      ],
+      "words": [
+        {
+          "word": "size",
+          "ipa": "/saɪz/",
+          "vi": "kích cỡ",
+          "example": "What size are you?"
+        },
+        {
+          "word": "try on",
+          "ipa": "/traɪ ɒn/",
+          "vi": "mặc thử",
+          "example": "Can I try this on?"
+        },
+        {
+          "word": "discount",
+          "ipa": "/ˈdɪskaʊnt/",
+          "vi": "giảm giá",
+          "example": "Is there a discount?"
+        },
+        {
+          "word": "loose",
+          "ipa": "/luːs/",
+          "vi": "rộng",
+          "example": "This shirt is too loose."
+        },
+        {
+          "word": "refund",
+          "ipa": "/ˈriːfʌnd/",
+          "vi": "hoàn tiền",
+          "example": "Can I get a refund?"
+        },
+        {
+          "word": "cashier",
+          "ipa": "/kæˈʃɪə/",
+          "vi": "thu ngân",
+          "example": "Please pay at the cashier."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Shop assistant",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hello! Can I help you find anything?",
+            "vi": "Xin chào! Tôi giúp bạn tìm gì không?"
+          },
+          {
+            "s": "B",
+            "en": "Do you have this shirt in a smaller size?",
+            "vi": "Áo này có cỡ nhỏ hơn không?"
+          },
+          {
+            "s": "A",
+            "en": "Let me check. Here's a small one.",
+            "vi": "Để tôi xem. Đây là cỡ S."
+          },
+          {
+            "s": "B",
+            "en": "Thanks. Where is the fitting room?",
+            "vi": "Cảm ơn. Phòng thử đồ ở đâu?"
+          },
+          {
+            "s": "A",
+            "en": "It's just over there. How does it fit?",
+            "vi": "Ngay đằng kia. Mặc vừa không?"
+          },
+          {
+            "s": "B",
+            "en": "It fits well. Is this on sale?",
+            "vi": "Vừa lắm. Cái này có giảm giá không?"
+          },
+          {
+            "s": "A",
+            "en": "Yes, it's twenty percent off today.",
+            "vi": "Có, hôm nay giảm hai mươi phần trăm."
+          },
+          {
+            "s": "B",
+            "en": "Great, I'll take it.",
+            "vi": "Tuyệt, tôi lấy cái này."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "It is expensive.",
+          "natural": "That's a bit out of my price range.",
+          "vi": "Cái này hơi quá túi tiền của tôi."
+        },
+        {
+          "plain": "I don't buy.",
+          "natural": "I think I'll pass, thanks.",
+          "vi": "Chắc tôi thôi, cảm ơn nhé.",
+          "note": "'pass' = từ chối nhẹ nhàng."
+        },
+        {
+          "plain": "It is good on me?",
+          "natural": "Does this look okay on me?",
+          "vi": "Cái này mặc lên có ổn không?"
+        }
+      ]
+    },
+    {
+      "id": "pharmacy",
+      "category": "life",
+      "title": "At the pharmacy",
+      "titleVi": "Ở hiệu thuốc",
+      "emoji": "💊",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "I have a headache and a sore throat.",
+          "vi": "Tôi bị đau đầu và đau họng."
+        },
+        {
+          "en": "Do you have something for a cold?",
+          "vi": "Có thuốc gì trị cảm không?"
+        },
+        {
+          "en": "How often should I take it?",
+          "vi": "Tôi nên uống bao lâu một lần?"
+        },
+        {
+          "en": "Take two tablets after meals.",
+          "vi": "Uống hai viên sau bữa ăn."
+        },
+        {
+          "en": "Does it make you sleepy?",
+          "vi": "Thuốc này có gây buồn ngủ không?"
+        },
+        {
+          "en": "I'm allergic to penicillin.",
+          "vi": "Tôi bị dị ứng với penicillin.",
+          "tip": "Luôn nói rõ dị ứng của bạn khi mua thuốc."
+        }
+      ],
+      "words": [
+        {
+          "word": "fever",
+          "ipa": "/ˈfiːvə/",
+          "vi": "sốt",
+          "example": "I have a high fever."
+        },
+        {
+          "word": "cough",
+          "ipa": "/kɒf/",
+          "vi": "ho",
+          "example": "My cough is getting worse."
+        },
+        {
+          "word": "tablet",
+          "ipa": "/ˈtæblət/",
+          "vi": "viên thuốc",
+          "example": "Take one tablet a day."
+        },
+        {
+          "word": "prescription",
+          "ipa": "/prɪˈskrɪpʃn/",
+          "vi": "đơn thuốc",
+          "example": "Do you need a prescription?"
+        },
+        {
+          "word": "allergic",
+          "ipa": "/əˈlɜːdʒɪk/",
+          "vi": "dị ứng",
+          "example": "Are you allergic to anything?"
+        },
+        {
+          "word": "side effect",
+          "ipa": "/saɪd ɪˈfekt/",
+          "vi": "tác dụng phụ",
+          "example": "Are there any side effects?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Pharmacist",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hi, what seems to be the problem?",
+            "vi": "Chào bạn, bạn bị làm sao vậy?"
+          },
+          {
+            "s": "B",
+            "en": "I have a headache and a sore throat.",
+            "vi": "Tôi bị đau đầu và đau họng."
+          },
+          {
+            "s": "A",
+            "en": "Do you have a fever?",
+            "vi": "Bạn có sốt không?"
+          },
+          {
+            "s": "B",
+            "en": "No, but I'm very tired.",
+            "vi": "Không, nhưng tôi rất mệt."
+          },
+          {
+            "s": "A",
+            "en": "These tablets should help.",
+            "vi": "Thuốc này sẽ đỡ đấy."
+          },
+          {
+            "s": "B",
+            "en": "How often should I take them?",
+            "vi": "Tôi nên uống bao lâu một lần?"
+          },
+          {
+            "s": "A",
+            "en": "Take two tablets after meals, three times a day.",
+            "vi": "Uống hai viên sau ăn, ba lần một ngày."
+          },
+          {
+            "s": "B",
+            "en": "Thank you. Does it make you sleepy?",
+            "vi": "Cảm ơn. Thuốc có gây buồn ngủ không?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I am sick.",
+          "natural": "I'm feeling a bit under the weather.",
+          "vi": "Tôi thấy hơi mệt trong người.",
+          "note": "'under the weather' = không khoẻ."
+        },
+        {
+          "plain": "My head hurts very much.",
+          "natural": "I've got a splitting headache.",
+          "vi": "Tôi đau đầu như búa bổ."
+        },
+        {
+          "plain": "Does it make me sleep?",
+          "natural": "Will this knock me out?",
+          "vi": "Thuốc này có làm tôi buồn ngủ lắm không?",
+          "note": "'knock someone out' = làm ngủ li bì."
+        }
+      ]
+    },
+    {
+      "id": "weekend",
+      "category": "life",
+      "title": "Weekend plans",
+      "titleVi": "Kế hoạch cuối tuần",
+      "emoji": "🌤️",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "What are you up to this weekend?",
+          "vi": "Cuối tuần này bạn định làm gì?",
+          "tip": "'up to' = đang/định làm gì, rất thân mật."
+        },
+        {
+          "en": "I'm going to visit my parents.",
+          "vi": "Mình sẽ về thăm bố mẹ."
+        },
+        {
+          "en": "I'm just going to relax at home.",
+          "vi": "Mình chỉ định nghỉ ngơi ở nhà."
+        },
+        {
+          "en": "The weather looks great on Saturday.",
+          "vi": "Thời tiết thứ Bảy có vẻ đẹp."
+        },
+        {
+          "en": "How was your weekend?",
+          "vi": "Cuối tuần của bạn thế nào?"
+        },
+        {
+          "en": "It was nice and quiet.",
+          "vi": "Nó yên bình và dễ chịu."
+        }
+      ],
+      "words": [
+        {
+          "word": "relax",
+          "ipa": "/rɪˈlæks/",
+          "vi": "thư giãn",
+          "example": "I need to relax."
+        },
+        {
+          "word": "plan",
+          "ipa": "/plæn/",
+          "vi": "kế hoạch",
+          "example": "Do you have any plans?"
+        },
+        {
+          "word": "sunny",
+          "ipa": "/ˈsʌni/",
+          "vi": "nắng",
+          "example": "It's sunny today."
+        },
+        {
+          "word": "picnic",
+          "ipa": "/ˈpɪknɪk/",
+          "vi": "dã ngoại",
+          "example": "Let's have a picnic."
+        },
+        {
+          "word": "chores",
+          "ipa": "/tʃɔːz/",
+          "vi": "việc nhà",
+          "example": "I have chores to do."
+        },
+        {
+          "word": "busy",
+          "ipa": "/ˈbɪzi/",
+          "vi": "bận",
+          "example": "I'm busy on Sunday."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Friend",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hey, what are you up to this weekend?",
+            "vi": "Ê, cuối tuần này bạn định làm gì?"
+          },
+          {
+            "s": "B",
+            "en": "I'm going to visit my parents on Saturday.",
+            "vi": "Thứ Bảy mình về thăm bố mẹ."
+          },
+          {
+            "s": "A",
+            "en": "Nice! What about Sunday?",
+            "vi": "Hay đấy! Còn Chủ nhật?"
+          },
+          {
+            "s": "B",
+            "en": "I'm just going to relax at home.",
+            "vi": "Mình chỉ định nghỉ ở nhà."
+          },
+          {
+            "s": "A",
+            "en": "Do you want to go for a picnic instead?",
+            "vi": "Hay là đi dã ngoại không?"
+          },
+          {
+            "s": "B",
+            "en": "Sounds fun! Is the weather OK?",
+            "vi": "Nghe vui đó! Thời tiết ổn không?"
+          },
+          {
+            "s": "A",
+            "en": "It's going to be sunny all day.",
+            "vi": "Trời sẽ nắng cả ngày."
+          },
+          {
+            "s": "B",
+            "en": "Perfect. Count me in!",
+            "vi": "Tuyệt. Tính cả mình nhé!"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "What do you do this weekend?",
+          "natural": "Got any plans for the weekend?",
+          "vi": "Cuối tuần có kế hoạch gì không?",
+          "note": "Khi nói thân mật, người bản xứ lược 'Have you'."
+        },
+        {
+          "plain": "I stay at home.",
+          "natural": "I'm just going to chill at home.",
+          "vi": "Mình định ở nhà xả hơi thôi.",
+          "note": "'chill' = thư giãn."
+        },
+        {
+          "plain": "Yes, I go too.",
+          "natural": "Count me in!",
+          "vi": "Tính cả mình nữa!"
+        }
+      ]
+    },
+    {
+      "id": "airport",
+      "category": "travel",
+      "title": "At the airport",
+      "titleVi": "Ở sân bay",
+      "emoji": "🛫",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "I'd like to check in for my flight to Tokyo.",
+          "vi": "Tôi muốn làm thủ tục cho chuyến bay đi Tokyo."
+        },
+        {
+          "en": "Here is my passport.",
+          "vi": "Đây là hộ chiếu của tôi."
+        },
+        {
+          "en": "Can I have a window seat, please?",
+          "vi": "Cho tôi ghế cạnh cửa sổ được không?"
+        },
+        {
+          "en": "How many bags can I check in?",
+          "vi": "Tôi được ký gửi bao nhiêu kiện hành lý?"
+        },
+        {
+          "en": "Which gate does it leave from?",
+          "vi": "Chuyến bay khởi hành ở cổng nào?"
+        },
+        {
+          "en": "Is the flight on time?",
+          "vi": "Chuyến bay có đúng giờ không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "boarding pass",
+          "ipa": "/ˈbɔːdɪŋ pɑːs/",
+          "vi": "thẻ lên máy bay",
+          "example": "Here's your boarding pass."
+        },
+        {
+          "word": "luggage",
+          "ipa": "/ˈlʌɡɪdʒ/",
+          "vi": "hành lý",
+          "example": "My luggage is too heavy."
+        },
+        {
+          "word": "gate",
+          "ipa": "/ɡeɪt/",
+          "vi": "cổng",
+          "example": "Please go to gate 12."
+        },
+        {
+          "word": "delayed",
+          "ipa": "/dɪˈleɪd/",
+          "vi": "bị hoãn",
+          "example": "The flight is delayed."
+        },
+        {
+          "word": "aisle",
+          "ipa": "/aɪl/",
+          "vi": "lối đi",
+          "example": "I'd prefer an aisle seat."
+        },
+        {
+          "word": "customs",
+          "ipa": "/ˈkʌstəmz/",
+          "vi": "hải quan",
+          "example": "We went through customs."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Check-in staff",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Good morning. Where are you flying today?",
+            "vi": "Chào buổi sáng. Hôm nay bạn bay đi đâu?"
+          },
+          {
+            "s": "B",
+            "en": "I'd like to check in for my flight to Tokyo.",
+            "vi": "Tôi muốn làm thủ tục bay đi Tokyo."
+          },
+          {
+            "s": "A",
+            "en": "May I see your passport, please?",
+            "vi": "Cho tôi xem hộ chiếu nhé."
+          },
+          {
+            "s": "B",
+            "en": "Here is my passport.",
+            "vi": "Đây là hộ chiếu của tôi."
+          },
+          {
+            "s": "A",
+            "en": "Thank you. Any bags to check in?",
+            "vi": "Cảm ơn. Có hành lý ký gửi không?"
+          },
+          {
+            "s": "B",
+            "en": "Just one. Can I have a window seat, please?",
+            "vi": "Một kiện thôi. Cho tôi ghế cửa sổ được không?"
+          },
+          {
+            "s": "A",
+            "en": "Sure. Here's your boarding pass. Gate 12.",
+            "vi": "Được. Thẻ lên máy bay của bạn đây. Cổng 12."
+          },
+          {
+            "s": "B",
+            "en": "Thanks. Is the flight on time?",
+            "vi": "Cảm ơn. Chuyến bay có đúng giờ không?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "My flight is late.",
+          "natural": "My flight's been delayed.",
+          "vi": "Chuyến bay của tôi bị hoãn."
+        },
+        {
+          "plain": "Where do I go?",
+          "natural": "Which way is the departure gate?",
+          "vi": "Đi lối nào ra cổng khởi hành?"
+        },
+        {
+          "plain": "I have only this bag.",
+          "natural": "I've only got carry-on.",
+          "vi": "Tôi chỉ có hành lý xách tay.",
+          "note": "'carry-on' = hành lý xách tay."
+        }
+      ]
+    },
+    {
+      "id": "hotel",
+      "category": "travel",
+      "title": "Hotel check-in",
+      "titleVi": "Nhận phòng khách sạn",
+      "emoji": "🏨",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "I have a reservation under the name Nguyen.",
+          "vi": "Tôi đã đặt phòng dưới tên Nguyen."
+        },
+        {
+          "en": "What time is breakfast?",
+          "vi": "Bữa sáng lúc mấy giờ?"
+        },
+        {
+          "en": "What's the Wi-Fi password?",
+          "vi": "Mật khẩu Wi-Fi là gì?"
+        },
+        {
+          "en": "Could I get a late check-out?",
+          "vi": "Tôi trả phòng muộn được không?"
+        },
+        {
+          "en": "The air conditioner isn't working.",
+          "vi": "Máy lạnh không hoạt động."
+        },
+        {
+          "en": "Could you call a taxi for me?",
+          "vi": "Bạn gọi giúp tôi taxi được không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "reservation",
+          "ipa": "/ˌrezəˈveɪʃn/",
+          "vi": "đặt chỗ",
+          "example": "I made a reservation online."
+        },
+        {
+          "word": "check out",
+          "ipa": "/tʃek aʊt/",
+          "vi": "trả phòng",
+          "example": "Check-out is at noon."
+        },
+        {
+          "word": "key card",
+          "ipa": "/kiː kɑːd/",
+          "vi": "thẻ phòng",
+          "example": "Here is your key card."
+        },
+        {
+          "word": "single room",
+          "ipa": "/ˈsɪŋɡl ruːm/",
+          "vi": "phòng đơn",
+          "example": "I booked a single room."
+        },
+        {
+          "word": "lobby",
+          "ipa": "/ˈlɒbi/",
+          "vi": "sảnh",
+          "example": "Let's meet in the lobby."
+        },
+        {
+          "word": "towel",
+          "ipa": "/ˈtaʊəl/",
+          "vi": "khăn tắm",
+          "example": "Could I have more towels?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Receptionist",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Welcome! Do you have a reservation?",
+            "vi": "Chào mừng! Bạn đã đặt phòng chưa?"
+          },
+          {
+            "s": "B",
+            "en": "Yes, I have a reservation under the name Nguyen.",
+            "vi": "Rồi, tôi đặt dưới tên Nguyen."
+          },
+          {
+            "s": "A",
+            "en": "Here it is. Two nights in a single room.",
+            "vi": "Đây rồi. Hai đêm, phòng đơn."
+          },
+          {
+            "s": "B",
+            "en": "That's right. What time is breakfast?",
+            "vi": "Đúng vậy. Bữa sáng lúc mấy giờ?"
+          },
+          {
+            "s": "A",
+            "en": "From six thirty to ten in the restaurant.",
+            "vi": "Từ sáu rưỡi đến mười giờ ở nhà hàng."
+          },
+          {
+            "s": "B",
+            "en": "Great. What's the Wi-Fi password?",
+            "vi": "Tuyệt. Mật khẩu Wi-Fi là gì?"
+          },
+          {
+            "s": "A",
+            "en": "It's on the back of your key card.",
+            "vi": "Nó ở mặt sau thẻ phòng của bạn."
+          },
+          {
+            "s": "B",
+            "en": "Thank you so much.",
+            "vi": "Cảm ơn bạn nhiều."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I want to check in.",
+          "natural": "Hi, I'm checking in. The name's Nguyen.",
+          "vi": "Chào, tôi nhận phòng. Tên Nguyen."
+        },
+        {
+          "plain": "The room has a problem.",
+          "natural": "There seems to be an issue with my room.",
+          "vi": "Hình như phòng tôi có vấn đề.",
+          "note": "'There seems to be...' nghe lịch sự hơn."
+        },
+        {
+          "plain": "Can I leave my bags?",
+          "natural": "Could you hold my bags for a few hours?",
+          "vi": "Bạn giữ hành lý giúp tôi vài tiếng được không?"
+        }
+      ]
+    },
+    {
+      "id": "directions",
+      "category": "travel",
+      "title": "Asking for directions",
+      "titleVi": "Hỏi đường",
+      "emoji": "🗺️",
+      "level": "A1",
+      "phrases": [
+        {
+          "en": "Excuse me, how do I get to the train station?",
+          "vi": "Xin lỗi, đi đến ga tàu thế nào?"
+        },
+        {
+          "en": "Is it far from here?",
+          "vi": "Có xa đây không?"
+        },
+        {
+          "en": "Go straight and turn left at the corner.",
+          "vi": "Đi thẳng rồi rẽ trái ở góc đường."
+        },
+        {
+          "en": "It's next to the bank.",
+          "vi": "Nó ở cạnh ngân hàng."
+        },
+        {
+          "en": "Can I walk there?",
+          "vi": "Tôi đi bộ đến đó được không?"
+        },
+        {
+          "en": "Could you show me on the map?",
+          "vi": "Bạn chỉ giúp trên bản đồ được không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "straight",
+          "ipa": "/streɪt/",
+          "vi": "thẳng",
+          "example": "Go straight ahead."
+        },
+        {
+          "word": "corner",
+          "ipa": "/ˈkɔːnə/",
+          "vi": "góc đường",
+          "example": "It's on the corner."
+        },
+        {
+          "word": "opposite",
+          "ipa": "/ˈɒpəzɪt/",
+          "vi": "đối diện",
+          "example": "It's opposite the park."
+        },
+        {
+          "word": "block",
+          "ipa": "/blɒk/",
+          "vi": "dãy nhà",
+          "example": "Walk two blocks."
+        },
+        {
+          "word": "crossroads",
+          "ipa": "/ˈkrɒsrəʊdz/",
+          "vi": "ngã tư",
+          "example": "Turn right at the crossroads."
+        },
+        {
+          "word": "nearby",
+          "ipa": "/ˌnɪəˈbaɪ/",
+          "vi": "gần đây",
+          "example": "Is there an ATM nearby?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Local",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "B",
+            "en": "Excuse me, how do I get to the train station?",
+            "vi": "Xin lỗi, đi đến ga tàu thế nào ạ?"
+          },
+          {
+            "s": "A",
+            "en": "Go straight and turn left at the corner.",
+            "vi": "Đi thẳng rồi rẽ trái ở góc đường."
+          },
+          {
+            "s": "B",
+            "en": "Is it far from here?",
+            "vi": "Có xa đây không ạ?"
+          },
+          {
+            "s": "A",
+            "en": "Not really. About ten minutes on foot.",
+            "vi": "Không xa lắm. Khoảng mười phút đi bộ."
+          },
+          {
+            "s": "B",
+            "en": "Great, I can walk there.",
+            "vi": "Tuyệt, tôi đi bộ được."
+          },
+          {
+            "s": "A",
+            "en": "It's next to a big bank. You can't miss it.",
+            "vi": "Nó ở cạnh một ngân hàng lớn. Không lạc được đâu."
+          },
+          {
+            "s": "B",
+            "en": "Thank you so much for your help.",
+            "vi": "Cảm ơn bạn rất nhiều."
+          },
+          {
+            "s": "A",
+            "en": "You're welcome. Have a nice trip!",
+            "vi": "Không có gì. Chúc chuyến đi vui vẻ!"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Where is the station?",
+          "natural": "Sorry to bother you, do you know where the station is?",
+          "vi": "Xin lỗi làm phiền, bạn có biết ga ở đâu không?",
+          "note": "Câu hỏi gián tiếp: động từ 'is' đứng cuối."
+        },
+        {
+          "plain": "I am lost.",
+          "natural": "I think I'm a bit lost.",
+          "vi": "Hình như tôi bị lạc rồi."
+        },
+        {
+          "plain": "Is it near?",
+          "natural": "Is it within walking distance?",
+          "vi": "Có đi bộ tới được không?"
+        }
+      ]
+    },
+    {
+      "id": "restaurant",
+      "category": "travel",
+      "title": "At a restaurant",
+      "titleVi": "Ở nhà hàng",
+      "emoji": "🍜",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "A table for two, please.",
+          "vi": "Cho một bàn hai người nhé."
+        },
+        {
+          "en": "What do you recommend?",
+          "vi": "Bạn gợi ý món gì?",
+          "tip": "Hỏi món đặc trưng là cách hay để trò chuyện với nhân viên."
+        },
+        {
+          "en": "Is this dish spicy?",
+          "vi": "Món này có cay không?"
+        },
+        {
+          "en": "I'll have the grilled chicken.",
+          "vi": "Tôi gọi món gà nướng."
+        },
+        {
+          "en": "Could we have some water, please?",
+          "vi": "Cho chúng tôi xin ít nước nhé."
+        },
+        {
+          "en": "Can we have the bill, please?",
+          "vi": "Cho chúng tôi xin hoá đơn."
+        }
+      ],
+      "words": [
+        {
+          "word": "starter",
+          "ipa": "/ˈstɑːtə/",
+          "vi": "món khai vị",
+          "example": "Would you like a starter?"
+        },
+        {
+          "word": "main course",
+          "ipa": "/meɪn kɔːs/",
+          "vi": "món chính",
+          "example": "What's the main course?"
+        },
+        {
+          "word": "vegetarian",
+          "ipa": "/ˌvedʒəˈteəriən/",
+          "vi": "người ăn chay",
+          "example": "I'm vegetarian."
+        },
+        {
+          "word": "delicious",
+          "ipa": "/dɪˈlɪʃəs/",
+          "vi": "ngon",
+          "example": "This soup is delicious."
+        },
+        {
+          "word": "tip",
+          "ipa": "/tɪp/",
+          "vi": "tiền boa",
+          "example": "Should we leave a tip?"
+        },
+        {
+          "word": "bill",
+          "ipa": "/bɪl/",
+          "vi": "hoá đơn",
+          "example": "The bill, please."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Waiter",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Good evening. How many people?",
+            "vi": "Chào buổi tối. Mấy người ạ?"
+          },
+          {
+            "s": "B",
+            "en": "A table for two, please.",
+            "vi": "Cho một bàn hai người nhé."
+          },
+          {
+            "s": "A",
+            "en": "Right this way. Here's the menu.",
+            "vi": "Mời đi lối này. Thực đơn đây ạ."
+          },
+          {
+            "s": "B",
+            "en": "Thanks. What do you recommend?",
+            "vi": "Cảm ơn. Bạn gợi ý món gì?"
+          },
+          {
+            "s": "A",
+            "en": "Our grilled chicken is very popular.",
+            "vi": "Món gà nướng của chúng tôi rất được ưa chuộng."
+          },
+          {
+            "s": "B",
+            "en": "Is it spicy?",
+            "vi": "Nó có cay không?"
+          },
+          {
+            "s": "A",
+            "en": "Just a little. We can make it mild.",
+            "vi": "Hơi cay thôi. Chúng tôi có thể làm ít cay."
+          },
+          {
+            "s": "B",
+            "en": "Perfect. I'll have the grilled chicken.",
+            "vi": "Tuyệt. Tôi gọi món gà nướng."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I want this.",
+          "natural": "I'll go with the chicken.",
+          "vi": "Tôi chọn món gà.",
+          "note": "'go with' = chọn."
+        },
+        {
+          "plain": "Give me the bill.",
+          "natural": "Could we get the check, please?",
+          "vi": "Cho chúng tôi xin hoá đơn.",
+          "note": "Người Mỹ nói 'check', người Anh nói 'bill'."
+        },
+        {
+          "plain": "The food is very good.",
+          "natural": "This is amazing!",
+          "vi": "Món này tuyệt quá!"
+        }
+      ]
+    },
+    {
+      "id": "meet-people",
+      "category": "social",
+      "title": "Meeting new people",
+      "titleVi": "Làm quen bạn mới",
+      "emoji": "😊",
+      "level": "A1",
+      "phrases": [
+        {
+          "en": "Hi, I don't think we've met. I'm Hoa.",
+          "vi": "Chào, hình như mình chưa gặp nhau. Mình là Hoa."
+        },
+        {
+          "en": "Where are you from?",
+          "vi": "Bạn đến từ đâu?"
+        },
+        {
+          "en": "I'm from Vietnam, from Da Nang.",
+          "vi": "Mình đến từ Việt Nam, ở Đà Nẵng."
+        },
+        {
+          "en": "How do you know the host?",
+          "vi": "Bạn quen chủ nhà thế nào?",
+          "tip": "Câu mở chuyện an toàn ở các buổi tiệc."
+        },
+        {
+          "en": "What do you do for fun?",
+          "vi": "Bạn thường làm gì để giải trí?"
+        },
+        {
+          "en": "It was great talking to you.",
+          "vi": "Nói chuyện với bạn vui lắm."
+        }
+      ],
+      "words": [
+        {
+          "word": "introduce",
+          "ipa": "/ˌɪntrəˈdjuːs/",
+          "vi": "giới thiệu",
+          "example": "Let me introduce my friend."
+        },
+        {
+          "word": "hometown",
+          "ipa": "/ˈhəʊmtaʊn/",
+          "vi": "quê nhà",
+          "example": "My hometown is small."
+        },
+        {
+          "word": "host",
+          "ipa": "/həʊst/",
+          "vi": "chủ tiệc",
+          "example": "She is the host tonight."
+        },
+        {
+          "word": "friendly",
+          "ipa": "/ˈfrendli/",
+          "vi": "thân thiện",
+          "example": "Everyone is so friendly."
+        },
+        {
+          "word": "stranger",
+          "ipa": "/ˈstreɪndʒə/",
+          "vi": "người lạ",
+          "example": "Don't be a stranger!"
+        },
+        {
+          "word": "common",
+          "ipa": "/ˈkɒmən/",
+          "vi": "điểm chung",
+          "example": "We have a lot in common."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Alex",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "B",
+            "en": "Hi, I don't think we've met. I'm Hoa.",
+            "vi": "Chào, hình như mình chưa gặp nhau. Mình là Hoa."
+          },
+          {
+            "s": "A",
+            "en": "Hi Hoa, I'm Alex. Nice to meet you.",
+            "vi": "Chào Hoa, mình là Alex. Rất vui được gặp bạn."
+          },
+          {
+            "s": "B",
+            "en": "Nice to meet you too. Where are you from?",
+            "vi": "Mình cũng vậy. Bạn đến từ đâu?"
+          },
+          {
+            "s": "A",
+            "en": "I'm from Canada. And you?",
+            "vi": "Mình đến từ Canada. Còn bạn?"
+          },
+          {
+            "s": "B",
+            "en": "I'm from Vietnam, from Da Nang.",
+            "vi": "Mình đến từ Việt Nam, ở Đà Nẵng."
+          },
+          {
+            "s": "A",
+            "en": "I've heard it has beautiful beaches!",
+            "vi": "Nghe nói ở đó có biển rất đẹp!"
+          },
+          {
+            "s": "B",
+            "en": "Yes, you should visit. How do you know the host?",
+            "vi": "Đúng vậy, bạn nên ghé. Bạn quen chủ nhà thế nào?"
+          },
+          {
+            "s": "A",
+            "en": "We work together. It was great talking to you.",
+            "vi": "Bọn mình làm cùng nhau. Nói chuyện với bạn vui lắm."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "What is your job?",
+          "natural": "So, what do you do?",
+          "vi": "Thế bạn làm nghề gì?",
+          "note": "Câu hỏi nghề nghiệp phổ biến nhất."
+        },
+        {
+          "plain": "Nice to meet you.",
+          "natural": "Great to finally meet you!",
+          "vi": "Cuối cùng cũng được gặp bạn!"
+        },
+        {
+          "plain": "I must go.",
+          "natural": "I should get going, but it was great chatting!",
+          "vi": "Mình phải đi rồi, nói chuyện vui lắm!",
+          "note": "Cách chào ra về tự nhiên, không đột ngột."
+        }
+      ]
+    },
+    {
+      "id": "hobbies",
+      "category": "social",
+      "title": "Talking about hobbies",
+      "titleVi": "Nói về sở thích",
+      "emoji": "🎸",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "What do you like to do in your free time?",
+          "vi": "Lúc rảnh bạn thích làm gì?"
+        },
+        {
+          "en": "I'm really into hiking.",
+          "vi": "Mình rất mê leo núi.",
+          "tip": "'be into something' = rất thích cái gì."
+        },
+        {
+          "en": "How long have you been playing the guitar?",
+          "vi": "Bạn chơi guitar bao lâu rồi?"
+        },
+        {
+          "en": "I've been doing it for about two years.",
+          "vi": "Mình chơi được khoảng hai năm rồi."
+        },
+        {
+          "en": "That sounds interesting!",
+          "vi": "Nghe thú vị đó!"
+        },
+        {
+          "en": "Maybe we can go together sometime.",
+          "vi": "Có dịp mình đi cùng nhé."
+        }
+      ],
+      "words": [
+        {
+          "word": "hobby",
+          "ipa": "/ˈhɒbi/",
+          "vi": "sở thích",
+          "example": "My hobby is cooking."
+        },
+        {
+          "word": "free time",
+          "ipa": "/friː taɪm/",
+          "vi": "thời gian rảnh",
+          "example": "I read in my free time."
+        },
+        {
+          "word": "hiking",
+          "ipa": "/ˈhaɪkɪŋ/",
+          "vi": "đi bộ đường dài",
+          "example": "Hiking keeps me healthy."
+        },
+        {
+          "word": "photography",
+          "ipa": "/fəˈtɒɡrəfi/",
+          "vi": "nhiếp ảnh",
+          "example": "She loves photography."
+        },
+        {
+          "word": "gym",
+          "ipa": "/dʒɪm/",
+          "vi": "phòng tập",
+          "example": "I go to the gym every day."
+        },
+        {
+          "word": "favorite",
+          "ipa": "/ˈfeɪvərɪt/",
+          "vi": "yêu thích",
+          "example": "What's your favorite movie?"
+        }
+      ],
+      "dialogue": {
+        "roleA": "Mia",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "What do you like to do in your free time?",
+            "vi": "Lúc rảnh bạn thích làm gì?"
+          },
+          {
+            "s": "B",
+            "en": "I'm really into hiking. How about you?",
+            "vi": "Mình rất mê leo núi. Còn bạn?"
+          },
+          {
+            "s": "A",
+            "en": "I love music. I play the guitar.",
+            "vi": "Mình thích âm nhạc. Mình chơi guitar."
+          },
+          {
+            "s": "B",
+            "en": "How long have you been playing the guitar?",
+            "vi": "Bạn chơi guitar bao lâu rồi?"
+          },
+          {
+            "s": "A",
+            "en": "For about five years now.",
+            "vi": "Khoảng năm năm rồi."
+          },
+          {
+            "s": "B",
+            "en": "That sounds interesting!",
+            "vi": "Nghe thú vị đó!"
+          },
+          {
+            "s": "A",
+            "en": "Where do you usually go hiking?",
+            "vi": "Bạn thường leo núi ở đâu?"
+          },
+          {
+            "s": "B",
+            "en": "Near the city. Maybe we can go together sometime.",
+            "vi": "Gần thành phố thôi. Có dịp mình đi cùng nhé."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I like football very much.",
+          "natural": "I'm a huge football fan.",
+          "vi": "Mình là fan bóng đá cuồng nhiệt."
+        },
+        {
+          "plain": "I don't like it.",
+          "natural": "It's not really my thing.",
+          "vi": "Cái đó không hợp với mình lắm.",
+          "note": "Từ chối khéo, không chê bai."
+        },
+        {
+          "plain": "I do it sometimes.",
+          "natural": "I do it every now and then.",
+          "vi": "Thỉnh thoảng mình cũng làm."
+        }
+      ]
+    },
+    {
+      "id": "invitation",
+      "category": "social",
+      "title": "Making plans",
+      "titleVi": "Rủ đi chơi",
+      "emoji": "🍕",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "Are you free on Friday evening?",
+          "vi": "Tối thứ Sáu bạn rảnh không?"
+        },
+        {
+          "en": "Would you like to grab dinner?",
+          "vi": "Bạn có muốn đi ăn tối không?",
+          "tip": "'grab' dinner/coffee = đi ăn/uống nhanh, thân mật."
+        },
+        {
+          "en": "I'd love to!",
+          "vi": "Mình rất sẵn lòng!"
+        },
+        {
+          "en": "Sorry, I can't make it. How about next week?",
+          "vi": "Tiếc quá, mình không đi được. Tuần sau nhé?"
+        },
+        {
+          "en": "What time works for you?",
+          "vi": "Mấy giờ thì tiện cho bạn?"
+        },
+        {
+          "en": "See you there!",
+          "vi": "Gặp bạn ở đó nhé!"
+        }
+      ],
+      "words": [
+        {
+          "word": "invite",
+          "ipa": "/ɪnˈvaɪt/",
+          "vi": "mời",
+          "example": "Thanks for inviting me."
+        },
+        {
+          "word": "free",
+          "ipa": "/friː/",
+          "vi": "rảnh",
+          "example": "Are you free tomorrow?"
+        },
+        {
+          "word": "make it",
+          "ipa": "/meɪk ɪt/",
+          "vi": "đến được",
+          "example": "I can't make it tonight."
+        },
+        {
+          "word": "pick up",
+          "ipa": "/pɪk ʌp/",
+          "vi": "đón",
+          "example": "I'll pick you up at seven."
+        },
+        {
+          "word": "join",
+          "ipa": "/dʒɔɪn/",
+          "vi": "tham gia cùng",
+          "example": "Do you want to join us?"
+        },
+        {
+          "word": "plan",
+          "ipa": "/plæn/",
+          "vi": "lên kế hoạch",
+          "example": "Let's plan a trip."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Sam",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Hey! Are you free on Friday evening?",
+            "vi": "Ê! Tối thứ Sáu bạn rảnh không?"
+          },
+          {
+            "s": "B",
+            "en": "I think so. What's up?",
+            "vi": "Chắc là rảnh. Có gì vậy?"
+          },
+          {
+            "s": "A",
+            "en": "Would you like to grab dinner with us?",
+            "vi": "Đi ăn tối với bọn mình không?"
+          },
+          {
+            "s": "B",
+            "en": "I'd love to! What time works for you?",
+            "vi": "Rất sẵn lòng! Mấy giờ thì tiện cho bạn?"
+          },
+          {
+            "s": "A",
+            "en": "How about seven at the pizza place?",
+            "vi": "Bảy giờ ở quán pizza nhé?"
+          },
+          {
+            "s": "B",
+            "en": "Sounds good. Should I bring anything?",
+            "vi": "Được đó. Mình có cần mang gì không?"
+          },
+          {
+            "s": "A",
+            "en": "Just bring yourself!",
+            "vi": "Cứ mang bạn đến là được!"
+          },
+          {
+            "s": "B",
+            "en": "Great. See you there!",
+            "vi": "Tuyệt. Gặp bạn ở đó nhé!"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Do you want to go out?",
+          "natural": "Wanna hang out later?",
+          "vi": "Lát đi chơi không?",
+          "note": "'wanna' = want to, 'hang out' = đi chơi."
+        },
+        {
+          "plain": "I can't.",
+          "natural": "I'd love to, but I'm tied up tonight.",
+          "vi": "Mình rất muốn nhưng tối nay kẹt rồi.",
+          "note": "'tied up' = bận."
+        },
+        {
+          "plain": "Maybe another day.",
+          "natural": "Can I take a rain check?",
+          "vi": "Để dịp khác nhé?",
+          "note": "'rain check' = hẹn lần sau."
+        }
+      ]
+    },
+    {
+      "id": "keep-in-touch",
+      "category": "social",
+      "title": "Keeping in touch",
+      "titleVi": "Giữ liên lạc",
+      "emoji": "📱",
+      "level": "A2",
+      "phrases": [
+        {
+          "en": "Can I add you on Facebook?",
+          "vi": "Mình kết bạn Facebook nhé?"
+        },
+        {
+          "en": "What's your phone number?",
+          "vi": "Số điện thoại của bạn là gì?"
+        },
+        {
+          "en": "Let's keep in touch.",
+          "vi": "Giữ liên lạc nhé."
+        },
+        {
+          "en": "Text me when you get home.",
+          "vi": "Về đến nhà nhắn mình nhé."
+        },
+        {
+          "en": "It's been ages! How have you been?",
+          "vi": "Lâu lắm rồi! Dạo này bạn thế nào?",
+          "tip": "'It's been ages' = lâu lắm rồi không gặp."
+        },
+        {
+          "en": "Say hi to your family for me.",
+          "vi": "Gửi lời chào gia đình bạn giúp mình."
+        }
+      ],
+      "words": [
+        {
+          "word": "contact",
+          "ipa": "/ˈkɒntækt/",
+          "vi": "liên lạc",
+          "example": "Let's stay in contact."
+        },
+        {
+          "word": "text",
+          "ipa": "/tekst/",
+          "vi": "nhắn tin",
+          "example": "I'll text you later."
+        },
+        {
+          "word": "catch up",
+          "ipa": "/kætʃ ʌp/",
+          "vi": "hàn huyên",
+          "example": "Let's catch up soon."
+        },
+        {
+          "word": "miss",
+          "ipa": "/mɪs/",
+          "vi": "nhớ",
+          "example": "I miss you guys."
+        },
+        {
+          "word": "reply",
+          "ipa": "/rɪˈplaɪ/",
+          "vi": "trả lời",
+          "example": "Sorry for the late reply."
+        },
+        {
+          "word": "video call",
+          "ipa": "/ˈvɪdiəʊ kɔːl/",
+          "vi": "gọi video",
+          "example": "Let's have a video call."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Old friend",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Wow, it's been ages! How have you been?",
+            "vi": "Wow, lâu lắm rồi! Dạo này bạn thế nào?"
+          },
+          {
+            "s": "B",
+            "en": "I've been great, thanks! And you?",
+            "vi": "Mình ổn lắm, cảm ơn! Còn bạn?"
+          },
+          {
+            "s": "A",
+            "en": "Pretty busy with my new job.",
+            "vi": "Khá bận với công việc mới."
+          },
+          {
+            "s": "B",
+            "en": "We should catch up soon.",
+            "vi": "Bọn mình nên gặp nhau hàn huyên sớm."
+          },
+          {
+            "s": "A",
+            "en": "Definitely. What's your phone number?",
+            "vi": "Chắc chắn rồi. Số điện thoại của bạn là gì?"
+          },
+          {
+            "s": "B",
+            "en": "Here, let me type it in for you.",
+            "vi": "Đây, để mình nhập giúp bạn."
+          },
+          {
+            "s": "A",
+            "en": "Thanks. Let's keep in touch.",
+            "vi": "Cảm ơn. Giữ liên lạc nhé."
+          },
+          {
+            "s": "B",
+            "en": "Sure. Say hi to your family for me.",
+            "vi": "Ừ. Gửi lời chào gia đình bạn giúp mình."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Long time no see.",
+          "natural": "Hey, it's been forever!",
+          "vi": "Ê, lâu quá rồi đấy!"
+        },
+        {
+          "plain": "Write to me.",
+          "natural": "Drop me a line sometime.",
+          "vi": "Thỉnh thoảng nhắn mình nhé.",
+          "note": "'drop someone a line' = nhắn tin cho ai."
+        },
+        {
+          "plain": "We meet soon.",
+          "natural": "Let's catch up soon!",
+          "vi": "Sớm gặp nhau hàn huyên nhé!"
+        }
+      ]
+    }
+  ]
+}
