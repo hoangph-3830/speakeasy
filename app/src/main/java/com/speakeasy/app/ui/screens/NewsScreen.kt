@@ -35,7 +35,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -61,31 +60,22 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextLayoutResult
-import androidx.compose.ui.text.TextLinkStyles
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Article
-import com.speakeasy.app.data.DictEntry
-import com.speakeasy.app.data.Lemmatizer
 import com.speakeasy.app.data.NewsCache
 import com.speakeasy.app.data.NewsItem
 import com.speakeasy.app.data.NewsParser
 import com.speakeasy.app.data.NewsSource
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.ReadingStats
-import com.speakeasy.app.data.ReviewCard
-import com.speakeasy.app.data.Vocab
 import com.speakeasy.app.data.WordStatus
 import com.speakeasy.app.data.WordStatuses
 import com.speakeasy.app.speech.Sentences
@@ -95,8 +85,16 @@ import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.Pill
 import com.speakeasy.app.ui.components.SoftProgress
 import com.speakeasy.app.ui.components.SpeakButton
+import com.speakeasy.app.ui.components.TappableText
+import com.speakeasy.app.ui.components.ToggleChip
 import com.speakeasy.app.ui.components.TopBar
 import com.speakeasy.app.ui.components.VSpace
+import com.speakeasy.app.ui.components.WordSheet
+import com.speakeasy.app.ui.components.rememberWordLookups
+import com.speakeasy.app.ui.components.rememberWordMarks
+import com.speakeasy.app.ui.components.underline
+import com.speakeasy.app.ui.components.vocabCard
+import com.speakeasy.app.ui.components.wordStyle
 import com.speakeasy.app.ui.theme.CoralLight
 import com.speakeasy.app.ui.theme.Ink
 import com.speakeasy.app.ui.theme.Line
@@ -106,8 +104,6 @@ import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Peach
 import com.speakeasy.app.ui.theme.Sky
 import com.speakeasy.app.ui.theme.SkyLight
-import com.speakeasy.app.ui.theme.Sun
-import com.speakeasy.app.ui.theme.SunLight
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import java.time.Instant
@@ -321,21 +317,6 @@ private fun Translation(text: String) {
 }
 
 @Composable
-private fun ToggleChip(label: String, on: Boolean, onClick: () -> Unit) {
-    Text(
-        if (on) "$label ✓" else label,
-        modifier = Modifier
-            .clip(CircleShape)
-            .background(if (on) SkyLight else Color.Transparent)
-            .border(1.dp, Line, CircleShape)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 6.dp),
-        color = Sky,
-        fontWeight = FontWeight.Bold,
-    )
-}
-
-@Composable
 private fun NetworkError(message: String, onRetry: () -> Unit) {
     Column(
         Modifier.fillMaxSize().padding(32.dp),
@@ -402,14 +383,8 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     val deckIds = remember(cards) { cards.map { it.id }.toSet() }
     // Each distinct word on the page looked up once; the statuses follow the learned set and the deck.
     val shownTexts = listOf(title) + paragraphs.ifEmpty { listOfNotNull(item?.summary?.ifBlank { null }) }
-    val lookups = remember(shownTexts) {
-        shownTexts.flatMap { t -> wordPattern.findAll(t).map { Lemmatizer.normalize(it.value) } }
-            .distinct()
-            .associateWith { WordStatuses.colourable(app.dictionary.lookup(it)) }
-    }
-    val marks = remember(lookups, progress.learnedWords, deckIds) {
-        lookups.mapValues { (_, e) -> WordStatuses.of(e?.word, progress.learnedWords, deckIds) }
-    }
+    val lookups = rememberWordLookups(shownTexts)
+    val marks = rememberWordMarks(lookups)
     val headwords = remember(lookups) { lookups.values.filterNotNull().distinctBy { it.word } }
     val stats = ReadingStats.of(headwords.map { it.word }) { WordStatuses.of(it, progress.learnedWords, deckIds) }
     val newWords = headwords.filter { WordStatuses.of(it.word, progress.learnedWords, deckIds) == WordStatus.NEW }
@@ -615,142 +590,3 @@ private fun LegendChip(label: String, status: WordStatus) {
     )
 }
 
-/** Background for a word: light yellow while learning; new, known and unknown words have none. */
-private fun wordStyle(status: WordStatus?): SpanStyle? =
-    if (status == WordStatus.LEARNING) SpanStyle(background = SunLight) else null
-
-/** A thin underline marks words still to learn: blue for new, yellow for learning. */
-private fun underline(status: WordStatus?): Color? = when (status) {
-    WordStatus.NEW -> Sky.copy(alpha = 0.55f)
-    WordStatus.LEARNING -> Sun
-    else -> null
-}
-
-/** The review card a dictionary word becomes, the same "v:" format the vocabulary cards use. */
-private fun vocabCard(headword: String, vi: String, entry: DictEntry?): ReviewCard {
-    val extra = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.example?.ifBlank { null }).joinToString(" · ")
-    return ReviewCard("v:$headword", headword, vi, extra.ifEmpty { null })
-}
-
-private val wordPattern = Regex("[A-Za-z]+(?:['’][A-Za-z]+)*")
-
-/**
- * Text where every English word is its own link, so a tap opens it in the dictionary.
- * [marks] maps normalized words to their status, which sets the highlight.
- */
-@Composable
-private fun TappableText(text: String, style: TextStyle, color: Color, marks: Map<String, WordStatus>, onWord: (String) -> Unit) {
-    val onTap by rememberUpdatedState(onWord)
-    var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
-    // Word ranges with their underline colour; drawn by hand so the line can be thin and coloured.
-    val lines = remember(text, marks) {
-        wordPattern.findAll(text).mapNotNull { m -> underline(marks[Lemmatizer.normalize(m.value)])?.let { m.range to it } }.toList()
-    }
-    val annotated = remember(text, marks) {
-        buildAnnotatedString {
-            var last = 0
-            wordPattern.findAll(text).forEach { m ->
-                append(text.substring(last, m.range.first))
-                val link = LinkAnnotation.Clickable(
-                    tag = m.value,
-                    styles = TextLinkStyles(
-                        style = wordStyle(marks[Lemmatizer.normalize(m.value)]),
-                        pressedStyle = SpanStyle(background = Sky.copy(alpha = 0.25f)),
-                    ),
-                ) { onTap(m.value) }
-                withLink(link) { append(m.value) }
-                last = m.range.last + 1
-            }
-            append(text.substring(last))
-        }
-    }
-    Text(
-        annotated,
-        style = style,
-        color = color,
-        onTextLayout = { layout = it },
-        modifier = Modifier.drawBehind {
-            val l = layout ?: return@drawBehind
-            val stroke = 2.dp.toPx()
-            for ((range, c) in lines) {
-                if (range.last >= l.layoutInput.text.length) continue
-                val line = l.getLineForOffset(range.first)
-                val y = l.getLineBaseline(line) + stroke * 1.5f
-                drawLine(c, Offset(l.getBoundingBox(range.first).left, y), Offset(l.getBoundingBox(range.last).right, y), strokeWidth = stroke)
-            }
-        },
-    )
-}
-
-/** Dictionary card for a tapped word: offline entry when there is one, online translation otherwise. */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun WordSheet(raw: String, onDismiss: () -> Unit) {
-    val app = LocalApp.current
-    val progress by app.progress.progress.collectAsState()
-    val cards by app.review.cards.collectAsState()
-    val entry = remember(raw) { app.dictionary.lookup(raw) }
-    val headword = entry?.word ?: Lemmatizer.normalize(raw)
-    val vi by produceState(entry?.vi, raw) {
-        if (entry == null) value = try {
-            app.dictionary.translate(headword)
-        } catch (e: CancellationException) {
-            throw e
-        } catch (e: Exception) {
-            ""
-        }
-    }
-    val meaning = vi
-    val inDeck = cards.any { it.id == "v:$headword" }
-    val known = headword in progress.learnedWords
-
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = Color.White) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 24.dp).navigationBarsPadding()) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    Text(headword, style = MaterialTheme.typography.headlineMedium, color = Ink)
-                    val details = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.pos?.ifBlank { null }?.let(Vocab::posLabel))
-                    if (details.isNotEmpty()) Text(details.joinToString(" · "), color = Muted)
-                }
-                SpeakButton(headword, size = 52.dp)
-            }
-            VSpace(12.dp)
-            Text(
-                when {
-                    meaning == null -> "Đang dịch…"
-                    meaning.isEmpty() -> "Chưa tra được nghĩa, kiểm tra mạng rồi thử lại nhé."
-                    else -> meaning
-                },
-                style = MaterialTheme.typography.titleLarge,
-                color = if (meaning.isNullOrEmpty()) Muted else Sky,
-            )
-            if (entry == null && !meaning.isNullOrEmpty()) {
-                Text("Dịch tự động · từ này chưa có trong từ điển của app", color = Muted, style = MaterialTheme.typography.labelMedium)
-            }
-            if (!entry?.example.isNullOrBlank()) {
-                VSpace(12.dp)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("“${entry!!.example}”", fontStyle = FontStyle.Italic, color = Ink, modifier = Modifier.weight(1f))
-                    HSpace(8.dp)
-                    SpeakButton(entry.example, size = 34.dp)
-                }
-            }
-            VSpace(20.dp)
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                OutlinedButton(
-                    onClick = { app.review.add(listOf(vocabCard(headword, meaning.orEmpty(), entry))) },
-                    enabled = !inDeck && !meaning.isNullOrEmpty(),
-                    modifier = Modifier.weight(1f).height(52.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(1.5.dp, if (inDeck) Line else Sky),
-                ) { Text(if (inDeck) "✓ Đã có trong Ôn tập" else "＋ Ôn tập", color = if (inDeck) Muted else Sky) }
-                OutlinedButton(
-                    onClick = { app.progress.toggleWord(headword) },
-                    modifier = Modifier.weight(1f).height(52.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(1.5.dp, if (known) Mint else Line),
-                ) { Text(if (known) "✅ Đã thuộc" else "Đã thuộc", color = if (known) Mint else Ink) }
-            }
-        }
-    }
-}

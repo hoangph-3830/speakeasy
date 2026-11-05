@@ -1,6 +1,8 @@
 // Offline support: the whole app and its lessons are cached on first visit.
 // Bump VERSION whenever any file below changes so devices pick up the update.
-const VERSION = 'speakeasy-v7';
+const VERSION = 'speakeasy-v8';
+// Picture-book illustrations come from a CDN; pages read once stay available offline.
+const IMAGES = 'speakeasy-images';
 const FILES = [
   './',
   'index.html',
@@ -14,6 +16,7 @@ const FILES = [
   'data/pronunciation.json',
   'data/stories.json',
   'data/vocab.json',
+  'data/picturebooks.json',
   'js/app.js',
   'js/logic.js',
   'js/store.js',
@@ -36,6 +39,7 @@ const FILES = [
   'js/screens/vocab.js',
   'js/screens/news.js',
   'js/screens/shadow.js',
+  'js/screens/books.js',
 ];
 
 self.addEventListener('install', (e) => {
@@ -45,7 +49,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION && k !== IMAGES).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
@@ -54,6 +58,18 @@ self.addEventListener('activate', (e) => {
 // Everything else (Gemini) goes straight to the network.
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
+  if (e.request.method === 'GET' && url.hostname === 'cdn.jsdelivr.net' && url.pathname.startsWith('/gh/global-asp/')) {
+    e.respondWith(
+      caches.open(IMAGES).then(async (cache) => {
+        const hit = await cache.match(e.request);
+        if (hit) return hit;
+        const res = await fetch(e.request);
+        if (res.ok || res.type === 'opaque') cache.put(e.request, res.clone());
+        return res;
+      }),
+    );
+    return;
+  }
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
   e.respondWith(
     caches.open(VERSION).then(async (cache) => {

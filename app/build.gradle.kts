@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.compose.material.icons)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
+    // Picture-book pages are remote JPEGs; Coil keeps viewed ones on disk for offline re-reading.
+    implementation(libs.coil.compose)
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.junit)
     // The same pull parser Android ships, so RSS parsing can be unit-tested on the JVM.

@@ -203,6 +203,15 @@ class Speaker(context: Context) {
         say(text, pitch = pitch) { if (cont.isActive) cont.resume(Unit) }
     }
 
+    /**
+     * Suspends until [text] has been read sentence by sentence; cancelling the caller stops speech.
+     * Also returns when other speech replaces it, which [speaking] then shows.
+     */
+    suspend fun sayLongAndWait(text: String) = suspendCancellableCoroutine { cont ->
+        cont.invokeOnCancellation { stop() }
+        sayAll(Sentences.split(text), label = text, onDone = { if (cont.isActive) cont.resume(Unit) })
+    }
+
     private fun clearChunks() {
         chunks.clear()
         chunkTexts.clear()

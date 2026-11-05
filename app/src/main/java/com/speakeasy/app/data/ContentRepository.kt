@@ -29,8 +29,25 @@ class ContentRepository(private val context: Context) {
         }
     }
 
+    /** The "Truyện tranh" picture books; only parsed when the library is first opened. */
+    val books: PictureBookContent by lazy {
+        context.assets.open("picturebooks.json").bufferedReader().use {
+            json.decodeFromString(PictureBookContent.serializer(), it.readText())
+        }
+    }
+
+    fun book(id: String): PictureBook? = books.books.firstOrNull { it.id == id }
+
+    private val prefs = context.getSharedPreferences("content_ui", Context.MODE_PRIVATE)
+
+    /** Whether the stories hub last showed the picture books rather than the listening stories. */
+    var showPictureBooks: Boolean
+        get() = prefs.getBoolean(PICTURE_BOOKS, false)
+        set(value) = prefs.edit().putBoolean(PICTURE_BOOKS, value).apply()
+
     private companion object {
         val json = Json { ignoreUnknownKeys = true }
+        const val PICTURE_BOOKS = "picture_books"
     }
 
     val categories: List<Category> get() = content.categories

@@ -165,4 +165,17 @@ test('learning path covers every topic once, easy to hard, and finds the next to
   assert.equal(L.nextInPath(content.path, content.topics, all), null);
 });
 
+test('picture books are bilingual page by page, credited and sorted by level', () => {
+  const { books } = json('picturebooks');
+  assert.ok(books.length >= 40);
+  const order = Object.keys(L.LEVELS);
+  for (const b of books) {
+    assert.ok(b.title && b.titleVi && b.license && (b.text || b.illustration), b.id);
+    assert.ok(order.includes(b.level), b.id);
+    for (const p of b.pages) assert.ok(p.en && p.vi && (!p.img || p.img.startsWith('https://')), b.id);
+  }
+  const ranks = books.map((b) => order.indexOf(b.level));
+  assert.deepEqual(ranks, [...ranks].sort((a, b) => a - b));
+});
+
 console.log(`\n${n} tests passed`);

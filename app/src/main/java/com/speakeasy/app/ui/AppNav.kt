@@ -29,6 +29,7 @@ import androidx.navigation.compose.rememberNavController
 import com.speakeasy.app.ui.screens.AiChatScreen
 import com.speakeasy.app.ui.screens.ArticleScreen
 import com.speakeasy.app.ui.screens.AiHubScreen
+import com.speakeasy.app.ui.screens.BookScreen
 import com.speakeasy.app.ui.screens.DialogueScreen
 import com.speakeasy.app.ui.screens.GameHubScreen
 import com.speakeasy.app.ui.screens.GameScreen
@@ -99,7 +100,14 @@ fun AppNav() {
             composable("review") { ReviewScreen(onBack = nav::popBackStack) }
             composable("lab") { LabHubScreen(onBack = nav::popBackStack, openLesson = { nav.navigate("lab/$it") }) }
             composable("lab/{id}") { LabLessonScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("stories") { StoriesHubScreen(onBack = nav::popBackStack, openStory = { nav.navigate("story/$it") }) }
+            composable("stories") {
+                StoriesHubScreen(
+                    onBack = nav::popBackStack,
+                    openStory = { nav.navigate("story/$it") },
+                    openBook = { nav.navigate("book/$it") },
+                )
+            }
+            composable("book/{id}") { BookScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             composable("story/{id}") { StoryScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             composable("play") {
                 GameHubScreen(

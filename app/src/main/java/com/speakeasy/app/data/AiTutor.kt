@@ -100,8 +100,9 @@ class AiTutor {
 
     // Flash models can think for well over OkHttp's default 10 s before the first byte arrives.
     private val http = OkHttpClient.Builder()
-        .readTimeout(45, TimeUnit.SECONDS)
-        .callTimeout(60, TimeUnit.SECONDS)
+        // One slow model must not freeze the chat for minutes: give up on it and try the next.
+        .readTimeout(25, TimeUnit.SECONDS)
+        .callTimeout(30, TimeUnit.SECONDS)
         .build()
 
     @Volatile
@@ -125,7 +126,9 @@ class AiTutor {
                     http.newCall(request).execute().use { it.code to it.body?.string().orEmpty() }
                 } catch (e: IOException) {
                     Log.w("AiTutor", "$model failed", e)
-                    lastError = "Không kết nối được. Kiểm tra mạng rồi thử lại."
+                    // A timeout means Gemini is slow, not that the phone is offline.
+                    lastError = if (e is java.io.InterruptedIOException) "Gemini đang phản hồi rất chậm (bản miễn phí hay bị quá tải). Đợi một chút rồi thử lại nhé."
+                    else "Không gọi được Gemini. Kiểm tra mạng rồi thử lại."
                     continue
                 }
                 if (code !in 200..299) Log.w("AiTutor", "$model -> HTTP $code: ${text.take(300)}")

@@ -34,12 +34,14 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
@@ -65,27 +67,72 @@ import com.speakeasy.app.ui.theme.categoryColors
 import com.speakeasy.app.ui.theme.levelColors
 
 @Composable
-fun StoriesHubScreen(onBack: () -> Unit, openStory: (String) -> Unit) {
+fun StoriesHubScreen(onBack: () -> Unit, openStory: (String) -> Unit, openBook: (String) -> Unit) {
     val app = LocalApp.current
     val p by app.progress.progress.collectAsState()
+    // Remembered across visits, so a reader of picture books lands back on them.
+    var pictures by rememberSaveable { mutableStateOf(app.content.showPictureBooks) }
     Column(Modifier.fillMaxSize()) {
-        TopBar(title = "Truyện nghe", subtitle = "Nghe chuyện đời thường, trả lời câu hỏi", onBack = onBack)
+        TopBar(
+            title = "Truyện",
+            subtitle = if (pictures) "Truyện tranh song ngữ, chạm vào từ để tra nghĩa" else "Nghe chuyện đời thường, trả lời câu hỏi",
+            onBack = onBack,
+        )
+        StoryKindSwitch(pictures) { pictures = it; app.content.showPictureBooks = it }
+        if (pictures) {
+            PictureBookList(p.done, openBook)
+            return@Column
+        }
         // Stories come sorted easy to hard; group them under one header per level.
         val byLevel = app.content.stories.stories.groupBy { it.level }.toList().sortedBy { Levels.rank(it.first) }
         LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             byLevel.forEach { (level, stories) ->
-                item(key = "level:$level") {
-                    Text(
-                        "$level · ${Levels.name(level)}",
-                        style = MaterialTheme.typography.titleLarge,
-                        color = levelColors(level).first,
-                        modifier = Modifier.padding(top = 4.dp),
-                    )
-                }
+                item(key = "level:$level") { LevelHeader(level) }
                 items(stories, key = { it.id }) { s -> StoryCard(s, done = "story:${s.id}" in p.done, onClick = { openStory(s.id) }) }
             }
         }
     }
+}
+
+/** "📖 Truyện nghe | 🖼️ Truyện tranh" segmented control at the top of the hub. */
+@Composable
+private fun StoryKindSwitch(pictures: Boolean, onChange: (Boolean) -> Unit) {
+    Row(
+        Modifier
+            .padding(horizontal = 20.dp)
+            .fillMaxWidth()
+            .clip(CircleShape)
+            .background(Color.White)
+            .border(1.dp, Line, CircleShape)
+            .padding(4.dp),
+    ) {
+        listOf(false to "📖 Truyện nghe", true to "🖼️ Truyện tranh").forEach { (value, label) ->
+            val on = value == pictures
+            Text(
+                label,
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(CircleShape)
+                    .background(if (on) Mint else Color.Transparent)
+                    .clickable { onChange(value) }
+                    .padding(vertical = 10.dp),
+                color = if (on) Color.White else Ink,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+/** "A1 · Mới bắt đầu" header above each level's stories or books. */
+@Composable
+internal fun LevelHeader(level: String) {
+    Text(
+        "$level · ${Levels.name(level)}",
+        style = MaterialTheme.typography.titleLarge,
+        color = levelColors(level).first,
+        modifier = Modifier.padding(top = 4.dp),
+    )
 }
 
 @Composable

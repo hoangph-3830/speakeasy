@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
+import coil.ImageLoader
+import coil.ImageLoaderFactory
 import com.speakeasy.app.data.AiSettings
 import com.speakeasy.app.data.ContentRepository
 import com.speakeasy.app.data.DictEntry
@@ -35,8 +37,15 @@ class AppContainer(app: Application) {
 
 val LocalApp = staticCompositionLocalOf<AppContainer> { error("AppContainer not provided") }
 
-class SpeakEasyApp : Application() {
+class SpeakEasyApp : Application(), ImageLoaderFactory {
     val container by lazy { AppContainer(this) }
+
+    // Picture-book pages never change, so cached ones are shown without asking the server again,
+    // which also lets a book read once be re-read offline.
+    override fun newImageLoader(): ImageLoader = ImageLoader.Builder(this)
+        .respectCacheHeaders(false)
+        .crossfade(true)
+        .build()
 }
 
 class MainActivity : ComponentActivity() {

@@ -1,21 +1,34 @@
 // Duolingo-style listening stories: lines read in character voices, with questions along the way.
 import { LEVELS, QUEST } from '../logic.js';
+import { libraryView } from './books.js';
 import { speaker } from '../speech.js';
 import { Progress } from '../store.js';
 import { accent, badge, bar, bigBtn, catColors, completeDialog, esc, pill, sayBtn, topBar } from '../ui.js';
 
 const pitchOf = (story, name) => story.characters.find((c) => c.name === name)?.pitch ?? 1;
 
+let hubTab = 'stories';
+
 export function hubScreen(app) {
   return {
+    actions: {
+      tab: (d) => { hubTab = d.t; },
+    },
     view() {
+      const tabs = `<div class="seg" style="--al:var(--mint-l);--a:var(--mint)">
+        <button class="${hubTab === 'stories' ? 'on' : ''}" data-act="tab" data-t="stories">📖 Truyện nghe</button>
+        <button class="${hubTab === 'books' ? 'on' : ''}" data-act="tab" data-t="books">🖼️ Truyện tranh</button>
+      </div>`;
+      if (hubTab === 'books')
+        return `<div class="screen">${topBar('Truyện', 'Truyện tranh song ngữ Anh – Việt')}${tabs}
+          <div class="scroll pad" data-scroll="books">${libraryView(app)}</div></div>`;
       const p = Progress.get();
       // Grouped by level so learners start with the easy ones.
       const groups = Object.entries(LEVELS)
         .map(([lvl, info]) => [lvl, info, app.stories.stories.filter((s) => (s.level || 'A2') === lvl)])
         .filter(([, , list]) => list.length);
       return `<div class="screen">
-        ${topBar('Truyện nghe', 'Nghe chuyện đời thường, trả lời câu hỏi')}
+        ${topBar('Truyện', 'Nghe chuyện đời thường, trả lời câu hỏi')}${tabs}
         <div class="scroll pad" data-scroll="stories">
         ${groups.map(([lvl, info, list]) => `
           <div class="section"><h2>${pill(lvl, info.color, `var(--${info.color}-l)`)} ${esc(info.name)}</h2></div>
