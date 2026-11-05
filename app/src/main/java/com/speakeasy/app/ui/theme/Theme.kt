@@ -23,6 +23,7 @@ val LavenderLight = Color(0xFFEFEAFE)
 val Sun = Color(0xFFFFC23D)
 val SunLight = Color(0xFFFFF5DB)
 val Coral = Color(0xFFF2667A)
+val CoralLight = Color(0xFFFDE8EB)
 val Ink = Color(0xFF1F2A44)
 val Muted = Color(0xFF6B7590)
 val Canvas = Color(0xFFF7FBFF)
@@ -73,6 +74,8 @@ fun categoryColors(categoryId: String): Pair<Color, Color> = when (categoryId) {
     "life" -> Mint to MintLight
     "travel" -> Peach to PeachLight
     "social" -> Lavender to LavenderLight
+    "home" -> Sun to SunLight
+    "health" -> Coral to CoralLight
     else -> Sky to SkyLight
 }
 

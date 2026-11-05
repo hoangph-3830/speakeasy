@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Only the AI conversation partner goes online. -->
+    <!-- Online: the AI conversation partner, the news reader and word translation. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <queries>

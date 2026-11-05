@@ -114,7 +114,7 @@ fun ProgressScreen() {
                         Text("$done/$total", color = Muted)
                     }
                     VSpace(4.dp)
-                    SoftProgress(done / total.toFloat(), color = categoryColors(c.id).first)
+                    SoftProgress(done / maxOf(1, total).toFloat(), color = categoryColors(c.id).first)
                 }
             }
         }

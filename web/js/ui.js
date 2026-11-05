@@ -5,7 +5,7 @@ export const esc = (s) =>
 
 /** Category accent colors: [strong, light] CSS variable names. */
 export const catColors = (id) =>
-  ({ work: ['sky', 'sky-l'], life: ['mint', 'mint-l'], travel: ['peach', 'peach-l'], social: ['lavender', 'lavender-l'] })[id] || ['sky', 'sky-l'];
+  ({ work: ['sky', 'sky-l'], life: ['mint', 'mint-l'], travel: ['peach', 'peach-l'], social: ['lavender', 'lavender-l'], home: ['sun', 'sun-l'], health: ['coral', 'coral-l'] })[id] || ['sky', 'sky-l'];
 
 /** Sets --a / --al on a container so everything inside picks up the accent. */
 export const accent = (strong, light) => `style="--a:var(--${strong});--al:var(--${light || strong + '-l'})"`;

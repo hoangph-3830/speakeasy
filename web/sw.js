@@ -1,6 +1,6 @@
 // Offline support: the whole app and its lessons are cached on first visit.
 // Bump VERSION whenever any file below changes so devices pick up the update.
-const VERSION = 'speakeasy-v1';
+const VERSION = 'speakeasy-v2';
 const FILES = [
   './',
   'index.html',
@@ -13,12 +13,16 @@ const FILES = [
   'data/content.json',
   'data/pronunciation.json',
   'data/stories.json',
+  'data/vocab.json',
   'js/app.js',
   'js/logic.js',
   'js/store.js',
   'js/speech.js',
   'js/ai.js',
   'js/ui.js',
+  'js/dict.js',
+  'js/news.js',
+  'js/wordsheet.js',
   'js/screens/home.js',
   'js/screens/lesson.js',
   'js/screens/games.js',
@@ -27,6 +31,8 @@ const FILES = [
   'js/screens/stories.js',
   'js/screens/ai.js',
   'js/screens/progress.js',
+  'js/screens/vocab.js',
+  'js/screens/news.js',
 ];
 
 self.addEventListener('install', (e) => {

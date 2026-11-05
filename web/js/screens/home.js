@@ -111,9 +111,11 @@ export function homeScreen(app) {
         ${p.freezeUsedDay === Review.today() ? `<div class="note" style="background:var(--sky-l)">🧊 Hôm qua bạn nghỉ, một lượt đóng băng đã giữ chuỗi ${p.streak} ngày cho bạn!</div>` : ''}
         ${Review.all().length ? `<div class="grid2">${quests(p)}${reviewCard()}</div>` : quests(p)}
         ${section('Luyện nghe nói như người bản xứ')}
-        <div class="row gap">
+        <div class="tiles4">
           ${feature('🎯', 'Phòng phát âm', score != null ? `Điểm phát âm ${score}` : 'Sửa âm người Việt hay sai', 'lavender-l', 'lab')}
           ${feature('📖', 'Truyện nghe', 'Nghe chuyện, trả lời câu hỏi', 'mint-l', 'stories')}
+          ${feature('📚', '3000 từ vựng', `${p.learnedWords.length} từ đã thuộc`, 'sky-l', 'vocab')}
+          ${feature('📰', 'Đọc báo song ngữ', 'BBC, CNN · chạm từ để dịch', 'peach-l', 'news')}
         </div>
         ${section('Chủ đề hôm nay ✨')}
         ${todayCard(today, p)}

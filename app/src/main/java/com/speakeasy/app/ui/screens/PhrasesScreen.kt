@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Activity
 import com.speakeasy.app.data.Topic
+import com.speakeasy.app.data.Word
 import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.CompleteDialog
 import com.speakeasy.app.ui.components.HSpace
@@ -93,7 +94,7 @@ fun PhrasesScreen(topicId: String, onBack: () -> Unit) {
             when (tab) {
                 0 -> PhraseList(topic, strong, light, onNext = { tab = 1 })
                 1 -> NativeList(topic, strong, light, onNext = { tab = 2 })
-                else -> Flashcards(topic, strong, light, onFinish = {
+                else -> Flashcards(topic.words, strong, light, onFinish = {
                     earned = app.progress.complete(topic.id, Activity.PHRASES)
                     app.review.enroll(topic)
                 })
@@ -158,13 +159,14 @@ private fun PhraseList(topic: Topic, strong: Color, light: Color, onNext: () -> 
     }
 }
 
+/** Flip cards over [words]; also used by the vocabulary lists. */
 @Composable
-private fun Flashcards(topic: Topic, strong: Color, light: Color, onFinish: () -> Unit) {
+internal fun Flashcards(words: List<Word>, strong: Color, light: Color, onFinish: () -> Unit) {
     val app = LocalApp.current
     val progress by app.progress.progress.collectAsState()
     var index by remember { mutableIntStateOf(0) }
     var flipped by remember(index) { mutableStateOf(false) }
-    val word = topic.words[index]
+    val word = words[index]
     val rotation by animateFloatAsState(if (flipped) 180f else 0f, tween(400), label = "flip")
     val known = word.word in progress.learnedWords
 
@@ -172,9 +174,9 @@ private fun Flashcards(topic: Topic, strong: Color, light: Color, onFinish: () -
         Modifier.fillMaxSize().padding(20.dp).navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        SoftProgress((index + 1f) / topic.words.size, color = strong)
+        SoftProgress((index + 1f) / words.size, color = strong)
         VSpace(6.dp)
-        Text("${index + 1} / ${topic.words.size} · chạm thẻ để lật", color = Muted)
+        Text("${index + 1} / ${words.size} · chạm thẻ để lật", color = Muted)
         VSpace(16.dp)
         // Flip animation adapted from Engrisk's flashcard animator, rebuilt with graphicsLayer.
         Box(
@@ -236,7 +238,7 @@ private fun Flashcards(topic: Topic, strong: Color, light: Color, onFinish: () -
                 shape = RoundedCornerShape(18.dp),
             ) { Text("← Trước") }
             Box(Modifier.weight(1f)) {
-                if (index < topic.words.lastIndex) BigButton("Tiếp →", onClick = { index++ }, color = strong)
+                if (index < words.lastIndex) BigButton("Tiếp →", onClick = { index++ }, color = strong)
                 else BigButton("Hoàn thành", onClick = onFinish, color = Mint)
             }
         }

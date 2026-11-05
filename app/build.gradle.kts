@@ -59,4 +59,6 @@ dependencies {
     implementation(libs.okhttp)
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.junit)
+    // The same pull parser Android ships, so RSS parsing can be unit-tested on the JVM.
+    testImplementation("net.sf.kxml:kxml2:2.3.0")
 }

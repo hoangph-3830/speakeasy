@@ -86,9 +86,15 @@ class ReviewStore(context: Context, private val today: () -> LocalDate = LocalDa
 
     /** Adds the topic's cards that are not in the deck yet; they are due immediately. */
     fun enroll(topic: Topic) {
+        add(Srs.cardsFor(topic))
+    }
+
+    /** Adds any cards whose id is not in the deck yet, due today; returns how many were new. */
+    fun add(cards: List<ReviewCard>): Int {
         val known = _cards.value.map { it.id }.toSet()
-        val fresh = Srs.cardsFor(topic).filter { it.id !in known }.map { it.copy(due = todayDay) }
+        val fresh = cards.distinctBy { it.id }.filter { it.id !in known }.map { it.copy(due = todayDay) }
         if (fresh.isNotEmpty()) save(_cards.value + fresh)
+        return fresh.size
     }
 
     fun grade(card: ReviewCard, grade: Grade): ReviewCard {

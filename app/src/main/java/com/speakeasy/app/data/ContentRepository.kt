@@ -22,6 +22,13 @@ class ContentRepository(private val context: Context) {
         }
     }
 
+    /** The "3000 từ vựng" lists; large, so only parsed when first opened. */
+    val vocab: VocabContent by lazy {
+        context.assets.open("vocab.json").bufferedReader().use {
+            json.decodeFromString(VocabContent.serializer(), it.readText())
+        }
+    }
+
     private companion object {
         val json = Json { ignoreUnknownKeys = true }
     }
@@ -40,4 +47,8 @@ class ContentRepository(private val context: Context) {
         topics[Math.floorMod(today.toEpochDay(), topics.size.toLong()).toInt()]
 
     val allWords: List<Word> get() = topics.flatMap { it.words }.distinctBy { it.word }
+
+    fun vocabGroup(id: String): VocabGroup? = vocab.groups.firstOrNull { it.id == id }
+
+    val vocabWords: List<VocabWord> get() = vocab.groups.flatMap { it.words }
 }

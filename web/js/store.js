@@ -110,12 +110,20 @@ export const Review = {
 
   /** Adds the topic's cards that are not in the deck yet; they are due immediately. */
   enroll(topic) {
+    return this.add(cardsFor(topic));
+  },
+
+  /** Adds any cards not in the deck yet (due immediately); returns how many were new. */
+  add(list) {
     const known = new Set(cards.map((c) => c.id));
-    const fresh = cardsFor(topic)
-      .filter((c) => !known.has(c.id))
+    const fresh = list
+      .filter((c) => !known.has(c.id) && known.add(c.id))
       .map((c) => ({ ...c, interval: 0, ease: 2.5, reps: 0, due: epochDay() }));
     if (fresh.length) saveCards([...cards, ...fresh]);
+    return fresh.length;
   },
+
+  has: (id) => cards.some((c) => c.id === id),
 
   grade(card, grade) {
     const next = schedule(card, grade, epochDay());
@@ -128,7 +136,7 @@ export const Review = {
 
 // ---- AI settings ----------------------------------------------------------
 
-let ai = { level: 'MEDIUM', autoSpeak: true, apiKey: '', ...read('se.ai', {}) };
+let ai = { level: 'MEDIUM', autoSpeak: true, apiKey: '', newsProxy: '', ...read('se.ai', {}) };
 
 export const AiSettings = {
   get: () => ai,

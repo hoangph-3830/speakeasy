@@ -1,0 +1,511 @@
+package com.speakeasy.app.ui.screens
+
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withLink
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.speakeasy.app.LocalApp
+import com.speakeasy.app.data.Article
+import com.speakeasy.app.data.Lemmatizer
+import com.speakeasy.app.data.NewsCache
+import com.speakeasy.app.data.NewsItem
+import com.speakeasy.app.data.NewsParser
+import com.speakeasy.app.data.NewsSource
+import com.speakeasy.app.data.Quests
+import com.speakeasy.app.data.ReviewCard
+import com.speakeasy.app.data.Vocab
+import com.speakeasy.app.ui.components.BigButton
+import com.speakeasy.app.ui.components.CompleteDialog
+import com.speakeasy.app.ui.components.HSpace
+import com.speakeasy.app.ui.components.Pill
+import com.speakeasy.app.ui.components.SpeakButton
+import com.speakeasy.app.ui.components.TopBar
+import com.speakeasy.app.ui.components.VSpace
+import com.speakeasy.app.ui.theme.CoralLight
+import com.speakeasy.app.ui.theme.Ink
+import com.speakeasy.app.ui.theme.Line
+import com.speakeasy.app.ui.theme.Mint
+import com.speakeasy.app.ui.theme.MintLight
+import com.speakeasy.app.ui.theme.Muted
+import com.speakeasy.app.ui.theme.Peach
+import com.speakeasy.app.ui.theme.Sky
+import com.speakeasy.app.ui.theme.SkyLight
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+
+private const val AUTO_REFRESH_MS = 5 * 60_000L
+private val clock = DateTimeFormatter.ofPattern("HH:mm")
+
+/** Real headlines from BBC and CNN, read in English with a tap-to-translate dictionary. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NewsScreen(openArticle: (String) -> Unit) {
+    val app = LocalApp.current
+    var source by rememberSaveable { mutableStateOf(NewsSource.BBC_TOP) }
+    var bilingual by rememberSaveable { mutableStateOf(false) }
+    var cache by remember(source) { mutableStateOf(app.news.cached(source)) }
+    var loading by remember { mutableStateOf(false) }
+    var failed by remember(source) { mutableStateOf(false) }
+    var refreshes by remember { mutableIntStateOf(0) }
+    var manual by remember { mutableStateOf(false) }
+    val refresh: () -> Unit = { manual = true; refreshes++ }
+
+    // Refreshes every few minutes while the tab is open; leaving the tab cancels it.
+    LaunchedEffect(source, refreshes) {
+        // Coming back from an article should not refetch a list that is still fresh.
+        val age = System.currentTimeMillis() - (cache?.fetchedAt ?: 0L)
+        if (!manual && age in 0 until AUTO_REFRESH_MS) delay(AUTO_REFRESH_MS - age)
+        manual = false
+        while (true) {
+            loading = true
+            failed = try {
+                cache = app.news.fetch(source)
+                false
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                true
+            }
+            loading = false
+            delay(AUTO_REFRESH_MS)
+        }
+    }
+
+    Column(Modifier.fillMaxSize().statusBarsPadding()) {
+        Row(Modifier.fillMaxWidth().padding(start = 20.dp, end = 8.dp, top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text("Đọc báo 📰", style = MaterialTheme.typography.headlineSmall)
+                Text(
+                    cache?.let { "Cập nhật lúc ${clock.format(Instant.ofEpochMilli(it.fetchedAt).atZone(ZoneId.systemDefault()))}" }
+                        ?: "Tin tiếng Anh thật, chạm từ để tra nghĩa",
+                    color = Muted,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+            ToggleChip("Song ngữ", bilingual) { bilingual = !bilingual }
+            IconButton(onClick = refresh, enabled = !loading) {
+                Icon(Icons.Filled.Refresh, contentDescription = "Làm mới")
+            }
+        }
+        Row(
+            Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 10.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            NewsSource.entries.forEach { s ->
+                Text(
+                    s.label,
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .background(if (s == source) Sky else Color.White)
+                        .clickable { source = s }
+                        .padding(horizontal = 14.dp, vertical = 9.dp),
+                    color = if (s == source) Color.White else Ink,
+                    fontWeight = FontWeight.SemiBold,
+                )
+            }
+        }
+        PullToRefreshBox(
+            isRefreshing = loading && cache != null,
+            onRefresh = refresh,
+            modifier = Modifier.weight(1f).fillMaxWidth(),
+        ) {
+            val items = cache?.items.orEmpty()
+            when {
+                items.isEmpty() && loading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator(color = Sky)
+                }
+                items.isEmpty() -> NetworkError(
+                    "Không tải được tin. Kiểm tra kết nối mạng rồi thử lại nhé.",
+                    onRetry = refresh,
+                )
+                else -> NewsList(cache!!, failed, bilingual, openArticle)
+            }
+        }
+    }
+}
+
+@Composable
+private fun NewsList(cache: NewsCache, offline: Boolean, bilingual: Boolean, openArticle: (String) -> Unit) {
+    LazyColumn(
+        contentPadding = PaddingValues(start = 20.dp, end = 20.dp, bottom = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        if (offline) item {
+            Text(
+                "📴 Đang ngoại tuyến, hiển thị tin đã lưu.",
+                modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(CoralLight).padding(10.dp),
+                color = Ink,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+        items(cache.items, key = { it.link }) { item -> NewsCard(item, bilingual, onClick = { openArticle(item.link) }) }
+    }
+}
+
+@Composable
+private fun NewsCard(item: NewsItem, bilingual: Boolean, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = BorderStroke(1.dp, Line),
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Pill(item.source.label, Sky, SkyLight)
+                item.published?.let {
+                    HSpace(8.dp)
+                    Text(NewsParser.relativeTime(it), color = Muted, style = MaterialTheme.typography.labelMedium)
+                }
+            }
+            VSpace(8.dp)
+            Text(item.title, style = MaterialTheme.typography.titleMedium, color = Ink)
+            if (bilingual) Translation(item.title)
+            if (item.summary.isNotBlank()) {
+                VSpace(6.dp)
+                Text(item.summary, color = Muted, style = MaterialTheme.typography.bodyMedium, maxLines = 3)
+            }
+        }
+    }
+}
+
+/** Vietnamese under an English line, fetched the first time the line scrolls into view. */
+@Composable
+private fun Translation(text: String) {
+    val app = LocalApp.current
+    val vi by produceState<String?>(null, text) {
+        value = try {
+            app.dictionary.translate(text)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            ""
+        }
+    }
+    val shown = vi
+    Text(
+        when {
+            shown == null -> "Đang dịch…"
+            shown.isEmpty() -> "Chưa dịch được (cần mạng)."
+            else -> shown
+        },
+        modifier = Modifier.padding(top = 4.dp),
+        color = Muted,
+        fontStyle = if (shown.isNullOrEmpty()) FontStyle.Italic else FontStyle.Normal,
+        style = MaterialTheme.typography.bodyMedium,
+    )
+}
+
+@Composable
+private fun ToggleChip(label: String, on: Boolean, onClick: () -> Unit) {
+    Text(
+        if (on) "$label ✓" else label,
+        modifier = Modifier
+            .clip(CircleShape)
+            .background(if (on) SkyLight else Color.Transparent)
+            .border(1.dp, Line, CircleShape)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
+        color = Sky,
+        fontWeight = FontWeight.Bold,
+    )
+}
+
+@Composable
+private fun NetworkError(message: String, onRetry: () -> Unit) {
+    Column(
+        Modifier.fillMaxSize().padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text("📡", fontSize = 56.sp)
+        VSpace(12.dp)
+        Text(message, textAlign = TextAlign.Center, color = Ink)
+        VSpace(16.dp)
+        BigButton("Thử lại", onClick = onRetry)
+    }
+}
+
+private sealed interface ArticleState {
+    data object Loading : ArticleState
+    data class Ready(val article: Article) : ArticleState
+    data object Failed : ArticleState
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ArticleScreen(link: String, onBack: () -> Unit) {
+    val app = LocalApp.current
+    val context = LocalContext.current
+    val item = remember { app.news.item(link) }
+    val progress by app.progress.progress.collectAsState()
+    var attempt by remember { mutableIntStateOf(0) }
+    var bilingual by rememberSaveable { mutableStateOf(false) }
+    var word by remember { mutableStateOf<String?>(null) }
+    var earned by remember { mutableStateOf<Int?>(null) }
+    val publisher = item?.source?.publisher ?: if ("cnn.com" in link) "CNN" else "BBC News"
+    val state by produceState<ArticleState>(ArticleState.Loading, attempt) {
+        value = ArticleState.Loading
+        value = try {
+            ArticleState.Ready(app.news.article(link, item?.title.orEmpty()))
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            ArticleState.Failed
+        }
+    }
+    val openOriginal = { runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link))) } }
+    val finished = "news:$link" in progress.done
+    val article = (state as? ArticleState.Ready)?.article
+    val title = article?.title?.ifBlank { null } ?: item?.title.orEmpty()
+    val paragraphs = article?.paragraphs.orEmpty()
+
+    Column(Modifier.fillMaxSize()) {
+        TopBar(
+            title = publisher,
+            subtitle = item?.published?.let { NewsParser.relativeTime(it) } ?: "Chạm vào từ bất kỳ để tra nghĩa",
+            onBack = onBack,
+        ) {
+            Box(Modifier.padding(end = 12.dp)) { ToggleChip("Song ngữ", bilingual) { bilingual = !bilingual } }
+        }
+        LazyColumn(
+            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 4.dp, bottom = 32.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            item {
+                if (title.isNotBlank()) {
+                    TappableText(title, MaterialTheme.typography.headlineSmall, Ink, onWord = { word = it })
+                    if (bilingual) Translation(title)
+                }
+                VSpace(6.dp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("Nguồn: $publisher", color = Muted, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+                    TextButton(onClick = { openOriginal() }) { Text("Mở bài gốc ↗", color = Sky, fontWeight = FontWeight.SemiBold) }
+                }
+            }
+            when {
+                state == ArticleState.Loading -> item {
+                    Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Sky) }
+                }
+                paragraphs.isEmpty() -> item {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        if (!item?.summary.isNullOrBlank()) {
+                            TappableText(item!!.summary, MaterialTheme.typography.bodyLarge, Ink, onWord = { word = it })
+                            if (bilingual) Translation(item.summary)
+                        }
+                        Text(
+                            if (state == ArticleState.Failed) "Không tải được bài báo. Kiểm tra mạng rồi thử lại, hoặc mở bài gốc trên trình duyệt."
+                            else "Không lấy được nội dung bài này, bạn có thể đọc bài gốc trên trình duyệt.",
+                            color = Muted,
+                        )
+                        if (state == ArticleState.Failed) BigButton("Thử lại", onClick = { attempt++ })
+                        BigButton("Mở bài gốc", onClick = { openOriginal() }, color = Peach)
+                    }
+                }
+                else -> items(paragraphs) { p ->
+                    Row(verticalAlignment = Alignment.Top) {
+                        Column(Modifier.weight(1f)) {
+                            TappableText(p, MaterialTheme.typography.bodyLarge, Ink, onWord = { word = it })
+                            if (bilingual) Translation(p)
+                        }
+                        HSpace(8.dp)
+                        SpeakButton(p, size = 34.dp)
+                    }
+                }
+            }
+            if (paragraphs.isNotEmpty()) item {
+                VSpace(8.dp)
+                if (finished) {
+                    Text(
+                        "✅ Bạn đã đọc xong bài này",
+                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(MintLight).padding(14.dp),
+                        color = Mint,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                    )
+                } else {
+                    BigButton("Đọc xong ✅", color = Mint, onClick = {
+                        app.progress.markDone("news:$link")
+                        app.progress.addXp(5)
+                        app.progress.count(Quests.LISTEN)
+                        earned = 5
+                    })
+                }
+            }
+        }
+    }
+
+    word?.let { WordSheet(it, onDismiss = { word = null }) }
+
+    earned?.let { xp ->
+        CompleteDialog(
+            title = "Đọc xong bài báo!",
+            message = "Mỗi bài báo tiếng Anh là thêm một chút vốn từ thật 📰",
+            xp = xp,
+            onDismiss = { earned = null },
+        )
+    }
+}
+
+private val wordPattern = Regex("[A-Za-z]+(?:['’][A-Za-z]+)*")
+
+/** Text where every English word is its own link, so a tap opens it in the dictionary. */
+@Composable
+private fun TappableText(text: String, style: TextStyle, color: Color, onWord: (String) -> Unit) {
+    val onTap by rememberUpdatedState(onWord)
+    val annotated = remember(text) {
+        buildAnnotatedString {
+            var last = 0
+            wordPattern.findAll(text).forEach { m ->
+                append(text.substring(last, m.range.first))
+                val link = LinkAnnotation.Clickable(
+                    tag = m.value,
+                    styles = TextLinkStyles(pressedStyle = SpanStyle(background = SkyLight)),
+                ) { onTap(m.value) }
+                withLink(link) { append(m.value) }
+                last = m.range.last + 1
+            }
+            append(text.substring(last))
+        }
+    }
+    Text(annotated, style = style, color = color)
+}
+
+/** Dictionary card for a tapped word: offline entry when there is one, online translation otherwise. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun WordSheet(raw: String, onDismiss: () -> Unit) {
+    val app = LocalApp.current
+    val progress by app.progress.progress.collectAsState()
+    val cards by app.review.cards.collectAsState()
+    val entry = remember(raw) { app.dictionary.lookup(raw) }
+    val headword = entry?.word ?: Lemmatizer.normalize(raw)
+    val vi by produceState(entry?.vi, raw) {
+        if (entry == null) value = try {
+            app.dictionary.translate(headword)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            ""
+        }
+    }
+    val meaning = vi
+    val inDeck = cards.any { it.id == "v:$headword" }
+    val known = headword in progress.learnedWords
+
+    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = Color.White) {
+        Column(Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 24.dp).navigationBarsPadding()) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(headword, style = MaterialTheme.typography.headlineMedium, color = Ink)
+                    val details = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.pos?.ifBlank { null }?.let(Vocab::posLabel))
+                    if (details.isNotEmpty()) Text(details.joinToString(" · "), color = Muted)
+                }
+                SpeakButton(headword, size = 52.dp)
+            }
+            VSpace(12.dp)
+            Text(
+                when {
+                    meaning == null -> "Đang dịch…"
+                    meaning.isEmpty() -> "Chưa tra được nghĩa, kiểm tra mạng rồi thử lại nhé."
+                    else -> meaning
+                },
+                style = MaterialTheme.typography.titleLarge,
+                color = if (meaning.isNullOrEmpty()) Muted else Sky,
+            )
+            if (entry == null && !meaning.isNullOrEmpty()) {
+                Text("Dịch tự động · từ này chưa có trong từ điển của app", color = Muted, style = MaterialTheme.typography.labelMedium)
+            }
+            if (!entry?.example.isNullOrBlank()) {
+                VSpace(12.dp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("“${entry!!.example}”", fontStyle = FontStyle.Italic, color = Ink, modifier = Modifier.weight(1f))
+                    HSpace(8.dp)
+                    SpeakButton(entry.example, size = 34.dp)
+                }
+            }
+            VSpace(20.dp)
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedButton(
+                    onClick = {
+                        val extra = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.example?.ifBlank { null }).joinToString(" · ")
+                        app.review.add(listOf(ReviewCard("v:$headword", headword, meaning.orEmpty(), extra.ifEmpty { null })))
+                    },
+                    enabled = !inDeck && !meaning.isNullOrEmpty(),
+                    modifier = Modifier.weight(1f).height(52.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    border = BorderStroke(1.5.dp, if (inDeck) Line else Sky),
+                ) { Text(if (inDeck) "✓ Đã có trong Ôn tập" else "＋ Ôn tập", color = if (inDeck) Muted else Sky) }
+                OutlinedButton(
+                    onClick = { app.progress.toggleWord(headword) },
+                    modifier = Modifier.weight(1f).height(52.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    border = BorderStroke(1.5.dp, if (known) Mint else Line),
+                ) { Text(if (known) "✅ Đã thuộc" else "Đã thuộc", color = if (known) Mint else Ink) }
+            }
+        }
+    }
+}

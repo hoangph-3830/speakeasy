@@ -67,7 +67,14 @@ import com.speakeasy.app.ui.theme.categoryColors
 import java.time.LocalTime
 
 @Composable
-fun HomeScreen(openTopic: (String) -> Unit, openReview: () -> Unit, openLab: () -> Unit, openStories: () -> Unit) {
+fun HomeScreen(
+    openTopic: (String) -> Unit,
+    openReview: () -> Unit,
+    openLab: () -> Unit,
+    openStories: () -> Unit,
+    openVocab: () -> Unit,
+    openNews: () -> Unit,
+) {
     val app = LocalApp.current
     val progress by app.progress.progress.collectAsState()
     val cards by app.review.cards.collectAsState()
@@ -102,6 +109,15 @@ fun HomeScreen(openTopic: (String) -> Unit, openReview: () -> Unit, openLab: () 
                     LavenderLight, Modifier.weight(1f), openLab,
                 )
                 FeatureTile("📖", "Truyện nghe", "Nghe chuyện, trả lời câu hỏi", MintLight, Modifier.weight(1f), openStories)
+            }
+            VSpace(12.dp)
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                FeatureTile(
+                    "📚", "3000 từ vựng",
+                    "${progress.learnedWords.size} từ đã thuộc · học theo nhóm",
+                    SkyLight, Modifier.weight(1f), openVocab,
+                )
+                FeatureTile("📰", "Đọc báo", "BBC, CNN · chạm từ để tra nghĩa", SunLight, Modifier.weight(1f), openNews)
             }
         }
         item {

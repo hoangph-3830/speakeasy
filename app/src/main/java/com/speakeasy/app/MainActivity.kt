@@ -9,6 +9,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import com.speakeasy.app.data.AiSettings
 import com.speakeasy.app.data.ContentRepository
+import com.speakeasy.app.data.DictEntry
+import com.speakeasy.app.data.Dictionary
+import com.speakeasy.app.data.NewsRepository
 import com.speakeasy.app.data.ProgressStore
 import com.speakeasy.app.data.ReviewStore
 import com.speakeasy.app.speech.Speaker
@@ -21,6 +24,8 @@ class AppContainer(app: Application) {
     val progress = ProgressStore(app)
     val review = ReviewStore(app)
     val ai = AiSettings(app)
+    val news = NewsRepository(app)
+    val dictionary = Dictionary { content.vocabWords.map(DictEntry::of) + content.allWords.map(DictEntry::of) }
     val speaker = Speaker(app).also {
         it.rate = progress.progress.value.speechRate
         it.accent = progress.progress.value.accent
