@@ -56,15 +56,35 @@ export function chatScreen(app, scenarioId) {
   const scrollDown = () =>
     requestAnimationFrame(() => { const el = document.querySelector('[data-scroll=chat]'); if (el) el.scrollTop = el.scrollHeight; });
 
+  let pending = null;
+  let slowNote = '';
+  let waitTimer = null;
+
   async function ask() {
+    pending?.abort();
+    const ctrl = new AbortController();
+    pending = ctrl;
     loading = true;
     error = null;
+    slowNote = '';
+    const started = Date.now();
     app.update();
     scrollDown();
+    // How long we've waited, written straight into the bubble so the chat doesn't redraw every second.
+    clearInterval(waitTimer);
+    waitTimer = setInterval(() => {
+      const el = document.querySelector('.typing-time');
+      const secs = Math.round((Date.now() - started) / 1000);
+      if (el && secs >= 6) el.textContent = `${slowNote || 'AI đang nghĩ…'} ${secs} giây`;
+    }, 1000);
     try {
       const level = AI_LEVELS.find((l) => l.id === AiSettings.get().level) || AI_LEVELS[1];
-      const r = await reply(scenario, level, turns);
-      if (!alive) return;
+      const r = await reply(scenario, level, turns, {
+        signal: ctrl.signal,
+        onSlow: (msg) => { slowNote = msg; },
+      });
+      clearInterval(waitTimer);
+      if (!alive || pending !== ctrl) return;
       // Attach the correction to the learner line it was about.
       let lastUser = turns.length - 1;
       while (lastUser >= 0 && !turns[lastUser].fromUser) lastUser--;
@@ -79,8 +99,9 @@ export function chatScreen(app, scenarioId) {
         if (alive && callMode) listenNow();
       } else if (AiSettings.get().autoSpeak) speaker.say(r.reply);
     } catch (e) {
-      if (!alive) return;
-      error = e instanceof AiError ? e.message : 'Có lỗi xảy ra. Thử lại nhé.';
+      clearInterval(waitTimer);
+      if (!alive || pending !== ctrl) return;
+      error = ctrl.signal.aborted ? 'Đã huỷ câu trả lời. Bấm Thử lại hoặc nói câu khác.' : e instanceof AiError ? e.message : 'Có lỗi xảy ra. Thử lại nhé.';
       loading = false;
       app.update();
       scrollDown();
@@ -147,7 +168,7 @@ export function chatScreen(app, scenarioId) {
       speaker.onChange(() => alive && callMode && app.update());
       ask();
     },
-    leave: () => { alive = false; },
+    leave: () => { alive = false; pending?.abort(); clearInterval(waitTimer); },
     view() {
       const { autoSpeak } = AiSettings.get();
       const trailing = `<div class="row gap-xs">
@@ -161,7 +182,7 @@ export function chatScreen(app, scenarioId) {
       return `<div class="screen" style="--a:var(--sky);--al:var(--sky-l)">${head}
         <div class="scroll pad-x chat" data-scroll="chat">
           ${turns.filter((t) => !t.hidden).map((t) => (t.fromUser ? learnerBubble(t) : aiBubble(t, showVi))).join('')}
-          ${loading ? '<div class="bubble typing">• • •</div>' : ''}
+          ${loading ? `<div class="typing-row"><div class="bubble typing">• • •</div><span class="typing-time muted tiny"></span><button class="link tiny" data-act="cancelAsk">Huỷ</button></div>` : ''}
           ${errorBox()}
         </div>
         ${suggestions.length ? `<div class="suggest"><span>💡</span>${suggestions.map((s, i) => `<button class="sugg" data-act="suggest" data-i="${i}">${esc(s)}</button>`).join('')}</div>` : ''}
@@ -186,6 +207,7 @@ export function chatScreen(app, scenarioId) {
       callText: () => { showCallText = true; },
       hangUp: () => { callMode = false; speaker.stop(); },
       retry: () => { ask(); return false; },
+      cancelAsk: () => { pending?.abort(); },
       mic: () => { listenNow(); return false; },
       // Hear it, then say it yourself: the hint fills the box rather than sending.
       suggest: (d) => {

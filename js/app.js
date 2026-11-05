@@ -13,6 +13,7 @@ import * as me from './screens/progress.js';
 import * as vocab from './screens/vocab.js';
 import * as news from './screens/news.js';
 import * as shadow from './screens/shadow.js';
+import * as books from './screens/books.js';
 import { buildIndex } from './dict.js';
 
 const TABS = [
@@ -37,6 +38,7 @@ const ROUTES = [
   [/^lab\/(.+)$/, lab.lessonScreen],
   [/^stories$/, stories.hubScreen],
   [/^story\/(.+)$/, stories.storyScreen],
+  [/^book\/(.+)$/, books.bookScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],
   [/^topic\/([^/]+)\/phrases$/, lesson.phrasesScreen],
@@ -73,6 +75,15 @@ export const app = {
       throw e;
     });
     return app.vocabLoading;
+  },
+  books: null,
+  /** Picture books load on first use, like the word list. */
+  loadBooks() {
+    app.booksLoading ??= load('picturebooks').then((b) => (app.books = b)).catch((e) => {
+      app.booksLoading = null;
+      throw e;
+    });
+    return app.booksLoading;
   },
   /** The reader needs the whole list item (title, summary, source), so it travels outside the URL. */
   get article() {
