@@ -1,5 +1,5 @@
 // App shell: hash router, bottom tabs, event delegation and the "now speaking" highlight.
-import { speaker } from './speech.js';
+import { inAppBrowser, openInBrowser, speaker } from './speech.js';
 import { Progress, onStoreChange } from './store.js';
 import { esc } from './ui.js';
 import * as home from './screens/home.js';
@@ -190,8 +190,26 @@ document.addEventListener('pointerdown', () => speaker.unlock(), { once: true, c
 speaker.onChange(highlight);
 onStoreChange(() => screen?.live && app.update());
 window.addEventListener('hashchange', open);
+window.addEventListener('se-voices', () => route === 'me' && app.update());
+
+/** A thin bar telling Zalo/Facebook users to open the app in a real browser, where speech works. */
+function inAppBanner() {
+  if (!inAppBrowser || sessionStorage.getItem('se.bannerClosed')) return;
+  const bar = document.createElement('div');
+  bar.className = 'inapp';
+  bar.innerHTML = inAppBrowser.ios
+    ? `<span>🔇 Trong ${inAppBrowser.name} không nghe được giọng đọc. Bấm <b>⋯</b> rồi chọn <b>Mở bằng Safari</b>.</span><button data-x="close" aria-label="Đóng">✕</button>`
+    : `<span>🔇 Trong ${inAppBrowser.name} không nghe được giọng đọc và micro.</span><button class="btn small-btn" data-x="open">Mở bằng Chrome</button><button data-x="close" aria-label="Đóng">✕</button>`;
+  bar.addEventListener('click', (e) => {
+    const x = e.target.closest('[data-x]')?.dataset.x;
+    if (x === 'open') openInBrowser();
+    if (x === 'close') { sessionStorage.setItem('se.bannerClosed', '1'); bar.remove(); }
+  });
+  document.getElementById('shell').prepend(bar);
+}
 
 async function start() {
+  inAppBanner();
   try {
     [app.content, app.pronunciation, app.stories] = await Promise.all([load('content'), load('pronunciation'), load('stories')]);
   } catch {
@@ -201,6 +219,7 @@ async function start() {
   const p = Progress.get();
   speaker.rate = p.speechRate;
   speaker.accent = p.accent;
+  speaker.voiceName = p.voiceName || '';
   buildIndex(null, app.content);
   open();
   setTimeout(() => app.loadVocab().catch(() => {}), 1500);

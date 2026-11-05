@@ -57,7 +57,9 @@ export function progressScreen(app) {
           <div class="semi mt">Giọng bản xứ</div>
           <div class="row gap-s">${[['US', '🇺🇸 Anh - Mỹ'], ['UK', '🇬🇧 Anh - Anh']].map(([code, l]) =>
             `<button class="filter grow ${p.accent === code ? 'on' : ''}" data-act="accent" data-c="${code}">${l}</button>`).join('')}</div>
-          <p class="muted tiny">Giọng hay hơn: trên iPad vào Cài đặt › Trợ năng › Nội dung được đọc › Giọng nói › Tiếng Anh, tải giọng “Nâng cao”.</p>
+          <div class="semi mt">Giọng đọc</div>
+          <div class="voices">${voiceList(p)}</div>
+          <p class="muted tiny">Muốn giọng mượt hơn: trên iPad/iPhone vào Cài đặt › Trợ năng › Nội dung được đọc › Giọng nói › Tiếng Anh, tải giọng có chữ “Nâng cao” hoặc “Cao cấp” (ví dụ Ava, Zoe, Evan) rồi quay lại chọn ở đây. Trên máy tính, trình duyệt Edge có sẵn giọng “Natural” rất tự nhiên.</p>
 
           <div class="semi mt">🤖 Gemini API key (cho tính năng Nói với AI)</div>
           <div class="row gap-s">
@@ -94,9 +96,22 @@ export function progressScreen(app) {
         el.closest('.settings').querySelector('.semi.grow').textContent = `Tốc độ giọng đọc: ${rate.toFixed(1)}x`;
       },
       accent: (d) => {
-        Progress.set({ accent: d.c });
+        Progress.set({ accent: d.c, voiceName: '' });
         speaker.accent = d.c;
+        speaker.voiceName = '';
         speaker.say('Hello! Lovely to meet you.');
+      },
+      voice: (d) => {
+        Progress.set({ voiceName: d.name });
+        speaker.voiceName = d.name;
+        speaker.say(SAMPLE);
+      },
+      tryVoice: (d) => {
+        const keep = speaker.voiceName;
+        speaker.voiceName = d.name;
+        speaker.say(SAMPLE);
+        speaker.voiceName = keep;
+        return false;
       },
       key: (v) => { pendingKey = v; },
       proxy: (v) => { pendingProxy = v; },
@@ -125,6 +140,7 @@ export function progressScreen(app) {
           const p = Progress.get();
           speaker.rate = p.speechRate;
           speaker.accent = p.accent;
+          speaker.voiceName = p.voiceName || '';
           toast('Đã khôi phục tiến độ ✅');
           app.update();
         } catch (e) {
@@ -147,4 +163,22 @@ export function progressScreen(app) {
 }
 
 let pendingKey = null;
+
+const SAMPLE = 'This is how I sound when I read the news to you. Is it clear and natural?';
+
+/** Installed English voices, best first, with "automatic" on top. */
+function voiceList(p) {
+  const voices = speaker.englishVoices().slice(0, 12);
+  if (!voices.length) return '<p class="muted small">Máy chưa có giọng tiếng Anh nào, hoặc trình duyệt đang tải danh sách giọng. Mở lại trang này sau vài giây.</p>';
+  const best = voices[0];
+  const row = (name, label, sub) => `
+    <div class="voice-row ${p.voiceName === name ? 'on' : ''}">
+      <button class="grow voice-pick" data-act="voice" data-name="${esc(name)}">
+        <div class="semi">${p.voiceName === name ? '● ' : '○ '}${esc(label)}</div><div class="muted tiny">${esc(sub)}</div>
+      </button>
+      <button class="chip-toggle" data-act="tryVoice" data-name="${esc(name || best.name)}">▶ Nghe thử</button>
+    </div>`;
+  return row('', 'Tự động (giọng tốt nhất)', `Hiện đang dùng: ${best.name}`) +
+    voices.map((v) => row(v.name, v.name, `${v.lang}${/natural|neural|premium|enhanced/i.test(v.name) ? ' · chất lượng cao' : ''}${v.localService ? '' : ' · cần mạng'}`)).join('');
+}
 let pendingProxy = null;

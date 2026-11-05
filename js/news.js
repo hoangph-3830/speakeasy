@@ -3,6 +3,10 @@
 // so requests go through public proxies in turn, or the learner's own proxy if set in Settings.
 import { AiSettings } from './store.js';
 
+/** Reuters has no public RSS and blocks automated reading, so its headlines come from Google News. */
+const googleNews = (query) =>
+  `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:1d`)}&hl=en-US&gl=US&ceid=US:en`;
+
 export const SOURCES = [
   { id: 'bbc', label: 'BBC Top', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/rss.xml' },
   { id: 'bbc-world', label: 'BBC World', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
@@ -11,6 +15,11 @@ export const SOURCES = [
   { id: 'bbc-health', label: 'BBC Health', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/health/rss.xml' },
   { id: 'bbc-science', label: 'BBC Science', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
   { id: 'cnn', label: 'CNN', brand: 'CNN', html: 'https://lite.cnn.com/' },
+  // Headlines only: the full story is read on reuters.com itself.
+  { id: 'reuters', label: 'Reuters', brand: 'Reuters', rss: googleNews('site:reuters.com'), headlinesOnly: true },
+  { id: 'reuters-world', label: 'Reuters World', brand: 'Reuters', rss: googleNews('site:reuters.com/world'), headlinesOnly: true },
+  { id: 'reuters-business', label: 'Reuters Business', brand: 'Reuters', rss: googleNews('site:reuters.com/business'), headlinesOnly: true },
+  { id: 'reuters-markets', label: 'Reuters Markets', brand: 'Reuters', rss: googleNews('site:reuters.com/markets'), headlinesOnly: true },
 ];
 export const source = (id) => SOURCES.find((s) => s.id === id) || SOURCES[0];
 
@@ -122,6 +131,13 @@ export async function loadList(id) {
   } else {
     items = parseCnnHome(await fetchText(s.html));
   }
+  // Google News appends " - Reuters" to titles and repeats the title as the description.
+  if (s.headlinesOnly)
+    items = items.map((it) => {
+      const title = it.title.replace(/\s+-\s+Reuters$/, '');
+      return { ...it, title, summary: it.summary.startsWith(title) ? '' : it.summary, image: null };
+    });
+  items.sort((a, b) => (b.time || 0) - (a.time || 0));
   const entry = { at: Date.now(), items: items.slice(0, 40) };
   try {
     localStorage.setItem(cacheKey(id), JSON.stringify(entry));

@@ -47,6 +47,39 @@ export const isUserLine = (line) => line.s === 'B';
 /** Rotates through all topics, one per calendar day. */
 export const topicOfTheDay = (topics, day = epochDay()) => topics[((day % topics.length) + topics.length) % topics.length];
 
+// ---- Reading aloud -------------------------------------------------------------
+
+const ABBREVIATIONS = /\b(?:Mr|Mrs|Ms|Dr|Prof|St|Jr|Sr|vs|etc|Inc|Ltd|Co|Corp|Gov|Sen|Rep|Gen|No|U\.S|U\.K|U\.N|E\.U|a\.m|p\.m|i\.e|e\.g)\.$/i;
+
+/**
+ * Sentence-sized pieces for text-to-speech: engines stumble or stop on long utterances, and
+ * queued sentences flow without the restart pause a cancelled utterance has.
+ */
+export function speechChunks(text, max = 220) {
+  const parts = [];
+  let current = '';
+  // Marks break points with \u0000 instead of a lookbehind, which older iPad Safari can't parse.
+  for (const piece of String(text).replace(/([.!?…]["”’)]?)\s+/g, '$1\u0000').split('\u0000')) {
+    current = current ? `${current} ${piece}` : piece;
+    // "U.S. officials" must not end a sentence at "U.S."
+    if (ABBREVIATIONS.test(current.split(/\s+/).pop())) continue;
+    parts.push(current);
+    current = '';
+  }
+  if (current) parts.push(current);
+  // Very long sentences are split at commas, semicolons or dashes.
+  return parts.flatMap((p) => {
+    if (p.length <= max) return [p.trim()];
+    const out = [];
+    let acc = '';
+    for (const bit of p.replace(/([,;:–—])\s+/g, '$1\u0000').split('\u0000')) {
+      if (acc && (acc + ' ' + bit).length > max) { out.push(acc); acc = bit; } else acc = acc ? `${acc} ${bit}` : bit;
+    }
+    if (acc) out.push(acc);
+    return out;
+  }).filter(Boolean);
+}
+
 // ---- Speech matching -----------------------------------------------------
 
 const CONTRACTIONS = {
@@ -161,6 +194,7 @@ export const defaultProgress = () => ({
   learnedWords: [],
   speechRate: 0.9,
   accent: 'US',
+  voiceName: '',
   freezes: 0,
   freezeEarnedDay: -1,
   freezeUsedDay: -1,

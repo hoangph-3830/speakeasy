@@ -124,7 +124,7 @@ export function listScreen(app) {
             ${toggleChip(bilingual ? 'Song ngữ ✓' : 'Song ngữ', bilingual, 'bilingual')}
             <button class="chip-toggle" data-act="refresh" ${loading ? 'disabled' : ''}>${loading ? '⏳' : '↻'}</button>
           </div>
-          <div class="muted small">Tin mới từ BBC & CNN. Chạm vào bài để đọc, chạm vào từ để xem nghĩa.</div>
+          <div class="muted small">Tin mới từ BBC, CNN & Reuters. Chạm vào bài để đọc, chạm vào từ để xem nghĩa.</div>
           <div class="chips mt-s">${SOURCES.map((s) => `<button class="cat-chip ${s.id === id ? 'on' : ''}" data-act="source" data-id="${s.id}">${esc(s.label)}</button>`).join('')}</div>
         </div>
         <div class="scroll pad" data-scroll="news-${id}">
@@ -165,11 +165,35 @@ export function articleScreen(app) {
   let bilingual = false;
   const vi = new Map();
   let alive = true;
+  let readingAll = false;
+  let readToken = 0;
   const doneKey = `news:${it.link}`;
+
+  /** Reads the title and every paragraph in turn; the paragraph being read is highlighted. */
+  async function readAll() {
+    const my = ++readToken;
+    readingAll = true;
+    app.update();
+    for (const text of [article.title || it.title, ...article.paragraphs]) {
+      if (!alive || my !== readToken) return;
+      const el = [...document.querySelectorAll('[data-hl]')].find((x) => x.dataset.hl === text);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      await speaker.sayAndWait(text);
+      // Something else started speaking (a tapped word, a paragraph's own button): stop here.
+      if (speaker.speaking && speaker.speaking !== text) {
+        readingAll = false;
+        if (alive) app.update();
+        return;
+      }
+    }
+    if (my === readToken) { readingAll = false; if (alive) app.update(); }
+  }
+  const stopReading = () => { readToken++; readingAll = false; speaker.stop(); };
 
   async function load() {
     // Word colours need the 3000-word list.
     app.loadVocab().then(() => alive && app.update()).catch(() => {});
+    if (s.headlinesOnly) return;
     try {
       article = await loadArticle(it.link);
     } catch (e) {
@@ -194,7 +218,7 @@ export function articleScreen(app) {
   const para = (p, i) => `
     <div class="para">
       <div class="row top gap-s">
-        <p class="grow reading">${tappable(p, true)}</p>
+        <p class="grow reading" data-hl="${esc(p)}">${tappable(p, true)}</p>
         ${sayBtn(p, { size: 32 })}
       </div>
       ${bilingual ? `<p class="para-vi">${esc(vi.get(p) || (i === 0 || vi.size ? 'Đang dịch…' : ''))}</p>` : ''}
@@ -202,11 +226,11 @@ export function articleScreen(app) {
 
   return {
     enter: load,
-    leave: () => { alive = false; },
+    leave: () => { alive = false; readToken++; },
     view() {
       const title = article?.title || it.title;
       const done = Progress.get().done.includes(doneKey);
-      const stats = article && app.vocab ? wordStats([title, ...article.paragraphs]) : null;
+      const stats = app.vocab && (article || s.headlinesOnly) ? wordStats([title, ...(article?.paragraphs || [it.summary])]) : null;
       const summary = stats?.total ? `
         <div class="card known-card">
           <div class="row center-v gap">
@@ -222,23 +246,33 @@ export function articleScreen(app) {
       return `<div class="screen" ${accent('coral')}>
         ${topBar(s.brand, it.time ? ago(it.time) : 'Đọc báo', toggleChip(bilingual ? 'Song ngữ ✓' : 'Song ngữ', bilingual, 'bilingual'))}
         <div class="scroll pad reader" data-scroll="article">
-          <h2 class="article-title">${tappable(title, true)}</h2>
+          <h2 class="article-title" data-hl="${esc(title)}">${tappable(title, true)}</h2>
           ${bilingual ? `<p class="para-vi">${esc(titleVi.get(title) || vi.get(title) || '…')}</p>` : ''}
-          <div class="muted tiny">Chạm vào một từ để xem nghĩa · 🔊 để nghe cả đoạn</div>
-          ${!article && !error ? '<div class="empty"><div class="huge">⏳</div><p class="muted">Đang tải bài…</p></div>' : ''}
+          <div class="row center-v gap-s wrap">
+            <div class="muted tiny grow">Chạm vào một từ để xem nghĩa · 🔊 để nghe cả đoạn</div>
+            ${article ? `<button class="btn small-btn" data-act="readAll" style="--a:var(--sky)">${readingAll ? '⏸ Dừng đọc' : '▶ Đọc cả bài'}</button>` : ''}
+          </div>
+          ${s.headlinesOnly ? `<div class="note" style="background:var(--sun-l)">📰 ${esc(s.brand)} chỉ cho đọc toàn bài trên trang của họ. Học từ trong tiêu đề ở đây, rồi bấm nút bên dưới để đọc tiếp.</div>
+            ${it.summary ? `<div class="para"><p class="reading">${tappable(it.summary, true)}</p></div>` : ''}
+            <a class="btn big" href="${esc(it.link)}" target="_blank" rel="noopener">Đọc toàn bài trên ${esc(s.brand)} ↗</a>` : ''}
+          ${!s.headlinesOnly && !article && !error ? '<div class="empty"><div class="huge">⏳</div><p class="muted">Đang tải bài…</p></div>' : ''}
           ${error ? `<div class="err">😕 ${esc(error)}</div>${it.summary ? `<div class="para"><p class="reading">${tappable(it.summary)}</p></div>` : ''}` : ''}
           ${summary}
           ${article ? article.paragraphs.map(para).join('') : ''}
-          <a class="btn outline" href="${esc(it.link)}" target="_blank" rel="noopener">Mở bài gốc trên ${esc(s.brand)} ↗</a>
-          <div class="muted tiny center">Nguồn: ${esc(s.brand)}. Bài được tải trực tiếp về máy bạn để đọc, SpeakEasy không lưu lại nội dung.</div>
+          ${s.headlinesOnly ? '' : `<a class="btn outline" href="${esc(it.link)}" target="_blank" rel="noopener">Mở bài gốc trên ${esc(s.brand)} ↗</a>`}
+          <div class="muted tiny center">Nguồn: ${esc(s.brand)}${s.headlinesOnly ? ' (tiêu đề qua Google News)' : '. Bài được tải trực tiếp về máy bạn để đọc, SpeakEasy không lưu lại nội dung'}.</div>
           ${article ? bigBtn(done ? 'Đã đọc xong ✅' : 'Đọc xong ✅ +5 XP', 'finish', { color: 'mint', disabled: done }) : ''}
         </div>
       </div>`;
     },
     actions: {
       word: (d) => { openWordSheet(d.w, app.update); return false; },
+      readAll: () => {
+        if (readingAll) stopReading();
+        else { readAll(); return false; }
+      },
       enrollNew: () => {
-        const stats = wordStats([article.title || it.title, ...article.paragraphs]);
+        const stats = wordStats([article?.title || it.title, ...(article?.paragraphs || [it.summary])]);
         const n = Review.add([...stats.new.values()].map(wordCard));
         toast(`Đã thêm ${n} từ vào Ôn tập hôm nay 🔁`);
       },

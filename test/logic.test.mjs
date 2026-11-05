@@ -138,4 +138,14 @@ test('shadowing: pitch of steady tones, rising sweep, intonation hints, speed', 
   assert.equal(d.rate, 16000);
 });
 
+test('reading aloud splits into sentences, keeps abbreviations, caps long ones', () => {
+  assert.deepEqual(L.speechChunks('Hello there. How are you? I am fine!'), ['Hello there.', 'How are you?', 'I am fine!']);
+  assert.deepEqual(L.speechChunks('U.S. officials met Dr. Smith on Monday. Talks went well.'), ['U.S. officials met Dr. Smith on Monday.', 'Talks went well.']);
+  assert.deepEqual(L.speechChunks('He said: “We won.” Then he left.'), ['He said: “We won.”', 'Then he left.']);
+  const long = Array.from({ length: 30 }, (_, i) => `clause number ${i}`).join(', ') + '.';
+  const chunks = L.speechChunks(long);
+  assert.ok(chunks.length > 1 && chunks.every((c) => c.length <= 220), chunks.map((c) => c.length).join());
+  assert.equal(chunks.join(' '), long);
+});
+
 console.log(`\n${n} tests passed`);
