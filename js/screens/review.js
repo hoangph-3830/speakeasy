@@ -34,12 +34,17 @@ export function reviewScreen(app) {
           </div></div>`;
       return `<div class="screen" ${accent('lavender')}>${head}
         <div class="pad-x">${bar(done / Math.max(1, total))}<div class="muted small mt-xs">Còn ${queue.length} thẻ · đã ôn ${done}</div></div>
-        <button class="review-card" data-act="flip">
+        <div class="review-card" data-act="flip" role="button" tabindex="0" aria-label="Lật thẻ">
           ${listenOnly && !flipped ? '<div class="huge">🎧</div><div class="muted">Nghe và tự nhắc lại, rồi lật thẻ</div>' : `<div class="h-sm">${esc(c.front)}</div>`}
           <div class="mt">${sayBtn(c.front, { size: 56 })}</div>
           ${flipped ? `<div class="word-vi mt" style="color:var(--lavender)">${esc(c.back)}</div>${c.extra ? `<div class="muted mt-s">${esc(c.extra)}</div>` : ''}` : ''}
-        </button>
+        </div>
         <div class="bottom">
+          <div class="row gap-s card-nav">
+            <button class="btn outline" data-act="prevCard" ${queue.length < 2 ? 'disabled' : ''} aria-label="Thẻ trước">‹ Thẻ trước</button>
+            <span class="grow muted tiny center">${flipped ? 'Chọn mức nhớ để lên lịch ôn' : 'Chạm thẻ để lật'}</span>
+            <button class="btn outline" data-act="nextCard" ${queue.length < 2 ? 'disabled' : ''} aria-label="Thẻ sau">Thẻ sau ›</button>
+          </div>
           ${!flipped ? bigBtn('Lật thẻ', 'flip') : `
             <div class="muted small">Bạn nhớ câu này thế nào?</div>
             <div class="row gap-s mt-xs">${GRADES.map((g) => `
@@ -53,6 +58,9 @@ export function reviewScreen(app) {
     actions: {
       listenOnly: () => { listenOnly = !listenOnly; },
       flip: () => { flipped = true; },
+      // Browse without grading: the deck is a loop, a skipped card comes back later in the session.
+      nextCard: () => { queue.push(queue.shift()); flipped = false; autoSay(); },
+      prevCard: () => { queue.unshift(queue.pop()); flipped = false; autoSay(); },
       grade: (d) => {
         const c = card();
         const next = Review.grade(c, d.g);
