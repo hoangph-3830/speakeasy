@@ -7,6 +7,18 @@ import kotlinx.serialization.Serializable
 data class Content(
     val categories: List<Category>,
     val topics: List<Topic>,
+    /** The learning path: stages ordered easy to hard (A1 → B2); every topic sits in exactly one. */
+    val path: List<Stage> = emptyList(),
+)
+
+/** One stage of the learning path, listing its topic ids in the order to learn them. */
+@Serializable
+data class Stage(
+    val id: String,
+    val level: String,
+    val title: String,
+    val subtitle: String = "",
+    val topics: List<String>,
 )
 
 @Serializable

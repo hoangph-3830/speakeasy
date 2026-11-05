@@ -39,6 +39,40 @@ for (const f of files('topics-')) {
 const order = content.categories.map((c) => c.id);
 content.topics.sort((a, b) => order.indexOf(a.category) - order.indexOf(b.category));
 
+// ---- Learning path ---------------------------------------------------------------
+// web/tools/path.json orders topics into stages from easy to hard; new topics join the last stage
+// of their level so nothing is left out of the path.
+const stages = read(path.join(__dirname, 'path.json'));
+const placed = new Set(stages.flatMap((st) => st.topics));
+for (const t of content.topics) {
+  if (placed.has(t.id)) continue;
+  const stage = [...stages].reverse().find((st) => st.level === t.level) || stages[stages.length - 1];
+  stage.topics.push(t.id);
+  placed.add(t.id);
+}
+for (const st of stages)
+  for (const id of st.topics) if (!content.topics.some((t) => t.id === id)) problems.push(`path: unknown topic ${id}`);
+content.path = stages;
+
+// ---- Stories -----------------------------------------------------------------------
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'];
+const stories = read(path.join(assets, 'stories.json'));
+for (const f of files('stories-')) {
+  for (const st of read(path.join(dir, f))) {
+    const lines = st.items.filter((i) => i.type !== 'question');
+    const questions = st.items.filter((i) => i.type === 'question');
+    if (lines.length < 20) problems.push(`${f}:${st.id} only ${lines.length} lines`);
+    if (!LEVELS.includes(st.level)) problems.push(`${f}:${st.id} bad level ${st.level}`);
+    for (const q of questions) if (!(q.answer >= 0 && q.answer < q.options.length)) problems.push(`${f}:${st.id} bad answer`);
+    for (const l of lines) if (!st.characters.some((c) => c.name === l.speaker)) problems.push(`${f}:${st.id} unknown speaker ${l.speaker}`);
+    // A story with an existing id replaces the old, shorter version.
+    const at = stories.stories.findIndex((x) => x.id === st.id);
+    if (at >= 0) stories.stories[at] = st;
+    else stories.stories.push(st);
+  }
+}
+stories.stories.sort((a, b) => LEVELS.indexOf(a.level || 'A2') - LEVELS.indexOf(b.level || 'A2'));
+
 // ---- Vocabulary -----------------------------------------------------------------
 const POS = new Set(['n', 'v', 'adj', 'adv', 'prep', 'pron', 'conj', 'det', 'num', 'phr', 'excl']);
 const seen = new Set();
@@ -67,11 +101,16 @@ const write = (name, data) => {
   fs.writeFileSync(path.join(root, 'web/data', name), text);
 };
 write('content.json', content);
+write('stories.json', stories);
 // The word list is large; one group per line keeps it compact but still diffable.
+// Only rewritten when this batch has vocabulary files, so other batches keep the current list.
+if (groups.length) {
 const vocabText = `{"groups":[\n${groups.map((g) => JSON.stringify(g)).join(',\n')}\n]}\n`;
 fs.writeFileSync(path.join(assets, 'vocab.json'), vocabText);
 fs.writeFileSync(path.join(root, 'web/data', 'vocab.json'), vocabText);
+}
 
 console.log(`topics: ${content.topics.length} in ${content.categories.length} categories`);
+console.log(`path: ${stages.length} stages · stories: ${stories.stories.length}`);
 console.log(`vocab: ${groups.length} groups, ${seen.size} words (${dropped} duplicates dropped)`);
 console.log(problems.length ? `PROBLEMS (${problems.length}):\n${problems.slice(0, 40).join('\n')}` : 'no problems');

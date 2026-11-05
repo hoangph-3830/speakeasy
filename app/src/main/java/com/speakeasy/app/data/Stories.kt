@@ -13,11 +13,14 @@ data class Story(
     val titleVi: String,
     val emoji: String,
     val category: String,
+    /** CEFR level, "A1" to "B2"; older stories without one count as A2. */
+    val level: String = "A2",
     val characters: List<StoryCharacter>,
     val items: List<StoryItem>,
 ) {
     fun pitchOf(speaker: String?) = characters.firstOrNull { it.name == speaker }?.pitch ?: 1f
     val questionCount: Int get() = items.count { it.isQuestion }
+    val lineCount: Int get() = items.count { !it.isQuestion }
 }
 
 @Serializable

@@ -43,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
+import com.speakeasy.app.data.Levels
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.Story
 import com.speakeasy.app.data.StoryItem
@@ -50,6 +51,7 @@ import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.CompleteDialog
 import com.speakeasy.app.ui.components.EmojiBadge
 import com.speakeasy.app.ui.components.HSpace
+import com.speakeasy.app.ui.components.Pill
 import com.speakeasy.app.ui.components.SoftProgress
 import com.speakeasy.app.ui.components.TopBar
 import com.speakeasy.app.ui.components.VSpace
@@ -60,6 +62,7 @@ import com.speakeasy.app.ui.theme.Mint
 import com.speakeasy.app.ui.theme.MintLight
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.categoryColors
+import com.speakeasy.app.ui.theme.levelColors
 
 @Composable
 fun StoriesHubScreen(onBack: () -> Unit, openStory: (String) -> Unit) {
@@ -67,31 +70,53 @@ fun StoriesHubScreen(onBack: () -> Unit, openStory: (String) -> Unit) {
     val p by app.progress.progress.collectAsState()
     Column(Modifier.fillMaxSize()) {
         TopBar(title = "Truyện nghe", subtitle = "Nghe chuyện đời thường, trả lời câu hỏi", onBack = onBack)
+        // Stories come sorted easy to hard; group them under one header per level.
+        val byLevel = app.content.stories.stories.groupBy { it.level }.toList().sortedBy { Levels.rank(it.first) }
         LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            items(app.content.stories.stories, key = { it.id }) { s ->
-                val (strong, light) = categoryColors(s.category)
-                Card(
-                    onClick = { openStory(s.id) },
-                    shape = RoundedCornerShape(22.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
-                    border = BorderStroke(1.dp, Line),
-                ) {
-                    Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-                        EmojiBadge(s.emoji, light, 60.dp)
-                        HSpace(14.dp)
-                        Column(Modifier.weight(1f)) {
-                            Text(s.title, style = MaterialTheme.typography.titleMedium)
-                            Text(s.titleVi, color = Muted)
-                            Text(
-                                s.characters.filter { it.name != "Narrator" }.joinToString(" · ") { it.name },
-                                color = strong,
-                                style = MaterialTheme.typography.labelMedium,
-                            )
-                        }
-                        Text(if ("story:${s.id}" in p.done) "⭐" else "▶", color = strong, fontSize = 20.sp)
-                    }
+            byLevel.forEach { (level, stories) ->
+                item(key = "level:$level") {
+                    Text(
+                        "$level · ${Levels.name(level)}",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = levelColors(level).first,
+                        modifier = Modifier.padding(top = 4.dp),
+                    )
+                }
+                items(stories, key = { it.id }) { s -> StoryCard(s, done = "story:${s.id}" in p.done, onClick = { openStory(s.id) }) }
+            }
+        }
+    }
+}
+
+@Composable
+private fun StoryCard(s: Story, done: Boolean, onClick: () -> Unit) {
+    val (strong, light) = categoryColors(s.category)
+    val (levelStrong, levelLight) = levelColors(s.level)
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = BorderStroke(1.dp, Line),
+    ) {
+        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            EmojiBadge(s.emoji, light, 60.dp)
+            HSpace(14.dp)
+            Column(Modifier.weight(1f)) {
+                Text(s.title, style = MaterialTheme.typography.titleMedium)
+                Text(s.titleVi, color = Muted)
+                Text(
+                    s.characters.filter { it.name != "Narrator" }.joinToString(" · ") { it.name },
+                    color = strong,
+                    style = MaterialTheme.typography.labelMedium,
+                )
+                VSpace(6.dp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Pill(s.level, levelStrong, levelLight)
+                    HSpace(8.dp)
+                    Text("${s.lineCount} câu · ${s.questionCount} câu hỏi", color = Muted, style = MaterialTheme.typography.labelMedium)
                 }
             }
+            Text(if (done) "⭐" else "▶", color = strong, fontSize = 20.sp)
         }
     }
 }

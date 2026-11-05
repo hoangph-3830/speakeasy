@@ -44,6 +44,30 @@ export const topicSentences = (t) =>
 
 export const isUserLine = (line) => line.s === 'B';
 
+/** CEFR levels the path climbs through, with a learner-friendly name and accent colour. */
+export const LEVELS = {
+  A1: { name: 'Mới bắt đầu', color: 'mint' },
+  A2: { name: 'Sơ cấp', color: 'sky' },
+  B1: { name: 'Trung cấp', color: 'lavender' },
+  B2: { name: 'Khá', color: 'peach' },
+};
+
+/** The first topic along the learning path that still has an unfinished step, with its stage. */
+export function nextInPath(path, topics, p) {
+  for (const [i, stage] of path.entries())
+    for (const id of stage.topics) {
+      const topic = topics.find((t) => t.id === id);
+      if (topic && doneCount(p, id) < ACTIVITIES.length) return { stage, stageNo: i + 1, topic };
+    }
+  return null;
+}
+
+/** Steps finished across a stage, out of 4 per topic. */
+export const stageProgress = (stage, p) => {
+  const done = stage.topics.reduce((sum, id) => sum + doneCount(p, id), 0);
+  return { done, total: stage.topics.length * ACTIVITIES.length, topicsDone: stage.topics.filter((id) => doneCount(p, id) === ACTIVITIES.length).length };
+};
+
 /** Rotates through all topics, one per calendar day. */
 export const topicOfTheDay = (topics, day = epochDay()) => topics[((day % topics.length) + topics.length) % topics.length];
 

@@ -7,12 +7,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,23 +41,29 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Activity
+import com.speakeasy.app.data.LearningPath
+import com.speakeasy.app.data.Levels
+import com.speakeasy.app.data.PathStep
 import com.speakeasy.app.data.Progress
 import com.speakeasy.app.data.Quest
 import com.speakeasy.app.data.Quests
+import com.speakeasy.app.data.Stage
 import com.speakeasy.app.data.Topic
+import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.EmojiBadge
 import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.Pill
 import com.speakeasy.app.ui.components.Ring
-import com.speakeasy.app.ui.components.SectionTitle
 import com.speakeasy.app.ui.components.SoftProgress
 import com.speakeasy.app.ui.components.VSpace
+import com.speakeasy.app.ui.theme.Coral
+import com.speakeasy.app.ui.theme.CoralLight
 import com.speakeasy.app.ui.theme.Ink
-import com.speakeasy.app.ui.theme.Lavender
 import com.speakeasy.app.ui.theme.LavenderLight
 import com.speakeasy.app.ui.theme.Line
 import com.speakeasy.app.ui.theme.Mint
@@ -64,6 +75,7 @@ import com.speakeasy.app.ui.theme.SkyLight
 import com.speakeasy.app.ui.theme.Sun
 import com.speakeasy.app.ui.theme.SunLight
 import com.speakeasy.app.ui.theme.categoryColors
+import com.speakeasy.app.ui.theme.levelColors
 import java.time.LocalTime
 
 @Composable
@@ -80,9 +92,15 @@ fun HomeScreen(
     val cards by app.review.cards.collectAsState()
     val due = cards.count { it.due <= app.review.todayDay }
     var category by rememberSaveable { mutableStateOf<String?>(null) }
+    var byTopic by rememberSaveable { mutableStateOf(false) }
+    var questsOpen by rememberSaveable { mutableStateOf(false) }
+    // Stage ids the learner toggled away from the default (only the current stage open).
+    var toggled by rememberSaveable { mutableStateOf(listOf<String>()) }
     var askName by remember { mutableStateOf(progress.name.isEmpty()) }
-    val today = remember { app.content.topicOfTheDay() }
-    val topics = category?.let { app.content.topicsIn(it) } ?: app.content.topics
+    val path = app.content.path
+    val doneCount: (String) -> Int = progress::doneCount
+    val next = LearningPath.next(path, doneCount)
+    val topics = (category?.let { app.content.topicsIn(it) } ?: app.content.topics).sortedBy { Levels.rank(it.level) }
 
     LazyColumn(
         Modifier.fillMaxSize().statusBarsPadding(),
@@ -98,42 +116,47 @@ fun HomeScreen(
                 color = Ink,
             )
         }
-        item { QuestsCard(progress, onClaim = { app.progress.claim(it) }) }
-        if (cards.isNotEmpty()) item { ReviewCard(due, cards.size, onClick = openReview) }
         item {
-            SectionTitle("Luyện nghe nói như người bản xứ")
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                FeatureTile(
-                    "🎯", "Phòng phát âm",
-                    progress.speakingScore?.let { "Điểm phát âm $it" } ?: "Sửa âm người Việt hay sai",
-                    LavenderLight, Modifier.weight(1f), openLab,
-                )
-                FeatureTile("📖", "Truyện nghe", "Nghe chuyện, trả lời câu hỏi", MintLight, Modifier.weight(1f), openStories)
-            }
-            VSpace(12.dp)
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                FeatureTile(
-                    "📚", "3000 từ vựng",
-                    "${progress.learnedWords.size} từ đã thuộc · học theo nhóm",
-                    SkyLight, Modifier.weight(1f), openVocab,
-                )
-                FeatureTile("📰", "Đọc báo", "BBC, CNN, Reuters, Guardian… · chạm từ để tra nghĩa", SunLight, Modifier.weight(1f), openNews)
-            }
+            ContinueCard(
+                next, next?.let { app.content.topic(it.topicId) }, progress,
+                onOpen = { next?.let { openTopic(it.topicId) } },
+                onReview = openReview,
+            )
         }
         item {
-            SectionTitle("Chủ đề hôm nay ✨")
-            TodayCard(today, progress, onClick = { openTopic(today.id) })
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Shortcut("🔁", "Ôn tập", LavenderLight, Modifier.weight(1f), badge = due, onClick = openReview)
+                Shortcut("📚", "Từ vựng", SkyLight, Modifier.weight(1f), onClick = openVocab)
+                Shortcut("🎯", "Phát âm", CoralLight, Modifier.weight(1f), onClick = openLab)
+                Shortcut("📖", "Truyện", MintLight, Modifier.weight(1f), onClick = openStories)
+                Shortcut("📰", "Đọc báo", SunLight, Modifier.weight(1f), onClick = openNews)
+            }
         }
+        item { QuestsCard(progress, questsOpen, onToggle = { questsOpen = !questsOpen }, onClaim = { app.progress.claim(it) }) }
         item {
-            SectionTitle("Khám phá chủ đề")
-            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                CategoryChip("🌈 Tất cả", category == null, Sky) { category = null }
-                app.content.categories.forEach { c ->
-                    CategoryChip("${c.emoji} ${c.name}", category == c.id, categoryColors(c.id).first) { category = c.id }
+            VSpace(4.dp)
+            Segmented("🧭 Lộ trình", "🗂️ Theo chủ đề", second = byTopic, onPick = { byTopic = it })
+        }
+        if (!byTopic) {
+            itemsIndexed(path, key = { _, s -> "stage:${s.id}" }) { i, stage ->
+                StageCard(
+                    i, stage, progress,
+                    expanded = (stage.id == next?.stage?.id) != (stage.id in toggled),
+                    onToggle = { toggled = if (stage.id in toggled) toggled - stage.id else toggled + stage.id },
+                    openTopic = openTopic,
+                )
+            }
+        } else {
+            item {
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    CategoryChip("🌈 Tất cả", category == null, Sky) { category = null }
+                    app.content.categories.forEach { c ->
+                        CategoryChip("${c.emoji} ${c.name}", category == c.id, categoryColors(c.id).first) { category = c.id }
+                    }
                 }
             }
+            items(topics, key = { it.id }) { t -> TopicRow(t, progress, onClick = { openTopic(t.id) }) }
         }
-        items(topics, key = { it.id }) { t -> TopicRow(t, progress, onClick = { openTopic(t.id) }) }
     }
 
     if (askName) {
@@ -174,54 +197,31 @@ private fun Greeting(p: Progress) {
 @Composable
 private fun DailyGoalCard(p: Progress) {
     Card(
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(22.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
     ) {
         Row(
             Modifier
                 .fillMaxWidth()
                 .background(Brush.linearGradient(listOf(Color(0xFF4FB8EC), Color(0xFF55D3AE))))
-                .padding(18.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Ring(p.goalProgress, 74.dp, Color.White) {
-                Text("${(p.goalProgress * 100).toInt()}%", color = Color.White, fontWeight = FontWeight.Bold)
+            Ring(p.goalProgress, 56.dp, Color.White) {
+                Text("${(p.goalProgress * 100).toInt()}%", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
             }
-            HSpace(16.dp)
+            HSpace(14.dp)
             Column(Modifier.weight(1f)) {
-                Text("Mục tiêu hôm nay", color = Color.White.copy(alpha = 0.85f))
-                Text("${p.todayXp} / ${p.dailyGoal} XP", color = Color.White, style = MaterialTheme.typography.titleLarge)
-                VSpace(6.dp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("Mục tiêu hôm nay", color = Color.White.copy(alpha = 0.85f), modifier = Modifier.weight(1f))
+                    Text("${p.todayXp} / ${p.dailyGoal} XP", color = Color.White, style = MaterialTheme.typography.titleMedium)
+                }
+                VSpace(2.dp)
                 Text(
                     if (p.goalProgress >= 1f) "Đạt mục tiêu rồi, giỏi quá! 🎯" else "Cấp ${p.level} · còn ${100 - p.xp % 100} XP để lên cấp",
                     color = Color.White,
                     style = MaterialTheme.typography.bodyMedium,
                 )
-            }
-        }
-    }
-}
-
-@Composable
-private fun TodayCard(t: Topic, p: Progress, onClick: () -> Unit) {
-    val (strong, light) = categoryColors(t.category)
-    Card(
-        onClick = onClick,
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(containerColor = light),
-    ) {
-        Row(Modifier.padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Pill(t.level, strong, Color.White)
-                VSpace(8.dp)
-                Text(t.title, style = MaterialTheme.typography.titleLarge, color = Ink)
-                Text(t.titleVi, color = Muted)
-                VSpace(10.dp)
-                SoftProgress(p.doneCount(t.id) / Activity.entries.size.toFloat(), color = strong, track = Color.White)
-            }
-            HSpace(12.dp)
-            Box(Modifier.clip(RoundedCornerShape(24.dp)).background(Color.White).padding(14.dp)) {
-                Text(t.emoji, fontSize = 44.sp)
             }
         }
     }
@@ -294,43 +294,36 @@ private fun NameDialog(onDone: (String) -> Unit) {
     )
 }
 
+/** Duolingo-style daily quests, folded into one row: finish one, then tap to open its chest. */
 @Composable
-private fun ReviewCard(due: Int, total: Int, onClick: () -> Unit) {
+private fun QuestsCard(p: Progress, open: Boolean, onToggle: () -> Unit, onClaim: (Quest) -> Unit) {
+    val quests = Quests.today(p)
+    val finished = quests.filter { p.count(it.id) >= it.target }
+    val claimable = finished.any { it.id !in p.claimed }
     Card(
-        onClick = onClick,
-        shape = RoundedCornerShape(22.dp),
-        colors = CardDefaults.cardColors(containerColor = LavenderLight),
-    ) {
-        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            EmojiBadge("🔁", Color.White, 50.dp)
-            HSpace(14.dp)
-            Column(Modifier.weight(1f)) {
-                Text(
-                    if (due > 0) "Ôn tập hôm nay: $due thẻ" else "Đã ôn xong hôm nay ✅",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = Ink,
-                )
-                Text("Bộ nhớ có $total thẻ · ôn đúng lúc để nhớ lâu", color = Muted, style = MaterialTheme.typography.bodyMedium)
-            }
-            if (due > 0) Pill("Ôn ngay", Color.White, Lavender)
-        }
-    }
-}
-
-/** Duolingo-style daily quests: finish one, then tap to open its chest. */
-@Composable
-private fun QuestsCard(p: Progress, onClaim: (Quest) -> Unit) {
-    Card(
-        shape = RoundedCornerShape(22.dp),
+        shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         border = androidx.compose.foundation.BorderStroke(1.dp, Line),
     ) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("📜 Nhiệm vụ hôm nay", style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-                Text("🧊 đạt mục tiêu = +1 đóng băng", color = Muted, style = MaterialTheme.typography.labelMedium)
-            }
-            Quests.today(p).forEach { q ->
+        Row(
+            Modifier.fillMaxWidth().clickable(onClick = onToggle).padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                "📜 Nhiệm vụ hôm nay · ${finished.size}/${quests.size}",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.weight(1f),
+            )
+            if (claimable) Text("🎁", fontSize = 20.sp)
+            HSpace(8.dp)
+            Text(if (open) "▴" else "▾", color = Muted, fontSize = 18.sp)
+        }
+        if (open) Column(
+            Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Text("🧊 đạt mục tiêu = +1 đóng băng", color = Muted, style = MaterialTheme.typography.labelMedium)
+            quests.forEach { q ->
                 val n = minOf(p.count(q.id), q.target)
                 val done = n >= q.target
                 val claimed = q.id in p.claimed
@@ -360,19 +353,178 @@ private fun QuestsCard(p: Progress, onClaim: (Quest) -> Unit) {
     }
 }
 
+/** "Học tiếp": the next unfinished topic along the path, or a pointer to review once it is all done. */
 @Composable
-private fun FeatureTile(emoji: String, title: String, subtitle: String, bg: Color, modifier: Modifier, onClick: () -> Unit) {
+private fun ContinueCard(next: PathStep?, topic: Topic?, p: Progress, onOpen: () -> Unit, onReview: () -> Unit) {
+    val (strong, light) = levelColors(next?.stage?.level ?: "A1")
     Card(
-        onClick = onClick,
-        modifier = modifier,
         shape = RoundedCornerShape(22.dp),
-        colors = CardDefaults.cardColors(containerColor = bg),
+        colors = CardDefaults.cardColors(containerColor = light),
     ) {
         Column(Modifier.padding(16.dp)) {
-            Text(emoji, fontSize = 32.sp)
-            VSpace(6.dp)
-            Text(title, style = MaterialTheme.typography.titleMedium, color = Ink)
-            Text(subtitle, color = Muted, style = MaterialTheme.typography.bodyMedium, maxLines = 2)
+            if (next == null || topic == null) {
+                Text("Bạn đã học hết lộ trình 🎉", style = MaterialTheme.typography.titleLarge, color = Ink)
+                Text("Ôn lại thẻ ghi nhớ để không quên nhé.", color = Muted)
+                VSpace(12.dp)
+                BigButton("🔁 Ôn tập", onClick = onReview, color = strong)
+                return@Column
+            }
+            val step = Activity.entries.first { !p.isDone(topic.id, it) }
+            Text(
+                "Chặng ${next.stageIndex + 1} · ${next.stage.level} ${Levels.name(next.stage.level)} · ${next.stage.title}",
+                color = strong,
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.labelMedium,
+                maxLines = 1,
+            )
+            VSpace(10.dp)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                EmojiBadge(topic.emoji, Color.White, 56.dp)
+                HSpace(14.dp)
+                Column(Modifier.weight(1f)) {
+                    Text(topic.title, style = MaterialTheme.typography.titleLarge, color = Ink)
+                    Text(topic.titleVi, color = Muted)
+                    VSpace(4.dp)
+                    Text(
+                        "Bước ${step.ordinal + 1}: ${step.label}",
+                        color = Ink,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                }
+            }
+            VSpace(12.dp)
+            BigButton("Học tiếp →", onClick = onOpen, color = strong)
         }
+    }
+}
+
+/** One of the five small square shortcuts; [badge] shows a count in the corner when above zero. */
+@Composable
+private fun Shortcut(emoji: String, label: String, bg: Color, modifier: Modifier, badge: Int = 0, onClick: () -> Unit) {
+    Box(modifier) {
+        Card(
+            onClick = onClick,
+            modifier = Modifier.fillMaxWidth().aspectRatio(1f),
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = bg),
+        ) {
+            Column(
+                Modifier.fillMaxSize().padding(4.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Text(emoji, fontSize = 22.sp)
+                VSpace(2.dp)
+                Text(label, color = Ink, style = MaterialTheme.typography.labelMedium, maxLines = 1, textAlign = TextAlign.Center)
+            }
+        }
+        if (badge > 0) Text(
+            if (badge > 99) "99+" else "$badge",
+            modifier = Modifier.align(Alignment.TopEnd).offset(x = 4.dp, y = (-4).dp).clip(CircleShape).background(Coral)
+                .padding(horizontal = 6.dp, vertical = 1.dp),
+            color = Color.White,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+        )
+    }
+}
+
+/** Two-option segmented control; [second] is true when the right-hand option is picked. */
+@Composable
+private fun Segmented(firstLabel: String, secondLabel: String, second: Boolean, onPick: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().clip(CircleShape).background(Line).padding(4.dp)) {
+        listOf(firstLabel to false, secondLabel to true).forEach { (label, value) ->
+            val selected = second == value
+            Text(
+                label,
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(CircleShape)
+                    .background(if (selected) Color.White else Color.Transparent)
+                    .clickable { onPick(value) }
+                    .padding(vertical = 9.dp),
+                color = if (selected) Ink else Muted,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+/** A path stage: header with level and progress; tap it to show or hide its topics in order. */
+@Composable
+private fun StageCard(
+    index: Int,
+    stage: Stage,
+    p: Progress,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+    openTopic: (String) -> Unit,
+) {
+    val app = LocalApp.current
+    val (strong, light) = levelColors(stage.level)
+    val doneCount: (String) -> Int = p::doneCount
+    val complete = LearningPath.isComplete(stage, doneCount)
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = androidx.compose.foundation.BorderStroke(1.dp, if (expanded) strong.copy(alpha = 0.5f) else Line),
+    ) {
+        Column(Modifier.fillMaxWidth().clickable(onClick = onToggle).padding(14.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Chặng ${index + 1}", fontWeight = FontWeight.ExtraBold, color = strong)
+                HSpace(8.dp)
+                Pill("${stage.level} · ${Levels.name(stage.level)}", strong, light)
+                Box(Modifier.weight(1f))
+                Text(if (expanded) "▴" else "▾", color = Muted, fontSize = 18.sp)
+            }
+            VSpace(4.dp)
+            Text(stage.title, style = MaterialTheme.typography.titleMedium, color = Ink)
+            if (stage.subtitle.isNotEmpty()) Text(stage.subtitle, color = Muted, style = MaterialTheme.typography.bodyMedium)
+            VSpace(8.dp)
+            SoftProgress(LearningPath.progress(stage, doneCount), color = strong)
+            VSpace(4.dp)
+            Text(
+                if (complete) "✅ Hoàn thành" else "${LearningPath.topicsDone(stage, doneCount)}/${stage.topics.size} chủ đề xong",
+                color = if (complete) Mint else Muted,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = if (complete) FontWeight.Bold else FontWeight.Medium,
+            )
+        }
+        if (expanded) Column(Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp)) {
+            stage.topics.mapNotNull { app.content.topic(it) }.forEach { t ->
+                PathTopicRow(t, p, light, strong, onClick = { openTopic(t.id) })
+            }
+        }
+    }
+}
+
+@Composable
+private fun PathTopicRow(t: Topic, p: Progress, light: Color, strong: Color, onClick: () -> Unit) {
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).clickable(onClick = onClick).padding(horizontal = 6.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        EmojiBadge(t.emoji, light, 40.dp)
+        HSpace(12.dp)
+        Column(Modifier.weight(1f)) {
+            Text(t.title, style = MaterialTheme.typography.titleMedium, maxLines = 1)
+            Text(t.titleVi, color = Muted, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
+        }
+        HSpace(8.dp)
+        // One dot per activity, filled once it is done.
+        Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            Activity.entries.forEach { a ->
+                Box(Modifier.size(8.dp).clip(CircleShape).background(if (p.isDone(t.id, a)) strong else Line))
+            }
+        }
+        HSpace(8.dp)
+        Text(
+            if (p.doneCount(t.id) == Activity.entries.size) "✓" else "",
+            color = Mint,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.width(14.dp),
+        )
     }
 }

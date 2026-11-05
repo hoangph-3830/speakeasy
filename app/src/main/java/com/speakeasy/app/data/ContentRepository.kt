@@ -36,6 +36,10 @@ class ContentRepository(private val context: Context) {
     val categories: List<Category> get() = content.categories
     val topics: List<Topic> get() = content.topics
 
+    /** The learning path; older content without one falls back to a single stage of every topic. */
+    val path: List<Stage>
+        get() = content.path.ifEmpty { listOf(Stage("all", "A1", "Tất cả chủ đề", topics = topics.map { it.id })) }
+
     fun topic(id: String): Topic? = topics.firstOrNull { it.id == id }
 
     fun category(id: String): Category? = categories.firstOrNull { it.id == id }

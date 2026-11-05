@@ -79,6 +79,15 @@ fun categoryColors(categoryId: String): Pair<Color, Color> = when (categoryId) {
     else -> Sky to SkyLight
 }
 
+/** Level accent colors, easy to hard: A1 mint, A2 sky, B1 lavender, B2 peach. */
+fun levelColors(level: String): Pair<Color, Color> = when (level) {
+    "A1" -> Mint to MintLight
+    "A2" -> Sky to SkyLight
+    "B1" -> Lavender to LavenderLight
+    "B2" -> Peach to PeachLight
+    else -> Sky to SkyLight
+}
+
 @Composable
 fun SpeakEasyTheme(content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = colors, typography = typography, shapes = shapes, content = content)
