@@ -47,6 +47,15 @@ export function topicScreen(app, id) {
             </button>`;
           }).join('')}
           </div>
+          <button class="card tile" data-act="nav" data-to="topic/${topic.id}/shadow">
+            ${badge('🎙️', 'var(--al)', 52)}
+            <div class="grow">
+              <div class="tiny bold" style="color:var(--a)">Luyện thêm</div>
+              <div class="t-sub">Luyện nhại (shadowing)</div>
+              <div class="muted small">Nghe mẫu, ghi âm giọng bạn rồi so với người bản xứ</div>
+            </div>
+            <div class="center muted"><div>›</div></div>
+          </button>
         </div>
       </div>`;
     },

@@ -1,19 +1,51 @@
 // "Đọc báo": live BBC/CNN headlines and a reader where every word can be tapped for its meaning,
 // with an optional Vietnamese line under each paragraph.
-import { translate } from '../dict.js';
+import { lookup, translate } from '../dict.js';
 import { QUEST } from '../logic.js';
 import { SOURCES, ago, cached, loadArticle, loadList, source } from '../news.js';
-import { speaker } from '../speech.js';
-import { Progress } from '../store.js';
+import { speaker, toast } from '../speech.js';
+import { Progress, Review } from '../store.js';
 import { accent, bigBtn, esc, sayBtn, toggleChip, topBar } from '../ui.js';
-import { openWordSheet } from '../wordsheet.js';
+import { openWordSheet, wordCard } from '../wordsheet.js';
 
-/** Wraps each English word so a tap can look it up. */
-export const tappable = (text) =>
+const WORD = /([A-Za-z][A-Za-z’'-]*)/;
+
+/**
+ * Where the learner stands with a word, LingQ-style: "known" (marked learned), "learning" (in the
+ * review deck), "new" (in the dictionary but neither), or "" for names and words not in the list.
+ */
+// Grammar words ("the", "of", "she", "and") are known long before they are learned on purpose.
+const GRAMMAR = new Set(['prep', 'pron', 'det', 'conj', 'num']);
+
+export function wordStatus(raw) {
+  const e = lookup(raw);
+  if (!e || GRAMMAR.has(e.pos)) return { status: '', entry: null };
+  if (Progress.get().learnedWords.includes(e.w)) return { status: 'known', entry: e };
+  return { status: Review.has(`v:${e.w}`) ? 'learning' : 'new', entry: e };
+}
+
+/** Wraps each English word so a tap can look it up; `colour` adds its status highlight. */
+export const tappable = (text, colour = false) =>
   String(text)
-    .split(/([A-Za-z][A-Za-z’'-]*)/)
-    .map((part, i) => (i % 2 ? `<span class="w" data-act="word" data-w="${esc(part)}">${esc(part)}</span>` : esc(part)))
+    .split(WORD)
+    .map((part, i) => {
+      if (!(i % 2)) return esc(part);
+      const cls = colour ? wordStatus(part).status : '';
+      return `<span class="w ${cls}" data-act="word" data-w="${esc(part)}">${esc(part)}</span>`;
+    })
     .join('');
+
+/** Distinct dictionary words of a text grouped by status, for the "you know X%" summary. */
+export function wordStats(texts) {
+  const by = { known: new Map(), learning: new Map(), new: new Map() };
+  for (const t of texts)
+    for (const part of String(t).split(WORD).filter((_, i) => i % 2)) {
+      const { status, entry } = wordStatus(part);
+      if (status) by[status].set(entry.w, entry);
+    }
+  const total = by.known.size + by.learning.size + by.new.size;
+  return { ...by, total, percent: total ? Math.round((by.known.size * 100) / total) : 0 };
+}
 
 const clock = (t) => new Date(t).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
 
@@ -136,6 +168,8 @@ export function articleScreen(app) {
   const doneKey = `news:${it.link}`;
 
   async function load() {
+    // Word colours need the 3000-word list.
+    app.loadVocab().then(() => alive && app.update()).catch(() => {});
     try {
       article = await loadArticle(it.link);
     } catch (e) {
@@ -160,7 +194,7 @@ export function articleScreen(app) {
   const para = (p, i) => `
     <div class="para">
       <div class="row top gap-s">
-        <p class="grow reading">${tappable(p)}</p>
+        <p class="grow reading">${tappable(p, true)}</p>
         ${sayBtn(p, { size: 32 })}
       </div>
       ${bilingual ? `<p class="para-vi">${esc(vi.get(p) || (i === 0 || vi.size ? 'Đang dịch…' : ''))}</p>` : ''}
@@ -172,14 +206,28 @@ export function articleScreen(app) {
     view() {
       const title = article?.title || it.title;
       const done = Progress.get().done.includes(doneKey);
+      const stats = article && app.vocab ? wordStats([title, ...article.paragraphs]) : null;
+      const summary = stats?.total ? `
+        <div class="card known-card">
+          <div class="row center-v gap">
+            <div class="known-pct">${stats.percent}%</div>
+            <div class="grow">
+              <div class="t-sub">Bạn đã biết ${stats.percent}% từ trong bài</div>
+              <div class="muted small">${stats.new.size} từ mới · ${stats.learning.size} từ đang học · ${stats.known.size} từ đã thuộc</div>
+            </div>
+          </div>
+          <div class="row gap-s wrap legend"><span class="w new">Mới</span><span class="w learning">Đang học</span><span class="w known">Đã thuộc</span></div>
+          ${stats.new.size ? `<button class="btn outline" data-act="enrollNew">🔁 Thêm ${stats.new.size} từ mới vào Ôn tập</button>` : ''}
+        </div>` : '';
       return `<div class="screen" ${accent('coral')}>
         ${topBar(s.brand, it.time ? ago(it.time) : 'Đọc báo', toggleChip(bilingual ? 'Song ngữ ✓' : 'Song ngữ', bilingual, 'bilingual'))}
         <div class="scroll pad reader" data-scroll="article">
-          <h2 class="article-title">${tappable(title)}</h2>
+          <h2 class="article-title">${tappable(title, true)}</h2>
           ${bilingual ? `<p class="para-vi">${esc(titleVi.get(title) || vi.get(title) || '…')}</p>` : ''}
           <div class="muted tiny">Chạm vào một từ để xem nghĩa · 🔊 để nghe cả đoạn</div>
           ${!article && !error ? '<div class="empty"><div class="huge">⏳</div><p class="muted">Đang tải bài…</p></div>' : ''}
           ${error ? `<div class="err">😕 ${esc(error)}</div>${it.summary ? `<div class="para"><p class="reading">${tappable(it.summary)}</p></div>` : ''}` : ''}
+          ${summary}
           ${article ? article.paragraphs.map(para).join('') : ''}
           <a class="btn outline" href="${esc(it.link)}" target="_blank" rel="noopener">Mở bài gốc trên ${esc(s.brand)} ↗</a>
           <div class="muted tiny center">Nguồn: ${esc(s.brand)}. Bài được tải trực tiếp về máy bạn để đọc, SpeakEasy không lưu lại nội dung.</div>
@@ -188,7 +236,12 @@ export function articleScreen(app) {
       </div>`;
     },
     actions: {
-      word: (d) => { openWordSheet(d.w); return false; },
+      word: (d) => { openWordSheet(d.w, app.update); return false; },
+      enrollNew: () => {
+        const stats = wordStats([article.title || it.title, ...article.paragraphs]);
+        const n = Review.add([...stats.new.values()].map(wordCard));
+        toast(`Đã thêm ${n} từ vào Ôn tập hôm nay 🔁`);
+      },
       bilingual: () => {
         bilingual = !bilingual;
         speaker.stop();

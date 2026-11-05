@@ -2,7 +2,7 @@
 
 Bản web của app Android SpeakEasy, có đủ tính năng: 46 chủ đề trong 6 nhóm, 3000 từ vựng thông dụng theo 30 chủ đề,
 đọc báo BBC/CNN song ngữ (chạm từ để xem nghĩa), mẫu câu, câu bản xứ, thẻ từ vựng, hội thoại (Nghe / Nhập vai / Phản xạ),
-luyện nói có chấm điểm, ôn tập SM-2, 6 game, Phòng phát âm, Truyện nghe, Nói với AI (Gemini) và Gọi thoại, nhiệm vụ, XP, chuỗi ngày.
+luyện nói có chấm điểm, luyện nhại (shadowing) có ghi âm và biểu đồ ngữ điệu, ôn tập ngắt quãng FSRS, 6 game, Phòng phát âm, Truyện nghe, Nói với AI (Gemini) và Gọi thoại, nhiệm vụ, XP, chuỗi ngày.
 Chỉ dùng HTML/CSS/JavaScript thuần, không cần build và không cần máy Mac.
 
 ## Cài lên iPad
@@ -23,7 +23,16 @@ Chỉ dùng HTML/CSS/JavaScript thuần, không cần build và không cần má
 - Đọc bài: nội dung được tải về máy người đọc khi mở (chế độ đọc), không lưu lại. Luôn có nguồn và link bài gốc.
 - Trình duyệt chặn đọc trực tiếp BBC/CNN, nên bản web đi qua proxy: Jina Reader, allorigins… lần lượt.
   Muốn ổn định hơn, tự dựng proxy miễn phí theo [tools/README.md](tools/README.md).
+- Tô màu từ: gạch chân xanh = từ mới, nền vàng = đang ôn, chữ thường = đã thuộc (bỏ qua giới từ, đại từ, mạo từ, liên từ),
+  kèm "Bạn đã biết X% từ trong bài" và nút thêm hết từ mới vào Ôn tập. Ý tưởng từ Lute (MIT).
 - Chạm từ: tra trong 3000 từ (có đoán từ gốc: went → go, stopped → stop), không có thì dịch tự động (Google Translate, dự phòng Gemini).
+
+## Ôn tập & luyện nhại
+
+- Lịch ôn dùng FSRS-4.5 với bộ trọng số mặc định (thuật toán mở của open-spaced-repetition, viết lại trong `js/logic.js`).
+  Thẻ cũ xếp lịch bằng SM-2 được chuyển sang tự động, không mất tiến độ.
+- Luyện nhại: mở từ trang chủ đề (🎙️). Nghe mẫu / lặp, ghi âm tối đa 10 giây, nghe lại, "Mẫu → Bạn",
+  xem sóng âm + đường cao độ, nhận xét tốc độ và ngữ điệu cuối câu. Trên iPad cần cho phép micro cho trang.
 
 ## Khác với bản Android
 
@@ -34,7 +43,7 @@ Chỉ dùng HTML/CSS/JavaScript thuần, không cần build và không cần má
 
 ```bash
 python -m http.server 5173 --directory web   # rồi mở http://localhost:5173
-node web/test/logic.test.mjs                 # kiểm tra chấm điểm, SM-2, chuỗi ngày, game, nội dung
+node web/test/logic.test.mjs                 # chấm điểm, FSRS, chuỗi ngày, game, nội dung, tra từ, cao độ
 ```
 
 Trên localhost, service worker (bộ nhớ offline) được tắt để sửa code là thấy ngay.
@@ -64,6 +73,7 @@ web/
     ├── dict.js     tra từ offline + dịch tự động
     ├── news.js     tải tin BBC/CNN, tách nội dung bài
     ├── wordsheet.js  bảng nghĩa khi chạm vào từ
+    ├── audio.js, recorder.js  ghi âm và phân tích cao độ cho luyện nhại
     ├── ui.js, app.js
-    └── screens/    home, lesson (chủ đề · cụm từ · hội thoại · luyện nói), games, review, lab, stories, ai, progress, vocab, news
+    └── screens/    home, lesson (chủ đề · cụm từ · hội thoại · luyện nói), games, review, lab, stories, ai, progress, vocab, news, shadow
 ```

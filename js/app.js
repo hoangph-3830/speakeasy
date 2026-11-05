@@ -12,6 +12,7 @@ import * as aiChat from './screens/ai.js';
 import * as me from './screens/progress.js';
 import * as vocab from './screens/vocab.js';
 import * as news from './screens/news.js';
+import * as shadow from './screens/shadow.js';
 import { buildIndex } from './dict.js';
 
 const TABS = [
@@ -41,6 +42,7 @@ const ROUTES = [
   [/^topic\/([^/]+)\/phrases$/, lesson.phrasesScreen],
   [/^topic\/([^/]+)\/dialogue$/, lesson.dialogueScreen],
   [/^topic\/([^/]+)\/speak$/, lesson.speakScreen],
+  [/^topic\/([^/]+)\/shadow$/, shadow.shadowScreen],
   [/^game\/([^/]+)\/([^/]+)$/, games.gameScreen],
 ];
 
