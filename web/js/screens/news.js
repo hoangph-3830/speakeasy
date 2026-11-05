@@ -2,7 +2,7 @@
 // with an optional Vietnamese line under each paragraph.
 import { lookup, translate } from '../dict.js';
 import { QUEST } from '../logic.js';
-import { SOURCES, ago, cached, loadArticle, loadList, source } from '../news.js';
+import { BRANDS, ago, cached, loadArticle, loadList, sectionsOf, source } from '../news.js';
 import { speaker, toast } from '../speech.js';
 import { Progress, Review } from '../store.js';
 import { accent, bigBtn, esc, sayBtn, toggleChip, topBar } from '../ui.js';
@@ -49,7 +49,14 @@ export function wordStats(texts) {
 
 const clock = (t) => new Date(t).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
 
-let lastSource = 'bbc';
+// The last source read is remembered between visits and app launches.
+let lastSource = (() => {
+  try {
+    return localStorage.getItem('se.newsSource') || 'bbc';
+  } catch {
+    return 'bbc';
+  }
+})();
 // Translations of headlines, shared between list visits.
 const titleVi = new Map();
 
@@ -61,6 +68,21 @@ export function listScreen(app) {
   let bilingual = false;
   let timer = null;
   let alive = true;
+  // Set when the source changes, so the chosen chips are scrolled into view once.
+  let revealChips = true;
+
+  /** Switches to a source: cached headlines at once, fresh ones after. */
+  function pick(next) {
+    id = lastSource = next;
+    try {
+      localStorage.setItem('se.newsSource', next);
+    } catch {
+      // private mode: the choice lasts for this visit
+    }
+    entry = cached(id);
+    revealChips = true;
+    refresh();
+  }
 
   async function refresh() {
     loading = true;
@@ -115,6 +137,18 @@ export function listScreen(app) {
       alive = false;
       clearInterval(timer);
     },
+    /** Keeps the selected brand and section visible in their rows. */
+    after(root) {
+      if (!revealChips) return;
+      revealChips = false;
+      root.querySelectorAll('.chips').forEach((row) => {
+        const on = row.querySelector('.on');
+        if (!on) return;
+        const left = on.offsetLeft - row.offsetLeft;
+        if (left < row.scrollLeft || left + on.offsetWidth > row.scrollLeft + row.clientWidth)
+          row.scrollLeft = left - (row.clientWidth - on.offsetWidth) / 2;
+      });
+    },
     view() {
       const items = entry?.items || [];
       return `<div class="screen" ${accent('coral')}>
@@ -124,8 +158,9 @@ export function listScreen(app) {
             ${toggleChip(bilingual ? 'Song ngữ ✓' : 'Song ngữ', bilingual, 'bilingual')}
             <button class="chip-toggle" data-act="refresh" ${loading ? 'disabled' : ''}>${loading ? '⏳' : '↻'}</button>
           </div>
-          <div class="muted small">Tin mới từ BBC, CNN & Reuters. Chạm vào bài để đọc, chạm vào từ để xem nghĩa.</div>
-          <div class="chips mt-s">${SOURCES.map((s) => `<button class="cat-chip ${s.id === id ? 'on' : ''}" data-act="source" data-id="${s.id}">${esc(s.label)}</button>`).join('')}</div>
+          <div class="muted small">Tin mới từ BBC, CNN, Reuters, The Guardian, NPR, Al Jazeera, ABC News & The Conversation. Chạm vào bài để đọc, chạm vào từ để xem nghĩa.</div>
+          <div class="chips mt-s" data-scroll="brands">${BRANDS.map((b) => `<button class="cat-chip ${b === source(id).brand ? 'on' : ''}" data-act="brand" data-b="${esc(b)}">${esc(b)}</button>`).join('')}</div>
+          ${sectionsOf(source(id).brand).length > 1 ? `<div class="chips sections" data-scroll="sections">${sectionsOf(source(id).brand).map((s) => `<button class="sec-chip ${s.id === id ? 'on' : ''}" data-act="source" data-id="${s.id}">${esc(s.label)}</button>`).join('')}</div>` : ''}
         </div>
         <div class="scroll pad" data-scroll="news-${id}">
           <div class="muted tiny">${loading ? 'Đang cập nhật…' : entry ? `Cập nhật lúc ${clock(entry.at)}` : ''}</div>
@@ -136,10 +171,13 @@ export function listScreen(app) {
       </div>`;
     },
     actions: {
+      brand: (d) => {
+        if (d.b === source(id).brand) return false;
+        pick(sectionsOf(d.b)[0].id);
+        return false;
+      },
       source: (d) => {
-        id = lastSource = d.id;
-        entry = cached(id);
-        refresh();
+        pick(d.id);
         return false;
       },
       refresh: () => { refresh(); return false; },

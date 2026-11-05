@@ -135,6 +135,148 @@ class NewsTest {
     }
 
     @Test
+    fun parsesConversationAtomWithFullContent() {
+        val atom = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
+              <id>tag:theconversation.com,2011:/global/articles</id>
+              <link rel="alternate" type="text/html" href="https://theconversation.com/global"/>
+              <title>The Conversation – Articles (Global)</title>
+              <updated>2026-11-05T08:00:00Z</updated>
+              <entry>
+                <id>tag:theconversation.com,2011:article/251234</id>
+                <published>2026-11-04T19:12:43Z</published>
+                <updated>2026-11-05T07:30:00Z</updated>
+                <link rel="alternate" type="text/html" href="https://theconversation.com/why-sleep-matters-251234"/>
+                <title>Why sleep matters more than you think</title>
+                <content type="html">&lt;figure&gt;&lt;img src="x.jpg"&gt;&lt;figcaption&gt;&lt;p&gt;A man asleep on a train.&lt;/p&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;Most adults need &lt;em&gt;seven&lt;/em&gt; hours of sleep a night.&lt;/p&gt;&lt;p&gt;Yet many get far less, and it shows.&lt;/p&gt;</content>
+                <summary>Sleep researchers explain what happens when we cut corners.</summary>
+                <author><name>Jane Doe</name></author>
+              </entry>
+            </feed>
+        """.trimIndent()
+        val items = NewsParser.parseRss(atom, NewsSource.CONVERSATION, KXmlParser())
+        assertEquals(1, items.size)
+        val entry = items[0]
+        assertEquals("Why sleep matters more than you think", entry.title)
+        assertEquals("https://theconversation.com/why-sleep-matters-251234", entry.link)
+        assertEquals("Sleep researchers explain what happens when we cut corners.", entry.summary)
+        // <published> wins over <updated>.
+        assertEquals(1793819563000L, entry.published)
+        assertEquals(
+            listOf("Most adults need seven hours of sleep a night.", "Yet many get far less, and it shows."),
+            NewsParser.contentParagraphs(entry.content),
+        )
+        assertEquals(1793819563000L, NewsParser.parseDate("2026-11-04T19:12:43Z"))
+        assertEquals(1793819563000L, NewsParser.parseDate("2026-11-04T20:12:43+01:00"))
+    }
+
+    @Test
+    fun cleansGuardianDescriptionAndUsesMediaContent() {
+        val long = "Ministers promised new funding for coastal towns after weeks of flooding. ".repeat(6)
+        val feed = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <rss xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>World news | The Guardian</title>
+            <item><title>Floods hit coastal towns</title><link>https://www.theguardian.com/world/2026/nov/04/floods</link>
+            <description>&lt;p&gt;Rescue teams worked through the night.&lt;/p&gt; &lt;p&gt;$long&lt;/p&gt; &lt;a href="https://www.theguardian.com/world/2026/nov/04/floods"&gt;Continue reading...&lt;/a&gt;</description>
+            <pubDate>Wed, 04 Nov 2026 10:15:30 GMT</pubDate>
+            <media:content width="140" url="https://i.guim.co.uk/small.jpg"/>
+            <media:content width="460" url="https://i.guim.co.uk/large.jpg"/>
+            </item>
+            <item><title>Short one</title><link>https://www.theguardian.com/world/2026/nov/04/short</link>
+            <description>&lt;p&gt;Just one line.&lt;/p&gt; &lt;a href="x"&gt;Continue reading...&lt;/a&gt;</description></item>
+            </channel></rss>
+        """.trimIndent()
+        val items = NewsParser.parseRss(feed, NewsSource.GUARDIAN_WORLD, KXmlParser())
+        val summary = items[0].summary
+        assertTrue(summary.startsWith("Rescue teams worked through the night. Ministers promised"))
+        assertTrue(summary.endsWith("…"))
+        assertTrue(summary.length <= 301)
+        assertTrue('<' !in summary && "Continue reading" !in summary)
+        assertEquals("https://i.guim.co.uk/large.jpg", items[0].image)
+        assertEquals("Just one line.", items[1].summary)
+    }
+
+    @Test
+    fun dropsAlJazeeraVideoAndGalleryItems() {
+        val feed = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <rss version="2.0"><channel><title>Al Jazeera</title>
+            <item><title>Talks resume in Doha</title><link>https://www.aljazeera.com/news/2026/11/4/talks-resume</link></item>
+            <item><title>Watch: the storm</title><link>https://www.aljazeera.com/video/newsfeed/2026/11/4/storm</link></item>
+            <item><title>In pictures: harvest</title><link>https://www.aljazeera.com/gallery/2026/11/4/harvest</link></item>
+            </channel></rss>
+        """.trimIndent()
+        val items = NewsParser.parseRss(feed, NewsSource.ALJAZEERA, KXmlParser())
+        assertEquals(listOf("Talks resume in Doha"), items.map { it.title })
+    }
+
+    @Test
+    fun extractsNprStorytextAndAlJazeeraWysiwyg() {
+        val npr = """
+            <p>Sponsor message paragraph that is long enough to be picked by the generic fallback.</p>
+            <div id="storytext" class="storytext storylocation linkLocation">
+              <div class="bucketwrap image"><figure><img src="a.jpg"><figcaption><p>Voters line up in Ohio on Tuesday morning.</p></figcaption></figure></div>
+              <p>Voters across the state went to the polls on Tuesday.</p>
+              <div class="bucketwrap internallink"><p>Sign up for our politics newsletter</p></div>
+              <p>Turnout was higher than expected.</p>
+            </div>
+            <p>Copyright 2026 NPR. To see more, visit https://www.npr.org.</p>
+        """.trimIndent()
+        assertEquals(
+            listOf("Voters across the state went to the polls on Tuesday.", "Turnout was higher than expected."),
+            NewsParser.extractParagraphs(npr),
+        )
+
+        val aj = """
+            <header><p>Published On 4 Nov 2026</p></header>
+            <div class="wysiwyg wysiwyg--all-content">
+              <p>Negotiators met in Doha for a second round of talks.</p>
+              <div class="advertisement"><p>Advertisement</p></div>
+              <p>Both sides said progress had been made.</p>
+            </div>
+        """.trimIndent()
+        assertEquals(
+            listOf("Negotiators met in Doha for a second round of talks.", "Both sides said progress had been made."),
+            NewsParser.extractParagraphs(aj),
+        )
+    }
+
+    @Test
+    fun skipsCaptionsBylinesAndPromosInArticles() {
+        val guardian = """
+            <p>Site-wide banner text that is long enough to be a paragraph outside the article.</p>
+            <article class="dcr-1">
+              <figure><img src="b.jpg"><figcaption><p class="dcr-cap">Flood water in the town centre, photographed on Monday.</p></figcaption></figure>
+              <p class="dcr-byline">By Sam Jones in Leeds</p>
+              <p class="dcr-s3ycb2">Flood water rose quickly across the north of England.</p>
+              <p class="dcr-s3ycb2">Sign up to First Edition, our free daily newsletter</p>
+              <p class="dcr-s3ycb2">Related stories</p>
+              <p class="dcr-s3ycb2">Residents were told to leave their homes.</p>
+            </article>
+        """.trimIndent()
+        assertEquals(
+            listOf("Flood water rose quickly across the north of England.", "Residents were told to leave their homes."),
+            NewsParser.extractParagraphs(guardian),
+        )
+        assertTrue(NewsParser.isStoryText("Millions subscribe to the service each year."))
+        assertTrue(!NewsParser.isStoryText("Advertisement"))
+    }
+
+    @Test
+    fun sourcesAreGroupedByBrand() {
+        assertEquals(
+            listOf("BBC", "CNN", "Reuters", "The Guardian", "NPR", "Al Jazeera", "ABC News", "The Conversation"),
+            NewsSource.brands,
+        )
+        assertEquals(6, NewsSource.BBC_WORLD.sections.size)
+        assertEquals("BBC · Thế giới", NewsSource.BBC_WORLD.tag)
+        assertEquals("CNN", NewsSource.CNN.tag)
+        assertEquals("BBC News", NewsSource.BBC_TOP.publisher)
+        assertEquals("Reuters", NewsSource.REUTERS_MARKETS.publisher)
+    }
+
+    @Test
     fun decodesEntitiesOnce() {
         assertEquals(
             "Tom & Jerry's \"show\" — <now>",

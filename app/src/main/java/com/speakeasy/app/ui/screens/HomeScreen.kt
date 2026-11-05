@@ -117,7 +117,7 @@ fun HomeScreen(
                     "${progress.learnedWords.size} từ đã thuộc · học theo nhóm",
                     SkyLight, Modifier.weight(1f), openVocab,
                 )
-                FeatureTile("📰", "Đọc báo", "BBC, CNN, Reuters · chạm từ để tra nghĩa", SunLight, Modifier.weight(1f), openNews)
+                FeatureTile("📰", "Đọc báo", "BBC, CNN, Reuters, Guardian… · chạm từ để tra nghĩa", SunLight, Modifier.weight(1f), openNews)
             }
         }
         item {

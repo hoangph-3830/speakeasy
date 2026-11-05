@@ -5,6 +5,7 @@ import android.util.Xml
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -12,35 +13,76 @@ import org.xmlpull.v1.XmlPullParser
 import java.io.IOException
 import java.io.StringReader
 import java.net.URLEncoder
+import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
 /**
+ * A section of a publisher's news. Sources are grouped by [brand] (the chip in the first row) and
+ * named by a short section [label] (the chip in the second row); [publisher] heads the reader.
  * [headlinesOnly] sources give a headline list but no readable article page: the reader shows the
  * headline to study and sends the learner to the publisher's site for the full story.
+ * The enum names are cache keys in SharedPreferences, so existing ones must not be renamed.
  */
-enum class NewsSource(val label: String, val url: String, val publisher: String, val headlinesOnly: Boolean = false) {
-    BBC_TOP("BBC Top", "https://feeds.bbci.co.uk/news/rss.xml", "BBC News"),
-    BBC_WORLD("BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml", "BBC News"),
-    BBC_BUSINESS("BBC Business", "https://feeds.bbci.co.uk/news/business/rss.xml", "BBC News"),
-    BBC_TECH("BBC Tech", "https://feeds.bbci.co.uk/news/technology/rss.xml", "BBC News"),
-    BBC_HEALTH("BBC Health", "https://feeds.bbci.co.uk/news/health/rss.xml", "BBC News"),
-    BBC_SCIENCE("BBC Science", "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml", "BBC News"),
-    CNN("CNN", "https://lite.cnn.com/", "CNN"),
+enum class NewsSource(
+    val brand: String,
+    val label: String,
+    val url: String,
+    val publisher: String = brand,
+    val headlinesOnly: Boolean = false,
+) {
+    BBC_TOP("BBC", "Nổi bật", "https://feeds.bbci.co.uk/news/rss.xml", "BBC News"),
+    BBC_WORLD("BBC", "Thế giới", "https://feeds.bbci.co.uk/news/world/rss.xml", "BBC News"),
+    BBC_BUSINESS("BBC", "Kinh doanh", "https://feeds.bbci.co.uk/news/business/rss.xml", "BBC News"),
+    BBC_TECH("BBC", "Công nghệ", "https://feeds.bbci.co.uk/news/technology/rss.xml", "BBC News"),
+    BBC_HEALTH("BBC", "Sức khỏe", "https://feeds.bbci.co.uk/news/health/rss.xml", "BBC News"),
+    BBC_SCIENCE("BBC", "Khoa học", "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml", "BBC News"),
+    CNN("CNN", "Nổi bật", "https://lite.cnn.com/"),
     // Reuters has no public RSS and blocks scripted visits, so its headlines come from a Google News search.
-    REUTERS("Reuters", googleNews("site:reuters.com"), "Reuters", headlinesOnly = true),
-    REUTERS_WORLD("Reuters World", googleNews("site:reuters.com/world"), "Reuters", headlinesOnly = true),
-    REUTERS_BUSINESS("Reuters Business", googleNews("site:reuters.com/business"), "Reuters", headlinesOnly = true),
-    REUTERS_MARKETS("Reuters Markets", googleNews("site:reuters.com/markets"), "Reuters", headlinesOnly = true),
+    REUTERS("Reuters", "Nổi bật", googleNews("site:reuters.com"), headlinesOnly = true),
+    REUTERS_WORLD("Reuters", "Thế giới", googleNews("site:reuters.com/world"), headlinesOnly = true),
+    REUTERS_BUSINESS("Reuters", "Kinh doanh", googleNews("site:reuters.com/business"), headlinesOnly = true),
+    REUTERS_MARKETS("Reuters", "Thị trường", googleNews("site:reuters.com/markets"), headlinesOnly = true),
+    GUARDIAN_WORLD("The Guardian", "Thế giới", "https://www.theguardian.com/world/rss"),
+    GUARDIAN_BUSINESS("The Guardian", "Kinh doanh", "https://www.theguardian.com/uk/business/rss"),
+    GUARDIAN_TECH("The Guardian", "Công nghệ", "https://www.theguardian.com/uk/technology/rss"),
+    GUARDIAN_ENVIRONMENT("The Guardian", "Môi trường", "https://www.theguardian.com/uk/environment/rss"),
+    GUARDIAN_SCIENCE("The Guardian", "Khoa học", "https://www.theguardian.com/science/rss"),
+    NPR_TOP("NPR", "Nổi bật", "https://feeds.npr.org/1001/rss.xml"),
+    NPR_WORLD("NPR", "Thế giới", "https://feeds.npr.org/1004/rss.xml"),
+    NPR_BUSINESS("NPR", "Kinh doanh", "https://feeds.npr.org/1006/rss.xml"),
+    NPR_TECH("NPR", "Công nghệ", "https://feeds.npr.org/1019/rss.xml"),
+    NPR_HEALTH("NPR", "Sức khỏe", "https://feeds.npr.org/1128/rss.xml"),
+    ALJAZEERA("Al Jazeera", "Nổi bật", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ABC_TOP("ABC News", "Nổi bật", "https://www.abc.net.au/news/feed/45910/rss.xml"),
+    ABC_LATEST("ABC News", "Mới nhất", "https://www.abc.net.au/news/feed/51120/rss.xml"),
+    ABC_BUSINESS("ABC News", "Kinh doanh", "https://www.abc.net.au/news/feed/51892/rss.xml"),
+    // An Atom feed whose entries carry the whole article, so its stories open without fetching the page.
+    CONVERSATION("The Conversation", "Nổi bật", "https://theconversation.com/global/articles.atom"),
+    ;
+
+    /** The brand's sections, in display order. */
+    val sections: List<NewsSource> get() = entries.filter { it.brand == brand }
+
+    /** "BBC · Thế giới", or just the brand when it has a single section. */
+    val tag: String get() = if (sections.size > 1) "$brand · $label" else brand
+
+    companion object {
+        /** Brands in display order. */
+        val brands: List<String> = entries.map { it.brand }.distinct()
+    }
 }
 
 /** Google News RSS for the last day's results of [query]. */
 private fun googleNews(query: String) =
     "https://news.google.com/rss/search?q=${URLEncoder.encode("$query when:1d", "UTF-8")}&hl=en-US&gl=US&ceid=US:en"
 
-/** A headline; CNN Lite gives no [summary] or [published] time. */
+/**
+ * A headline; CNN Lite gives no [summary] or [published] time. [content] is the full article HTML
+ * some feeds (Atom `<content>`) carry; it is never written to disk.
+ */
 @Serializable
 data class NewsItem(
     val title: String,
@@ -49,6 +91,7 @@ data class NewsItem(
     val summary: String = "",
     val published: Long? = null,
     val image: String? = null,
+    @Transient val content: String = "",
 )
 
 @Serializable
@@ -60,38 +103,82 @@ data class Article(val title: String, val paragraphs: List<String>)
 /** Pure parsing helpers, kept free of Android calls so they run in unit tests. */
 object NewsParser {
 
-    /** Reads RSS `<item>`s; [parser] is injectable because android.util.Xml is not available on the JVM. */
+    /**
+     * Reads RSS `<item>`s and Atom `<entry>`s; [parser] is injectable because android.util.Xml is
+     * not available on the JVM.
+     */
     fun parseRss(xml: String, source: NewsSource, parser: XmlPullParser = Xml.newPullParser()): List<NewsItem> {
         parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
         parser.setInput(StringReader(xml))
         val items = mutableListOf<NewsItem>()
         var fields: MutableMap<String, String>? = null
+        var imageWidth = -1
         while (parser.next() != XmlPullParser.END_DOCUMENT) {
             when (parser.eventType) {
                 XmlPullParser.START_TAG -> when (val name = parser.name) {
-                    "item" -> fields = mutableMapOf()
+                    "item", "entry" -> { fields = mutableMapOf(); imageWidth = -1 }
                     "media:thumbnail", "thumbnail" -> fields?.let { f ->
                         parser.getAttributeValue(null, "url")?.let { f.putIfAbsent("image", it) }
                     }
-                    "title", "description", "link", "pubDate" -> fields?.put(name, parser.nextText().trim())
+                    // The Guardian lists several sizes of one picture and no thumbnail: keep the widest.
+                    "media:content" -> fields?.let { f ->
+                        val url = parser.getAttributeValue(null, "url")
+                        val width = parser.getAttributeValue(null, "width")?.toIntOrNull() ?: 0
+                        if (url != null && width > imageWidth) { f["mediaContent"] = url; imageWidth = width }
+                    }
+                    // Atom: <link rel="alternate" href="…"/>; RSS: <link>…</link>.
+                    "link" -> fields?.let { f ->
+                        val href = parser.getAttributeValue(null, "href")
+                        val rel = parser.getAttributeValue(null, "rel")
+                        if (href == null) f["link"] = parser.nextText().trim()
+                        else if (rel == null || rel == "alternate") f.putIfAbsent("link", href)
+                    }
+                    "summary" -> fields?.put("description", parser.nextText().trim())
+                    "content" -> fields?.let { f ->
+                        if (parser.getAttributeValue(null, "type") != "xhtml") f["content"] = parser.nextText().trim()
+                    }
+                    "published", "updated" -> fields?.let { f ->
+                        val date = parser.nextText().trim()
+                        if (name == "published") f["pubDate"] = date else f.putIfAbsent("pubDate", date)
+                    }
+                    "title", "description", "pubDate" -> fields?.put(name, parser.nextText().trim())
                 }
-                XmlPullParser.END_TAG -> if (parser.name == "item") {
+                XmlPullParser.END_TAG -> if (parser.name == "item" || parser.name == "entry") {
                     val f = fields ?: continue
                     val title = clean(f["title"].orEmpty())
                     val link = decodeEntities(f["link"].orEmpty()).trim()
-                    if (title.isNotEmpty() && link.isNotEmpty()) items += NewsItem(
+                    if (title.isNotEmpty() && link.isNotEmpty() && !isMediaOnly(link)) items += NewsItem(
                         title = title,
                         link = link,
                         source = source,
-                        summary = clean(f["description"].orEmpty()),
+                        summary = summarize(f["description"].orEmpty()),
                         published = f["pubDate"]?.let(::parseDate),
-                        image = f["image"],
+                        image = f["image"] ?: f["mediaContent"],
+                        content = f["content"].orEmpty(),
                     )
                     fields = null
                 }
             }
         }
         return if (source.headlinesOnly) items.map(::headlineOnly).sortedByDescending { it.published ?: 0L } else items
+    }
+
+    /** Video and photo-gallery pages (Al Jazeera) have no article text to read. */
+    private fun isMediaOnly(link: String) = "/video/" in link || "/gallery/" in link
+
+    private const val SUMMARY_CHARS = 300
+    private val paragraphBreak = Regex("</p>|<br\\s*/?>", RegexOption.IGNORE_CASE)
+
+    /**
+     * Plain text of a feed description. The Guardian's is several HTML paragraphs ending in a
+     * "Continue reading…" link, so it is cut at a word boundary to about [SUMMARY_CHARS] characters.
+     */
+    fun summarize(description: String): String {
+        val text = clean(paragraphBreak.replace(description, " "))
+            .removeSuffix("Continue reading...").removeSuffix("Continue reading…").trim()
+        if (text.length <= SUMMARY_CHARS) return text
+        val cut = text.lastIndexOf(' ', SUMMARY_CHARS).takeIf { it > SUMMARY_CHARS / 2 } ?: SUMMARY_CHARS
+        return text.take(cut).trimEnd(' ', ',', ';', ':') + "…"
     }
 
     /**
@@ -104,8 +191,12 @@ object NewsParser {
         return item.copy(title = title, summary = summary, image = null)
     }
 
-    fun parseDate(text: String): Long? =
-        runCatching { ZonedDateTime.parse(text.trim(), DateTimeFormatter.RFC_1123_DATE_TIME).toInstant().toEpochMilli() }.getOrNull()
+    /** RSS dates (RFC 1123) and Atom dates (ISO-8601). */
+    fun parseDate(text: String): Long? {
+        val t = text.trim()
+        return runCatching { ZonedDateTime.parse(t, DateTimeFormatter.RFC_1123_DATE_TIME).toInstant().toEpochMilli() }.getOrNull()
+            ?: runCatching { OffsetDateTime.parse(t).toInstant().toEpochMilli() }.getOrNull()
+    }
 
     private val cnnCard = Regex("""<li[^>]*class="card--lite"[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>""", RegexOption.DOT_MATCHES_ALL)
 
@@ -121,20 +212,70 @@ object NewsParser {
     private val cnnParagraph = Regex("""<p[^>]*class="[^"]*paragraph--lite[^"]*"[^>]*>(.*?)</p>""", RegexOption.DOT_MATCHES_ALL)
     private val bbcBlock = Regex("""<div[^>]*data-component="text-block"[^>]*>(.*?)</div>""", RegexOption.DOT_MATCHES_ALL)
     private val paragraph = Regex("""<p(?:\s[^>]*)?>(.*?)</p>""", RegexOption.DOT_MATCHES_ALL)
+    private val abcParagraph = Regex("""<p[^>]*class="[^"]*paragraph_paragraph[^"]*"[^>]*>(.*?)</p>""", RegexOption.DOT_MATCHES_ALL)
     private val heading = Regex("""<h1[^>]*>(.*?)</h1>""", RegexOption.DOT_MATCHES_ALL)
     private val scripts = Regex("""<(script|style|noscript)[^>]*>.*?</\1>""", setOf(RegexOption.DOT_MATCHES_ALL, RegexOption.IGNORE_CASE))
+    // Photo captions and asides are not part of the story.
+    private val captions = Regex("""<(figure|figcaption|aside)\b[^>]*>.*?</\1>""", setOf(RegexOption.DOT_MATCHES_ALL, RegexOption.IGNORE_CASE))
+    private val nprStory = Regex("""<div[^>]*\bid="storytext"[^>]*>""")
+    private val wysiwyg = Regex("""<div[^>]*\bclass="[^"]*\bwysiwyg\b[^"]*"[^>]*>""")
+    private val articleTag = Regex("""<article\b[^>]*>""", RegexOption.IGNORE_CASE)
 
-    /** Article paragraphs: CNN Lite's markup, then BBC's text blocks, then any long-enough `<p>`. */
+    /**
+     * Article paragraphs, from the first layout that matches: CNN Lite's markup, BBC's text blocks,
+     * NPR's `#storytext`, Al Jazeera's `.wysiwyg`, ABC's `paragraph_paragraph` classes, the page's
+     * `<article>` (The Guardian), then any long-enough `<p>`. Captions, bylines and promos are skipped.
+     */
     fun extractParagraphs(html: String): List<String> {
-        val page = scripts.replace(html, " ")
-        val cnn = cnnParagraph.findAll(page).map { clean(it.groupValues[1]) }.filter { it.isNotEmpty() }.toList()
-        if (cnn.isNotEmpty()) return cnn
-        val bbc = bbcBlock.findAll(page)
-            .flatMap { block -> paragraph.findAll(block.groupValues[1]).map { clean(it.groupValues[1]) } }
-            .filter { it.isNotEmpty() }.toList()
-        if (bbc.isNotEmpty()) return bbc
-        return paragraph.findAll(page).map { clean(it.groupValues[1]) }.filter { it.length > 40 }.toList()
+        val page = captions.replace(scripts.replace(html, " "), " ")
+        fun texts(matches: Sequence<MatchResult>) = matches.map { clean(it.groupValues[1]) }.filter(::isStoryText).toList()
+        fun within(open: Regex, tag: String) = inner(page, open, tag)?.let { texts(paragraph.findAll(it)) }.orEmpty()
+        return texts(cnnParagraph.findAll(page))
+            .ifEmpty { texts(bbcBlock.findAll(page).flatMap { paragraph.findAll(it.groupValues[1]) }) }
+            .ifEmpty { within(nprStory, "div") }
+            .ifEmpty { within(wysiwyg, "div") }
+            .ifEmpty { texts(abcParagraph.findAll(page)) }
+            .ifEmpty { within(articleTag, "article") }
+            .ifEmpty { texts(paragraph.findAll(page)).filter { it.length > 40 } }
     }
+
+    /** The HTML inside the first element opened by [open], up to its matching `</tag>`. */
+    private fun inner(html: String, open: Regex, tag: String): String? {
+        val start = open.find(html) ?: return null
+        val from = start.range.last + 1
+        var depth = 1
+        for (m in Regex("<(/?)$tag\\b[^>]*>", RegexOption.IGNORE_CASE).findAll(html, from)) {
+            depth += if (m.groupValues[1].isEmpty()) 1 else -1
+            if (depth == 0) return html.substring(from, m.range.first)
+        }
+        return html.substring(from)
+    }
+
+    private val byline = Regex("""^(By|Written by|Reporting by|Photograph:|Photo:)\s""", RegexOption.IGNORE_CASE)
+    private val promo = Regex("""^(Sign up|Subscribe)\b|\bnewsletters?\b""", RegexOption.IGNORE_CASE)
+    private val sentenceEnd = Regex("""[.!?…]["”’')]*$""")
+
+    /** Donation asks at the end of reader-funded newsrooms (The Guardian, NPR), however long. */
+    private val donation = Regex(
+        """fending off legal risks|reader[- ]funded|(support|fund|power)(s|ing)? (our|independent|this) journalism|make a (contribution|donation)|become a (supporter|member)""",
+        RegexOption.IGNORE_CASE,
+    )
+
+    /** False for bylines, newsletter promos, donation asks, "Advertisement" and short fragments that are not sentences. */
+    fun isStoryText(text: String): Boolean = when {
+        text.isEmpty() -> false
+        text.equals("Advertisement", ignoreCase = true) -> false
+        donation.containsMatchIn(text) -> false
+        byline.containsMatchIn(text) && text.length < 120 -> false
+        promo.containsMatchIn(text) && text.length < 200 -> false
+        text.length < 40 && !sentenceEnd.containsMatchIn(text) -> false
+        else -> true
+    }
+
+    /** Paragraphs of the article HTML a feed carries in full (The Conversation's Atom `<content>`). */
+    fun contentParagraphs(html: String): List<String> =
+        paragraph.findAll(captions.replace(scripts.replace(html, " "), " "))
+            .map { clean(it.groupValues[1]) }.filter(::isStoryText).toList()
 
     fun extractTitle(html: String): String? = heading.find(html)?.let { clean(it.groupValues[1]) }?.takeIf { it.isNotEmpty() }
 
@@ -174,7 +315,7 @@ object NewsParser {
     }
 }
 
-/** Headlines from BBC, CNN and Reuters, cached per source so the last list shows instantly offline. */
+/** Headlines from every [NewsSource], cached per source so the last list shows instantly offline. */
 class NewsRepository(context: Context) {
 
     private val prefs = context.getSharedPreferences("news", Context.MODE_PRIVATE)
@@ -192,6 +333,11 @@ class NewsRepository(context: Context) {
 
     fun item(link: String): NewsItem? = known[link]
 
+    /** The source the news tab showed last. */
+    var lastSource: NewsSource
+        get() = prefs.getString(LAST_SOURCE, null)?.let { n -> NewsSource.entries.firstOrNull { it.name == n } } ?: NewsSource.BBC_TOP
+        set(value) = prefs.edit().putString(LAST_SOURCE, value.name).apply()
+
     fun cached(source: NewsSource): NewsCache? =
         prefs.getString(source.name, null)
             ?.let { runCatching { json.decodeFromString(NewsCache.serializer(), it) }.getOrNull() }
@@ -202,7 +348,14 @@ class NewsRepository(context: Context) {
         val items = if (source == NewsSource.CNN) NewsParser.parseCnnHeadlines(body) else NewsParser.parseRss(body, source)
         if (items.isEmpty()) throw IOException("No headlines in ${source.url}")
         val cache = NewsCache(items, System.currentTimeMillis())
-        items.forEach { known[it.link] = it }
+        items.forEach { item ->
+            known[item.link] = item
+            // A feed that carries the whole story fills the in-memory reader cache up front.
+            if (item.content.isNotBlank()) {
+                val paragraphs = NewsParser.contentParagraphs(item.content)
+                if (paragraphs.isNotEmpty()) articles[item.link] = Article(item.title, paragraphs)
+            }
+        }
         prefs.edit().putString(source.name, json.encodeToString(NewsCache.serializer(), cache)).apply()
         cache
     }
@@ -223,5 +376,6 @@ class NewsRepository(context: Context) {
 
     private companion object {
         val json = Json { ignoreUnknownKeys = true }
+        const val LAST_SOURCE = "last_source"
     }
 }

@@ -115,12 +115,12 @@ export function homeScreen(app) {
           ${feature('🎯', 'Phòng phát âm', score != null ? `Điểm phát âm ${score}` : 'Sửa âm người Việt hay sai', 'lavender-l', 'lab')}
           ${feature('📖', 'Truyện nghe', 'Nghe chuyện, trả lời câu hỏi', 'mint-l', 'stories')}
           ${feature('📚', '3000 từ vựng', `${p.learnedWords.length} từ đã thuộc`, 'sky-l', 'vocab')}
-          ${feature('📰', 'Đọc báo song ngữ', 'BBC, CNN · chạm từ để dịch', 'peach-l', 'news')}
+          ${feature('📰', 'Đọc báo song ngữ', 'BBC, Guardian, NPR… · chạm từ để dịch', 'peach-l', 'news')}
         </div>
         ${section('Chủ đề hôm nay ✨')}
         ${todayCard(today, p)}
         ${section('Khám phá chủ đề')}
-        <div class="chips">
+        <div class="chips" data-scroll="cats">
           ${chip('🌈 Tất cả', category == null, 'sky', '')}
           ${app.content.categories.map((c) => chip(`${c.emoji} ${c.name}`, category === c.id, catColors(c.id)[0], c.id)).join('')}
         </div>

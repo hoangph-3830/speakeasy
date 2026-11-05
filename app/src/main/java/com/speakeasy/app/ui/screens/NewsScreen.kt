@@ -6,7 +6,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,11 +17,13 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -116,12 +117,13 @@ import java.time.format.DateTimeFormatter
 private const val AUTO_REFRESH_MS = 5 * 60_000L
 private val clock = DateTimeFormatter.ofPattern("HH:mm")
 
-/** Real headlines from BBC, CNN and Reuters, read in English with a tap-to-translate dictionary. */
+/** Real headlines from eight publishers, read in English with a tap-to-translate dictionary. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsScreen(openArticle: (String) -> Unit) {
     val app = LocalApp.current
-    var source by rememberSaveable { mutableStateOf(NewsSource.BBC_TOP) }
+    var source by rememberSaveable { mutableStateOf(app.news.lastSource) }
+    val choose: (NewsSource) -> Unit = { source = it; app.news.lastSource = it }
     var bilingual by rememberSaveable { mutableStateOf(false) }
     var cache by remember(source) { mutableStateOf(app.news.cached(source)) }
     var loading by remember { mutableStateOf(false) }
@@ -157,7 +159,7 @@ fun NewsScreen(openArticle: (String) -> Unit) {
                 Text("Đọc báo 📰", style = MaterialTheme.typography.headlineSmall)
                 Text(
                     cache?.let { "Cập nhật lúc ${clock.format(Instant.ofEpochMilli(it.fetchedAt).atZone(ZoneId.systemDefault()))}" }
-                        ?: "Tin tiếng Anh thật từ BBC, CNN & Reuters, chạm từ để tra nghĩa",
+                        ?: "Tin mới từ BBC, CNN, Reuters, The Guardian, NPR, Al Jazeera, ABC News & The Conversation.",
                     color = Muted,
                     style = MaterialTheme.typography.bodyMedium,
                 )
@@ -167,22 +169,16 @@ fun NewsScreen(openArticle: (String) -> Unit) {
                 Icon(Icons.Filled.Refresh, contentDescription = "Làm mới")
             }
         }
-        Row(
-            Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 10.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            NewsSource.entries.forEach { s ->
-                Text(
-                    s.label,
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .background(if (s == source) Sky else Color.White)
-                        .clickable { source = s }
-                        .padding(horizontal = 14.dp, vertical = 9.dp),
-                    color = if (s == source) Color.White else Ink,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
+        // Both rows keep their scroll position across refreshes and bring the chosen chip into view.
+        val brands = remember { NewsSource.brands }
+        val brandRow = rememberLazyListState()
+        val sectionRow = rememberLazyListState()
+        val sections = source.sections
+        ChipRow(brandRow, brands, brands.indexOf(source.brand), label = { it }) { brand ->
+            if (brand != source.brand) choose(NewsSource.entries.first { it.brand == brand })
+        }
+        if (sections.size > 1) {
+            ChipRow(sectionRow, sections, sections.indexOf(source), label = { it.label }, small = true, onSelect = choose)
         }
         PullToRefreshBox(
             isRefreshing = loading && cache != null,
@@ -201,6 +197,54 @@ fun NewsScreen(openArticle: (String) -> Unit) {
                 else -> NewsList(cache!!, failed, bilingual, openArticle)
             }
         }
+    }
+}
+
+/** A horizontally scrolling row of chips; the [selected] one is scrolled into view whenever it changes. */
+@Composable
+private fun <T> ChipRow(
+    state: LazyListState,
+    options: List<T>,
+    selected: Int,
+    label: (T) -> String,
+    small: Boolean = false,
+    onSelect: (T) -> Unit,
+) {
+    LaunchedEffect(state, selected, options) { revealItem(state, selected) }
+    LazyRow(
+        state = state,
+        contentPadding = PaddingValues(horizontal = 20.dp, vertical = if (small) 4.dp else 10.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        itemsIndexed(options) { i, option ->
+            val on = i == selected
+            Text(
+                label(option),
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(if (on) (if (small) SkyLight else Sky) else Color.White)
+                    .border(1.dp, if (on && small) Sky else Line, CircleShape)
+                    .clickable { onSelect(option) }
+                    .padding(horizontal = if (small) 12.dp else 14.dp, vertical = if (small) 7.dp else 9.dp),
+                color = if (on) (if (small) Sky else Color.White) else Ink,
+                fontWeight = FontWeight.SemiBold,
+                style = if (small) MaterialTheme.typography.labelLarge else MaterialTheme.typography.bodyLarge,
+            )
+        }
+    }
+}
+
+/** Scrolls just enough to show item [index] whole, leaving the row alone when it already is. */
+private suspend fun revealItem(state: LazyListState, index: Int) {
+    if (index < 0) return
+    val info = state.layoutInfo
+    val shown = info.visibleItemsInfo.firstOrNull { it.index == index }
+    when {
+        shown == null -> state.animateScrollToItem(index)
+        shown.offset < info.viewportStartOffset + info.beforeContentPadding ->
+            state.animateScrollBy((shown.offset - info.viewportStartOffset - info.beforeContentPadding).toFloat())
+        shown.offset + shown.size > info.viewportEndOffset - info.afterContentPadding ->
+            state.animateScrollBy((shown.offset + shown.size - info.viewportEndOffset + info.afterContentPadding).toFloat())
     }
 }
 
@@ -232,7 +276,7 @@ private fun NewsCard(item: NewsItem, bilingual: Boolean, onClick: () -> Unit) {
     ) {
         Column(Modifier.padding(16.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Pill(item.source.label, Sky, SkyLight)
+                Pill(item.source.tag, Sky, SkyLight)
                 item.published?.let {
                     HSpace(8.dp)
                     Text(NewsParser.relativeTime(it), color = Muted, style = MaterialTheme.typography.labelMedium)
@@ -328,6 +372,11 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     val publisher = item?.source?.publisher ?: when {
         "cnn.com" in link -> "CNN"
         headlinesOnly -> "Reuters"
+        "theguardian.com" in link -> "The Guardian"
+        "npr.org" in link -> "NPR"
+        "aljazeera.com" in link -> "Al Jazeera"
+        "abc.net.au" in link -> "ABC News"
+        "theconversation.com" in link -> "The Conversation"
         else -> "BBC News"
     }
     val state by produceState<ArticleState>(ArticleState.Loading, attempt) {

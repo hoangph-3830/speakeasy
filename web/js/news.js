@@ -1,27 +1,52 @@
-// Live news for reading practice: BBC News RSS and CNN Lite headlines, plus a reader mode that
-// pulls an article's paragraphs on demand. Browsers block cross-site reads of these pages (CORS),
-// so requests go through public proxies in turn, or the learner's own proxy if set in Settings.
+// Live news for reading practice: RSS/Atom feeds of well-known English newsrooms, CNN Lite headlines
+// and Reuters headlines, plus a reader mode that pulls an article's paragraphs on demand. Browsers
+// block cross-site reads of these pages (CORS), so requests go through public proxies in turn, or
+// the learner's own proxy if set in Settings.
 import { AiSettings } from './store.js';
 
 /** Reuters has no public RSS and blocks automated reading, so its headlines come from Google News. */
 const googleNews = (query) =>
   `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:1d`)}&hl=en-US&gl=US&ceid=US:en`;
 
+const bbc = (path) => `https://feeds.bbci.co.uk/news/${path}rss.xml`;
+const guardian = (path) => `https://www.theguardian.com/${path}/rss`;
+const npr = (id) => `https://feeds.npr.org/${id}/rss.xml`;
+const abc = (id) => `https://www.abc.net.au/news/feed/${id}/rss.xml`;
+
+/** Every source is one section of a publisher (`brand`); the reader picks a brand, then a section. */
 export const SOURCES = [
-  { id: 'bbc', label: 'BBC Top', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/rss.xml' },
-  { id: 'bbc-world', label: 'BBC World', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/world/rss.xml' },
-  { id: 'bbc-business', label: 'BBC Business', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/business/rss.xml' },
-  { id: 'bbc-tech', label: 'BBC Tech', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/technology/rss.xml' },
-  { id: 'bbc-health', label: 'BBC Health', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/health/rss.xml' },
-  { id: 'bbc-science', label: 'BBC Science', brand: 'BBC News', rss: 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml' },
-  { id: 'cnn', label: 'CNN', brand: 'CNN', html: 'https://lite.cnn.com/' },
+  { id: 'bbc', brand: 'BBC News', label: 'Nổi bật', rss: bbc('') },
+  { id: 'bbc-world', brand: 'BBC News', label: 'Thế giới', rss: bbc('world/') },
+  { id: 'bbc-business', brand: 'BBC News', label: 'Kinh doanh', rss: bbc('business/') },
+  { id: 'bbc-tech', brand: 'BBC News', label: 'Công nghệ', rss: bbc('technology/') },
+  { id: 'bbc-health', brand: 'BBC News', label: 'Sức khỏe', rss: bbc('health/') },
+  { id: 'bbc-science', brand: 'BBC News', label: 'Khoa học', rss: bbc('science_and_environment/') },
+  { id: 'cnn', brand: 'CNN', label: 'Nổi bật', html: 'https://lite.cnn.com/' },
   // Headlines only: the full story is read on reuters.com itself.
-  { id: 'reuters', label: 'Reuters', brand: 'Reuters', rss: googleNews('site:reuters.com'), headlinesOnly: true },
-  { id: 'reuters-world', label: 'Reuters World', brand: 'Reuters', rss: googleNews('site:reuters.com/world'), headlinesOnly: true },
-  { id: 'reuters-business', label: 'Reuters Business', brand: 'Reuters', rss: googleNews('site:reuters.com/business'), headlinesOnly: true },
-  { id: 'reuters-markets', label: 'Reuters Markets', brand: 'Reuters', rss: googleNews('site:reuters.com/markets'), headlinesOnly: true },
+  { id: 'reuters', brand: 'Reuters', label: 'Nổi bật', rss: googleNews('site:reuters.com'), headlinesOnly: true },
+  { id: 'reuters-world', brand: 'Reuters', label: 'Thế giới', rss: googleNews('site:reuters.com/world'), headlinesOnly: true },
+  { id: 'reuters-business', brand: 'Reuters', label: 'Kinh doanh', rss: googleNews('site:reuters.com/business'), headlinesOnly: true },
+  { id: 'reuters-markets', brand: 'Reuters', label: 'Thị trường', rss: googleNews('site:reuters.com/markets'), headlinesOnly: true },
+  { id: 'guardian-world', brand: 'The Guardian', label: 'Thế giới', rss: guardian('world') },
+  { id: 'guardian-business', brand: 'The Guardian', label: 'Kinh doanh', rss: guardian('uk/business') },
+  { id: 'guardian-tech', brand: 'The Guardian', label: 'Công nghệ', rss: guardian('uk/technology') },
+  { id: 'guardian-environment', brand: 'The Guardian', label: 'Môi trường', rss: guardian('uk/environment') },
+  { id: 'guardian-science', brand: 'The Guardian', label: 'Khoa học', rss: guardian('science') },
+  { id: 'npr', brand: 'NPR', label: 'Nổi bật', rss: npr(1001) },
+  { id: 'npr-world', brand: 'NPR', label: 'Thế giới', rss: npr(1004) },
+  { id: 'npr-business', brand: 'NPR', label: 'Kinh doanh', rss: npr(1006) },
+  { id: 'npr-tech', brand: 'NPR', label: 'Công nghệ', rss: npr(1019) },
+  { id: 'npr-health', brand: 'NPR', label: 'Sức khỏe', rss: npr(1128) },
+  { id: 'aljazeera', brand: 'Al Jazeera', label: 'Nổi bật', rss: 'https://www.aljazeera.com/xml/rss/all.xml' },
+  { id: 'abc', brand: 'ABC News (Úc)', label: 'Nổi bật', rss: abc(45910) },
+  { id: 'abc-latest', brand: 'ABC News (Úc)', label: 'Mới nhất', rss: abc(51120) },
+  { id: 'abc-business', brand: 'ABC News (Úc)', label: 'Kinh doanh', rss: abc(51892) },
+  // Atom feed with the whole article inside, written by academics and journalists.
+  { id: 'conversation', brand: 'The Conversation', label: 'Nổi bật', rss: 'https://theconversation.com/global/articles.atom', fullText: true },
 ];
 export const source = (id) => SOURCES.find((s) => s.id === id) || SOURCES[0];
+export const BRANDS = [...new Set(SOURCES.map((s) => s.brand))];
+export const sectionsOf = (brand) => SOURCES.filter((s) => s.brand === brand);
 
 // Jina Reader returns the page HTML with CORS enabled and gets through to BBC, where others time out.
 const jina = (u) => ({ url: `https://r.jina.ai/${u}`, headers: { 'X-Return-Format': 'html' } });
@@ -71,21 +96,36 @@ const decode = (s) => {
 };
 const clean = (s) => decode(String(s || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 
+/** Guardian descriptions hold several paragraphs; a list card needs a couple of sentences. */
+const shorten = (s, max = 300) => (s.length <= max ? s : `${s.slice(0, max).replace(/\s+\S*$/, '')}…`);
+
 /** BBC links carry RSS tracking parameters; drop them so the same story has one key. */
 const tidyLink = (link) => decode(link).replace(/\?at_medium=RSS.*$/, '');
 
-function parseRss(xml) {
+/** RSS <item>s or Atom <entry>s; `content` is the full article HTML when the feed carries it. */
+export function parseFeed(xml) {
   const doc = new DOMParser().parseFromString(xml, 'text/xml');
-  return [...doc.querySelectorAll('item')].map((it) => ({
-    title: clean(it.querySelector('title')?.textContent),
-    summary: clean(it.querySelector('description')?.textContent),
-    link: tidyLink(it.querySelector('link')?.textContent || ''),
-    time: Date.parse(it.querySelector('pubDate')?.textContent || '') || null,
-    image: it.getElementsByTagName('media:thumbnail')[0]?.getAttribute('url') || null,
+  const tag = (el, name) => el.getElementsByTagName(name)[0];
+  const items = [...doc.querySelectorAll('item')].map((it) => ({
+    title: clean(tag(it, 'title')?.textContent),
+    summary: clean(tag(it, 'description')?.textContent),
+    link: tidyLink(tag(it, 'link')?.textContent || ''),
+    time: Date.parse(tag(it, 'pubDate')?.textContent || '') || null,
+    image: (tag(it, 'media:thumbnail') || tag(it, 'media:content'))?.getAttribute('url') || null,
+    content: tag(it, 'content:encoded')?.textContent || '',
   }));
+  const entries = [...doc.querySelectorAll('entry')].map((e) => ({
+    title: clean(tag(e, 'title')?.textContent),
+    summary: clean(tag(e, 'summary')?.textContent),
+    link: ([...e.getElementsByTagName('link')].find((l) => (l.getAttribute('rel') || 'alternate') === 'alternate') || tag(e, 'link'))?.getAttribute('href') || '',
+    time: Date.parse(tag(e, 'published')?.textContent || tag(e, 'updated')?.textContent || '') || null,
+    image: null,
+    content: tag(e, 'content')?.textContent || '',
+  }));
+  return [...items, ...entries];
 }
 
-/** rss2json reads RSS feeds with CORS enabled, so BBC lists usually load without a generic proxy. */
+/** rss2json reads feeds with CORS enabled, so most lists load without a generic proxy. */
 async function viaRss2json(rss) {
   const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rss)}`, { signal: withTimeout(12000) });
   const data = await res.json();
@@ -97,6 +137,7 @@ async function viaRss2json(rss) {
     // rss2json gives UTC as "YYYY-MM-DD HH:mm:ss".
     time: Date.parse(`${it.pubDate.replace(' ', 'T')}Z`) || null,
     image: it.thumbnail || it.enclosure?.link || null,
+    content: it.content || '',
   }));
 }
 
@@ -119,26 +160,46 @@ export function cached(id) {
   }
 }
 
-export async function loadList(id) {
-  const s = source(id);
-  let items;
-  if (s.rss) {
-    try {
-      items = await viaRss2json(s.rss);
-    } catch {
-      items = parseRss(await fetchText(s.rss));
-    }
-  } else {
-    items = parseCnnHome(await fetchText(s.html));
-  }
+const articles = new Map();
+
+/** Cleans a freshly loaded list the same way for every feed. */
+export function tidyItems(s, raw) {
+  let items = raw;
   // Google News appends " - Reuters" to titles and repeats the title as the description.
   if (s.headlinesOnly)
     items = items.map((it) => {
       const title = it.title.replace(/\s+-\s+Reuters$/, '');
       return { ...it, title, summary: it.summary.startsWith(title) ? '' : it.summary, image: null };
     });
-  items.sort((a, b) => (b.time || 0) - (a.time || 0));
-  const entry = { at: Date.now(), items: items.slice(0, 40) };
+  // Video and photo-gallery pages have no article text to read.
+  items = items.filter((it) => it.title && it.link && !/\/(video|videos|gallery|galleries|podcasts?|audio)\//.test(it.link));
+  return items
+    .map((it) => ({ ...it, summary: shorten(it.summary) }))
+    .sort((a, b) => (b.time || 0) - (a.time || 0));
+}
+
+export async function loadList(id) {
+  const s = source(id);
+  let items;
+  if (s.rss) {
+    try {
+      items = await viaRss2json(s.rss);
+      // rss2json's free tier returns 10 items; when most are videos, read the whole feed instead.
+      if (tidyItems(s, items).length < 5) items = parseFeed(await fetchText(s.rss));
+    } catch {
+      items = items?.length ? items : parseFeed(await fetchText(s.rss));
+    }
+  } else {
+    items = parseCnnHome(await fetchText(s.html));
+  }
+  items = tidyItems(s, items).slice(0, 40);
+  // Feeds that carry the whole article (The Conversation) need no page fetch; the text stays in memory.
+  for (const it of items)
+    if (s.fullText && it.content) {
+      const a = extractArticle(it.content);
+      if (a.paragraphs.length) articles.set(it.link, { title: it.title, paragraphs: a.paragraphs });
+    }
+  const entry = { at: Date.now(), items: items.map(({ content, ...rest }) => rest) };
   try {
     localStorage.setItem(cacheKey(id), JSON.stringify(entry));
   } catch {
@@ -147,22 +208,36 @@ export async function loadList(id) {
   return entry;
 }
 
-/** Paragraphs of an article page: CNN Lite and BBC markup first, any long <p> otherwise. */
+/** Each newsroom's article body, tried in order before falling back to any long <p>. */
+const BODY_SELECTORS = [
+  'p.paragraph--lite', // CNN Lite
+  '[data-component="text-block"] p', // BBC
+  '#storytext p', // NPR
+  '.wysiwyg p', // Al Jazeera
+  '[data-gu-name="body"] p, .article-body-commercial-selector p', // The Guardian
+  'article p',
+];
+
+/** Paragraphs of an article page (or of a feed's full-text HTML). */
 export function extractArticle(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
-  doc.querySelectorAll('figure, aside, nav, footer, [data-component="links-block"], [data-component="related-content"]').forEach((el) => el.remove());
-  // Video placeholders, captions and "related story" headlines are not part of the article.
-  const junk = (t) => /video can not be played|^(getty images|watch:|related|read more)/i.test(t) || (t.length < 90 && !/[.!?…"”’)]$/.test(t));
+  doc.querySelectorAll('figure, figcaption, aside, nav, footer, form, [data-component="links-block"], [data-component="related-content"], .byline, [class*="newsletter"], [class*="promo"]').forEach((el) => el.remove());
+  // Video placeholders, captions, promos and "related story" headlines are not part of the article.
+  const junk = (t) =>
+    /video can not be played|^(getty images|watch:|related|read more|sign up|advertisement|support (the|our)|listen to this)/i.test(t) ||
+    // Donation asks at the end of reader-funded newsrooms (The Guardian, NPR).
+    /fending off legal risks|reader[- ]funded|(support|fund|power)(s|ing)? (our|independent|this) journalism|make a (contribution|donation)|become a (supporter|member)/i.test(t) ||
+    (t.length < 90 && !/[.!?…"”’)]$/.test(t));
   const pick = (sel) => [...doc.querySelectorAll(sel)].map((p) => clean(p.textContent)).filter((t) => t.length > 25 && !junk(t));
-  let paragraphs = pick('p.paragraph--lite');
-  if (!paragraphs.length) paragraphs = pick('[data-component="text-block"] p');
-  if (!paragraphs.length) paragraphs = pick('article p');
-  if (!paragraphs.length) paragraphs = pick('p').filter((t) => t.length > 40);
+  let paragraphs = [];
+  for (const sel of BODY_SELECTORS) {
+    paragraphs = pick(sel);
+    if (paragraphs.length >= 2) break;
+  }
+  if (paragraphs.length < 2) paragraphs = pick('p').filter((t) => t.length > 40);
   const title = clean(doc.querySelector('h1')?.textContent) || clean(doc.querySelector('title')?.textContent);
   return { title, paragraphs: paragraphs.filter((t, i, all) => all.indexOf(t) === i) };
 }
-
-const articles = new Map();
 
 export async function loadArticle(link) {
   if (articles.has(link)) return articles.get(link);
