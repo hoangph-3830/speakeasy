@@ -1,8 +1,8 @@
 // Duolingo-style listening stories: lines read in character voices, with questions along the way.
-import { QUEST } from '../logic.js';
+import { LEVELS, QUEST } from '../logic.js';
 import { speaker } from '../speech.js';
 import { Progress } from '../store.js';
-import { accent, badge, bar, bigBtn, catColors, completeDialog, esc, sayBtn, topBar } from '../ui.js';
+import { accent, badge, bar, bigBtn, catColors, completeDialog, esc, pill, sayBtn, topBar } from '../ui.js';
 
 const pitchOf = (story, name) => story.characters.find((c) => c.name === name)?.pitch ?? 1;
 
@@ -10,22 +10,31 @@ export function hubScreen(app) {
   return {
     view() {
       const p = Progress.get();
+      // Grouped by level so learners start with the easy ones.
+      const groups = Object.entries(LEVELS)
+        .map(([lvl, info]) => [lvl, info, app.stories.stories.filter((s) => (s.level || 'A2') === lvl)])
+        .filter(([, , list]) => list.length);
       return `<div class="screen">
         ${topBar('Truyện nghe', 'Nghe chuyện đời thường, trả lời câu hỏi')}
-        <div class="scroll pad" data-scroll="stories"><div class="grid2">
-        ${app.stories.stories.map((s) => {
-          const [strong, light] = catColors(s.category);
-          return `<button class="card tile" data-act="nav" data-to="story/${s.id}">
-            ${badge(s.emoji, `var(--${light})`, 60)}
-            <div class="grow">
-              <div class="t-sub">${esc(s.title)}</div>
-              <div class="muted">${esc(s.titleVi)}</div>
-              <div class="tiny bold" style="color:var(--${strong})">${esc(s.characters.filter((c) => c.name !== 'Narrator').map((c) => c.name).join(' · '))}</div>
-            </div>
-            <span style="color:var(--${strong});font-size:20px">${p.done.includes(`story:${s.id}`) ? '⭐' : '▶'}</span>
-          </button>`;
-        }).join('')}
-        </div></div>
+        <div class="scroll pad" data-scroll="stories">
+        ${groups.map(([lvl, info, list]) => `
+          <div class="section"><h2>${pill(lvl, info.color, `var(--${info.color}-l)`)} ${esc(info.name)}</h2></div>
+          <div class="grid2">${list.map((s) => {
+            const [strong, light] = catColors(s.category);
+            const lines = s.items.filter((i) => i.type !== 'question').length;
+            const questions = s.items.length - lines;
+            return `<button class="card tile" data-act="nav" data-to="story/${s.id}">
+              ${badge(s.emoji, `var(--${light})`, 56)}
+              <div class="grow">
+                <div class="t-sub">${esc(s.title)}</div>
+                <div class="muted small">${esc(s.titleVi)}</div>
+                <div class="tiny bold" style="color:var(--${strong})">${esc(s.characters.filter((c) => c.name !== 'Narrator').map((c) => c.name).join(' · '))}</div>
+                <div class="tiny muted">${lines} câu · ${questions} câu hỏi</div>
+              </div>
+              <span style="color:var(--${strong});font-size:20px">${p.done.includes(`story:${s.id}`) ? '⭐' : '▶'}</span>
+            </button>`;
+          }).join('')}</div>`).join('')}
+        </div>
       </div>`;
     },
   };

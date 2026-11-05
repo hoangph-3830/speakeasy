@@ -148,4 +148,21 @@ test('reading aloud splits into sentences, keeps abbreviations, caps long ones',
   assert.equal(chunks.join(' '), long);
 });
 
+test('learning path covers every topic once, easy to hard, and finds the next topic', () => {
+  const ids = content.path.flatMap((s) => s.topics);
+  assert.equal(ids.length, content.topics.length);
+  assert.equal(new Set(ids).size, ids.length);
+  const order = Object.keys(L.LEVELS);
+  const levels = content.path.map((s) => order.indexOf(s.level));
+  assert.deepEqual(levels, [...levels].sort((a, b) => a - b));
+  for (const s of content.path) for (const id of s.topics) assert.equal(content.topics.find((t) => t.id === id).level, s.level, id);
+  const p = L.defaultProgress();
+  assert.equal(L.nextInPath(content.path, content.topics, p).topic.id, content.path[0].topics[0]);
+  const first = content.path[0].topics[0];
+  const half = { ...p, done: L.ACTIVITIES.map((a) => `${first}:${a.id}`) };
+  assert.equal(L.nextInPath(content.path, content.topics, half).topic.id, content.path[0].topics[1]);
+  const all = { ...p, done: content.topics.flatMap((t) => L.ACTIVITIES.map((a) => `${t.id}:${a.id}`)) };
+  assert.equal(L.nextInPath(content.path, content.topics, all), null);
+});
+
 console.log(`\n${n} tests passed`);

@@ -6,48 +6,222 @@
       "titleVi": "Lạc ở nhà ga",
       "emoji": "🚉",
       "category": "travel",
+      "level": "A1",
       "characters": [
-        { "name": "Narrator", "pitch": 1.0 },
-        { "name": "Mia", "pitch": 1.3 },
-        { "name": "Officer", "pitch": 0.8 }
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Mia",
+          "pitch": 1.3
+        },
+        {
+          "name": "Officer",
+          "pitch": 0.8
+        }
       ],
       "items": [
-        { "type": "line", "speaker": "Narrator", "en": "Mia is in London for the first time. The station is huge and very busy.", "vi": "Mia đến London lần đầu. Nhà ga rất lớn và đông đúc." },
-        { "type": "line", "speaker": "Mia", "en": "Excuse me, I'm a bit lost. Where's platform nine?", "vi": "Xin lỗi, tôi hơi bị lạc. Sân ga số chín ở đâu ạ?" },
-        { "type": "line", "speaker": "Officer", "en": "Platform nine? It's just past the coffee shop, on your left.", "vi": "Sân ga số chín à? Ngay sau quán cà phê, bên tay trái cô." },
-        { "type": "question", "q": "Sân ga số chín ở đâu?", "options": ["Next to the ticket office", "Past the coffee shop, on the left", "Upstairs, on the right"], "answer": 1 },
-        { "type": "line", "speaker": "Mia", "en": "Great, thanks! Is the train to Oxford on time?", "vi": "Tuyệt, cảm ơn! Tàu đi Oxford có đúng giờ không ạ?" },
-        { "type": "line", "speaker": "Officer", "en": "I'm afraid it's running about twenty minutes late.", "vi": "Tiếc là nó trễ khoảng hai mươi phút." },
-        { "type": "question", "q": "Chuyện gì xảy ra với chuyến tàu?", "options": ["It's cancelled", "It's twenty minutes late", "It left early"], "answer": 1 },
-        { "type": "line", "speaker": "Mia", "en": "Oh no. Well, at least I have time for a coffee.", "vi": "Ôi không. Thôi, ít ra mình có thời gian uống cà phê." },
-        { "type": "line", "speaker": "Officer", "en": "That's the spirit! Have a lovely trip.", "vi": "Đúng tinh thần đó! Chúc cô đi vui vẻ." },
-        { "type": "question", "q": "“That's the spirit!” nghĩa là gì?", "options": ["Bạn nghĩ tích cực vậy là tốt!", "Có ma ở đây!", "Bạn đi nhầm rồi!"], "answer": 0 },
-        { "type": "line", "speaker": "Narrator", "en": "Mia smiles and heads to the coffee shop. Being lost isn't so bad after all.", "vi": "Mia mỉm cười đi tới quán cà phê. Hoá ra bị lạc cũng không tệ lắm." }
-      ]
-    },
-    {
-      "id": "presentation",
-      "title": "The Big Presentation",
-      "titleVi": "Buổi thuyết trình quan trọng",
-      "emoji": "📊",
-      "category": "work",
-      "characters": [
-        { "name": "Narrator", "pitch": 1.0 },
-        { "name": "Linh", "pitch": 1.25 },
-        { "name": "Mark", "pitch": 0.75 }
-      ],
-      "items": [
-        { "type": "line", "speaker": "Narrator", "en": "It's Monday morning. Linh has a big presentation at ten.", "vi": "Sáng thứ Hai. Linh có buổi thuyết trình quan trọng lúc mười giờ." },
-        { "type": "line", "speaker": "Mark", "en": "Morning, Linh! Are you ready for the client meeting?", "vi": "Chào Linh! Em sẵn sàng cho buổi họp với khách chưa?" },
-        { "type": "line", "speaker": "Linh", "en": "Almost. I'm a little nervous, to be honest.", "vi": "Gần xong rồi ạ. Thật lòng là em hơi lo." },
-        { "type": "question", "q": "Linh cảm thấy thế nào?", "options": ["Excited", "A little nervous", "Very tired"], "answer": 1 },
-        { "type": "line", "speaker": "Mark", "en": "Don't worry. You know this project better than anyone.", "vi": "Đừng lo. Em hiểu dự án này hơn ai hết." },
-        { "type": "line", "speaker": "Linh", "en": "Thanks. Could you take a quick look at my slides?", "vi": "Cảm ơn anh. Anh xem qua slide giúp em được không?" },
-        { "type": "line", "speaker": "Mark", "en": "Sure. Hmm, slide five has too much text. Keep it simple.", "vi": "Được. Hmm, slide năm nhiều chữ quá. Làm đơn giản thôi." },
-        { "type": "question", "q": "Mark góp ý gì?", "options": ["Add more pictures to every slide", "Slide five has too much text", "Start the meeting earlier"], "answer": 1 },
-        { "type": "line", "speaker": "Linh", "en": "Good point. I'll fix it right away.", "vi": "Ý hay ạ. Em sửa ngay." },
-        { "type": "question", "q": "Câu nào lịch sự để nhận góp ý?", "options": ["You're wrong.", "Good point, I'll fix it.", "I don't care."], "answer": 1 },
-        { "type": "line", "speaker": "Narrator", "en": "At ten, Linh walks in with simple slides and a big smile. The client loves it.", "vi": "Mười giờ, Linh bước vào với slide gọn gàng và nụ cười tươi. Khách hàng rất thích." }
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Mia is in London for the first time. The station is very big and very busy.",
+          "vi": "Mia đến London lần đầu. Nhà ga rất lớn và rất đông người."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Excuse me. I'm a bit lost. Where is platform nine?",
+          "vi": "Xin lỗi anh. Tôi hơi bị lạc. Sân ga số chín ở đâu ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Platform nine? It's past the coffee shop, on your left.",
+          "vi": "Sân ga số chín à? Đi qua quán cà phê, ở bên tay trái cô."
+        },
+        {
+          "type": "question",
+          "q": "Sân ga số chín ở đâu?",
+          "options": [
+            "Next to the ticket office",
+            "Past the coffee shop, on the left",
+            "Upstairs, on the right"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Thank you! I want to go to Oxford. Is my train on time?",
+          "vi": "Cảm ơn anh! Tôi muốn đi Oxford. Tàu của tôi có đúng giờ không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Let me check. Oh, I'm sorry. It's twenty minutes late.",
+          "vi": "Để tôi xem. Ồ, tiếc quá. Tàu trễ hai mươi phút."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Twenty minutes? Oh no.",
+          "vi": "Hai mươi phút á? Ôi không."
+        },
+        {
+          "type": "question",
+          "q": "Tàu đi Oxford thế nào?",
+          "options": [
+            "It's cancelled",
+            "It's on time",
+            "It's twenty minutes late"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Don't worry. You have time for a coffee.",
+          "vi": "Đừng lo. Cô có thời gian uống một ly cà phê đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Good idea! I love coffee. Is the coffee shop good?",
+          "vi": "Ý hay đó! Tôi thích cà phê lắm. Quán đó có ngon không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Yes, the coffee is great. And the cakes are very good too.",
+          "vi": "Có, cà phê ở đó rất ngon. Bánh ngọt cũng ngon lắm."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Mia buys a coffee and a small cake. She sits down and waits.",
+          "vi": "Mia mua một ly cà phê và một chiếc bánh nhỏ. Cô ngồi xuống và chờ."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Mmm, this cake is lovely.",
+          "vi": "Ừm, bánh này ngon quá."
+        },
+        {
+          "type": "question",
+          "q": "Mia mua gì?",
+          "options": [
+            "A coffee and a small cake",
+            "A tea and a sandwich",
+            "Two coffees"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Twenty minutes later, the train is here. Mia runs to platform nine.",
+          "vi": "Hai mươi phút sau, tàu đến. Mia chạy tới sân ga số chín."
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Hello again! Can I see your ticket, please?",
+          "vi": "Lại gặp cô rồi! Cho tôi xem vé nhé?"
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "My ticket? Yes, of course. It's in my bag.",
+          "vi": "Vé của tôi à? Vâng, tất nhiên. Nó ở trong túi."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Hmm. It's not in my bag. And it's not in my pocket!",
+          "vi": "Ừm. Không có trong túi. Cũng không có trong túi áo!"
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Take your time. The train leaves in five minutes.",
+          "vi": "Cô cứ từ từ. Năm phút nữa tàu mới chạy."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Oh no, where is it? I always keep it in my bag!",
+          "vi": "Ôi không, nó đâu rồi? Tôi luôn để nó trong túi mà!"
+        },
+        {
+          "type": "question",
+          "q": "Mia gặp vấn đề gì?",
+          "options": [
+            "She can't find her ticket",
+            "She loses her bag",
+            "She misses the train"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "Excuse me, miss. What's that in your hand?",
+          "vi": "Xin lỗi cô. Cái gì trong tay cô vậy?"
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "In my hand? It's my coffee cup.",
+          "vi": "Trong tay tôi á? Là ly cà phê mà."
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "No, the other hand.",
+          "vi": "Không, tay bên kia cơ."
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Oh! It's my ticket! I'm so sorry.",
+          "vi": "Ôi! Là vé của tôi! Xin lỗi anh nhiều nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "That's okay. It happens every day here.",
+          "vi": "Không sao đâu. Ở đây ngày nào cũng có chuyện này."
+        },
+        {
+          "type": "question",
+          "q": "Vé của Mia ở đâu?",
+          "options": [
+            "In her bag",
+            "In the coffee shop",
+            "In her hand"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Mia",
+          "en": "Thank you so much. You're very kind.",
+          "vi": "Cảm ơn anh nhiều lắm. Anh tốt bụng quá."
+        },
+        {
+          "type": "line",
+          "speaker": "Officer",
+          "en": "You're welcome. Have a lovely trip to Oxford!",
+          "vi": "Không có gì. Chúc cô đi Oxford vui vẻ!"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Mia gets on the train with a big smile. London is not so scary after all.",
+          "vi": "Mia lên tàu với nụ cười thật tươi. Hoá ra London cũng không đáng sợ lắm."
+        }
       ]
     },
     {
@@ -56,23 +230,680 @@
       "titleVi": "Nhầm cà phê",
       "emoji": "☕",
       "category": "life",
+      "level": "A1",
       "characters": [
-        { "name": "Narrator", "pitch": 1.0 },
-        { "name": "Ben", "pitch": 0.85 },
-        { "name": "Barista", "pitch": 1.3 }
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Ben",
+          "pitch": 0.85
+        },
+        {
+          "name": "Barista",
+          "pitch": 1.3
+        }
       ],
       "items": [
-        { "type": "line", "speaker": "Narrator", "en": "Ben is in a hurry. He orders his usual coffee.", "vi": "Ben đang vội. Anh gọi ly cà phê quen thuộc." },
-        { "type": "line", "speaker": "Ben", "en": "Hi, can I get a large oat latte, no sugar?", "vi": "Chào, cho mình một ly latte sữa yến mạch cỡ lớn, không đường nhé?" },
-        { "type": "line", "speaker": "Barista", "en": "Sure thing. That'll be four fifty.", "vi": "Có ngay. Bốn đô năm mươi nhé." },
-        { "type": "question", "q": "Ben gọi món gì?", "options": ["A small black coffee", "A large oat latte, no sugar", "A hot chocolate"], "answer": 1 },
-        { "type": "line", "speaker": "Narrator", "en": "Ben takes a sip. It's very, very sweet.", "vi": "Ben nhấp một ngụm. Ngọt lịm luôn." },
-        { "type": "line", "speaker": "Ben", "en": "Sorry, I think this one has sugar in it.", "vi": "Xin lỗi, hình như ly này có đường." },
-        { "type": "question", "q": "Ben sẽ nói gì để phàn nàn lịch sự?", "options": ["This is terrible!", "Sorry, I think this one has sugar in it.", "Give me my money!"], "answer": 1 },
-        { "type": "line", "speaker": "Barista", "en": "Oh, I'm so sorry! I'll make you a new one right now.", "vi": "Ôi, xin lỗi anh! Em làm ly mới ngay." },
-        { "type": "line", "speaker": "Ben", "en": "No worries, it happens.", "vi": "Không sao, chuyện thường mà." },
-        { "type": "question", "q": "“No worries, it happens” nghĩa là gì?", "options": ["Không sao, ai cũng có lúc nhầm", "Tôi rất lo lắng", "Lần sau đừng làm vậy"], "answer": 0 },
-        { "type": "line", "speaker": "Narrator", "en": "Two minutes later, Ben gets the right coffee, and a free cookie.", "vi": "Hai phút sau, Ben nhận đúng ly cà phê, kèm một chiếc bánh quy miễn phí." }
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "It's eight o'clock in the morning. Ben is late for work, and he needs coffee.",
+          "vi": "Bây giờ là tám giờ sáng. Ben bị trễ giờ làm, và anh cần cà phê."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Good morning! What can I get you?",
+          "vi": "Chào buổi sáng! Anh dùng gì ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Hi! Can I get a large oat latte, please? No sugar.",
+          "vi": "Chào em! Cho anh một ly latte sữa yến mạch cỡ lớn nhé? Không đường."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "A large oat latte, no sugar. Sure thing. What's your name?",
+          "vi": "Một latte yến mạch cỡ lớn, không đường. Có ngay. Anh tên gì ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "It's Ben.",
+          "vi": "Anh tên Ben."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Thanks, Ken. That's four fifty, please.",
+          "vi": "Cảm ơn anh Ken. Của anh bốn đô năm mươi ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Ben, not Ken. But that's okay. Here you go.",
+          "vi": "Ben chứ không phải Ken. Nhưng không sao. Tiền đây em."
+        },
+        {
+          "type": "question",
+          "q": "Ben gọi món gì?",
+          "options": [
+            "A small black coffee",
+            "A hot chocolate",
+            "A large oat latte, no sugar"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "The coffee shop is very busy. Ben waits and looks at his watch.",
+          "vi": "Quán cà phê rất đông. Ben đứng chờ và nhìn đồng hồ."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Come on, come on. I'm so late.",
+          "vi": "Nhanh lên, nhanh lên nào. Mình trễ lắm rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "A large latte for Ken!",
+          "vi": "Một latte cỡ lớn của anh Ken đây!"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Ben takes the cup and runs to the door. He takes a big sip.",
+          "vi": "Ben cầm ly và chạy ra cửa. Anh uống một ngụm lớn."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Yuck! This is very, very sweet.",
+          "vi": "Eo! Ly này ngọt quá, ngọt lịm luôn."
+        },
+        {
+          "type": "question",
+          "q": "Ly cà phê có vị thế nào?",
+          "options": [
+            "Very sweet",
+            "Very bitter",
+            "Very cold"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Excuse me. Sorry, I think this one has sugar in it.",
+          "vi": "Em ơi. Xin lỗi, hình như ly này có đường."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Let me see. Oh! This latte has three sugars and cream.",
+          "vi": "Để em xem. Ôi! Ly latte này có ba thìa đường và kem."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Wait. Is your name Ben or Ken?",
+          "vi": "Khoan đã. Anh tên Ben hay Ken ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "My name is Ben. B-E-N.",
+          "vi": "Anh tên Ben. B-E-N."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Oh no, I'm so sorry! This coffee is for a man called Ken.",
+          "vi": "Ôi không, em xin lỗi! Ly này là của một anh tên Ken."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Ben lấy nhầm cà phê?",
+          "options": [
+            "He orders the wrong drink",
+            "He takes Ken's coffee",
+            "He takes a tea"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Ha! No worries, it happens.",
+          "vi": "Ha! Không sao, chuyện thường mà."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "I'll make you a new one right now. It's on the house.",
+          "vi": "Em làm ly mới cho anh ngay. Ly này quán mời ạ."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "On the house? You mean it's free?",
+          "vi": "Quán mời á? Ý em là miễn phí hả?"
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "Yes, it's free. And here's a cookie for you, too.",
+          "vi": "Vâng, miễn phí ạ. Tặng anh thêm một cái bánh quy nữa."
+        },
+        {
+          "type": "question",
+          "q": "“It's on the house” nghĩa là gì?",
+          "options": [
+            "It's very expensive",
+            "It's free",
+            "It's at home"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Two minutes later, Ben has the right coffee and a free chocolate cookie.",
+          "vi": "Hai phút sau, Ben có đúng ly cà phê của mình và một chiếc bánh quy sô-cô-la miễn phí."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "Thank you! This is perfect. Oat latte, no sugar.",
+          "vi": "Cảm ơn em! Hoàn hảo luôn. Latte yến mạch, không đường."
+        },
+        {
+          "type": "line",
+          "speaker": "Barista",
+          "en": "You're welcome, Ben. Look, your name is on the cup in big letters.",
+          "vi": "Không có gì, anh Ben. Anh xem này, tên anh được viết chữ to trên ly đấy."
+        },
+        {
+          "type": "line",
+          "speaker": "Ben",
+          "en": "B-E-N. Great! See you tomorrow.",
+          "vi": "B-E-N. Tuyệt! Mai gặp lại nhé."
+        },
+        {
+          "type": "question",
+          "q": "Cuối cùng Ben nhận được gì?",
+          "options": [
+            "A cake and a tea",
+            "Nothing",
+            "The right coffee and a cookie"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Ben is still late for work. But today, he doesn't mind.",
+          "vi": "Ben vẫn trễ giờ làm. Nhưng hôm nay, anh chẳng bận tâm."
+        }
+      ]
+    },
+    {
+      "id": "new-neighbor",
+      "title": "The New Neighbour",
+      "titleVi": "Người hàng xóm mới",
+      "emoji": "🍰",
+      "category": "home",
+      "level": "A1",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Ana",
+          "pitch": 1.3
+        },
+        {
+          "name": "Kenji",
+          "pitch": 0.85
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "It is Saturday morning. Ana is in her new flat. She wants to make a cake.",
+          "vi": "Hôm nay là sáng thứ Bảy. Ana ở trong căn hộ mới. Cô ấy muốn làm bánh."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "But there is a problem. She has no sugar!",
+          "vi": "Nhưng có một vấn đề. Cô ấy không có đường!"
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Oh no. The shop is far. Maybe my neighbour can help.",
+          "vi": "Ôi không. Cửa hàng thì xa. Có lẽ hàng xóm có thể giúp mình."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Ana knocks on the door next to her flat. A man opens it.",
+          "vi": "Ana gõ cửa căn hộ bên cạnh. Một người đàn ông ra mở cửa."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Hello! Can I help you?",
+          "vi": "Xin chào! Tôi giúp gì được cho cô?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Hi! I'm Ana. I live next door. I'm new here.",
+          "vi": "Chào anh! Tôi là Ana. Tôi sống ở nhà bên cạnh. Tôi mới chuyển đến."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Nice to meet you, Ana. I'm Kenji. Welcome!",
+          "vi": "Rất vui được gặp cô, Ana. Tôi là Kenji. Chào mừng cô!"
+        },
+        {
+          "type": "question",
+          "q": "Ana là ai đối với Kenji?",
+          "options": [
+            "His sister",
+            "His new neighbour",
+            "His teacher"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Thank you. Sorry, do you have some sugar?",
+          "vi": "Cảm ơn anh. Xin lỗi, anh có chút đường không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Sugar? Yes, of course. How much do you need?",
+          "vi": "Đường à? Có chứ. Cô cần bao nhiêu?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Just one cup, please. I want to make a cake.",
+          "vi": "Chỉ một cốc thôi ạ. Tôi muốn làm bánh."
+        },
+        {
+          "type": "question",
+          "q": "Ana cần gì?",
+          "options": [
+            "One cup of milk",
+            "Two eggs",
+            "One cup of sugar"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "A cake! I love cake. What kind is it?",
+          "vi": "Bánh à! Tôi thích bánh lắm. Bánh loại gì vậy?"
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "It's a chocolate cake. It's my mum's recipe.",
+          "vi": "Bánh sô-cô-la. Đó là công thức của mẹ tôi."
+        },
+        {
+          "type": "question",
+          "q": "Ana làm bánh gì?",
+          "options": [
+            "A lemon cake",
+            "A banana cake",
+            "A chocolate cake"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Kenji goes into his kitchen. He comes back with a big bag.",
+          "vi": "Kenji đi vào bếp. Anh ấy quay lại với một cái túi to."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Here you are. Take the bag. I have two.",
+          "vi": "Của cô đây. Cô cầm cả túi đi. Tôi có hai túi."
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Wow, that's a lot of sugar! Thank you so much.",
+          "vi": "Chà, nhiều đường quá! Cảm ơn anh nhiều lắm."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "No problem. I don't eat much sugar. Well, only in cake.",
+          "vi": "Không có gì. Tôi không ăn nhiều đường. À, chỉ ăn trong bánh thôi."
+        },
+        {
+          "type": "question",
+          "q": "Kenji đưa cho Ana cái gì?",
+          "options": [
+            "A big bag of sugar",
+            "A small cup of sugar",
+            "A chocolate cake"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Ana goes home and makes the cake. Her flat smells wonderful.",
+          "vi": "Ana về nhà và làm bánh. Căn hộ của cô ấy thơm phức."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "In the evening, she knocks on Kenji's door again.",
+          "vi": "Buổi tối, cô ấy lại gõ cửa nhà Kenji."
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Hi Kenji! This is for you. It is a big piece of cake.",
+          "vi": "Chào Kenji! Cái này cho anh. Đây là một miếng bánh to."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "For me? That's so kind. It looks delicious!",
+          "vi": "Cho tôi à? Cô tốt quá. Trông ngon quá!"
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Thank you for the sugar. You are a good neighbour.",
+          "vi": "Cảm ơn anh vì chỗ đường. Anh là một người hàng xóm tốt."
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Are you free tomorrow? I want to cook dinner for you.",
+          "vi": "Ngày mai cô có rảnh không? Tôi muốn nấu bữa tối cho cô."
+        },
+        {
+          "type": "question",
+          "q": "Kenji mời Ana làm gì?",
+          "options": [
+            "Go to the shop",
+            "Have dinner",
+            "Make another cake"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Ana",
+          "en": "Yes, I am free. I would love to come! What time?",
+          "vi": "Có, tôi rảnh. Tôi rất muốn đến! Mấy giờ vậy?"
+        },
+        {
+          "type": "line",
+          "speaker": "Kenji",
+          "en": "Seven o'clock. And please bring more cake!",
+          "vi": "Bảy giờ. Và nhớ mang thêm bánh nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Ana laughs. A new home, a new friend, and dinner tomorrow.",
+          "vi": "Ana bật cười. Một ngôi nhà mới, một người bạn mới, và bữa tối ngày mai."
+        }
+      ]
+    },
+    {
+      "id": "lost-phone",
+      "title": "The Lost Phone",
+      "titleVi": "Chiếc điện thoại bị mất",
+      "emoji": "📱",
+      "category": "life",
+      "level": "A1",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Omar",
+          "pitch": 0.9
+        },
+        {
+          "name": "Sofia",
+          "pitch": 1.25
+        },
+        {
+          "name": "Luis",
+          "pitch": 0.78
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "It is Monday evening. Omar is in a taxi. He is very tired.",
+          "vi": "Tối thứ Hai. Omar đang ngồi trên taxi. Anh ấy rất mệt."
+        },
+        {
+          "type": "line",
+          "speaker": "Luis",
+          "en": "Here we are. That's twelve dollars, please.",
+          "vi": "Đến nơi rồi. Mười hai đô la nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Here you go. Thank you. Good night!",
+          "vi": "Gửi anh. Cảm ơn anh. Chúc ngủ ngon!"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Omar goes into his house. He puts his hand in his pocket. His phone is not there!",
+          "vi": "Omar đi vào nhà. Anh ấy thò tay vào túi. Điện thoại không có ở đó!"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Oh no! Where is my phone? Is it in the taxi?",
+          "vi": "Ôi không! Điện thoại của mình đâu rồi? Nó ở trên taxi à?"
+        },
+        {
+          "type": "question",
+          "q": "Omar mất cái gì?",
+          "options": [
+            "His wallet",
+            "His phone",
+            "His keys"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Omar uses his home phone. He calls the taxi company.",
+          "vi": "Omar dùng điện thoại bàn ở nhà. Anh ấy gọi cho hãng taxi."
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "Good evening, City Taxi. My name is Sofia. How can I help?",
+          "vi": "Chào buổi tối, Taxi Thành Phố. Tôi tên là Sofia. Tôi có thể giúp gì ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Hi. I think my phone is in one of your taxis.",
+          "vi": "Chào chị. Tôi nghĩ điện thoại của tôi ở trong một chiếc taxi của bên chị."
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "Don't worry. When is your trip?",
+          "vi": "Anh đừng lo. Chuyến đi của anh là khi nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "About ten minutes ago. From the station to Park Road.",
+          "vi": "Khoảng mười phút trước. Từ nhà ga đến đường Park."
+        },
+        {
+          "type": "question",
+          "q": "Chuyến taxi đi từ đâu đến đâu?",
+          "options": [
+            "From the airport to the hotel",
+            "From Park Road to the station",
+            "From the station to Park Road"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "And what does your phone look like?",
+          "vi": "Vậy điện thoại của anh trông như thế nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "It is black. It has a red case with a cat on it.",
+          "vi": "Nó màu đen. Nó có ốp màu đỏ có hình con mèo."
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "A cat? OK! Please wait a minute. I'm calling the driver now.",
+          "vi": "Con mèo à? Được rồi! Anh vui lòng chờ một chút. Tôi đang gọi cho tài xế."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Omar waits. He is very nervous.",
+          "vi": "Omar chờ. Anh ấy rất lo lắng."
+        },
+        {
+          "type": "question",
+          "q": "Ốp điện thoại của Omar trông thế nào?",
+          "options": [
+            "A red case with a cat",
+            "A black case with a dog",
+            "A blue case with a star"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "Good news! The driver has a black phone with a cat case.",
+          "vi": "Tin tốt đây! Tài xế có một chiếc điện thoại đen với ốp hình con mèo."
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Yes! That's my phone! Thank you so much!",
+          "vi": "Đúng rồi! Đó là điện thoại của tôi! Cảm ơn chị nhiều lắm!"
+        },
+        {
+          "type": "line",
+          "speaker": "Sofia",
+          "en": "The driver is near your house. He can bring it in fifteen minutes.",
+          "vi": "Tài xế đang ở gần nhà anh. Anh ấy có thể mang đến trong mười lăm phút nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Wonderful. My address is twenty-four Park Road.",
+          "vi": "Tuyệt vời. Địa chỉ của tôi là số hai mươi bốn đường Park."
+        },
+        {
+          "type": "question",
+          "q": "Khi nào tài xế mang điện thoại đến?",
+          "options": [
+            "In five minutes",
+            "Tomorrow morning",
+            "In fifteen minutes"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Fifteen minutes later, someone knocks on the door. It is Luis, the taxi driver.",
+          "vi": "Mười lăm phút sau, có người gõ cửa. Đó là Luis, người tài xế taxi."
+        },
+        {
+          "type": "line",
+          "speaker": "Luis",
+          "en": "Hello again! Is this your phone?",
+          "vi": "Lại chào anh! Đây có phải điện thoại của anh không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Yes, it is! You are a hero. Thank you!",
+          "vi": "Đúng rồi! Anh là người hùng. Cảm ơn anh!"
+        },
+        {
+          "type": "line",
+          "speaker": "Luis",
+          "en": "No problem. Your phone rings a lot. Your mum calls five times!",
+          "vi": "Không có gì. Điện thoại của anh reo nhiều lắm. Mẹ anh gọi năm lần đấy!"
+        },
+        {
+          "type": "line",
+          "speaker": "Omar",
+          "en": "Oh dear. I need to call her right now.",
+          "vi": "Trời ơi. Tôi phải gọi cho mẹ ngay bây giờ."
+        },
+        {
+          "type": "question",
+          "q": "Ai gọi cho Omar năm lần?",
+          "options": [
+            "His mum",
+            "His boss",
+            "His friend"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Luis",
+          "en": "Good idea. And next time, check your pocket!",
+          "vi": "Ý hay đấy. Và lần sau, nhớ kiểm tra túi nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Omar laughs and calls his mum. Now he always checks his pocket.",
+          "vi": "Omar bật cười và gọi cho mẹ. Giờ anh ấy luôn kiểm tra túi."
+        }
       ]
     },
     {
@@ -81,23 +912,1800 @@
       "titleVi": "Bữa tiệc bất ngờ",
       "emoji": "🎂",
       "category": "social",
+      "level": "A2",
       "characters": [
-        { "name": "Narrator", "pitch": 1.0 },
-        { "name": "Anna", "pitch": 1.3 },
-        { "name": "Tom", "pitch": 0.8 }
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Anna",
+          "pitch": 1.3
+        },
+        {
+          "name": "Tom",
+          "pitch": 0.8
+        }
       ],
       "items": [
-        { "type": "line", "speaker": "Narrator", "en": "Anna and Tom are planning a surprise party for their friend Jess.", "vi": "Anna và Tom đang lên kế hoạch tiệc bất ngờ cho cô bạn Jess." },
-        { "type": "line", "speaker": "Anna", "en": "Jess's birthday is on Saturday. Are you free that evening?", "vi": "Sinh nhật Jess vào thứ Bảy. Tối đó cậu rảnh không?" },
-        { "type": "line", "speaker": "Tom", "en": "Yeah, count me in! Where should we do it?", "vi": "Có, tính cả mình! Mình tổ chức ở đâu nhỉ?" },
-        { "type": "question", "q": "Tom có đi dự tiệc không?", "options": ["Yes, he's in", "No, he's busy", "He's not sure"], "answer": 0 },
-        { "type": "line", "speaker": "Anna", "en": "How about my place? I'll handle the food.", "vi": "Ở nhà mình nhé? Mình lo đồ ăn." },
-        { "type": "line", "speaker": "Tom", "en": "Perfect. I'll get the cake and keep Jess busy until eight.", "vi": "Tuyệt. Mình mua bánh và giữ chân Jess đến tám giờ." },
-        { "type": "question", "q": "Tom sẽ làm gì?", "options": ["Cook the food", "Get the cake and keep Jess busy", "Send the invitations"], "answer": 1 },
-        { "type": "line", "speaker": "Anna", "en": "Just don't spill the beans!", "vi": "Nhớ đừng để lộ bí mật đấy!" },
-        { "type": "question", "q": "“Don't spill the beans” nghĩa là gì?", "options": ["Đừng làm đổ đậu", "Đừng để lộ bí mật", "Đừng đến muộn"], "answer": 1 },
-        { "type": "line", "speaker": "Tom", "en": "My lips are sealed.", "vi": "Mình kín miệng lắm." },
-        { "type": "line", "speaker": "Narrator", "en": "On Saturday, Jess opens the door. Everyone shouts: Surprise! She almost cries with joy.", "vi": "Thứ Bảy, Jess mở cửa. Mọi người hô: Bất ngờ chưa! Cô ấy suýt khóc vì vui." }
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Anna and Tom want to throw a surprise party for their friend Jess. Her birthday is next Saturday.",
+          "vi": "Anna và Tom muốn tổ chức một bữa tiệc bất ngờ cho cô bạn Jess. Sinh nhật cô ấy vào thứ Bảy tới."
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Tom, Jess's birthday is coming up. Are you free on Saturday evening?",
+          "vi": "Tom ơi, sắp đến sinh nhật Jess rồi. Tối thứ Bảy cậu rảnh không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Yeah, count me in! Where should we have it?",
+          "vi": "Có, tính cả mình nhé! Mình tổ chức ở đâu đây?"
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "How about my place? My flat is small, but it's cosy.",
+          "vi": "Ở nhà mình nhé? Căn hộ mình nhỏ nhưng ấm cúng."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Sounds great. Who are we going to invite?",
+          "vi": "Nghe hay đấy. Mình sẽ mời những ai?"
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Just close friends, maybe ten people. I'll take care of the food.",
+          "vi": "Chỉ bạn thân thôi, chắc khoảng mười người. Mình sẽ lo đồ ăn."
+        },
+        {
+          "type": "question",
+          "q": "Bữa tiệc sẽ tổ chức ở đâu?",
+          "options": [
+            "At Tom's house",
+            "At Anna's flat",
+            "At a restaurant"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Okay. Then I'll pick up the cake on Saturday afternoon.",
+          "vi": "Được. Vậy chiều thứ Bảy mình sẽ đi lấy bánh."
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Perfect. And can you keep Jess busy until eight? Take her out for dinner or something.",
+          "vi": "Tuyệt. Cậu giữ chân Jess đến tám giờ được không? Rủ cô ấy đi ăn tối hay gì đó."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "No problem. I'll tell her we're going to the cinema.",
+          "vi": "Không vấn đề. Mình sẽ bảo cô ấy là tụi mình đi xem phim."
+        },
+        {
+          "type": "question",
+          "q": "Tom sẽ làm gì?",
+          "options": [
+            "Cook the food",
+            "Clean the flat",
+            "Pick up the cake and keep Jess busy"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Great. I'll set up a group chat for everyone. Just don't spill the beans!",
+          "vi": "Tốt. Mình sẽ lập một nhóm chat cho mọi người. Nhớ đừng để lộ bí mật đấy!"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Don't worry. My lips are sealed.",
+          "vi": "Yên tâm. Mình kín miệng lắm."
+        },
+        {
+          "type": "question",
+          "q": "“My lips are sealed” nghĩa là gì?",
+          "options": [
+            "I can't eat",
+            "I won't tell anyone",
+            "I'm very tired"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "That night, Tom sent a message about the party. But he sent it to the wrong person.",
+          "vi": "Tối hôm đó, Tom gửi một tin nhắn về bữa tiệc. Nhưng anh lại gửi nhầm người."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Anna, I made a big mistake. I sent all the party details to Jess!",
+          "vi": "Anna ơi, mình lỡ làm hỏng chuyện rồi. Mình gửi hết chi tiết bữa tiệc cho Jess!"
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "You did what? Tom, you had one job!",
+          "vi": "Cậu làm sao cơ? Tom, cậu chỉ có mỗi một việc thôi mà!"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "I know, I know. I wanted to send it to the group chat, but I picked the wrong name.",
+          "vi": "Mình biết, mình biết. Mình định gửi vào nhóm chat, nhưng lại bấm nhầm tên."
+        },
+        {
+          "type": "question",
+          "q": "Tom đã làm sai điều gì?",
+          "options": [
+            "He sent the message to Jess",
+            "He forgot the cake",
+            "He lost his phone"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Okay, calm down. Did she reply?",
+          "vi": "Thôi, bình tĩnh. Cô ấy có trả lời không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Yes. She wrote: “Oops! I didn't read this message. See you on Saturday.”",
+          "vi": "Có. Cô ấy viết: “Ối! Mình chưa đọc tin này đâu nhé. Hẹn gặp thứ Bảy.”"
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Ha! She's so sweet. So she knows, but she's going to pretend.",
+          "vi": "Ha! Cô ấy dễ thương ghê. Vậy là cô ấy biết rồi, nhưng sẽ giả vờ không biết."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "So should we call off the party?",
+          "vi": "Vậy tụi mình có nên huỷ tiệc không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "No way! We're not giving up. We'll just make it even better.",
+          "vi": "Không đời nào! Tụi mình không bỏ cuộc đâu. Mình sẽ làm nó còn vui hơn nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "On Saturday, Tom brought Jess to Anna's flat at eight. Everyone hid in the dark.",
+          "vi": "Thứ Bảy, Tom đưa Jess đến căn hộ của Anna lúc tám giờ. Mọi người trốn trong bóng tối."
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Three, two, one... Surprise!",
+          "vi": "Ba, hai, một... Bất ngờ chưa!"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Happy birthday, Jess! Were you surprised?",
+          "vi": "Chúc mừng sinh nhật Jess! Cậu có bất ngờ không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Jess screamed and covered her face. Then she smiled and said, “Totally surprised. Nice try, Tom.”",
+          "vi": "Jess hét lên và lấy tay che mặt. Rồi cô mỉm cười nói: “Bất ngờ thật luôn. Cố gắng tốt đấy, Tom.”"
+        },
+        {
+          "type": "question",
+          "q": "Cuối cùng chuyện gì xảy ra?",
+          "options": [
+            "They called off the party",
+            "Jess didn't come",
+            "Jess acted surprised at the party"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Anna",
+          "en": "Next year, Tom, you're in charge of the balloons. Not the messages.",
+          "vi": "Năm sau nhé Tom, cậu lo bóng bay thôi. Đừng đụng vào tin nhắn nữa."
+        }
+      ]
+    },
+    {
+      "id": "first-gym",
+      "title": "My First Day at the Gym",
+      "titleVi": "Ngày đầu đi tập gym",
+      "emoji": "🏋️",
+      "category": "health",
+      "level": "A2",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Priya",
+          "pitch": 1.3
+        },
+        {
+          "name": "Marco",
+          "pitch": 0.85
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Last Monday, Priya went to the gym for the first time. She felt a little nervous.",
+          "vi": "Thứ Hai tuần trước, Priya đến phòng tập lần đầu tiên. Cô ấy hơi hồi hộp."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Hi, I signed up online yesterday. It's my first day.",
+          "vi": "Chào anh, hôm qua tôi đã đăng ký trên mạng. Hôm nay là ngày đầu của tôi."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Welcome! I'm Marco, your trainer. Don't worry, I'll show you around.",
+          "vi": "Chào mừng! Tôi là Marco, huấn luyện viên của cô. Đừng lo, tôi sẽ dẫn cô đi xem một vòng."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Great. To be honest, I haven't exercised for years.",
+          "vi": "Tuyệt. Nói thật là đã nhiều năm rồi tôi không tập thể dục."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "That's totally fine. We'll start slowly.",
+          "vi": "Hoàn toàn không sao. Chúng ta sẽ bắt đầu từ từ."
+        },
+        {
+          "type": "question",
+          "q": "Priya đăng ký tập khi nào?",
+          "options": [
+            "Yesterday",
+            "Last month",
+            "This morning"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "First, Marco took her to the running machines.",
+          "vi": "Đầu tiên, Marco đưa cô ấy đến khu máy chạy bộ."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Let's warm up for ten minutes. Press this green button to start.",
+          "vi": "Mình khởi động mười phút nhé. Bấm nút xanh này để bắt đầu."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Priya walked, then jogged. After ten minutes, her face was red, but she was happy.",
+          "vi": "Priya đi bộ, rồi chạy chậm. Sau mười phút, mặt cô đỏ bừng, nhưng cô thấy vui."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Phew! That was harder than I thought.",
+          "vi": "Phù! Khó hơn tôi tưởng."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "You did really well. Now let's try some weights.",
+          "vi": "Cô làm tốt lắm. Giờ mình thử tập tạ nhé."
+        },
+        {
+          "type": "question",
+          "q": "Họ khởi động trong bao lâu?",
+          "options": [
+            "Five minutes",
+            "Twenty minutes",
+            "Ten minutes"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Marco went to get some water. Priya saw a big machine in the corner and decided to try it.",
+          "vi": "Marco đi lấy nước. Priya thấy một cái máy to trong góc và quyết định thử."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "She sat down, held the handles and pushed as hard as she could. Nothing happened.",
+          "vi": "Cô ngồi xuống, nắm tay cầm và đẩy hết sức. Chẳng có gì xảy ra."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Come on! Why won't it move? Am I really that weak?",
+          "vi": "Thôi nào! Sao nó không nhúc nhích? Mình yếu đến thế sao?"
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "A few people turned around and looked at her. Then Marco came back with two bottles of water.",
+          "vi": "Vài người quay lại nhìn cô. Rồi Marco quay lại với hai chai nước."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Priya, that machine is broken. Look, there's a sign on it.",
+          "vi": "Priya ơi, cái máy đó hỏng rồi. Nhìn kìa, có tấm biển trên đó."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao cái máy không chuyển động?",
+          "options": [
+            "Priya was too weak",
+            "It was broken",
+            "It needed a key"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Oh no! It says 'Out of order'. I didn't see it. How embarrassing!",
+          "vi": "Ôi không! Biển ghi 'Máy hỏng'. Tôi không nhìn thấy. Xấu hổ quá!"
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Don't worry, it happens all the time. Last week a man tried for twenty minutes!",
+          "vi": "Đừng lo, chuyện này xảy ra suốt. Tuần trước có một ông thử suốt hai mươi phút đấy!"
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Twenty minutes? OK, now I feel much better.",
+          "vi": "Hai mươi phút á? Được rồi, giờ tôi thấy đỡ hơn nhiều."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "They both laughed. Then Marco showed her how to use the machines that actually worked.",
+          "vi": "Cả hai cùng cười. Rồi Marco chỉ cho cô cách dùng những chiếc máy thực sự hoạt động."
+        },
+        {
+          "type": "question",
+          "q": "Marco kể chuyện gì để Priya bớt ngại?",
+          "options": [
+            "A man tried the broken machine for twenty minutes",
+            "He fell off a running machine",
+            "He forgot his shoes at home"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Remember, don't give up. Little by little, you'll get stronger.",
+          "vi": "Nhớ nhé, đừng bỏ cuộc. Từng chút một, cô sẽ khỏe hơn."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Thanks, Marco. I'll come back on Thursday.",
+          "vi": "Cảm ơn anh, Marco. Tôi sẽ quay lại vào thứ Năm."
+        },
+        {
+          "type": "line",
+          "speaker": "Marco",
+          "en": "Perfect. And next time, read the signs first!",
+          "vi": "Tuyệt. Và lần sau, nhớ đọc biển báo trước nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Deal! See you on Thursday.",
+          "vi": "Nhất trí! Hẹn gặp anh thứ Năm."
+        },
+        {
+          "type": "question",
+          "q": "Khi nào Priya sẽ quay lại?",
+          "options": [
+            "On Monday",
+            "On Saturday",
+            "On Thursday"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Priya walked home tired but proud. The gym wasn't so scary after all.",
+          "vi": "Priya đi bộ về nhà, mệt nhưng tự hào. Hoá ra phòng tập cũng không đáng sợ lắm."
+        }
+      ]
+    },
+    {
+      "id": "rainy-trip",
+      "title": "The Rainy Weekend",
+      "titleVi": "Cuối tuần mưa",
+      "emoji": "🌧️",
+      "category": "travel",
+      "level": "A2",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Elena",
+          "pitch": 1.25
+        },
+        {
+          "name": "Tom",
+          "pitch": 0.92
+        },
+        {
+          "name": "Okafor",
+          "pitch": 0.75
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Last weekend, Elena and Tom took the train to Edinburgh for a short trip.",
+          "vi": "Cuối tuần trước, Elena và Tom đi tàu đến Edinburgh để du lịch ngắn ngày."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "I can't wait. Tomorrow we'll climb the hill and have a picnic.",
+          "vi": "Anh nóng lòng quá. Ngày mai mình sẽ leo đồi và đi dã ngoại."
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Did you check the weather?",
+          "vi": "Anh đã xem thời tiết chưa?"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "No, but it'll be fine. It's summer!",
+          "vi": "Chưa, nhưng chắc sẽ ổn thôi. Đang mùa hè mà!"
+        },
+        {
+          "type": "question",
+          "q": "Tom định làm gì vào ngày mai?",
+          "options": [
+            "Go shopping",
+            "Climb the hill and have a picnic",
+            "Visit a museum"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "The next morning, they woke up to the sound of heavy rain.",
+          "vi": "Sáng hôm sau, họ thức dậy vì tiếng mưa to."
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Tom, look outside. It's pouring!",
+          "vi": "Tom, nhìn ra ngoài kìa. Mưa như trút nước!"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Oh no. The forecast says it will rain all day. Our picnic is ruined.",
+          "vi": "Ôi không. Dự báo nói trời sẽ mưa cả ngày. Buổi dã ngoại của mình hỏng rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Never mind. Let's look for something to do indoors.",
+          "vi": "Không sao đâu. Mình tìm việc gì đó để làm trong nhà đi."
+        },
+        {
+          "type": "question",
+          "q": "Buổi sáng hôm đó thời tiết thế nào?",
+          "options": [
+            "Sunny and hot",
+            "Cold and snowy",
+            "Raining heavily"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Elena found a museum near the hotel. They put on their raincoats and ran there.",
+          "vi": "Elena tìm được một bảo tàng gần khách sạn. Họ mặc áo mưa vào và chạy đến đó."
+        },
+        {
+          "type": "line",
+          "speaker": "Okafor",
+          "en": "Good morning! You look very wet. Come in and dry off.",
+          "vi": "Chào buổi sáng! Trông hai bạn ướt quá. Vào đây lau khô người đi."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "Thanks. How much are the tickets?",
+          "vi": "Cảm ơn ông. Vé bao nhiêu tiền ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Okafor",
+          "en": "Entry is free. And there's a guided tour at ten. Would you like to join?",
+          "vi": "Vào cửa miễn phí. Và có một buổi tham quan có hướng dẫn lúc mười giờ. Hai bạn có muốn tham gia không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Yes, please. That sounds great.",
+          "vi": "Có ạ. Nghe hay quá."
+        },
+        {
+          "type": "question",
+          "q": "Vé vào bảo tàng giá bao nhiêu?",
+          "options": [
+            "It's free",
+            "Ten pounds",
+            "Five pounds"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Mr Okafor showed them old maps, dinosaur bones and a huge clock that still worked.",
+          "vi": "Ông Okafor cho họ xem bản đồ cổ, xương khủng long và một chiếc đồng hồ khổng lồ vẫn còn chạy."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "This is amazing! I never thought I'd enjoy a museum so much.",
+          "vi": "Tuyệt quá! Tôi chưa bao giờ nghĩ mình lại thích bảo tàng đến vậy."
+        },
+        {
+          "type": "line",
+          "speaker": "Okafor",
+          "en": "Rainy days are the best days for museums. That's why we love the rain here!",
+          "vi": "Ngày mưa là ngày đẹp nhất để đi bảo tàng. Vì thế ở đây chúng tôi thích mưa lắm!"
+        },
+        {
+          "type": "question",
+          "q": "Ông Okafor cho họ xem những gì?",
+          "options": [
+            "Old cars and paintings",
+            "Old maps, dinosaur bones and a huge clock",
+            "Famous dresses and shoes"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Can you recommend a good café nearby?",
+          "vi": "Ông có thể giới thiệu một quán cà phê ngon gần đây không ạ?"
+        },
+        {
+          "type": "line",
+          "speaker": "Okafor",
+          "en": "Try the little café on the corner. Their hot chocolate is the best in town.",
+          "vi": "Thử quán cà phê nhỏ ở góc phố xem. Sô-cô-la nóng ở đó ngon nhất thành phố."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "In the café, they sat by the window and watched the rain.",
+          "vi": "Trong quán cà phê, họ ngồi cạnh cửa sổ và ngắm mưa."
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "This hot chocolate is incredible. I'm glad it rained today.",
+          "vi": "Ly sô-cô-la nóng này tuyệt thật. Anh mừng là hôm nay trời mưa."
+        },
+        {
+          "type": "line",
+          "speaker": "Elena",
+          "en": "Me too. But next time, please check the weather!",
+          "vi": "Em cũng vậy. Nhưng lần sau, anh nhớ xem thời tiết nhé!"
+        },
+        {
+          "type": "line",
+          "speaker": "Tom",
+          "en": "I promise. Although maybe we'll come back on a rainy day anyway.",
+          "vi": "Anh hứa. Mà có khi mình lại quay lại vào một ngày mưa ấy chứ."
+        },
+        {
+          "type": "question",
+          "q": "Cuối cùng Tom cảm thấy thế nào về cơn mưa?",
+          "options": [
+            "Angry",
+            "Bored",
+            "Glad"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "They ended the day warm, happy and full of hot chocolate. Sometimes the best plans are the ones you don't make.",
+          "vi": "Họ kết thúc một ngày ấm áp, vui vẻ và no nê sô-cô-la nóng. Đôi khi kế hoạch tuyệt nhất lại là những điều không định trước."
+        }
+      ]
+    },
+    {
+      "id": "presentation",
+      "title": "The Big Presentation",
+      "titleVi": "Buổi thuyết trình quan trọng",
+      "emoji": "📊",
+      "category": "work",
+      "level": "B1",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Linh",
+          "pitch": 1.25
+        },
+        {
+          "name": "Mark",
+          "pitch": 0.75
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "It's Monday morning at the office. Linh has a big presentation for a new client at ten o'clock.",
+          "vi": "Sáng thứ Hai ở văn phòng. Linh có một buổi thuyết trình quan trọng với khách hàng mới lúc mười giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Morning, Linh! Are you all set for the client meeting?",
+          "vi": "Chào Linh! Em chuẩn bị xong cho buổi họp với khách chưa?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Almost. To be honest, I'm a bit nervous. This client could be our biggest account this year.",
+          "vi": "Gần xong rồi ạ. Thật lòng thì em hơi lo. Khách này có thể là hợp đồng lớn nhất năm nay của mình."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "That's completely normal. But you know this project better than anyone in the team.",
+          "vi": "Chuyện đó bình thường mà. Nhưng em hiểu dự án này hơn bất kỳ ai trong nhóm."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Linh lo lắng?",
+          "options": [
+            "The client is very important",
+            "She is late for work",
+            "She feels sick"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Thanks, Mark. Would you mind taking a quick look at my slides before I go in?",
+          "vi": "Cảm ơn anh Mark. Anh xem nhanh giúp em mấy slide trước khi em vào được không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Sure. Hmm, the first few are great, but slide five has far too much text.",
+          "vi": "Được chứ. Hmm, mấy slide đầu ổn lắm, nhưng slide năm nhiều chữ quá."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "If people are busy reading, they're not listening to you. I'd keep it short and simple.",
+          "vi": "Nếu mọi người mải đọc thì họ sẽ không nghe em nói. Anh thì sẽ làm nó ngắn gọn, đơn giản."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "That's a fair point. I'll cut it down to three key numbers.",
+          "vi": "Anh nói đúng. Em sẽ rút gọn lại còn ba con số chính."
+        },
+        {
+          "type": "question",
+          "q": "Mark góp ý gì về slide năm?",
+          "options": [
+            "It needs more pictures",
+            "It has too much text",
+            "It is too short"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "At half past nine, Linh's laptop suddenly goes black. It won't turn back on.",
+          "vi": "Lúc chín giờ rưỡi, laptop của Linh bỗng tắt ngúm. Nó không bật lại được nữa."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Oh no, oh no. Mark, my laptop just died, and all my slides are on it!",
+          "vi": "Ôi không, ôi không. Anh Mark, laptop em vừa chết, mà tất cả slide đều ở trong đó!"
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Okay, don't panic. Did you save a copy to the shared drive?",
+          "vi": "Được rồi, đừng hoảng. Em có lưu bản sao lên ổ chung không?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "I meant to, but I never got around to it. I was going to do it this morning.",
+          "vi": "Em định lưu, mà mãi chưa làm. Em tính sáng nay mới lưu."
+        },
+        {
+          "type": "question",
+          "q": "Chuyện gì xảy ra lúc chín giờ rưỡi?",
+          "options": [
+            "The client cancels the meeting",
+            "Mark gets sick",
+            "Linh's laptop stops working"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Right. Then you'll have to think on your feet. You don't need slides to tell a good story.",
+          "vi": "Thôi được. Vậy em phải ứng biến thôi. Muốn kể một câu chuyện hay thì đâu cần slide."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Present without slides? In front of the client? I'm not sure I can pull that off.",
+          "vi": "Thuyết trình không có slide á? Trước mặt khách hàng? Em không chắc mình làm được."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Of course you can. Grab a marker and use the whiteboard. Talk to them the way you talk to me.",
+          "vi": "Tất nhiên là được. Cầm cây bút lông và dùng bảng trắng. Cứ nói với họ như em nói với anh."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Okay. Three key numbers, one simple story. I can do that.",
+          "vi": "Được rồi. Ba con số chính, một câu chuyện đơn giản. Em làm được."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "That's the spirit. Now go in there and break a leg!",
+          "vi": "Đúng tinh thần đó. Giờ vào đi và chúc em may mắn!"
+        },
+        {
+          "type": "question",
+          "q": "“Break a leg!” có nghĩa là gì?",
+          "options": [
+            "Be careful on the stairs",
+            "Good luck!",
+            "Hurry up!"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "At ten, Linh walks into the meeting room with nothing but a marker and a big smile.",
+          "vi": "Mười giờ, Linh bước vào phòng họp, chỉ mang theo một cây bút lông và nụ cười thật tươi."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Good morning, everyone. Today I'm going to keep things simple. No slides, just the ideas that matter.",
+          "vi": "Chào buổi sáng mọi người. Hôm nay tôi sẽ trình bày thật đơn giản. Không slide, chỉ những ý quan trọng."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "She writes three numbers on the whiteboard and explains each one with a short, real example.",
+          "vi": "Cô viết ba con số lên bảng và giải thích từng con số bằng một ví dụ thực tế ngắn gọn."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "An hour later, Linh comes back to her desk.",
+          "vi": "Một tiếng sau, Linh quay về bàn làm việc."
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "Well? How did it go?",
+          "vi": "Sao rồi? Mọi chuyện thế nào?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "I think I nailed it! They said it was the clearest pitch they'd seen all year. They want to sign next week.",
+          "vi": "Em nghĩ em làm tốt lắm! Họ bảo đây là bài thuyết trình rõ ràng nhất họ được nghe cả năm nay. Tuần sau họ muốn ký hợp đồng."
+        },
+        {
+          "type": "question",
+          "q": "Kết quả buổi thuyết trình thế nào?",
+          "options": [
+            "The client wants to sign",
+            "The client was angry",
+            "The meeting was moved"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Mark",
+          "en": "See? I told you. Maybe that laptop did you a favour.",
+          "vi": "Thấy chưa? Anh nói rồi mà. Có khi cái laptop đó lại giúp em một phen."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Maybe. But from now on, I'm saving everything to the shared drive.",
+          "vi": "Có thể ạ. Nhưng từ giờ, em sẽ lưu mọi thứ lên ổ chung."
+        }
+      ]
+    },
+    {
+      "id": "job-offer",
+      "title": "Two Job Offers",
+      "titleVi": "Hai lời mời làm việc",
+      "emoji": "💼",
+      "category": "work",
+      "level": "B1",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Linh",
+          "pitch": 1.25
+        },
+        {
+          "name": "Daniel",
+          "pitch": 0.85
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Linh moved from Hanoi to Sydney three years ago. Tonight she is having dinner with her old friend Daniel, and she looks worried.",
+          "vi": "Linh chuyển từ Hà Nội sang Sydney ba năm trước. Tối nay cô ăn tối với người bạn cũ Daniel, và trông cô có vẻ lo lắng."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "You've hardly touched your noodles. What's on your mind?",
+          "vi": "Cậu gần như chưa động đũa vào tô mì. Cậu đang nghĩ gì thế?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "I got two job offers this week, and I have to give both companies an answer by Friday.",
+          "vi": "Tuần này mình nhận được hai lời mời làm việc, và mình phải trả lời cả hai công ty trước thứ Sáu."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "Two offers? That's fantastic news! Most people would be over the moon.",
+          "vi": "Hai lời mời à? Tin tuyệt vời đấy! Hầu hết mọi người sẽ sướng rơn lên."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "I know, but it's harder than it sounds. The first one is at a big bank, and they're offering twenty percent more than I earn now.",
+          "vi": "Mình biết, nhưng nó khó hơn cậu nghĩ. Chỗ thứ nhất là một ngân hàng lớn, và họ trả cao hơn hai mươi phần trăm so với lương hiện tại của mình."
+        },
+        {
+          "type": "question",
+          "q": "Lời mời từ ngân hàng có điểm gì hấp dẫn?",
+          "options": [
+            "The office is close to her home",
+            "The salary is twenty percent higher",
+            "She can work from home every day"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "Twenty percent is a lot of money. So what's the catch?",
+          "vi": "Hai mươi phần trăm là nhiều tiền đấy. Vậy vướng mắc ở đâu?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "During the interview, the manager barely smiled, and two people told me the team works until nine most nights.",
+          "vi": "Trong buổi phỏng vấn, người quản lý gần như không cười, và hai người kể với mình rằng cả nhóm hầu như tối nào cũng làm đến chín giờ."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "Ah, that doesn't sound great. And the second offer?",
+          "vi": "À, nghe không ổn lắm. Còn lời mời thứ hai thì sao?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "It's a small design studio. The pay is about the same as now, but the team was so friendly that I felt at home straight away.",
+          "vi": "Đó là một studio thiết kế nhỏ. Lương thì ngang bây giờ, nhưng cả nhóm thân thiện đến mức mình thấy như ở nhà ngay lập tức."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "They even invited me to their Friday lunch after the interview, and the manager said she would help me grow as a team leader.",
+          "vi": "Sau buổi phỏng vấn họ còn mời mình ăn trưa thứ Sáu cùng, và chị quản lý nói sẽ giúp mình phát triển thành trưởng nhóm."
+        },
+        {
+          "type": "question",
+          "q": "Linh cảm thấy thế nào về nhóm ở studio thiết kế?",
+          "options": [
+            "She felt welcome there immediately",
+            "She thought they were too quiet",
+            "She was worried they work late"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "Okay, let me play devil's advocate. More money could help you save for a flat, and you could always change jobs later.",
+          "vi": "Được rồi, để mình thử nói ngược lại nhé. Nhiều tiền hơn giúp cậu dành dụm mua căn hộ, và sau này cậu vẫn có thể đổi việc mà."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "That's true. My parents in Vietnam would definitely tell me to take the bank job without thinking twice.",
+          "vi": "Đúng vậy. Bố mẹ mình ở Việt Nam chắc chắn sẽ bảo mình nhận việc ở ngân hàng ngay, không cần suy nghĩ."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "But I remember your last job. You were exhausted all the time, and you said the long hours were killing you.",
+          "vi": "Nhưng mình còn nhớ công việc trước của cậu. Lúc nào cậu cũng kiệt sức, và cậu bảo làm việc nhiều giờ như vậy đang giết dần cậu."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Daniel nhắc đến công việc trước của Linh?",
+          "options": [
+            "Because she earned more money there",
+            "Because she was very tired from working long hours",
+            "Because she wants to go back to it"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "You're right. I barely saw my friends that year, and I stopped painting completely.",
+          "vi": "Cậu nói đúng. Năm đó mình hầu như không gặp bạn bè, và mình bỏ vẽ hẳn luôn."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "So here's a simple question. In two years, which job do you think will make you happier?",
+          "vi": "Vậy mình hỏi một câu đơn giản nhé. Hai năm nữa, cậu nghĩ công việc nào sẽ khiến cậu hạnh phúc hơn?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Honestly? The studio, no doubt about it. I'd learn more there, and I'd actually enjoy going to work.",
+          "vi": "Thật lòng à? Studio, chắc chắn rồi. Ở đó mình sẽ học được nhiều hơn, và mình sẽ thật sự thích đi làm."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "Then maybe you already know the answer. But why not ask the studio for a little more money first?",
+          "vi": "Vậy có lẽ cậu đã biết câu trả lời rồi. Nhưng sao không thử đề nghị studio trả thêm một chút trước?"
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Negotiate? I'm not sure. I don't want them to think I'm greedy.",
+          "vi": "Thương lượng à? Mình không chắc. Mình không muốn họ nghĩ mình tham lam."
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "It's completely normal here. Just tell them politely that you have another offer and you'd love to find a middle ground.",
+          "vi": "Ở đây chuyện đó hoàn toàn bình thường. Cứ lịch sự nói với họ là cậu có một lời mời khác và cậu muốn tìm một mức ở giữa."
+        },
+        {
+          "type": "question",
+          "q": "Daniel khuyên Linh làm gì?",
+          "options": [
+            "Accept the bank job immediately",
+            "Turn down both offers",
+            "Politely ask the studio for a higher salary"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "The worst they can say is no. And if they really want you, they'll at least meet you halfway.",
+          "vi": "Tệ nhất thì họ chỉ nói không thôi. Còn nếu họ thật sự muốn cậu, ít nhất họ cũng sẽ nhượng bộ một phần."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Okay, you've talked me into it. I'll call them first thing tomorrow, before I lose my nerve.",
+          "vi": "Được rồi, cậu thuyết phục được mình rồi. Sáng mai mình sẽ gọi cho họ ngay, trước khi mình mất can đảm."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "The next morning, Linh called the studio. That evening, she sent Daniel a message.",
+          "vi": "Sáng hôm sau, Linh gọi cho studio. Tối hôm đó, cô nhắn tin cho Daniel."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Guess what? They offered me ten percent more and one day working from home each week. I said yes!",
+          "vi": "Đoán xem? Họ tăng thêm mười phần trăm và cho mình làm ở nhà một ngày mỗi tuần. Mình đồng ý rồi!"
+        },
+        {
+          "type": "line",
+          "speaker": "Daniel",
+          "en": "That's brilliant! See? You got the best of both worlds. Dinner is on you next time.",
+          "vi": "Tuyệt quá! Thấy chưa? Cậu được cả đôi đường. Lần sau cậu khao bữa tối nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "Linh",
+          "en": "Deal! And this time I'll actually eat my noodles.",
+          "vi": "Chốt! Và lần này mình sẽ ăn hết tô mì thật."
+        },
+        {
+          "type": "question",
+          "q": "“The best of both worlds” trong câu chuyện nghĩa là gì?",
+          "options": [
+            "Linh got a good team and better conditions too",
+            "Linh now has two jobs at the same time",
+            "Linh will move to another country"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "missed-flight",
+      "title": "The Missed Connection",
+      "titleVi": "Lỡ chuyến bay nối",
+      "emoji": "✈️",
+      "category": "travel",
+      "level": "B1",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Carlos",
+          "pitch": 0.85
+        },
+        {
+          "name": "Priya",
+          "pitch": 1.25
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Carlos is flying from Madrid to Singapore with a stop in Dubai. His first flight landed two hours late, and now he is running through the airport.",
+          "vi": "Carlos bay từ Madrid đến Singapore, quá cảnh ở Dubai. Chuyến bay đầu tiên hạ cánh trễ hai tiếng, và giờ anh đang chạy khắp sân bay."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "When he finally reaches the gate, it's empty. His connecting flight has already left.",
+          "vi": "Khi cuối cùng anh đến được cửa ra máy bay, chỗ đó đã trống trơn. Chuyến bay nối của anh đã cất cánh rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Excuse me, I was supposed to be on the flight to Singapore. My plane from Madrid was delayed.",
+          "vi": "Xin lỗi, lẽ ra tôi phải đi chuyến bay đến Singapore. Máy bay của tôi từ Madrid bị trễ."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "I'm so sorry, sir. That flight closed forty minutes ago. May I see your boarding pass and passport, please?",
+          "vi": "Tôi rất tiếc, thưa anh. Chuyến bay đó đã đóng cửa bốn mươi phút trước. Cho tôi xem thẻ lên máy bay và hộ chiếu của anh được không ạ?"
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Carlos lỡ chuyến bay nối?",
+          "options": [
+            "He fell asleep at the gate",
+            "His first flight arrived late",
+            "He went to the wrong terminal"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Here you go. I have an important meeting in Singapore tomorrow afternoon, so I really need to get there as soon as possible.",
+          "vi": "Đây ạ. Chiều mai tôi có một cuộc họp quan trọng ở Singapore, nên tôi thật sự cần đến đó càng sớm càng tốt."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Let me check. The next flight with free seats leaves at seven tomorrow morning.",
+          "vi": "Để tôi kiểm tra. Chuyến tiếp theo còn ghế trống sẽ khởi hành lúc bảy giờ sáng mai."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Is there really nothing earlier? Even a flight with another airline would be fine.",
+          "vi": "Thật sự không còn chuyến nào sớm hơn sao? Kể cả chuyến của hãng khác cũng được."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "I've checked our partner airlines too, but everything tonight is fully booked, I'm afraid.",
+          "vi": "Tôi đã kiểm tra cả các hãng đối tác, nhưng tiếc là các chuyến tối nay đều kín chỗ."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Seven tomorrow morning? So I'll be stuck here all night?",
+          "vi": "Bảy giờ sáng mai à? Vậy là tôi bị kẹt ở đây cả đêm sao?"
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "I'm afraid so. But because the delay was our airline's fault, you won't have to pay anything for the new ticket.",
+          "vi": "Tôi e là vậy. Nhưng vì sự chậm trễ là lỗi của hãng chúng tôi, anh sẽ không phải trả gì cho vé mới."
+        },
+        {
+          "type": "question",
+          "q": "Chuyến bay tiếp theo khởi hành lúc mấy giờ?",
+          "options": [
+            "At seven in the evening",
+            "At midnight",
+            "At seven tomorrow morning"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Well, that's something. But what about tonight? I can't sleep on these chairs. I'm completely exhausted.",
+          "vi": "Ừ, thế cũng còn đỡ. Nhưng còn tối nay thì sao? Tôi không thể ngủ trên mấy cái ghế này được. Tôi mệt rã rời rồi."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "We can offer you a meal voucher for one of the restaurants in the terminal.",
+          "vi": "Chúng tôi có thể tặng anh một phiếu ăn ở một trong các nhà hàng trong nhà ga."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "With respect, a sandwich isn't really enough. Since the delay wasn't my fault, I think the airline should cover a hotel room.",
+          "vi": "Nói thật lòng, một cái bánh mì kẹp thì chưa đủ. Vì sự chậm trễ không phải lỗi của tôi, tôi nghĩ hãng nên chi trả một phòng khách sạn."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "I understand how you feel. Let me speak to my supervisor and see what I can do.",
+          "vi": "Tôi hiểu cảm giác của anh. Để tôi nói chuyện với quản lý xem tôi có thể làm gì."
+        },
+        {
+          "type": "question",
+          "q": "Carlos đề nghị hãng hàng không điều gì?",
+          "options": [
+            "A hotel room for the night",
+            "A refund for his whole trip",
+            "A seat in first class"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Priya makes a quick phone call. Carlos waits, tapping his foot nervously.",
+          "vi": "Priya gọi một cuộc điện thoại ngắn. Carlos đứng chờ, nhịp chân đầy sốt ruột."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Good news. We can put you up at the airport hotel tonight, and dinner and breakfast are included.",
+          "vi": "Tin tốt đây. Chúng tôi có thể sắp xếp cho anh ở khách sạn sân bay tối nay, bao gồm cả bữa tối và bữa sáng."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Thank you, that's a huge relief. What about my suitcase? I checked it all the way to Singapore.",
+          "vi": "Cảm ơn cô, thế thì nhẹ cả người. Còn vali của tôi thì sao? Tôi đã gửi thẳng đến Singapore."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Your bag will stay in the system and travel with you on the morning flight. Here's a small kit with a toothbrush and a T-shirt.",
+          "vi": "Hành lý của anh sẽ ở lại trong hệ thống và bay cùng anh vào chuyến sáng. Đây là một bộ đồ dùng nhỏ có bàn chải đánh răng và áo phông."
+        },
+        {
+          "type": "question",
+          "q": "Chuyện gì sẽ xảy ra với vali của Carlos?",
+          "options": [
+            "He must collect it tonight",
+            "It will go on the morning flight with him",
+            "It has already arrived in Singapore"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "That's a lifesaver. I didn't even pack a spare shirt in my hand luggage.",
+          "vi": "Thế thì cứu tôi rồi. Tôi còn chẳng mang theo áo sơ mi dự phòng trong hành lý xách tay."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "One more thing. Is there any chance of a seat near the front? I need to get off quickly tomorrow.",
+          "vi": "Còn một chuyện nữa. Có cách nào cho tôi ngồi ghế gần phía trước không? Mai tôi cần xuống máy bay thật nhanh."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Let me see. I've moved you to row four, an aisle seat. You'll be one of the first off the plane.",
+          "vi": "Để tôi xem. Tôi đã chuyển anh lên hàng bốn, ghế cạnh lối đi. Anh sẽ là một trong những người xuống máy bay đầu tiên."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "You've been incredibly helpful. I'm sorry I was a bit short with you earlier.",
+          "vi": "Cô đã giúp tôi rất nhiều. Xin lỗi vì lúc nãy tôi hơi cộc cằn với cô."
+        },
+        {
+          "type": "line",
+          "speaker": "Priya",
+          "en": "Don't worry about it. It's been a long day for you. The hotel shuttle leaves from Door Twelve every fifteen minutes.",
+          "vi": "Anh đừng bận tâm. Hôm nay là một ngày dài với anh mà. Xe đưa đón của khách sạn khởi hành từ Cửa số mười hai, mười lăm phút một chuyến."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "The next afternoon, Carlos walks into his meeting in Singapore with ten minutes to spare.",
+          "vi": "Chiều hôm sau, Carlos bước vào cuộc họp ở Singapore, còn dư mười phút."
+        },
+        {
+          "type": "line",
+          "speaker": "Carlos",
+          "en": "Sorry, I'm a bit tired. Long story, but let's just say I learned how to ask politely for what I need.",
+          "vi": "Xin lỗi, tôi hơi mệt. Chuyện dài lắm, nhưng có thể nói là tôi đã học được cách lịch sự đề nghị điều mình cần."
+        },
+        {
+          "type": "question",
+          "q": "Bài học Carlos rút ra là gì?",
+          "options": [
+            "Always book a hotel before flying",
+            "Never fly with a stop in Dubai",
+            "Asking politely can get you what you need"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "landlord-dispute",
+      "title": "The Deposit",
+      "titleVi": "Tiền đặt cọc",
+      "emoji": "🏠",
+      "category": "home",
+      "level": "B2",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Sophie",
+          "pitch": 1.25
+        },
+        {
+          "name": "Mr. Kowalski",
+          "pitch": 0.75
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Sophie has just moved out of her flat in Toronto after two years. A week later, an email from her landlord, Mr. Kowalski, says he's keeping most of her deposit.",
+          "vi": "Sophie vừa chuyển khỏi căn hộ ở Toronto sau hai năm. Một tuần sau, email từ chủ nhà, ông Kowalski, báo rằng ông sẽ giữ lại phần lớn tiền đặt cọc của cô."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Rather than firing off an angry reply, she decides to call him.",
+          "vi": "Thay vì vội gửi một lời phản hồi giận dữ, cô quyết định gọi điện cho ông."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "Hi, Mr. Kowalski, it's Sophie. I got your email about the deposit, and I was hoping we could talk it through.",
+          "vi": "Chào ông Kowalski, cháu là Sophie. Cháu đã nhận email của ông về tiền đặt cọc, và cháu mong là mình có thể nói chuyện cho rõ."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Of course. I'm keeping eight hundred dollars for cleaning, a damaged carpet, and a hole in the bedroom wall.",
+          "vi": "Được thôi. Tôi giữ lại tám trăm đô cho tiền dọn dẹp, tấm thảm bị hỏng và một lỗ thủng trên tường phòng ngủ."
+        },
+        {
+          "type": "question",
+          "q": "Ông Kowalski muốn giữ lại tiền vì những lý do nào?",
+          "options": [
+            "Unpaid rent and a broken window",
+            "Cleaning, the carpet and a hole in the wall",
+            "A lost key and a broken fridge"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "Eight hundred? With respect, that's almost the whole deposit, and I took good care of the place.",
+          "vi": "Tám trăm ạ? Thưa ông, như vậy gần bằng cả tiền cọc, trong khi cháu đã giữ gìn căn nhà rất cẩn thận."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "I'm sure you think so, but I have to go by what I found when I walked in.",
+          "vi": "Tôi tin là cô nghĩ vậy, nhưng tôi phải dựa vào những gì tôi thấy khi bước vào."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "I see. Well, I'd like to go through those one by one, if that's alright. Let's start with the cleaning.",
+          "vi": "Cháu hiểu. Vậy nếu ông không phiền, cháu muốn xem xét từng khoản một. Mình bắt đầu với chuyện dọn dẹp nhé."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "I actually hired a professional cleaner the day I moved out, and I've got the receipt. I also took photos of every room.",
+          "vi": "Thật ra hôm chuyển đi cháu đã thuê người dọn dẹp chuyên nghiệp, và cháu còn giữ hóa đơn. Cháu cũng đã chụp ảnh tất cả các phòng."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Hmm. To be fair, the kitchen did look spotless. I suppose I could let the cleaning fee go.",
+          "vi": "Hừm. Công bằng mà nói, nhà bếp đúng là sạch bong. Tôi nghĩ tôi có thể bỏ qua khoản phí dọn dẹp."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao ông Kowalski đồng ý bỏ khoản phí dọn dẹp?",
+          "options": [
+            "Sophie threatened to call a lawyer",
+            "He forgot to check the kitchen",
+            "Sophie had a receipt and photos as proof"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "Thank you. Now, about the carpet. I completely understand your concern, but those marks were there when I moved in.",
+          "vi": "Cảm ơn ông. Giờ đến tấm thảm. Cháu hoàn toàn hiểu mối lo của ông, nhưng những vết đó đã có từ khi cháu dọn vào."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Are you sure? I don't remember any stains on that carpet.",
+          "vi": "Cô chắc chứ? Tôi không nhớ là tấm thảm có vết bẩn nào."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "I filled in the move-in checklist you gave me, and I noted them on page two. I'll send you a copy right after this call.",
+          "vi": "Cháu đã điền vào bảng kiểm tra lúc nhận nhà mà ông đưa, và cháu có ghi chú chúng ở trang hai. Cháu sẽ gửi ông bản sao ngay sau cuộc gọi này."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Well, if it's written down, I can hardly argue with that. Fine, the carpet's off the table.",
+          "vi": "Thôi, nếu đã ghi lại rồi thì tôi khó mà cãi được. Được, khoản tấm thảm coi như bỏ."
+        },
+        {
+          "type": "question",
+          "q": "“The carpet's off the table” có nghĩa là gì?",
+          "options": [
+            "He will no longer charge her for the carpet",
+            "He wants to sell the carpet",
+            "He will put a new table on the carpet"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "There's a short pause. Sophie knows the last point is the trickiest one.",
+          "vi": "Có một khoảng lặng ngắn. Sophie biết điểm cuối cùng là điểm khó nhất."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "As for the wall, I have to hold my hands up. A shelf came down and left a hole, and that's on me.",
+          "vi": "Còn về bức tường, cháu phải nhận lỗi. Một cái kệ bị rơi xuống và để lại lỗ thủng, đó là trách nhiệm của cháu."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "I appreciate your honesty. The repair quote I got was four hundred dollars, though.",
+          "vi": "Tôi quý sự thành thật của cô. Tuy nhiên, báo giá sửa chữa tôi nhận được là bốn trăm đô."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "I see your point, but four hundred seems a bit steep for a small patch. I looked into it, and most handymen charge around two hundred.",
+          "vi": "Cháu hiểu ý ông, nhưng bốn trăm có vẻ hơi đắt cho một miếng vá nhỏ. Cháu đã tìm hiểu, và hầu hết thợ sửa chữa lấy khoảng hai trăm."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Two hundred? That's a bit on the low side. The paint has to match the whole wall, you know.",
+          "vi": "Hai trăm à? Thế thì hơi thấp. Cô biết đấy, sơn phải khớp với cả bức tường."
+        },
+        {
+          "type": "question",
+          "q": "Sophie phản ứng thế nào với báo giá bốn trăm đô?",
+          "options": [
+            "She accepts it without discussion",
+            "She politely suggests it is too high and gives a comparison",
+            "She refuses to pay anything at all"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "That's fair. How about we meet halfway? I'll cover three hundred, and you return the rest of my deposit this week.",
+          "vi": "Cũng hợp lý ạ. Hay mình mỗi bên nhường một chút nhé? Cháu chịu ba trăm, và ông trả lại phần còn lại của tiền cọc trong tuần này."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Three hundred, and the rest by Friday. You drive a hard bargain, but you've been a good tenant. It's a deal.",
+          "vi": "Ba trăm, và phần còn lại trước thứ Sáu. Cô mặc cả giỏi đấy, nhưng cô là một người thuê nhà tốt. Đồng ý."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "Thank you, I really appreciate it. Would you mind putting that in an email, just so we're both on the same page?",
+          "vi": "Cảm ơn ông, cháu thật sự rất cảm kích. Ông có thể ghi lại điều đó trong email không, để cả hai chúng ta cùng thống nhất?"
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Not at all. And if you ever need a reference for your next landlord, just let me know.",
+          "vi": "Không vấn đề gì. Và nếu cô cần thư giới thiệu cho chủ nhà tiếp theo, cứ báo tôi nhé."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Sophie muốn thỏa thuận được ghi trong email?",
+          "options": [
+            "So she can share it on social media",
+            "Because she does not trust the bank",
+            "So there is a clear written record they both agree on"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "On Friday, five hundred dollars appeared in Sophie's bank account, along with a short note from Mr. Kowalski.",
+          "vi": "Vào thứ Sáu, năm trăm đô xuất hiện trong tài khoản ngân hàng của Sophie, kèm một lời nhắn ngắn của ông Kowalski."
+        },
+        {
+          "type": "line",
+          "speaker": "Mr. Kowalski",
+          "en": "Thanks for keeping it civil. Most people just shout at me. Good luck in the new place.",
+          "vi": "Cảm ơn cô vì đã giữ thái độ hòa nhã. Hầu hết mọi người chỉ biết quát tháo tôi. Chúc cô may mắn ở chỗ mới."
+        },
+        {
+          "type": "line",
+          "speaker": "Sophie",
+          "en": "Thanks! Turns out a few photos and a calm voice go a long way.",
+          "vi": "Cảm ơn ông! Hóa ra vài tấm ảnh và một giọng nói bình tĩnh có tác dụng lớn lắm."
+        },
+        {
+          "type": "question",
+          "q": "Có thể suy ra điều gì về cách Sophie giải quyết vấn đề?",
+          "options": [
+            "Staying calm and having evidence helped her get most of her money back",
+            "Shouting is the best way to deal with a landlord",
+            "She lost the whole deposit because she admitted a mistake"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "startup-pitch",
+      "title": "The Pitch",
+      "titleVi": "Buổi gọi vốn",
+      "emoji": "🚀",
+      "category": "work",
+      "level": "B2",
+      "characters": [
+        {
+          "name": "Narrator",
+          "pitch": 1
+        },
+        {
+          "name": "Minh",
+          "pitch": 1.15
+        },
+        {
+          "name": "Aisha",
+          "pitch": 1.35
+        },
+        {
+          "name": "Richard",
+          "pitch": 0.75
+        }
+      ],
+      "items": [
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "Minh, a Vietnamese engineer living in London, has built an app called Nudge that reminds elderly people to take their medicine. Today she has ten minutes to convince two investors.",
+          "vi": "Minh, một kỹ sư người Việt sống ở London, đã xây dựng ứng dụng tên Nudge nhắc người cao tuổi uống thuốc. Hôm nay cô có mười phút để thuyết phục hai nhà đầu tư."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "Thank you for having me. Every year, millions of older people end up in hospital simply because they forget to take their medication.",
+          "vi": "Cảm ơn hai vị đã dành thời gian. Mỗi năm, hàng triệu người cao tuổi phải nhập viện chỉ vì họ quên uống thuốc."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "Nudge speaks to them in a friendly voice, in their own language, and if they miss a dose, it quietly lets their family know.",
+          "vi": "Nudge nói chuyện với họ bằng giọng thân thiện, bằng chính ngôn ngữ của họ, và nếu họ bỏ lỡ một liều, ứng dụng sẽ nhẹ nhàng báo cho gia đình."
+        },
+        {
+          "type": "question",
+          "q": "Ứng dụng Nudge làm gì khi người dùng quên uống thuốc?",
+          "options": [
+            "It calls an ambulance",
+            "It quietly informs their family",
+            "It locks the phone"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Aisha",
+          "en": "It's a lovely idea, but let me be blunt. There are dozens of reminder apps out there already. What makes yours stand out?",
+          "vi": "Ý tưởng rất hay, nhưng để tôi nói thẳng. Ngoài kia đã có hàng chục ứng dụng nhắc nhở rồi. Ứng dụng của cô có gì nổi bật?"
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "That's a fair question. Most of those apps are built for people who are comfortable with smartphones. Ours works with just one big button, or by voice.",
+          "vi": "Đó là một câu hỏi xác đáng. Hầu hết các ứng dụng đó được làm cho những người quen dùng điện thoại thông minh. Ứng dụng của chúng tôi chỉ cần một nút bấm lớn, hoặc dùng giọng nói."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "In our trial, users took their medicine on time ninety-two percent of the time, compared to about sixty percent before.",
+          "vi": "Trong đợt thử nghiệm, người dùng uống thuốc đúng giờ chín mươi hai phần trăm số lần, so với khoảng sáu mươi phần trăm trước đó."
+        },
+        {
+          "type": "question",
+          "q": "Theo Minh, điều gì khiến Nudge khác các ứng dụng khác?",
+          "options": [
+            "It is completely free forever",
+            "It has the most colourful design",
+            "It is very simple, with one button or voice control"
+          ],
+          "answer": 2
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "Impressive numbers, but how many people were in this trial?",
+          "vi": "Con số ấn tượng đấy, nhưng đợt thử nghiệm có bao nhiêu người?"
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "Three hundred, across two care homes. I'll admit that's a small sample, which is exactly why we're raising money to scale up.",
+          "vi": "Ba trăm người, ở hai viện dưỡng lão. Tôi thừa nhận đó là một mẫu nhỏ, và đó chính là lý do chúng tôi gọi vốn để mở rộng quy mô."
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "I appreciate the honesty. Now, how do you plan to make money? Old people aren't exactly known for paying for apps.",
+          "vi": "Tôi quý sự thẳng thắn đó. Giờ thì, cô định kiếm tiền thế nào? Người già vốn đâu nổi tiếng là chịu trả tiền cho ứng dụng."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "We don't charge them at all. The families pay five pounds a month, and we're in talks with two care home chains about a bulk deal.",
+          "vi": "Chúng tôi không thu tiền họ. Gia đình trả năm bảng mỗi tháng, và chúng tôi đang đàm phán với hai chuỗi viện dưỡng lão về một hợp đồng số lượng lớn."
+        },
+        {
+          "type": "question",
+          "q": "Ai sẽ trả tiền cho ứng dụng Nudge?",
+          "options": [
+            "The families and care homes",
+            "The elderly users themselves",
+            "The government only"
+          ],
+          "answer": 0
+        },
+        {
+          "type": "line",
+          "speaker": "Aisha",
+          "en": "Being in talks isn't the same as signing a contract, though. What happens if those deals fall through?",
+          "vi": "Tuy nhiên, đang đàm phán không có nghĩa là đã ký hợp đồng. Chuyện gì xảy ra nếu những thương vụ đó đổ bể?"
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "You're right, nothing is guaranteed. But even without them, our family subscriptions have grown by around fifteen percent every month since we launched.",
+          "vi": "Chị nói đúng, không có gì là chắc chắn. Nhưng kể cả không có họ, lượng gia đình đăng ký của chúng tôi đã tăng khoảng mười lăm phần trăm mỗi tháng kể từ khi ra mắt."
+        },
+        {
+          "type": "line",
+          "speaker": "Aisha",
+          "en": "Fifteen percent a month is no small feat. I'd want to see those figures, of course.",
+          "vi": "Mười lăm phần trăm mỗi tháng không phải chuyện nhỏ. Tất nhiên tôi muốn xem các số liệu đó."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "Absolutely. I can send you our full dashboard this afternoon, warts and all.",
+          "vi": "Chắc chắn rồi. Chiều nay tôi có thể gửi chị toàn bộ bảng số liệu, cả điểm tốt lẫn điểm chưa tốt."
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "Hmm. And why should we bet on you? You're an engineer, not a businessperson.",
+          "vi": "Hừm. Và tại sao chúng tôi nên đặt cược vào cô? Cô là kỹ sư, đâu phải người làm kinh doanh."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "I'd push back on that a little. I may not have an MBA, but I built this because my grandmother in Da Nang nearly died after mixing up her pills.",
+          "vi": "Tôi xin phản biện một chút. Tôi có thể không có bằng MBA, nhưng tôi làm ra ứng dụng này vì bà tôi ở Đà Nẵng suýt mất mạng sau khi uống nhầm thuốc."
+        },
+        {
+          "type": "question",
+          "q": "Minh trả lời thế nào khi Richard nghi ngờ khả năng của cô?",
+          "options": [
+            "She agrees and offers to hire a new boss",
+            "She politely disagrees and explains her personal connection to the problem",
+            "She gets angry and ends the meeting"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "The room goes quiet. Aisha and Richard exchange a look, and Minh's heart sinks. She's sure she has blown it.",
+          "vi": "Căn phòng im lặng. Aisha và Richard nhìn nhau, và tim Minh chùng xuống. Cô chắc mẩm mình đã làm hỏng mọi chuyện."
+        },
+        {
+          "type": "line",
+          "speaker": "Aisha",
+          "en": "Thank you, Minh. We'll need some time to mull it over. We'll be in touch.",
+          "vi": "Cảm ơn cô, Minh. Chúng tôi cần thời gian để cân nhắc. Chúng tôi sẽ liên lạc lại."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "Of course. Thank you both for your time.",
+          "vi": "Tất nhiên rồi. Cảm ơn hai vị đã dành thời gian."
+        },
+        {
+          "type": "line",
+          "speaker": "Narrator",
+          "en": "As Minh is packing up her laptop, Richard clears his throat.",
+          "vi": "Khi Minh đang cất máy tính xách tay, Richard hắng giọng."
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "Actually, there's something I should come clean about. My father has been using Nudge for the last six months.",
+          "vi": "Thật ra, có một chuyện tôi nên thú nhận. Bố tôi đã dùng Nudge suốt sáu tháng qua."
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "I was hard on you on purpose, because I wanted to see how you'd handle the pressure. You handled it brilliantly.",
+          "vi": "Tôi cố tình làm khó cô, vì tôi muốn xem cô xử lý áp lực thế nào. Cô đã xử lý xuất sắc."
+        },
+        {
+          "type": "question",
+          "q": "Vì sao Richard đặt những câu hỏi khó?",
+          "options": [
+            "He thought the app was useless",
+            "He wanted to test how Minh handled pressure",
+            "He wanted to buy a competing app"
+          ],
+          "answer": 1
+        },
+        {
+          "type": "line",
+          "speaker": "Aisha",
+          "en": "He's been singing your praises all week. So, if your numbers check out, we'd like to lead your funding round.",
+          "vi": "Cả tuần nay anh ấy cứ khen cô suốt. Vậy nên, nếu các số liệu của cô được xác minh, chúng tôi muốn dẫn dắt vòng gọi vốn của cô."
+        },
+        {
+          "type": "line",
+          "speaker": "Minh",
+          "en": "I don't know what to say. I honestly thought I'd lost you at the business question!",
+          "vi": "Tôi không biết nói gì nữa. Thật lòng tôi tưởng mình đã mất hai vị ở câu hỏi về kinh doanh rồi!"
+        },
+        {
+          "type": "line",
+          "speaker": "Richard",
+          "en": "Quite the opposite. Anyone who can admit what they don't know is worth backing. My dad says hello, by the way.",
+          "vi": "Hoàn toàn ngược lại. Người dám thừa nhận điều mình chưa biết thì đáng để đầu tư. À, bố tôi gửi lời chào cô đấy."
+        },
+        {
+          "type": "question",
+          "q": "Có thể suy ra điều gì từ cái kết của câu chuyện?",
+          "options": [
+            "Minh will have to find new investors",
+            "Richard's father stopped using the app",
+            "Minh's honesty helped win the investors' trust"
+          ],
+          "answer": 2
+        }
       ]
     }
   ]
