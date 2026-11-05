@@ -101,11 +101,14 @@ export const app = {
   /** Re-renders the current screen, keeping each scroll area where it was. */
   update() {
     if (!screen) return;
-    const scrolls = [...root.querySelectorAll('[data-scroll]')].map((el) => [el.dataset.scroll, el.scrollTop]);
+    const scrolls = [...root.querySelectorAll('[data-scroll]')].map((el) => [el.dataset.scroll, el.scrollTop, el.scrollLeft]);
     root.innerHTML = screen.view();
-    scrolls.forEach(([key, top]) => {
+    scrolls.forEach(([key, top, left]) => {
       const el = root.querySelector(`[data-scroll="${key}"]`);
-      if (el) el.scrollTop = top;
+      if (el) {
+        el.scrollTop = top;
+        el.scrollLeft = left;
+      }
     });
     highlight(speaker.speaking);
     screen.after?.(root);
