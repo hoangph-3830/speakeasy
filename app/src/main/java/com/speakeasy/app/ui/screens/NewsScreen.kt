@@ -231,7 +231,7 @@ private fun <T> ChipRow(
 }
 
 /** Scrolls just enough to show item [index] whole, leaving the row alone when it already is. */
-private suspend fun revealItem(state: LazyListState, index: Int) {
+internal suspend fun revealItem(state: LazyListState, index: Int) {
     if (index < 0) return
     val info = state.layoutInfo
     val shown = info.visibleItemsInfo.firstOrNull { it.index == index }
@@ -291,7 +291,7 @@ private fun NewsCard(item: NewsItem, bilingual: Boolean, onClick: () -> Unit) {
 
 /** Vietnamese under an English line, fetched the first time the line scrolls into view. */
 @Composable
-private fun Translation(text: String) {
+internal fun Translation(text: String) {
     val app = LocalApp.current
     val vi by produceState<String?>(null, text) {
         value = try {

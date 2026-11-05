@@ -150,6 +150,26 @@ fun ReviewScreen(onBack: () -> Unit) {
         }
 
         Column(Modifier.padding(horizontal = 20.dp).padding(bottom = 20.dp).navigationBarsPadding()) {
+            // Browse without grading: the deck is a loop, so a skipped card comes back later in the session.
+            Row(Modifier.fillMaxWidth().padding(bottom = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+                OutlinedButton(
+                    onClick = { queue.add(0, queue.removeAt(queue.lastIndex)); flipped = false },
+                    enabled = queue.size > 1,
+                    shape = RoundedCornerShape(14.dp),
+                ) { Text("‹ Thẻ trước") }
+                Text(
+                    if (flipped) "Chọn mức nhớ để lên lịch ôn" else "Chạm thẻ để lật",
+                    color = Muted,
+                    style = MaterialTheme.typography.labelMedium,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.weight(1f),
+                )
+                OutlinedButton(
+                    onClick = { queue.add(queue.removeAt(0)); flipped = false },
+                    enabled = queue.size > 1,
+                    shape = RoundedCornerShape(14.dp),
+                ) { Text("Thẻ sau ›") }
+            }
             if (!flipped) {
                 BigButton("Lật thẻ", onClick = { flipped = true }, color = Lavender)
             } else {

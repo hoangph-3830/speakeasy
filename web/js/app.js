@@ -14,6 +14,7 @@ import * as vocab from './screens/vocab.js';
 import * as news from './screens/news.js';
 import * as shadow from './screens/shadow.js';
 import * as books from './screens/books.js';
+import * as videos from './screens/videos.js';
 import { buildIndex } from './dict.js';
 
 const TABS = [
@@ -39,6 +40,8 @@ const ROUTES = [
   [/^stories$/, stories.hubScreen],
   [/^story\/(.+)$/, stories.storyScreen],
   [/^book\/(.+)$/, books.bookScreen],
+  [/^videos$/, videos.hubScreen],
+  [/^video\/(.+)$/, videos.videoScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],
   [/^topic\/([^/]+)\/phrases$/, lesson.phrasesScreen],
@@ -77,6 +80,14 @@ export const app = {
     return app.vocabLoading;
   },
   books: null,
+  videos: null,
+  loadVideos() {
+    app.videosLoading ??= load('videos').then((v) => (app.videos = v)).catch((e) => {
+      app.videosLoading = null;
+      throw e;
+    });
+    return app.videosLoading;
+  },
   /** Picture books load on first use, like the word list. */
   loadBooks() {
     app.booksLoading ??= load('picturebooks').then((b) => (app.books = b)).catch((e) => {

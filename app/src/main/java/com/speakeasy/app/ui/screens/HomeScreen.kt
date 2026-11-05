@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -70,6 +70,7 @@ import com.speakeasy.app.ui.theme.Mint
 import com.speakeasy.app.ui.theme.MintLight
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Peach
+import com.speakeasy.app.ui.theme.PeachLight
 import com.speakeasy.app.ui.theme.Sky
 import com.speakeasy.app.ui.theme.SkyLight
 import com.speakeasy.app.ui.theme.Sun
@@ -86,6 +87,7 @@ fun HomeScreen(
     openStories: () -> Unit,
     openVocab: () -> Unit,
     openNews: () -> Unit,
+    openVideos: () -> Unit,
 ) {
     val app = LocalApp.current
     val progress by app.progress.progress.collectAsState()
@@ -124,12 +126,13 @@ fun HomeScreen(
             )
         }
         item {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 Shortcut("🔁", "Ôn tập", LavenderLight, Modifier.weight(1f), badge = due, onClick = openReview)
                 Shortcut("📚", "Từ vựng", SkyLight, Modifier.weight(1f), onClick = openVocab)
                 Shortcut("🎯", "Phát âm", CoralLight, Modifier.weight(1f), onClick = openLab)
                 Shortcut("📖", "Truyện", MintLight, Modifier.weight(1f), onClick = openStories)
                 Shortcut("📰", "Đọc báo", SunLight, Modifier.weight(1f), onClick = openNews)
+                Shortcut("🎬", "Video", PeachLight, Modifier.weight(1f), onClick = openVideos)
             }
         }
         item { QuestsCard(progress, questsOpen, onToggle = { questsOpen = !questsOpen }, onClaim = { app.progress.claim(it) }) }
@@ -399,24 +402,36 @@ private fun ContinueCard(next: PathStep?, topic: Topic?, p: Progress, onOpen: ()
     }
 }
 
-/** One of the five small square shortcuts; [badge] shows a count in the corner when above zero. */
+/**
+ * One of the six small shortcuts; [badge] shows a count in the corner when above zero.
+ * Six fit across a 360dp phone at about 48dp each, so the tile is a fixed height and the label small.
+ */
 @Composable
 private fun Shortcut(emoji: String, label: String, bg: Color, modifier: Modifier, badge: Int = 0, onClick: () -> Unit) {
     Box(modifier) {
         Card(
             onClick = onClick,
-            modifier = Modifier.fillMaxWidth().aspectRatio(1f),
+            modifier = Modifier.fillMaxWidth().height(64.dp),
             shape = RoundedCornerShape(16.dp),
             colors = CardDefaults.cardColors(containerColor = bg),
         ) {
             Column(
-                Modifier.fillMaxSize().padding(4.dp),
+                Modifier.fillMaxSize().padding(horizontal = 2.dp, vertical = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {
                 Text(emoji, fontSize = 22.sp)
                 VSpace(2.dp)
-                Text(label, color = Ink, style = MaterialTheme.typography.labelMedium, maxLines = 1, textAlign = TextAlign.Center)
+                Text(
+                    label,
+                    color = Ink,
+                    style = MaterialTheme.typography.labelMedium,
+                    fontSize = 11.sp,
+                    letterSpacing = 0.sp,
+                    maxLines = 1,
+                    softWrap = false,
+                    textAlign = TextAlign.Center,
+                )
             }
         }
         if (badge > 0) Text(

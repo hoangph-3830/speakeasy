@@ -178,4 +178,14 @@ test('picture books are bilingual page by page, credited and sorted by level', (
   assert.deepEqual(ranks, [...ranks].sort((a, b) => a - b));
 });
 
+test('video channels list real-looking YouTube ids with levels', () => {
+  const { channels } = json('videos');
+  assert.ok(channels.length >= 5);
+  for (const c of channels) {
+    assert.ok(Object.keys(L.LEVELS).includes(c.level) && c.name && c.about, c.handle);
+    assert.ok(c.videos.length >= 10, c.handle);
+    for (const v of c.videos) assert.match(v.id, /^[A-Za-z0-9_-]{11}$/);
+  }
+});
+
 console.log(`\n${n} tests passed`);

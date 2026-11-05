@@ -47,6 +47,8 @@ import com.speakeasy.app.ui.screens.SpeakScreen
 import com.speakeasy.app.ui.screens.TopicScreen
 import com.speakeasy.app.ui.screens.VocabGroupScreen
 import com.speakeasy.app.ui.screens.VocabHubScreen
+import com.speakeasy.app.ui.screens.VideoHubScreen
+import com.speakeasy.app.ui.screens.VideoScreen
 import com.speakeasy.app.ui.theme.SkyLight
 
 private data class Tab(val route: String, val label: String, val icon: ImageVector)
@@ -91,12 +93,22 @@ fun AppNav() {
                     openStories = { nav.navigate("stories") },
                     openVocab = { nav.navigate("vocab") },
                     openNews = { nav.switchTab("news") },
+                    openVideos = { nav.navigate("videos") },
                 )
             }
             composable("vocab") { VocabHubScreen(onBack = nav::popBackStack, openGroup = { nav.navigate("vocab/$it") }) }
             composable("vocab/{id}") { VocabGroupScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             composable("news") { NewsScreen(openArticle = { link -> nav.navigate("article/${Uri.encode(link)}") }) }
             composable("article/{link}") { ArticleScreen(it.arguments!!.getString("link")!!, onBack = nav::popBackStack) }
+            composable("videos") { VideoHubScreen(onBack = nav::popBackStack, openVideo = { nav.navigate("video/$it") }) }
+            composable("video/{id}") {
+                VideoScreen(
+                    it.arguments!!.getString("id")!!,
+                    onBack = nav::popBackStack,
+                    // Another video of the channel replaces this one, so back still returns to the hub.
+                    openVideo = { id -> nav.navigate("video/$id") { popUpTo("videos") } },
+                )
+            }
             composable("review") { ReviewScreen(onBack = nav::popBackStack) }
             composable("lab") { LabHubScreen(onBack = nav::popBackStack, openLesson = { nav.navigate("lab/$it") }) }
             composable("lab/{id}") { LabLessonScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }

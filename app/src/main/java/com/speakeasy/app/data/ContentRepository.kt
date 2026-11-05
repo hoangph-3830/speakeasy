@@ -38,6 +38,17 @@ class ContentRepository(private val context: Context) {
 
     fun book(id: String): PictureBook? = books.books.firstOrNull { it.id == id }
 
+    /** The "Học qua video" channels; only parsed when the video hub is first opened. */
+    val videos: VideoContent by lazy {
+        context.assets.open("videos.json").bufferedReader().use {
+            json.decodeFromString(VideoContent.serializer(), it.readText())
+        }
+    }
+
+    /** A video with the channel it belongs to. */
+    fun video(id: String): Pair<VideoChannel, Video>? =
+        videos.channels.firstNotNullOfOrNull { c -> c.videos.firstOrNull { it.id == id }?.let { c to it } }
+
     private val prefs = context.getSharedPreferences("content_ui", Context.MODE_PRIVATE)
 
     /** Whether the stories hub last showed the picture books rather than the listening stories. */
@@ -45,9 +56,15 @@ class ContentRepository(private val context: Context) {
         get() = prefs.getBoolean(PICTURE_BOOKS, false)
         set(value) = prefs.edit().putBoolean(PICTURE_BOOKS, value).apply()
 
+    /** Handle of the channel the video hub last showed. */
+    var lastVideoChannel: String
+        get() = prefs.getString(VIDEO_CHANNEL, null).orEmpty()
+        set(value) = prefs.edit().putString(VIDEO_CHANNEL, value).apply()
+
     private companion object {
         val json = Json { ignoreUnknownKeys = true }
         const val PICTURE_BOOKS = "picture_books"
+        const val VIDEO_CHANNEL = "video_channel"
     }
 
     val categories: List<Category> get() = content.categories
