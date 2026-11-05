@@ -1,6 +1,12 @@
-// Cloudflare Worker: a small CORS proxy so the SpeakEasy web app can read BBC/CNN pages reliably.
+// Cloudflare Worker: a small CORS proxy so the SpeakEasy web app can read news feeds and pages reliably.
 // Only news hosts are allowed, so the worker can't be used as an open proxy.
-const ALLOWED = ['feeds.bbci.co.uk', 'www.bbc.co.uk', 'www.bbc.com', 'lite.cnn.com', 'www.cnn.com', 'edition.cnn.com'];
+const ALLOWED = [
+  'feeds.bbci.co.uk', 'www.bbc.co.uk', 'www.bbc.com',
+  'lite.cnn.com', 'www.cnn.com', 'edition.cnn.com',
+  'news.google.com', // Reuters headlines
+  'www.theguardian.com', 'feeds.npr.org', 'www.npr.org',
+  'www.aljazeera.com', 'www.abc.net.au', 'theconversation.com',
+];
 
 export default {
   async fetch(request) {

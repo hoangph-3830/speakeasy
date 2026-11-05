@@ -47,6 +47,12 @@ export function wordStats(texts) {
   return { ...by, total, percent: total ? Math.round((by.known.size * 100) / total) : 0 };
 }
 
+/** Age of the most recent story in a list, e.g. "5 phút trước". */
+const newest = (items) => {
+  const t = Math.max(0, ...items.map((it) => it.time || 0));
+  return t ? ago(t) : '';
+};
+
 const clock = (t) => new Date(t).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
 
 // The last source read is remembered between visits and app launches.
@@ -70,6 +76,10 @@ export function listScreen(app) {
   let alive = true;
   // Set when the source changes, so the chosen chips are scrolled into view once.
   let revealChips = true;
+
+  const onVisible = () => {
+    if (document.visibilityState === 'visible' && !loading && (!entry || Date.now() - entry.at > 60 * 1000)) refresh();
+  };
 
   /** Switches to a source: cached headlines at once, fresh ones after. */
   function pick(next) {
@@ -130,12 +140,15 @@ export function listScreen(app) {
   return {
     enter() {
       refresh();
-      // "Realtime" enough for headlines: refresh every 5 minutes while the list is open.
-      timer = setInterval(refresh, 5 * 60 * 1000);
+      // Near real time: refresh every 2 minutes while the list is open, and as soon as the app comes
+      // back to the foreground (phones pause timers in the background).
+      timer = setInterval(refresh, 2 * 60 * 1000);
+      document.addEventListener('visibilitychange', onVisible);
     },
     leave() {
       alive = false;
       clearInterval(timer);
+      document.removeEventListener('visibilitychange', onVisible);
     },
     /** Keeps the selected brand and section visible in their rows. */
     after(root) {
@@ -163,7 +176,7 @@ export function listScreen(app) {
           ${sectionsOf(source(id).brand).length > 1 ? `<div class="chips sections" data-scroll="sections">${sectionsOf(source(id).brand).map((s) => `<button class="sec-chip ${s.id === id ? 'on' : ''}" data-act="source" data-id="${s.id}">${esc(s.label)}</button>`).join('')}</div>` : ''}
         </div>
         <div class="scroll pad" data-scroll="news-${id}">
-          <div class="muted tiny">${loading ? 'Đang cập nhật…' : entry ? `Cập nhật lúc ${clock(entry.at)}` : ''}</div>
+          <div class="muted tiny">${loading ? 'Đang cập nhật tin mới nhất…' : entry ? `Cập nhật lúc ${clock(entry.at)}${newest(items) ? ` · tin mới nhất ${newest(items)}` : ''}` : ''}</div>
           ${error ? `<div class="err">😕 ${esc(error)}${entry ? '<br><span class="small">Đang hiện tin đã lưu lần trước.</span>' : ''}<br><button class="link bold" data-act="refresh" style="color:var(--coral)">Thử lại</button></div>` : ''}
           ${!items.length && loading ? '<div class="empty"><div class="huge">📰</div><p class="muted">Đang tải tin mới…</p></div>' : ''}
           <div class="grid2">${items.map(card).join('')}</div>

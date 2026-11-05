@@ -4,9 +4,12 @@
 // the learner's own proxy if set in Settings.
 import { AiSettings } from './store.js';
 
-/** Reuters has no public RSS and blocks automated reading, so its headlines come from Google News. */
+/**
+ * Reuters has no public RSS and blocks automated reading, so its headlines come from Google News.
+ * A 3-hour window: over a whole day Google ranks by relevance and the newest story can be hours old.
+ */
 const googleNews = (query) =>
-  `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:1d`)}&hl=en-US&gl=US&ceid=US:en`;
+  `https://news.google.com/rss/search?q=${encodeURIComponent(`${query} when:3h`)}&hl=en-US&gl=US&ceid=US:en`;
 
 const bbc = (path) => `https://feeds.bbci.co.uk/news/${path}rss.xml`;
 const guardian = (path) => `https://www.theguardian.com/${path}/rss`;
@@ -49,7 +52,8 @@ export const BRANDS = [...new Set(SOURCES.map((s) => s.brand))];
 export const sectionsOf = (brand) => SOURCES.filter((s) => s.brand === brand);
 
 // Jina Reader returns the page HTML with CORS enabled and gets through to BBC, where others time out.
-const jina = (u) => ({ url: `https://r.jina.ai/${u}`, headers: { 'X-Return-Format': 'html' } });
+// X-No-Cache makes it fetch the page now instead of serving a copy that may be an hour old.
+const jina = (u) => ({ url: `https://r.jina.ai/${u}`, headers: { 'X-Return-Format': 'html', 'X-No-Cache': 'true' } });
 const PROXIES = [
   jina,
   (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
@@ -182,12 +186,24 @@ export async function loadList(id) {
   const s = source(id);
   let items;
   if (s.rss) {
+    // The live feed first: rss2json caches feeds for about an hour and returns only 10 items, so it is
+    // just the fallback when every proxy is down.
+    // Public page readers refuse Google News (Reuters), so it goes through rss2json, about an hour behind.
+    const live = async () => {
+      const list = parseFeed(await fetchText(s.rss));
+      if (!list.length) throw new Error('empty feed');
+      return list;
+    };
+    // With the learner's own proxy, Google News is read live too.
+    const [first, second] = s.headlinesOnly && !customProxy() ? [() => viaRss2json(s.rss), live] : [live, () => viaRss2json(s.rss)];
     try {
-      items = await viaRss2json(s.rss);
-      // rss2json's free tier returns 10 items; when most are videos, read the whole feed instead.
-      if (tidyItems(s, items).length < 5) items = parseFeed(await fetchText(s.rss));
-    } catch {
-      items = items?.length ? items : parseFeed(await fetchText(s.rss));
+      items = await first();
+    } catch (e) {
+      try {
+        items = await second();
+      } catch {
+        throw e;
+      }
     }
   } else {
     items = parseCnnHome(await fetchText(s.html));
