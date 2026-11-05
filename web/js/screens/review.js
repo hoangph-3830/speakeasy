@@ -44,7 +44,7 @@ export function reviewScreen(app) {
             <div class="muted small">Bạn nhớ câu này thế nào?</div>
             <div class="row gap-s mt-xs">${GRADES.map((g) => `
               <button class="btn outline grade grow" style="--g:${g.color}" data-act="grade" data-g="${g.id}">
-                <b>${g.emoji} ${g.label}</b><span class="tiny muted">${preview(c, g.id)}</span>
+                <b>${g.emoji} ${g.label}</b><span class="tiny muted">${preview(c, g.id, Review.today())}</span>
               </button>`).join('')}
             </div>`}
         </div>

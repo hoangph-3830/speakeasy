@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as L from '../js/logic.js';
 import { buildIndex, lemmas, lookup } from '../js/dict.js';
+import * as A from '../js/audio.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -31,13 +32,26 @@ test('judgeWord tells clear, confused and unclear apart', () => {
   assert.equal(L.judgeWord('think', 'sink', ['pink']).kind, 'unclear');
 });
 
-test('SM-2 intervals grow 1 → 3 → longer, misses reset', () => {
-  let c = { id: 'x', front: 'a', back: 'b' };
-  c = L.schedule(c, 'GOOD', 100); assert.equal(c.due, 101);
-  c = L.schedule(c, 'GOOD', 101); assert.equal(c.interval, 3);
-  c = L.schedule(c, 'GOOD', 104); assert.ok(c.interval > 3);
-  c = L.schedule(c, 'AGAIN', 110); assert.equal(c.due, 110); assert.equal(c.reps, 0);
-  assert.equal(L.preview({ id: 'y' }, 'EASY'), '4 ngày');
+test('FSRS: first answers use the initial stabilities, intervals grow, lapses drop stability', () => {
+  const fresh = { id: 'x', front: 'a', back: 'b' };
+  assert.equal(L.schedule(fresh, 'AGAIN', 100).due, 100);
+  assert.equal(L.schedule(fresh, 'HARD', 100).interval, 1);
+  assert.equal(L.schedule(fresh, 'GOOD', 100).interval, 4);
+  assert.equal(L.schedule(fresh, 'EASY', 100).interval, 14);
+  let c = L.schedule(fresh, 'GOOD', 100);
+  const next = L.schedule(c, 'GOOD', c.due);
+  assert.ok(next.interval > c.interval, `${next.interval} > ${c.interval}`);
+  const lapse = L.schedule(next, 'AGAIN', next.due);
+  assert.ok(lapse.stability < next.stability);
+  assert.equal(lapse.lapses, 1); assert.equal(lapse.reps, 0); assert.equal(lapse.due, next.due);
+  assert.equal(L.preview(fresh, 'EASY', 100), '14 ngày');
+});
+
+test('FSRS takes over cards saved by the old SM-2 scheduler', () => {
+  const old = { id: 'w:x', front: 'a', back: 'b', interval: 10, ease: 2.5, due: 200, reps: 3 };
+  const c = L.schedule(old, 'GOOD', 200);
+  assert.ok(c.stability > 10 && c.interval > 10, JSON.stringify(c));
+  assert.ok(c.difficulty >= 1 && c.difficulty <= 10);
 });
 
 test('streak: freeze covers one missed day, otherwise it breaks', () => {
@@ -97,6 +111,31 @@ test('categories cover every topic', () => {
   const ids = new Set(content.categories.map((c) => c.id));
   for (const t of content.topics) assert.ok(ids.has(t.category), t.id);
   assert.ok(content.topics.length >= 46);
+});
+
+test('shadowing: pitch of steady tones, rising sweep, intonation hints, speed', () => {
+  const rate = 16000;
+  const tone = (hz, secs) => Float32Array.from({ length: rate * secs }, (_, i) => 0.5 * Math.sin((2 * Math.PI * hz * i) / rate));
+  for (const hz of [150, 220]) {
+    const voiced = A.pitchCurve(tone(hz, 1), rate).filter((f) => f > 0);
+    const m = voiced.sort((a, b) => a - b)[Math.floor(voiced.length / 2)];
+    assert.ok(Math.abs(m - hz) < 5, `${hz} Hz detected as ${m}`);
+  }
+  // 120 Hz rising to 240 Hz over 2 s (phase accumulated so the sweep is smooth).
+  let phase = 0;
+  const sweep = Float32Array.from({ length: rate * 2 }, (_, i) => {
+    phase += (2 * Math.PI * (120 + (120 * i) / (rate * 2))) / rate;
+    return 0.5 * Math.sin(phase);
+  });
+  assert.equal(A.pitchTrend(A.pitchCurve(sweep, rate)), 'rising');
+  assert.equal(A.pitchCurve(new Float32Array(rate), rate).every((f) => f === 0), true);
+  assert.equal(A.intonationHint('Where is the meeting room?').want, 'falling');
+  assert.equal(A.intonationHint('Is this seat taken?').want, 'rising');
+  assert.equal(A.intonationHint('I just joined the team.').want, 'falling');
+  assert.match(A.speedFeedback(6, 2), /chậm/);
+  assert.match(A.speedFeedback(2, 2), /ổn/);
+  const d = A.downsample(tone(200, 1), 48000 / 1);
+  assert.equal(d.rate, 16000);
 });
 
 console.log(`\n${n} tests passed`);

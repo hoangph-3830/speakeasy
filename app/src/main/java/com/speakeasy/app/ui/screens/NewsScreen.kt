@@ -51,10 +51,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -62,22 +65,28 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withLink
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Article
+import com.speakeasy.app.data.DictEntry
 import com.speakeasy.app.data.Lemmatizer
 import com.speakeasy.app.data.NewsCache
 import com.speakeasy.app.data.NewsItem
 import com.speakeasy.app.data.NewsParser
 import com.speakeasy.app.data.NewsSource
 import com.speakeasy.app.data.Quests
+import com.speakeasy.app.data.ReadingStats
 import com.speakeasy.app.data.ReviewCard
 import com.speakeasy.app.data.Vocab
+import com.speakeasy.app.data.WordStatus
+import com.speakeasy.app.data.WordStatuses
 import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.CompleteDialog
 import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.Pill
+import com.speakeasy.app.ui.components.SoftProgress
 import com.speakeasy.app.ui.components.SpeakButton
 import com.speakeasy.app.ui.components.TopBar
 import com.speakeasy.app.ui.components.VSpace
@@ -90,6 +99,8 @@ import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Peach
 import com.speakeasy.app.ui.theme.Sky
 import com.speakeasy.app.ui.theme.SkyLight
+import com.speakeasy.app.ui.theme.Sun
+import com.speakeasy.app.ui.theme.SunLight
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import java.time.Instant
@@ -322,6 +333,21 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     val article = (state as? ArticleState.Ready)?.article
     val title = article?.title?.ifBlank { null } ?: item?.title.orEmpty()
     val paragraphs = article?.paragraphs.orEmpty()
+    val cards by app.review.cards.collectAsState()
+    val deckIds = remember(cards) { cards.map { it.id }.toSet() }
+    // Each distinct word on the page looked up once; the statuses follow the learned set and the deck.
+    val shownTexts = listOf(title) + paragraphs.ifEmpty { listOfNotNull(item?.summary?.ifBlank { null }) }
+    val lookups = remember(shownTexts) {
+        shownTexts.flatMap { t -> wordPattern.findAll(t).map { Lemmatizer.normalize(it.value) } }
+            .distinct()
+            .associateWith { WordStatuses.colourable(app.dictionary.lookup(it)) }
+    }
+    val marks = remember(lookups, progress.learnedWords, deckIds) {
+        lookups.mapValues { (_, e) -> WordStatuses.of(e?.word, progress.learnedWords, deckIds) }
+    }
+    val headwords = remember(lookups) { lookups.values.filterNotNull().distinctBy { it.word } }
+    val stats = ReadingStats.of(headwords.map { it.word }) { WordStatuses.of(it, progress.learnedWords, deckIds) }
+    val newWords = headwords.filter { WordStatuses.of(it.word, progress.learnedWords, deckIds) == WordStatus.NEW }
 
     Column(Modifier.fillMaxSize()) {
         TopBar(
@@ -337,7 +363,7 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
         ) {
             item {
                 if (title.isNotBlank()) {
-                    TappableText(title, MaterialTheme.typography.headlineSmall, Ink, onWord = { word = it })
+                    TappableText(title, MaterialTheme.typography.headlineSmall, Ink, marks, onWord = { word = it })
                     if (bilingual) Translation(title)
                 }
                 VSpace(6.dp)
@@ -346,6 +372,9 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
                     TextButton(onClick = { openOriginal() }) { Text("Mở bài gốc ↗", color = Sky, fontWeight = FontWeight.SemiBold) }
                 }
             }
+            if (state != ArticleState.Loading && stats.total > 0) item {
+                ReadingSummary(stats, onAddNew = { app.review.add(newWords.map { vocabCard(it.word, it.vi, it) }) })
+            }
             when {
                 state == ArticleState.Loading -> item {
                     Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Sky) }
@@ -353,7 +382,7 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
                 paragraphs.isEmpty() -> item {
                     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         if (!item?.summary.isNullOrBlank()) {
-                            TappableText(item!!.summary, MaterialTheme.typography.bodyLarge, Ink, onWord = { word = it })
+                            TappableText(item!!.summary, MaterialTheme.typography.bodyLarge, Ink, marks, onWord = { word = it })
                             if (bilingual) Translation(item.summary)
                         }
                         Text(
@@ -368,7 +397,7 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
                 else -> items(paragraphs) { p ->
                     Row(verticalAlignment = Alignment.Top) {
                         Column(Modifier.weight(1f)) {
-                            TappableText(p, MaterialTheme.typography.bodyLarge, Ink, onWord = { word = it })
+                            TappableText(p, MaterialTheme.typography.bodyLarge, Ink, marks, onWord = { word = it })
                             if (bilingual) Translation(p)
                         }
                         HSpace(8.dp)
@@ -410,20 +439,92 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     }
 }
 
+/** "Bạn đã biết X%" card above the article, with the colour legend and a bulk add of the new words. */
+@Composable
+private fun ReadingSummary(stats: ReadingStats, onAddNew: () -> Unit) {
+    Column(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(Color.White)
+            .border(1.dp, Line, RoundedCornerShape(20.dp)).padding(16.dp),
+    ) {
+        Text("Bạn đã biết ${stats.knownPercent}% từ trong bài", style = MaterialTheme.typography.titleMedium, color = Ink)
+        VSpace(8.dp)
+        SoftProgress(stats.known.toFloat() / stats.total, color = Mint)
+        VSpace(8.dp)
+        Text("${stats.new} từ mới · ${stats.learning} từ đang học", color = Muted, style = MaterialTheme.typography.bodyMedium)
+        VSpace(10.dp)
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            LegendChip("Mới", WordStatus.NEW)
+            LegendChip("Đang học", WordStatus.LEARNING)
+            LegendChip("Đã thuộc", WordStatus.KNOWN)
+        }
+        if (stats.new > 0) {
+            VSpace(12.dp)
+            OutlinedButton(
+                onClick = onAddNew,
+                modifier = Modifier.fillMaxWidth().height(48.dp),
+                shape = RoundedCornerShape(16.dp),
+                border = BorderStroke(1.5.dp, Sky),
+            ) { Text("Thêm ${stats.new} từ mới vào ôn tập", color = Sky) }
+        }
+    }
+}
+
+@Composable
+private fun LegendChip(label: String, status: WordStatus) {
+    val line = underline(status)
+    Text(
+        buildAnnotatedString { withStyle(wordStyle(status) ?: SpanStyle()) { append(label) } },
+        modifier = Modifier.clip(CircleShape).border(1.dp, Line, CircleShape).padding(horizontal = 10.dp, vertical = 4.dp)
+            .drawBehind {
+                if (line != null) drawLine(line, Offset(0f, size.height), Offset(size.width, size.height), strokeWidth = 2.dp.toPx())
+            },
+        color = Ink,
+        style = MaterialTheme.typography.labelMedium,
+    )
+}
+
+/** Background for a word: light yellow while learning; new, known and unknown words have none. */
+private fun wordStyle(status: WordStatus?): SpanStyle? =
+    if (status == WordStatus.LEARNING) SpanStyle(background = SunLight) else null
+
+/** A thin underline marks words still to learn: blue for new, yellow for learning. */
+private fun underline(status: WordStatus?): Color? = when (status) {
+    WordStatus.NEW -> Sky.copy(alpha = 0.55f)
+    WordStatus.LEARNING -> Sun
+    else -> null
+}
+
+/** The review card a dictionary word becomes, the same "v:" format the vocabulary cards use. */
+private fun vocabCard(headword: String, vi: String, entry: DictEntry?): ReviewCard {
+    val extra = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.example?.ifBlank { null }).joinToString(" · ")
+    return ReviewCard("v:$headword", headword, vi, extra.ifEmpty { null })
+}
+
 private val wordPattern = Regex("[A-Za-z]+(?:['’][A-Za-z]+)*")
 
-/** Text where every English word is its own link, so a tap opens it in the dictionary. */
+/**
+ * Text where every English word is its own link, so a tap opens it in the dictionary.
+ * [marks] maps normalized words to their status, which sets the highlight.
+ */
 @Composable
-private fun TappableText(text: String, style: TextStyle, color: Color, onWord: (String) -> Unit) {
+private fun TappableText(text: String, style: TextStyle, color: Color, marks: Map<String, WordStatus>, onWord: (String) -> Unit) {
     val onTap by rememberUpdatedState(onWord)
-    val annotated = remember(text) {
+    var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
+    // Word ranges with their underline colour; drawn by hand so the line can be thin and coloured.
+    val lines = remember(text, marks) {
+        wordPattern.findAll(text).mapNotNull { m -> underline(marks[Lemmatizer.normalize(m.value)])?.let { m.range to it } }.toList()
+    }
+    val annotated = remember(text, marks) {
         buildAnnotatedString {
             var last = 0
             wordPattern.findAll(text).forEach { m ->
                 append(text.substring(last, m.range.first))
                 val link = LinkAnnotation.Clickable(
                     tag = m.value,
-                    styles = TextLinkStyles(pressedStyle = SpanStyle(background = SkyLight)),
+                    styles = TextLinkStyles(
+                        style = wordStyle(marks[Lemmatizer.normalize(m.value)]),
+                        pressedStyle = SpanStyle(background = Sky.copy(alpha = 0.25f)),
+                    ),
                 ) { onTap(m.value) }
                 withLink(link) { append(m.value) }
                 last = m.range.last + 1
@@ -431,7 +532,22 @@ private fun TappableText(text: String, style: TextStyle, color: Color, onWord: (
             append(text.substring(last))
         }
     }
-    Text(annotated, style = style, color = color)
+    Text(
+        annotated,
+        style = style,
+        color = color,
+        onTextLayout = { layout = it },
+        modifier = Modifier.drawBehind {
+            val l = layout ?: return@drawBehind
+            val stroke = 2.dp.toPx()
+            for ((range, c) in lines) {
+                if (range.last >= l.layoutInput.text.length) continue
+                val line = l.getLineForOffset(range.first)
+                val y = l.getLineBaseline(line) + stroke * 1.5f
+                drawLine(c, Offset(l.getBoundingBox(range.first).left, y), Offset(l.getBoundingBox(range.last).right, y), strokeWidth = stroke)
+            }
+        },
+    )
 }
 
 /** Dictionary card for a tapped word: offline entry when there is one, online translation otherwise. */
@@ -490,10 +606,7 @@ private fun WordSheet(raw: String, onDismiss: () -> Unit) {
             VSpace(20.dp)
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedButton(
-                    onClick = {
-                        val extra = listOfNotNull(entry?.ipa?.ifBlank { null }, entry?.example?.ifBlank { null }).joinToString(" · ")
-                        app.review.add(listOf(ReviewCard("v:$headword", headword, meaning.orEmpty(), extra.ifEmpty { null })))
-                    },
+                    onClick = { app.review.add(listOf(vocabCard(headword, meaning.orEmpty(), entry))) },
                     enabled = !inDeck && !meaning.isNullOrEmpty(),
                     modifier = Modifier.weight(1f).height(52.dp),
                     shape = RoundedCornerShape(16.dp),

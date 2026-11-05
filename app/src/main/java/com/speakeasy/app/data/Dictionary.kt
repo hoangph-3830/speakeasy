@@ -20,6 +20,7 @@ import java.io.IOException
 import java.net.URLEncoder
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+import kotlin.math.roundToInt
 
 /** What the news reader shows for a tapped word. */
 data class DictEntry(val word: String, val ipa: String, val pos: String, val vi: String, val example: String) {
@@ -288,5 +289,38 @@ class Dictionary(private val entries: () -> List<DictEntry>) {
                 ((seg as? JsonArray)?.firstOrNull() as? JsonPrimitive)?.contentOrNull.orEmpty()
             }.trim()
         }
+    }
+}
+
+/** How well the learner knows a word in the news reader, which sets its highlight. */
+enum class WordStatus { KNOWN, LEARNING, NEW, NOT_IN_DICTIONARY }
+
+/** Share of an article's distinct dictionary words the learner already knows. */
+data class ReadingStats(val known: Int, val learning: Int, val new: Int) {
+    val total: Int get() = known + learning + new
+    val knownPercent: Int get() = if (total == 0) 0 else (known * 100.0 / total).roundToInt()
+
+    companion object {
+        /** [headwords] are the article's dictionary headwords; repeats count once. */
+        fun of(headwords: Collection<String>, status: (String) -> WordStatus): ReadingStats {
+            val counts = headwords.toSet().groupingBy(status).eachCount()
+            return ReadingStats(counts[WordStatus.KNOWN] ?: 0, counts[WordStatus.LEARNING] ?: 0, counts[WordStatus.NEW] ?: 0)
+        }
+    }
+}
+
+object WordStatuses {
+    /** Parts of speech too common to colour or count: prepositions, pronouns, determiners, conjunctions, numbers. */
+    private val GRAMMAR = setOf("prep", "pron", "det", "conj", "num")
+
+    /** The entry a word is coloured by, or null for grammar words, which are treated as not in the dictionary. */
+    fun colourable(entry: DictEntry?): DictEntry? = entry?.takeUnless { it.pos in GRAMMAR }
+
+    /** Status of a dictionary [headword] (null when the word is not in the dictionary). */
+    fun of(headword: String?, learned: Set<String>, deckIds: Set<String>): WordStatus = when {
+        headword == null -> WordStatus.NOT_IN_DICTIONARY
+        headword in learned -> WordStatus.KNOWN
+        "v:$headword" in deckIds -> WordStatus.LEARNING
+        else -> WordStatus.NEW
     }
 }

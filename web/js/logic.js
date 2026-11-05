@@ -229,31 +229,61 @@ export const GRADES = [
   { id: 'EASY', label: 'Dễ', emoji: '😎', color: 'var(--mint)' },
 ];
 
-/** Good answers stretch the gap by the card's ease, misses reset it. */
+// FSRS-4.5 (Free Spaced Repetition Scheduler) with its default weights: each card keeps a
+// stability (days until recall drops to 90%) and a difficulty (1-10), updated on every review.
+const W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+const DECAY = -0.5;
+const FACTOR = 19 / 81;
+const GRADE_VALUE = { AGAIN: 1, HARD: 2, GOOD: 3, EASY: 4 };
+const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
+
+export const retrievability = (elapsed, stability) => (1 + (FACTOR * elapsed) / stability) ** DECAY;
+const initStability = (g) => W[g - 1];
+const initDifficulty = (g) => clamp(W[4] - (g - 3) * W[5], 1, 10);
+const nextDifficulty = (d, g) => clamp(W[7] * initDifficulty(3) + (1 - W[7]) * (d - W[6] * (g - 3)), 1, 10);
+const recallStability = (d, s, r, g) =>
+  s * (Math.exp(W[8]) * (11 - d) * s ** -W[9] * (Math.exp(W[10] * (1 - r)) - 1) * (g === 2 ? W[15] : 1) * (g === 4 ? W[16] : 1) + 1);
+const forgetStability = (d, s, r) =>
+  Math.min(s, W[11] * d ** -W[12] * ((s + 1) ** W[13] - 1) * Math.exp(W[14] * (1 - r)));
+/** Days until recall probability falls to 90%. */
+const intervalFor = (s) => clamp(Math.round((s / FACTOR) * (0.9 ** (1 / DECAY) - 1)), 1, 36500);
+
 export function schedule(card, grade, today) {
-  const c = { interval: 0, ease: 2.5, due: 0, reps: 0, ...card };
-  switch (grade) {
-    case 'AGAIN':
-      return { ...c, reps: 0, interval: 0, ease: Math.max(1.3, c.ease - 0.2), due: today };
-    case 'HARD': {
-      const days = Math.max(1, Math.round(c.interval * 1.2));
-      return { ...c, interval: days, ease: Math.max(1.3, c.ease - 0.15), due: today + days, reps: c.reps + 1 };
-    }
-    case 'GOOD': {
-      const days = c.reps === 0 ? 1 : c.reps === 1 ? 3 : Math.max(c.interval + 1, Math.round(c.interval * c.ease));
-      return { ...c, interval: days, due: today + days, reps: c.reps + 1 };
-    }
-    default: {
-      const days = c.reps === 0 ? 4 : Math.max(c.interval + 2, Math.round(c.interval * c.ease * 1.3));
-      return { ...c, interval: days, ease: c.ease + 0.15, due: today + days, reps: c.reps + 1 };
-    }
+  let c = { interval: 0, ease: 2.5, due: 0, reps: 0, stability: 0, difficulty: 0, lapses: 0, last: -1, ...card };
+  // Cards scheduled by the old SM-2 code carry an interval and ease but no stability yet.
+  if (c.reps > 0 && !c.stability)
+    c = { ...c, stability: Math.max(c.interval, 1), difficulty: clamp(11 - c.ease * 2, 1, 10), last: today - c.interval };
+  const g = GRADE_VALUE[grade];
+  let s, d;
+  if (!c.stability) {
+    s = initStability(g);
+    d = initDifficulty(g);
+  } else {
+    const r = retrievability(Math.max(0, today - c.last), c.stability);
+    s = g === 1 ? forgetStability(c.difficulty, c.stability, r) : recallStability(c.difficulty, c.stability, r, g);
+    d = nextDifficulty(c.difficulty, g);
   }
+  // A forgotten card comes back later in this same session.
+  const days = g === 1 ? 0 : intervalFor(s);
+  return {
+    ...c,
+    stability: s,
+    difficulty: d,
+    last: today,
+    due: today + days,
+    interval: days,
+    reps: g === 1 && c.reps > 0 ? 0 : c.reps + 1,
+    lapses: g === 1 && c.reps > 0 ? c.lapses + 1 : c.lapses,
+  };
 }
 
 /** Short label for the gap a grade would give, shown under each button. */
-export function preview(card, grade) {
-  const days = schedule(card, grade, 0).due;
-  return days === 0 ? 'ngay' : `${days} ngày`;
+export function preview(card, grade, today = 0) {
+  const days = schedule(card, grade, today).due - today;
+  if (days === 0) return 'ngay';
+  if (days >= 365) return `${Math.round((days / 365) * 10) / 10} năm`;
+  if (days >= 60) return `${Math.round(days / 30)} tháng`;
+  return `${days} ngày`;
 }
 
 /** Cards a finished lesson adds to the deck: its words, phrases and native expressions. */

@@ -317,3 +317,19 @@ a.btn { text-decoration: none; }
 .sheet { width: 100%; max-width: 560px; margin: 0 auto; background: #fff; border-radius: 28px 28px 0 0; padding: 12px 20px calc(20px + var(--safe-b)); display: flex; flex-direction: column; gap: 12px; animation: up .25s ease-out; }
 .sheet-grip { width: 44px; height: 5px; border-radius: 3px; background: var(--line); margin: 0 auto 4px; }
 .sheet .word-big { font-size: 30px; }
+
+/* Word status in the reader: new words stand out, words in review are tinted, known words are plain. */
+.w.new { box-shadow: inset 0 -2px 0 rgba(43, 159, 219, .55); }
+.w.learning { background: var(--sun-l); box-shadow: inset 0 -2px 0 rgba(255, 194, 61, .6); }
+.legend .w { padding: 2px 8px; font-size: 13px; font-weight: 600; cursor: default; }
+.legend .w.known { border: 1px solid var(--line); }
+.known-card { gap: 10px; }
+.known-pct { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; font-size: 22px; font-weight: 800; color: var(--mint); background: var(--mint-l); flex: none; }
+
+/* ---- Shadowing ---- */
+.hint-pill { display: inline-block; background: #fff; color: var(--a); border-radius: 99px; padding: 6px 12px; font-weight: 600; font-size: 14px; }
+.mic { font-size: calc(var(--s) * .38); }
+.mic.recording { animation: pulse 1s ease-in-out infinite; background: var(--ink); }
+.mic:disabled { opacity: .4; }
+.rec-time { font-variant-numeric: tabular-nums; font-weight: 700; }
+canvas.wave { width: 100%; height: 110px; display: block; background: var(--canvas); border-radius: 14px; --wave: #9ad3f2; --pitch: #f2667a; }

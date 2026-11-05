@@ -41,6 +41,7 @@ import com.speakeasy.app.ui.screens.StoryScreen
 import com.speakeasy.app.ui.screens.PhrasesScreen
 import com.speakeasy.app.ui.screens.ProgressScreen
 import com.speakeasy.app.ui.screens.ReviewScreen
+import com.speakeasy.app.ui.screens.ShadowScreen
 import com.speakeasy.app.ui.screens.SpeakScreen
 import com.speakeasy.app.ui.screens.TopicScreen
 import com.speakeasy.app.ui.screens.VocabGroupScreen
@@ -127,6 +128,9 @@ fun AppNav() {
             }
             composable("topic/{id}/speak") {
                 SpeakScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
+            }
+            composable("topic/{id}/shadow") {
+                ShadowScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
             }
             composable("game/{id}/{mode}") {
                 GameScreen(

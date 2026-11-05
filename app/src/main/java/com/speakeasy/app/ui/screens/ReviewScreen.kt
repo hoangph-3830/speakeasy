@@ -176,7 +176,7 @@ fun ReviewScreen(onBack: () -> Unit) {
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                 Text("${g.emoji} ${g.label}", color = color, fontWeight = FontWeight.Bold)
-                                Text(Srs.preview(card, g), color = Muted, style = MaterialTheme.typography.labelMedium)
+                                Text(Srs.preview(card, g, store.todayDay), color = Muted, style = MaterialTheme.typography.labelMedium)
                             }
                         }
                     }

@@ -14,7 +14,8 @@ export const wordCard = (e) => ({
 
 const POS = { n: 'danh từ', v: 'động từ', adj: 'tính từ', adv: 'trạng từ', prep: 'giới từ', pron: 'đại từ', conj: 'liên từ', det: 'từ hạn định', num: 'số từ', phr: 'cụm từ', excl: 'thán từ' };
 
-export function openWordSheet(raw) {
+/** `onChange` runs after the word is marked learned or saved, so the page can recolour it. */
+export function openWordSheet(raw, onChange) {
   const word = normalizeWord(raw);
   if (!word) return;
   speaker.say(word);
@@ -58,11 +59,12 @@ export function openWordSheet(raw) {
     const x = ev.target.closest('[data-x]')?.dataset.x;
     if (ev.target === el) return el.remove();
     if (x === 'say') speaker.say(entry?.w || word);
-    if (x === 'learned') { Progress.toggleWord(entry.w); render(); }
+    if (x === 'learned') { Progress.toggleWord(entry.w); render(); onChange?.(); }
     if (x === 'save') {
       Review.add([wordCard(entry)]);
       toast('Đã thêm vào Ôn tập hôm nay 🔁');
       render();
+      onChange?.();
     }
   });
 }

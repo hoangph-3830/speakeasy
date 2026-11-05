@@ -100,6 +100,25 @@ fun TopicScreen(topicId: String, onBack: () -> Unit, open: (String) -> Unit) {
                     },
                 )
             }
+
+            // Extra practice, not one of the four tracked steps.
+            Card(
+                onClick = { open("topic/${topic.id}/shadow") },
+                shape = RoundedCornerShape(20.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
+                border = BorderStroke(1.dp, Line),
+            ) {
+                Row(Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                    EmojiBadge("🎙️", light, 52.dp)
+                    HSpace(14.dp)
+                    Column(Modifier.weight(1f)) {
+                        Text("Luyện nhại (shadowing)", style = MaterialTheme.typography.titleMedium)
+                        Text("Nghe mẫu, ghi âm giọng bạn rồi so với người bản xứ", color = Muted, style = MaterialTheme.typography.bodyMedium)
+                    }
+                    HSpace(8.dp)
+                    Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = Muted)
+                }
+            }
             VSpace(12.dp)
         }
     }
