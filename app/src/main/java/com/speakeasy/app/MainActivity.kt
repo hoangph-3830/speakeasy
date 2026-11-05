@@ -29,6 +29,7 @@ class AppContainer(app: Application) {
     val speaker = Speaker(app).also {
         it.rate = progress.progress.value.speechRate
         it.accent = progress.progress.value.accent
+        it.voiceName = progress.progress.value.voiceName
     }
 }
 

@@ -73,16 +73,26 @@ fun TopBar(title: String, subtitle: String? = null, onBack: () -> Unit, trailing
     }
 }
 
-/** Speaker button that pulses while its own [text] is being read aloud. */
+/**
+ * Speaker button that pulses while its own [text] is being read aloud.
+ * [long] reads it sentence by sentence, for paragraphs too long for one utterance.
+ */
 @Composable
-fun SpeakButton(text: String, modifier: Modifier = Modifier, size: Dp = 40.dp, slow: Boolean = false, tint: Color = Sky) {
+fun SpeakButton(
+    text: String,
+    modifier: Modifier = Modifier,
+    size: Dp = 40.dp,
+    slow: Boolean = false,
+    tint: Color = Sky,
+    long: Boolean = false,
+) {
     val speaker = LocalApp.current.speaker
     val speaking by speaker.speaking.collectAsState()
     val active = speaking == text
     val pulse = rememberInfiniteTransition(label = "pulse")
     val scale by pulse.animateFloat(1f, 1.15f, infiniteRepeatable(tween(450), RepeatMode.Reverse), label = "scale")
     FilledIconButton(
-        onClick = { speaker.say(text, slow) },
+        onClick = { if (long) speaker.sayLong(text) else speaker.say(text, slow) },
         modifier = modifier.size(size).scale(if (active) scale else 1f),
         colors = IconButtonDefaults.filledIconButtonColors(
             containerColor = if (active) tint else tint.copy(alpha = 0.14f),

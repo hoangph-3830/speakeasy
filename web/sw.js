@@ -1,6 +1,6 @@
 // Offline support: the whole app and its lessons are cached on first visit.
 // Bump VERSION whenever any file below changes so devices pick up the update.
-const VERSION = 'speakeasy-v3';
+const VERSION = 'speakeasy-v4';
 const FILES = [
   './',
   'index.html',

@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,6 +40,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -52,7 +55,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.LinkAnnotation
@@ -82,6 +87,7 @@ import com.speakeasy.app.data.ReviewCard
 import com.speakeasy.app.data.Vocab
 import com.speakeasy.app.data.WordStatus
 import com.speakeasy.app.data.WordStatuses
+import com.speakeasy.app.speech.Sentences
 import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.CompleteDialog
 import com.speakeasy.app.ui.components.HSpace
@@ -110,7 +116,7 @@ import java.time.format.DateTimeFormatter
 private const val AUTO_REFRESH_MS = 5 * 60_000L
 private val clock = DateTimeFormatter.ofPattern("HH:mm")
 
-/** Real headlines from BBC and CNN, read in English with a tap-to-translate dictionary. */
+/** Real headlines from BBC, CNN and Reuters, read in English with a tap-to-translate dictionary. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewsScreen(openArticle: (String) -> Unit) {
@@ -151,7 +157,7 @@ fun NewsScreen(openArticle: (String) -> Unit) {
                 Text("Đọc báo 📰", style = MaterialTheme.typography.headlineSmall)
                 Text(
                     cache?.let { "Cập nhật lúc ${clock.format(Instant.ofEpochMilli(it.fetchedAt).atZone(ZoneId.systemDefault()))}" }
-                        ?: "Tin tiếng Anh thật, chạm từ để tra nghĩa",
+                        ?: "Tin tiếng Anh thật từ BBC, CNN & Reuters, chạm từ để tra nghĩa",
                     color = Muted,
                     style = MaterialTheme.typography.bodyMedium,
                 )
@@ -317,8 +323,18 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     var bilingual by rememberSaveable { mutableStateOf(false) }
     var word by remember { mutableStateOf<String?>(null) }
     var earned by remember { mutableStateOf<Int?>(null) }
-    val publisher = item?.source?.publisher ?: if ("cnn.com" in link) "CNN" else "BBC News"
+    // Reuters blocks scripted visits, so its story is never fetched: the headline is studied here.
+    val headlinesOnly = item?.source?.headlinesOnly == true || "news.google.com" in link
+    val publisher = item?.source?.publisher ?: when {
+        "cnn.com" in link -> "CNN"
+        headlinesOnly -> "Reuters"
+        else -> "BBC News"
+    }
     val state by produceState<ArticleState>(ArticleState.Loading, attempt) {
+        if (headlinesOnly) {
+            value = ArticleState.Ready(Article(item?.title.orEmpty(), emptyList()))
+            return@produceState
+        }
         value = ArticleState.Loading
         value = try {
             ArticleState.Ready(app.news.article(link, item?.title.orEmpty()))
@@ -349,6 +365,38 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
     val stats = ReadingStats.of(headwords.map { it.word }) { WordStatuses.of(it, progress.learnedWords, deckIds) }
     val newWords = headwords.filter { WordStatuses.of(it.word, progress.learnedWords, deckIds) == WordStatus.NEW }
 
+    val listState = rememberLazyListState()
+    // Part being read aloud by "Đọc cả bài": 0 is the title, 1.. the paragraphs; null when not reading.
+    var reading by remember { mutableStateOf<Int?>(null) }
+    // Bumped per read-through, so a stopped one finishing late does not clear the next one.
+    var readRun by remember { mutableIntStateOf(0) }
+    val readAll = {
+        val owners = mutableListOf<Int>()
+        val chunks = (listOf(title) + paragraphs).flatMapIndexed { part, text ->
+            Sentences.split(text).also { c -> repeat(c.size) { owners += part } }
+        }
+        val run = ++readRun
+        reading = 0
+        app.speaker.sayAll(
+            chunks,
+            onChunk = { if (run == readRun) reading = owners[it] },
+            onDone = { if (run == readRun) reading = null },
+        )
+    }
+    // The paragraphs follow the title item and, when shown, the reading summary card.
+    val firstParagraphItem = if (stats.total > 0) 2 else 1
+    LaunchedEffect(reading) {
+        val part = reading ?: return@LaunchedEffect
+        val index = if (part == 0) 0 else firstParagraphItem + part - 1
+        val info = listState.layoutInfo
+        val shown = info.visibleItemsInfo.firstOrNull { it.index == index }
+        if (shown == null || shown.offset < info.viewportStartOffset || shown.offset + shown.size > info.viewportEndOffset) {
+            listState.animateScrollToItem(index)
+        }
+    }
+    val stillReading by rememberUpdatedState(reading != null)
+    DisposableEffect(Unit) { onDispose { if (stillReading) app.speaker.stop() } }
+
     Column(Modifier.fillMaxSize()) {
         TopBar(
             title = publisher,
@@ -358,18 +406,36 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
             Box(Modifier.padding(end = 12.dp)) { ToggleChip("Song ngữ", bilingual) { bilingual = !bilingual } }
         }
         LazyColumn(
+            state = listState,
             contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 4.dp, bottom = 32.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             item {
-                if (title.isNotBlank()) {
+                if (title.isNotBlank()) Column(Modifier.readingHighlight(reading == 0)) {
                     TappableText(title, MaterialTheme.typography.headlineSmall, Ink, marks, onWord = { word = it })
                     if (bilingual) Translation(title)
                 }
+                if (headlinesOnly && !item?.summary.isNullOrBlank()) {
+                    VSpace(10.dp)
+                    TappableText(item!!.summary, MaterialTheme.typography.bodyLarge, Ink, marks, onWord = { word = it })
+                    if (bilingual) Translation(item.summary)
+                }
                 VSpace(6.dp)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Nguồn: $publisher", color = Muted, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
-                    TextButton(onClick = { openOriginal() }) { Text("Mở bài gốc ↗", color = Sky, fontWeight = FontWeight.SemiBold) }
+                    Text(
+                        if (headlinesOnly) "Nguồn: Reuters (tiêu đề qua Google News)" else "Nguồn: $publisher",
+                        color = Muted,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f),
+                    )
+                    if (!headlinesOnly) {
+                        TextButton(onClick = { openOriginal() }) { Text("Mở bài gốc ↗", color = Sky, fontWeight = FontWeight.SemiBold) }
+                    }
+                }
+                if (paragraphs.isNotEmpty()) {
+                    VSpace(6.dp)
+                    if (reading == null) BigButton("▶ Đọc cả bài", onClick = readAll)
+                    else BigButton("⏸ Dừng đọc", color = Peach, onClick = { reading = null; app.speaker.stop() })
                 }
             }
             if (state != ArticleState.Loading && stats.total > 0) item {
@@ -378,6 +444,15 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
             when {
                 state == ArticleState.Loading -> item {
                     Box(Modifier.fillMaxWidth().padding(32.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(color = Sky) }
+                }
+                headlinesOnly -> item {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text(
+                            "📰 Reuters chỉ cho đọc toàn bài trên trang của họ. Học từ trong tiêu đề ở đây, rồi bấm nút bên dưới để đọc tiếp.",
+                            color = Muted,
+                        )
+                        BigButton("Đọc toàn bài trên Reuters ↗", onClick = { openOriginal() })
+                    }
                 }
                 paragraphs.isEmpty() -> item {
                     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -394,14 +469,15 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
                         BigButton("Mở bài gốc", onClick = { openOriginal() }, color = Peach)
                     }
                 }
-                else -> items(paragraphs) { p ->
-                    Row(verticalAlignment = Alignment.Top) {
+                else -> itemsIndexed(paragraphs) { i, p ->
+                    Row(Modifier.readingHighlight(reading == i + 1), verticalAlignment = Alignment.Top) {
                         Column(Modifier.weight(1f)) {
                             TappableText(p, MaterialTheme.typography.bodyLarge, Ink, marks, onWord = { word = it })
                             if (bilingual) Translation(p)
                         }
                         HSpace(8.dp)
-                        SpeakButton(p, size = 34.dp)
+                        // Speaking one paragraph replaces "Đọc cả bài", whose onDone then resets its button.
+                        SpeakButton(p, size = 34.dp, long = true)
                     }
                 }
             }
@@ -437,6 +513,13 @@ fun ArticleScreen(link: String, onBack: () -> Unit) {
             onDismiss = { earned = null },
         )
     }
+}
+
+/** Soft blue box around the part being read aloud, drawn outside the bounds so the text does not move. */
+private fun Modifier.readingHighlight(on: Boolean) = drawBehind {
+    if (!on) return@drawBehind
+    val pad = 8.dp.toPx()
+    drawRoundRect(SkyLight, Offset(-pad, -pad), Size(size.width + pad * 2, size.height + pad * 2), CornerRadius(12.dp.toPx()))
 }
 
 /** "Bạn đã biết X%" card above the article, with the colour legend and a bulk add of the new words. */

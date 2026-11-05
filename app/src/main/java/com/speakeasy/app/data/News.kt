@@ -11,12 +11,17 @@ import okhttp3.Request
 import org.xmlpull.v1.XmlPullParser
 import java.io.IOException
 import java.io.StringReader
+import java.net.URLEncoder
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
-enum class NewsSource(val label: String, val url: String, val publisher: String) {
+/**
+ * [headlinesOnly] sources give a headline list but no readable article page: the reader shows the
+ * headline to study and sends the learner to the publisher's site for the full story.
+ */
+enum class NewsSource(val label: String, val url: String, val publisher: String, val headlinesOnly: Boolean = false) {
     BBC_TOP("BBC Top", "https://feeds.bbci.co.uk/news/rss.xml", "BBC News"),
     BBC_WORLD("BBC World", "https://feeds.bbci.co.uk/news/world/rss.xml", "BBC News"),
     BBC_BUSINESS("BBC Business", "https://feeds.bbci.co.uk/news/business/rss.xml", "BBC News"),
@@ -24,7 +29,16 @@ enum class NewsSource(val label: String, val url: String, val publisher: String)
     BBC_HEALTH("BBC Health", "https://feeds.bbci.co.uk/news/health/rss.xml", "BBC News"),
     BBC_SCIENCE("BBC Science", "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml", "BBC News"),
     CNN("CNN", "https://lite.cnn.com/", "CNN"),
+    // Reuters has no public RSS and blocks scripted visits, so its headlines come from a Google News search.
+    REUTERS("Reuters", googleNews("site:reuters.com"), "Reuters", headlinesOnly = true),
+    REUTERS_WORLD("Reuters World", googleNews("site:reuters.com/world"), "Reuters", headlinesOnly = true),
+    REUTERS_BUSINESS("Reuters Business", googleNews("site:reuters.com/business"), "Reuters", headlinesOnly = true),
+    REUTERS_MARKETS("Reuters Markets", googleNews("site:reuters.com/markets"), "Reuters", headlinesOnly = true),
 }
+
+/** Google News RSS for the last day's results of [query]. */
+private fun googleNews(query: String) =
+    "https://news.google.com/rss/search?q=${URLEncoder.encode("$query when:1d", "UTF-8")}&hl=en-US&gl=US&ceid=US:en"
 
 /** A headline; CNN Lite gives no [summary] or [published] time. */
 @Serializable
@@ -77,7 +91,17 @@ object NewsParser {
                 }
             }
         }
-        return items
+        return if (source.headlinesOnly) items.map(::headlineOnly).sortedByDescending { it.published ?: 0L } else items
+    }
+
+    /**
+     * Google News titles end in " - Reuters" and its description only repeats the title (plus the
+     * publisher's name), so that summary is dropped; there is no picture either.
+     */
+    private fun headlineOnly(item: NewsItem): NewsItem {
+        val title = item.title.removeSuffix(" - ${item.source.publisher}").trim()
+        val summary = item.summary.takeUnless { it.startsWith(title) || it.startsWith(item.title) }.orEmpty()
+        return item.copy(title = title, summary = summary, image = null)
     }
 
     fun parseDate(text: String): Long? =
@@ -150,7 +174,7 @@ object NewsParser {
     }
 }
 
-/** Headlines from BBC and CNN, cached per source so the last list shows instantly offline. */
+/** Headlines from BBC, CNN and Reuters, cached per source so the last list shows instantly offline. */
 class NewsRepository(context: Context) {
 
     private val prefs = context.getSharedPreferences("news", Context.MODE_PRIVATE)

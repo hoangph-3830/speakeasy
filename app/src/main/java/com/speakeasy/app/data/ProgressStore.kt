@@ -19,6 +19,8 @@ data class Progress(
     val learnedWords: Set<String> = emptySet(),
     val speechRate: Float = 0.9f,
     val accent: String = "US",
+    /** TTS voice picked in settings; empty means the best installed voice for [accent]. */
+    val voiceName: String = "",
     /** Streak freezes in stock (Duolingo-style): one is earned per day the goal is met, two at most. */
     val freezes: Int = 0,
     val freezeEarnedDay: Long = -1,
@@ -105,6 +107,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
         learnedWords = prefs.getStringSet("learnedWords", emptySet())!!.toSet(),
         speechRate = prefs.getFloat("speechRate", 0.9f),
         accent = prefs.getString("accent", "US") ?: "US",
+        voiceName = prefs.getString("voiceName", "") ?: "",
         freezes = prefs.getInt("freezes", 0),
         freezeEarnedDay = prefs.getLong("freezeEarnedDay", -1),
         freezeUsedDay = prefs.getLong("freezeUsedDay", -1),
@@ -128,6 +131,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
             .putStringSet("learnedWords", p.learnedWords)
             .putFloat("speechRate", p.speechRate)
             .putString("accent", p.accent)
+            .putString("voiceName", p.voiceName)
             .putInt("freezes", p.freezes)
             .putLong("freezeEarnedDay", p.freezeEarnedDay)
             .putLong("freezeUsedDay", p.freezeUsedDay)
@@ -206,6 +210,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
     fun setDailyGoal(goal: Int) = save(_progress.value.copy(dailyGoal = goal))
     fun setSpeechRate(rate: Float) = save(_progress.value.copy(speechRate = rate))
     fun setAccent(accent: String) = save(_progress.value.copy(accent = accent))
+    fun setVoiceName(name: String) = save(_progress.value.copy(voiceName = name))
 
     fun reset() {
         prefs.edit().clear().apply()

@@ -1,7 +1,10 @@
 package com.speakeasy.app.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import android.speech.tts.Voice
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -14,11 +17,16 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -188,6 +196,9 @@ fun ProgressScreen() {
                             onClick = {
                                 app.progress.setAccent(code)
                                 app.speaker.accent = code
+                                // A picked voice would override the accent, so switching goes back to automatic.
+                                app.progress.setVoiceName("")
+                                app.speaker.voiceName = ""
                                 app.speaker.say("Hello! Lovely to meet you.")
                             },
                             label = { Text(label) },
@@ -196,6 +207,8 @@ fun ProgressScreen() {
                         )
                     }
                 }
+                VSpace(16.dp)
+                VoicePicker(p.voiceName, p.accent)
                 VSpace(4.dp)
                 TextButton(onClick = { confirmReset = true }) { Text("Xoá tiến độ & học lại từ đầu", color = Coral) }
             }
@@ -222,6 +235,81 @@ fun ProgressScreen() {
             containerColor = Color.White,
         )
     }
+}
+
+private const val VOICE_SAMPLE = "This is how I sound when I read the news to you."
+
+/** "Giọng đọc": automatic (the best installed voice) or one English voice picked by ear. */
+@Composable
+private fun VoicePicker(selected: String, accent: String) {
+    val app = LocalApp.current
+    val ready by app.speaker.ready.collectAsState()
+    val voices = remember(ready, accent) { app.speaker.englishVoices() }
+    // Numbered within each locale by name, so a voice keeps its number when the ranking changes.
+    val labels = remember(voices) {
+        voices.groupBy { it.locale }.values
+            .flatMap { same -> same.sortedBy { it.name }.mapIndexed { i, v -> v.name to voiceLabel(v, i + 1) } }
+            .toMap()
+    }
+    val current = voices.firstOrNull { it.name == selected }
+    var open by remember { mutableStateOf(false) }
+    val choose = { name: String ->
+        app.progress.setVoiceName(name)
+        app.speaker.voiceName = name
+        app.speaker.say(VOICE_SAMPLE)
+    }
+
+    Text("Giọng đọc", fontWeight = FontWeight.SemiBold)
+    VSpace(8.dp)
+    Row(
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).border(1.dp, Line, RoundedCornerShape(12.dp))
+            .clickable { open = !open }.padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(current?.let { labels[it.name] } ?: AUTO_VOICE, modifier = Modifier.weight(1f))
+        Text(if (open) "▲" else "▼", color = Muted)
+    }
+    if (open) {
+        VoiceRow(AUTO_VOICE, current == null, onSelect = { choose("") }, onPlay = {
+            app.speaker.say(VOICE_SAMPLE, using = app.speaker.autoVoice())
+        })
+        voices.forEach { v ->
+            VoiceRow(labels[v.name] ?: v.name, v.name == selected, onSelect = { choose(v.name) }, onPlay = {
+                app.speaker.say(VOICE_SAMPLE, using = v)
+            })
+        }
+        if (ready && voices.isEmpty()) Text("Máy chưa có giọng tiếng Anh nào.", color = Muted)
+    }
+    VSpace(6.dp)
+    Text(
+        "Muốn giọng tự nhiên hơn: Cài đặt › Hệ thống › Ngôn ngữ › Đầu ra chuyển văn bản thành lời nói › Google › " +
+            "Cài đặt dữ liệu giọng nói, tải giọng tiếng Anh chất lượng cao.",
+        color = Muted,
+        style = MaterialTheme.typography.bodyMedium,
+    )
+}
+
+private const val AUTO_VOICE = "Tự động (giọng tốt nhất)"
+
+@Composable
+private fun VoiceRow(label: String, selected: Boolean, onSelect: () -> Unit, onPlay: () -> Unit) {
+    Row(Modifier.fillMaxWidth().clickable(onClick = onSelect), verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(selected = selected, onClick = onSelect)
+        Text(label, modifier = Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+        IconButton(onClick = onPlay) { Icon(Icons.Filled.PlayArrow, contentDescription = "Nghe thử", tint = Sky) }
+    }
+}
+
+/** "en-US · Giọng 3 · chất lượng cao · cần mạng". */
+private fun voiceLabel(voice: Voice, number: Int): String {
+    val quality = when {
+        voice.quality >= Voice.QUALITY_VERY_HIGH -> "chất lượng rất cao"
+        voice.quality >= Voice.QUALITY_HIGH -> "chất lượng cao"
+        voice.quality >= Voice.QUALITY_NORMAL -> "chất lượng thường"
+        else -> "chất lượng thấp"
+    }
+    val network = if (voice.isNetworkConnectionRequired) "cần mạng" else "offline"
+    return "${voice.locale.toLanguageTag()} · Giọng $number · $quality · $network"
 }
 
 @Composable

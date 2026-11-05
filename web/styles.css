@@ -333,3 +333,15 @@ a.btn { text-decoration: none; }
 .mic:disabled { opacity: .4; }
 .rec-time { font-variant-numeric: tabular-nums; font-weight: 700; }
 canvas.wave { width: 100%; height: 110px; display: block; background: var(--canvas); border-radius: 14px; --wave: #9ad3f2; --pitch: #f2667a; }
+.voices { display: flex; flex-direction: column; gap: 6px; max-height: 360px; overflow-y: auto; }
+.voice-row { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 14px; padding: 8px 10px; }
+.voice-row.on { border-color: var(--sky); background: var(--sky-l); }
+.voice-pick { text-align: left; }
+.reading.speaking, .article-title.speaking { background: var(--sky-l); border-radius: 10px; box-shadow: 0 0 0 6px var(--sky-l); transition: background .3s; }
+
+/* Banner for in-app browsers (Zalo, Facebook…) */
+.inapp { display: flex; align-items: center; gap: 8px; background: var(--ink); color: #fff; padding: calc(8px + var(--safe-t)) 12px 8px; font-size: 14px; }
+.inapp span { flex: 1; }
+.inapp .btn { min-height: 36px; padding: 0 12px; font-size: 13px; --a: var(--mint); flex: none; }
+.inapp [data-x=close] { width: 32px; height: 32px; flex: none; opacity: .8; }
+.inapp ~ #view .screen { padding-top: 0; }

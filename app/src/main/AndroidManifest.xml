@@ -3,6 +3,8 @@
 
     <!-- Online: the AI conversation partner, the news reader and word translation. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Lets the reader prefer the more natural network voices only while a connection is up. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Shadowing records the learner's voice to play it back next to the model; asked for at runtime. -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 

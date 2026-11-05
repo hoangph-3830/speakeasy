@@ -1,5 +1,6 @@
 // Text-to-speech and speech recognition through the browser's Web Speech API.
 // On iPad/iPhone Safari these use the system English voices and Siri dictation.
+import { speechChunks } from './logic.js';
 
 // iOS ships joke voices under English locales; never pick them for lessons.
 const NOVELTY = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley/i;
@@ -8,6 +9,8 @@ class Speaker {
   constructor() {
     this.rate = 0.9;
     this.accent = 'US';
+    /** Name of the voice picked in Settings; empty means automatic. */
+    this.voiceName = '';
     this.speaking = null;
     this.listeners = new Set();
     this.callbacks = new Map();
@@ -16,7 +19,11 @@ class Speaker {
     this.voices = [];
     const synth = window.speechSynthesis;
     if (synth) {
-      const load = () => (this.voices = synth.getVoices());
+      const load = () => {
+        this.voices = synth.getVoices();
+        // Voices arrive late on most browsers; screens listing them redraw.
+        window.dispatchEvent(new Event('se-voices'));
+      };
       load();
       synth.addEventListener?.('voiceschanged', load);
     }
@@ -24,6 +31,13 @@ class Speaker {
 
   get supported() {
     return 'speechSynthesis' in window;
+  }
+
+  /** In-app browsers (Zalo, Facebook…) expose speechSynthesis with no voices, which speaks nothing. */
+  hasVoices() {
+    if (!this.voices.length) this.voices = window.speechSynthesis?.getVoices() || [];
+    // Voices load late; give the browser a moment after start before calling it silent.
+    return this.voices.length > 0 || performance.now() < 3000;
   }
 
   onChange(fn) {
@@ -35,18 +49,28 @@ class Speaker {
     this.listeners.forEach((fn) => fn(text));
   }
 
-  /** Best installed voice for the chosen accent; enhanced/premium voices sound far more natural. */
-  voice() {
-    const lang = this.accent === 'UK' ? 'en-GB' : 'en-US';
+  /**
+   * English voices for the accent, smoothest first: neural "Natural" voices (Edge), iOS Premium and
+   * Enhanced downloads, Google's online voices (Chrome), then the well-known system voices.
+   */
+  englishVoices() {
+    const lang = this.accent === 'UK' ? 'en-gb' : 'en-us';
     const norm = (v) => v.lang.replace('_', '-').toLowerCase();
-    const pool = this.voices.filter((v) => !NOVELTY.test(v.name));
-    const exact = pool.filter((v) => norm(v) === lang.toLowerCase());
-    const english = exact.length ? exact : pool.filter((v) => norm(v).startsWith('en'));
+    const pool = this.voices.filter((v) => !NOVELTY.test(v.name) && norm(v).startsWith('en'));
     const rank = (v) =>
-      (/enhanced|premium|natural|neural/i.test(v.name) ? 4 : 0) +
-      (/samantha|daniel|google|siri|ava|serena|arthur|karen|moira/i.test(v.name) ? 2 : 0) +
-      (v.localService ? 1 : 0);
-    return [...english].sort((a, b) => rank(b) - rank(a))[0] || null;
+      (norm(v) === lang ? 20 : 0) +
+      (/natural|neural/i.test(v.name) ? 12 : 0) +
+      (/premium/i.test(v.name) ? 11 : 0) +
+      (/enhanced/i.test(v.name) ? 9 : 0) +
+      (/^google/i.test(v.name) ? 8 : 0) +
+      (/siri|ava|zoe|evan|nathan|samantha|daniel|serena|arthur|karen|moira|aria|jenny|guy|libby|ryan|sonia/i.test(v.name) ? 3 : 0) +
+      (/compact|eloquence/i.test(v.name) ? -6 : 0);
+    return [...pool].sort((a, b) => rank(b) - rank(a));
+  }
+
+  /** The learner's chosen voice when it is installed, otherwise the best one for the accent. */
+  voice() {
+    return (this.voiceName && this.voices.find((v) => v.name === this.voiceName)) || this.englishVoices()[0] || null;
   }
 
   finish(id) {
@@ -64,26 +88,37 @@ class Speaker {
 
   /** Speaks `text`; `onDone` runs when it finishes, fails or is stopped. */
   say(text, { slow = false, pitch = 1, onDone } = {}) {
+    // The utterance being replaced counts as finished, so anyone waiting on it carries on.
+    if (this.currentId != null) this.finish(this.currentId);
     const id = ++this.seq;
     this.currentId = id;
     this.setSpeaking(text);
     if (onDone) this.callbacks.set(id, onDone);
     const synth = window.speechSynthesis;
-    if (!synth) return this.finish(id);
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = this.accent === 'UK' ? 'en-GB' : 'en-US';
+    if (!synth || !this.hasVoices()) {
+      noVoiceWarning();
+      return this.finish(id);
+    }
+    synth.cancel();
     const v = this.voice();
-    if (v) u.voice = v;
-    u.rate = slow ? this.rate * 0.6 : this.rate;
-    // Pitch gives story characters distinct voices with a single engine.
-    u.pitch = pitch;
-    u.onend = u.onerror = () => this.finish(id);
+    const rate = slow ? this.rate * 0.6 : this.rate;
+    // Long text is queued sentence by sentence: it flows without gaps and engines don't cut it off.
+    const chunks = speechChunks(text);
+    this.utterances = chunks.map((chunk, i) => {
+      const u = new SpeechSynthesisUtterance(chunk);
+      u.lang = v?.lang || (this.accent === 'UK' ? 'en-GB' : 'en-US');
+      if (v) u.voice = v;
+      u.rate = rate;
+      // Pitch gives story characters distinct voices with a single engine.
+      u.pitch = pitch;
+      if (i === chunks.length - 1) u.onend = () => this.finish(id);
+      u.onerror = (e) => e.error !== 'interrupted' && e.error !== 'canceled' && this.finish(id);
+      return u; // kept on this.utterances so they aren't garbage-collected mid-sentence
+    });
     // Safari sometimes never fires onend; don't let a dialogue hang on it.
     const words = text.split(/\s+/).length;
-    setTimeout(() => this.finish(id), 4000 + (words * 650) / u.rate);
-    this.utterance = u; // keeps it from being garbage-collected mid-sentence
-    synth.cancel();
-    synth.speak(u);
+    setTimeout(() => this.finish(id), 4000 + (words * 650) / rate);
+    this.utterances.forEach((u) => synth.speak(u));
   }
 
   /** Resolves once `text` has been spoken (or speech was stopped). */
@@ -202,6 +237,32 @@ function listeningSheet(prompt, onDone, onCancel) {
     },
     close: () => el.remove(),
   };
+}
+
+/** Apps like Zalo and Facebook open links in their own browser, which has no speech engine. */
+export const inAppBrowser = (() => {
+  const ua = navigator.userAgent;
+  const m = ua.match(/Zalo|FBAN|FBAV|FB_IAB|Messenger|Instagram|Line\/|TikTok|musical_ly|Snapchat|Twitter|; wv\)/i);
+  if (!m) return null;
+  const name = /zalo/i.test(ua) ? 'Zalo' : /FBAN|FBAV|FB_IAB|messenger/i.test(ua) ? 'Facebook' : /instagram/i.test(ua) ? 'Instagram'
+    : /line\//i.test(ua) ? 'Line' : /tiktok|musical_ly/i.test(ua) ? 'TikTok' : 'ứng dụng này';
+  return { name, ios: /iPhone|iPad|iPod/i.test(ua) };
+})();
+
+/** Opens this page in Chrome on Android (intent link); iOS apps only allow it from their own menu. */
+export function openInBrowser() {
+  const { host, pathname, search, hash } = location;
+  location.href = `intent://${host}${pathname}${search}${hash}#Intent;scheme=https;package=com.android.chrome;end`;
+}
+
+let warned = false;
+function noVoiceWarning() {
+  if (warned) return;
+  warned = true;
+  toast(inAppBrowser
+    ? `Trình duyệt trong ${inAppBrowser.name} không có giọng đọc. Mở trang bằng ${inAppBrowser.ios ? 'Safari' : 'Chrome'} để nghe được nhé.`
+    : 'Máy chưa có giọng đọc tiếng Anh. Thử mở bằng Chrome hoặc Safari, hoặc cài giọng tiếng Anh trong cài đặt máy.');
+  setTimeout(() => (warned = false), 15000);
 }
 
 export function toast(msg) {
