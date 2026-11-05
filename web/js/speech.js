@@ -9,6 +9,7 @@ class Speaker {
   constructor() {
     this.rate = 0.9;
     this.accent = 'US';
+    this.lastAudioAt = -Infinity;
     /** Name of the voice picked in Settings; empty means automatic. */
     this.voiceName = '';
     this.speaking = null;
@@ -45,6 +46,8 @@ class Speaker {
   }
 
   setSpeaking(text) {
+    // iOS needs a moment after speech before the microphone works (see listen()).
+    if (this.speaking != null && text == null) this.lastAudioAt = performance.now();
     this.speaking = text;
     this.listeners.forEach((fn) => fn(text));
   }
@@ -156,84 +159,187 @@ export const canListen = !!Recognition;
 
 let active = null;
 
+const IOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+/** What to check when the microphone never comes on; iPhone settings differ from Android's. */
+const NO_AUDIO_HELP = IOS
+  ? `<b>Micro chưa nhận được tiếng.</b> Thử lần lượt:<br>
+     1. Đợi giọng đọc tắt hẳn rồi bấm <b>Thử lại</b>.<br>
+     2. Bấm <b>aA</b> trên thanh địa chỉ › <b>Cài đặt trang web</b> › <b>Micro: Cho phép</b>.<br>
+     3. Cài đặt › <b>Siri</b> (hoặc Bàn phím) › bật <b>Đọc chính tả</b>.<br>
+     4. Vẫn không được: tải lại trang, và mở bằng Safari (không mở trong Zalo/Facebook).`
+  : '<b>Micro chưa nhận được tiếng.</b> Kiểm tra quyền micro của trình duyệt, đợi giọng đọc tắt hẳn rồi bấm <b>Thử lại</b>.';
+
+const ERRORS = {
+  'not-allowed': 'Chưa có quyền dùng micro. Bấm "aA" trên thanh địa chỉ › Cài đặt trang web › Micro: Cho phép (Android: biểu tượng ổ khoá › Quyền).',
+  'service-not-allowed': 'Nhận diện giọng nói đang tắt. Bật Cài đặt › Siri › "Đọc chính tả" (Dictation) rồi thử lại.',
+  network: 'Không kết nối được dịch vụ nhận diện giọng nói. Kiểm tra mạng rồi thử lại.',
+  'audio-capture': 'Không tìm thấy micro, hoặc ứng dụng khác đang dùng micro.',
+};
+
 /**
  * Listens for one English utterance and calls `onResult(alternatives)` with every guess, best first.
  * Shows a full-screen "listening" sheet with `prompt`, like Android's recognizer dialog.
+ *
+ * iOS Safari keeps the audio session for a moment after text-to-speech, and a recognizer started
+ * then hears nothing and never ends (WebKit bug 321436). So: wait a little after speech, and if no
+ * audio arrives, throw the recognizer away and start a fresh one.
  */
-export function listen(prompt, { onResult, onCancel = () => {}, onError } = {}) {
+export function listen(prompt, { onResult, onCancel = () => {} } = {}) {
+  const sinceSpeech = speaker.speaking != null ? 0 : performance.now() - speaker.lastAudioAt;
   speaker.stop();
-  const fail = (msg) => (onError ? onError(msg) : toast(msg));
   if (!Recognition) {
-    fail('Trình duyệt này chưa hỗ trợ nhận diện giọng nói. Trên iPad/iPhone hãy mở bằng Safari (iOS 14.5 trở lên).');
+    toast('Trình duyệt này chưa hỗ trợ nhận diện giọng nói. Trên iPad/iPhone hãy mở bằng Safari (iOS 14.5 trở lên).');
     return onCancel();
   }
   if (active) active.abort();
-  const rec = new Recognition();
-  active = rec;
-  rec.lang = 'en-US';
-  rec.interimResults = true;
-  rec.maxAlternatives = 5;
-  rec.continuous = false;
 
-  const sheet = listeningSheet(prompt, () => rec.stop(), () => { cancelled = true; rec.abort(); });
-  let cancelled = false;
+  let rec = null;
+  let attempts = 0;
+  let settled = false;
   let finals = null;
   let interim = '';
+  let timers = [];
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  const heardSoFar = () => finals || (interim ? [interim] : null);
 
-  rec.onresult = (e) => {
-    const r = e.results[e.results.length - 1];
-    const alts = [...r].map((a) => a.transcript.trim()).filter(Boolean);
-    if (r.isFinal) finals = alts;
-    else interim = alts[0] || '';
-    sheet.heard(alts[0] || '');
+  const drop = () => {
+    const r = rec;
+    rec = null;
+    if (active === r) active = null;
+    try { r?.abort(); } catch { /* already stopped */ }
   };
-  rec.onerror = (e) => {
-    if (e.error === 'aborted' || e.error === 'no-speech') return;
-    cancelled = true;
-    const msgs = {
-      'not-allowed': 'Chưa có quyền dùng micro. Vào Cài đặt › Safari › Micro (hoặc bấm "aA" trên thanh địa chỉ) để cho phép.',
-      'service-not-allowed': 'Nhận diện giọng nói đang tắt. Bật Cài đặt › Siri › "Đọc chính tả" (Dictation) rồi thử lại.',
-      network: 'Không kết nối được dịch vụ nhận diện giọng nói. Kiểm tra mạng rồi thử lại.',
-      'audio-capture': 'Không tìm thấy micro.',
-    };
-    fail(msgs[e.error] || `Không nhận được giọng nói (${e.error}).`);
-  };
-  rec.onend = () => {
-    if (active === rec) active = null;
+
+  const settle = (heard) => {
+    if (settled) return;
+    settled = true;
+    clear();
+    drop();
     sheet.close();
-    // Safari sometimes ends without marking the last result final.
-    const heard = finals || (interim ? [interim] : null);
-    if (!cancelled && heard && heard.length) onResult(heard);
+    if (heard?.length) onResult(heard);
     else onCancel();
   };
-  try {
-    rec.start();
-  } catch {
-    sheet.close();
-    onCancel();
+
+  const giveUp = (html) => {
+    clear();
+    drop();
+    sheet.problem(html);
+  };
+
+  function start() {
+    clear();
+    attempts++;
+    finals = null;
+    interim = '';
+    const r = new Recognition();
+    rec = r;
+    active = r;
+    r.lang = 'en-US';
+    r.interimResults = true;
+    r.maxAlternatives = 5;
+    r.continuous = false;
+    let gotAudio = false;
+    sheet.status(attempts > 1 ? 'Đang bật lại micro…' : 'Đang nghe… hãy nói bằng tiếng Anh');
+
+    r.onaudiostart = () => { gotAudio = true; sheet.status('🎙️ Micro đã bật, mời bạn nói'); };
+    r.onspeechstart = () => { gotAudio = true; sheet.status('Đang nghe giọng bạn…'); };
+    r.onresult = (e) => {
+      if (rec !== r) return;
+      gotAudio = true;
+      const res = e.results[e.results.length - 1];
+      const alts = [...res].map((a) => a.transcript.trim()).filter(Boolean);
+      if (res.isFinal) finals = alts;
+      else interim = alts[0] || '';
+      sheet.heard(alts[0] || '');
+    };
+    r.onerror = (e) => {
+      if (rec !== r || e.error === 'aborted') return;
+      if (e.error === 'no-speech') return giveUp('<b>Chưa nghe thấy gì.</b> Nói to và gần micro hơn rồi bấm <b>Thử lại</b>.');
+      giveUp(ERRORS[e.error] || `Không nhận được giọng nói (${e.error}).`);
+    };
+    r.onend = () => {
+      if (rec !== r || settled) return;
+      const heard = heardSoFar();
+      if (heard) return settle(heard);
+      if (!gotAudio && attempts < 3) return start();
+      giveUp(gotAudio ? '<b>Chưa nghe rõ.</b> Bấm <b>Thử lại</b> và nói lại nhé.' : NO_AUDIO_HELP);
+    };
+    try {
+      r.start();
+    } catch {
+      giveUp(NO_AUDIO_HELP);
+      return;
+    }
+    // A stuck session never reports audio: replace it with a fresh recognizer.
+    timers.push(setTimeout(() => {
+      if (rec !== r || gotAudio || settled) return;
+      r.onend = null;
+      try { r.abort(); } catch { /* ignore */ }
+      if (attempts < 3) start();
+      else giveUp(NO_AUDIO_HELP);
+    }, 3000));
   }
+
+  const sheet = listeningSheet(prompt, {
+    // "Xong": stop and use what was heard; iOS sometimes never fires onend after stop().
+    onDone: () => {
+      if (!rec) return settle(heardSoFar());
+      try { rec.stop(); } catch { /* ignore */ }
+      timers.push(setTimeout(() => settle(heardSoFar()), 1500));
+    },
+    onCancel: () => settle(null),
+    // A tap is a fresh user gesture, which also satisfies browsers that want one for the mic.
+    onRetry: () => { attempts = 0; start(); },
+  });
+
+  const wait = IOS ? Math.max(0, 1200 - sinceSpeech) : 0;
+  if (wait > 0) {
+    sheet.status('Đang chuẩn bị micro…');
+    timers.push(setTimeout(start, wait));
+  } else start();
 }
 
-function listeningSheet(prompt, onDone, onCancel) {
+function listeningSheet(prompt, { onDone, onCancel, onRetry }) {
   const el = document.createElement('div');
   el.className = 'listen-sheet';
   el.innerHTML = `
     <div class="listen-card" role="dialog" aria-label="Đang nghe">
       <div class="listen-orb">🎤</div>
       <div class="listen-prompt"></div>
-      <div class="listen-heard">Đang nghe… hãy nói bằng tiếng Anh</div>
+      <div class="listen-heard"></div>
+      <div class="listen-help" hidden></div>
       <div class="row gap">
         <button class="btn ghost" data-x="cancel">Huỷ</button>
         <button class="btn" data-x="done">Xong</button>
+        <button class="btn" data-x="retry" hidden>Thử lại</button>
       </div>
     </div>`;
-  el.querySelector('.listen-prompt').textContent = prompt || '';
-  el.querySelector('[data-x=done]').onclick = onDone;
-  el.querySelector('[data-x=cancel]').onclick = onCancel;
+  const q = (sel) => el.querySelector(sel);
+  q('.listen-prompt').textContent = prompt || '';
+  q('[data-x=done]').onclick = onDone;
+  q('[data-x=cancel]').onclick = onCancel;
+  q('[data-x=retry]').onclick = () => {
+    q('.listen-help').hidden = true;
+    q('[data-x=retry]').hidden = true;
+    q('[data-x=done]').hidden = false;
+    q('.listen-orb').classList.remove('off');
+    onRetry();
+  };
   document.body.appendChild(el);
   return {
+    status(text) {
+      q('.listen-heard').textContent = text;
+    },
     heard(text) {
-      if (text) el.querySelector('.listen-heard').textContent = `“${text}”`;
+      if (text) q('.listen-heard').textContent = `“${text}”`;
+    },
+    problem(html) {
+      q('.listen-help').innerHTML = html;
+      q('.listen-help').hidden = false;
+      q('.listen-heard').textContent = '';
+      q('[data-x=done]').hidden = true;
+      q('[data-x=retry]').hidden = false;
+      q('.listen-orb').classList.add('off');
     },
     close: () => el.remove(),
   };
