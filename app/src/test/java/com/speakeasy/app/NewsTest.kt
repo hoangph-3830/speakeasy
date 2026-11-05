@@ -51,7 +51,7 @@ class NewsTest {
     fun cleansReutersHeadlinesFromGoogleNews() {
         val feed = """
             <?xml version="1.0" encoding="UTF-8"?>
-            <rss version="2.0"><channel><title>site:reuters.com when:1d - Google News</title>
+            <rss version="2.0"><channel><title>site:reuters.com when:3h - Google News</title>
             <item><title>Oil falls for a fourth day - Reuters</title><link>https://news.google.com/rss/articles/CBMi123?oc=5</link><pubDate>Thu, 05 Nov 2026 02:20:00 GMT</pubDate><description>&lt;a href="https://news.google.com/rss/articles/CBMi123?oc=5"&gt;Oil falls for a fourth day&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color="#6f6f6f"&gt;Reuters&lt;/font&gt;</description><source url="https://www.reuters.com">Reuters</source></item>
             <item><title>Markets brace for jobs data - Reuters</title><link>https://news.google.com/rss/articles/CBMi456?oc=5</link><pubDate>Thu, 05 Nov 2026 04:00:00 GMT</pubDate><description>Investors wait for Friday's report.</description><source url="https://www.reuters.com">Reuters</source></item>
             </channel></rss>
@@ -69,7 +69,7 @@ class NewsTest {
         assertEquals(NewsSource.REUTERS, oil.source)
         assertTrue(NewsSource.REUTERS.headlinesOnly)
         assertEquals(
-            "https://news.google.com/rss/search?q=site%3Areuters.com%2Fworld+when%3A1d&hl=en-US&gl=US&ceid=US:en",
+            "https://news.google.com/rss/search?q=site%3Areuters.com%2Fworld+when%3A3h&hl=en-US&gl=US&ceid=US:en",
             NewsSource.REUTERS_WORLD.url,
         )
     }

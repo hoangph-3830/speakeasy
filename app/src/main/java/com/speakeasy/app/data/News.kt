@@ -75,9 +75,9 @@ enum class NewsSource(
     }
 }
 
-/** Google News RSS for the last day's results of [query]. */
+/** Google News RSS for the last 3 hours of [query]; over a whole day it ranks by relevance, not time. */
 private fun googleNews(query: String) =
-    "https://news.google.com/rss/search?q=${URLEncoder.encode("$query when:1d", "UTF-8")}&hl=en-US&gl=US&ceid=US:en"
+    "https://news.google.com/rss/search?q=${URLEncoder.encode("$query when:3h", "UTF-8")}&hl=en-US&gl=US&ceid=US:en"
 
 /**
  * A headline; CNN Lite gives no [summary] or [published] time. [content] is the full article HTML

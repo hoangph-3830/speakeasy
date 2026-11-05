@@ -9,5 +9,5 @@ Mặc định app dùng các proxy công cộng. Các proxy này đôi khi bận
 4. Copy địa chỉ worker (ví dụ `https://speakeasy-news.ten-ban.workers.dev`).
 5. Trong app, vào **Tiến độ › Cài đặt › Proxy đọc báo**, dán `https://speakeasy-news.ten-ban.workers.dev/?url=` rồi bấm **Lưu**.
 
-Worker chỉ cho phép tải từ BBC và CNN. Gói miễn phí cho 100.000 lượt/ngày, dư sức cho một người dùng.
+Worker chỉ cho phép tải từ các báo trong app (BBC, CNN, Google News cho Reuters, The Guardian, NPR, Al Jazeera, ABC, The Conversation). Có proxy riêng thì tin Reuters trên web cũng cập nhật ngay, không trễ khoảng 1 giờ như khi đi qua rss2json. Gói miễn phí cho 100.000 lượt/ngày, dư sức cho một người dùng.
 Bản Android tải tin trực tiếp nên không cần proxy.
