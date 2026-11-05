@@ -148,6 +148,152 @@
    ]
   },
   {
+   "handle": "LittleFoxKids",
+   "name": "Little Fox",
+   "level": "A1",
+   "kids": true,
+   "about": "Truyện hoạt hình theo cấp độ: Peter Pan, Dino Buddies, Wizard and Cat…",
+   "videos": [
+    {
+     "id": "b_P_hoJ64o0",
+     "title": "Peter Pan 15-16 | Peter Pan's Trick and Hook's Evil Plan | Classic Story for Kids | Little Fox"
+    },
+    {
+     "id": "s-kb6E5y9xI",
+     "title": "Tasty Food Adventures! | The Carter Family | Little Fox"
+    },
+    {
+     "id": "hs-dE6pRYsE",
+     "title": "Halloween Special!  Spooky Stories & Fun Halloween Songs for Kids | Little Fox"
+    },
+    {
+     "id": "V_JlawCaii0",
+     "title": "Meet Pteranodon the Pterosaur🦕 | Is Pteranodon Really a Dinosaur? | Meet the Dinosaurs | Little Fox"
+    },
+    {
+     "id": "ePTTX6eShO8",
+     "title": "Dino Buddies 9 | A Special Egg | Dinosaurs | Stories for Kindergarten"
+    },
+    {
+     "id": "LsFhH0kF1oI",
+     "title": "Peter Pan 13-14 | What’s Hidden Beneath the Trees?  | Classic Story for Kids | Little Fox"
+    },
+    {
+     "id": "cTmBkTB7IHs",
+     "title": "Big Sister Emmy Takes on New Challenges! | The Carter Family | Little Fox"
+    },
+    {
+     "id": "C622TdBigtU",
+     "title": "Meet Elasmosaurus🦕| A Sea Creature with 72 Neck Bones! | Meet the Dinosaurs | Little Fox"
+    },
+    {
+     "id": "FzcH4QeyyPs",
+     "title": "Peter Pan 11–12 | Can Peter Pan Save Wendy in Time? | Classic Story for Kids | Little Fox"
+    },
+    {
+     "id": "n8bSNh3zUNM",
+     "title": "Meet the People Who Help Us! | Jobs & Community Helpers for Kids | The Carter Family | Little Fox"
+    },
+    {
+     "id": "t8yFDZlfJM8",
+     "title": "Meet Pachycephalosaurus🦕| Why Did Pachycephalosaurus Have a Thick Skull? | Meet the Dinosaurs"
+    },
+    {
+     "id": "wKEgI9ERDTA",
+     "title": "How King Sejong Created Hangeul | Hangeul Day Special for Kids | The Story of the Korean alphabet"
+    },
+    {
+     "id": "2I9UfhWYJuA",
+     "title": "Peter Pan 9-10 | Why Is Captain Hook Afraid of the Crocodile? | Classic Story for Kids | Little Fox"
+    },
+    {
+     "id": "PiVVtIocYho",
+     "title": "Peter Pan 7–8 | Welcome to the Real Neverland! | Classic Story for Kids | Little Fox"
+    },
+    {
+     "id": "N2UGvmVjSNg",
+     "title": "Meet Maiasuara🦕 | Why Is Maiasaura Called the Good Mother Dinosaur?| Meet the Dinosaurs | Little Fox"
+    },
+    {
+     "id": "j_UF0rMx06k",
+     "title": "Rover the Family Dog: Naughty Adventures! | The Carter Family | Funny Stories for Kids"
+    }
+   ]
+  },
+  {
+   "handle": "GogoLessons",
+   "name": "Gogo Lessons",
+   "level": "A1",
+   "kids": true,
+   "about": "Hội thoại ngắn có phụ đề, bài hát và trò chơi từ vựng cho bé",
+   "videos": [
+    {
+     "id": "iF4zFcMIXnc",
+     "title": "Hello. What's your name? | English Conversation A1 with Subtitles"
+    },
+    {
+     "id": "EOr-w9xbY_U",
+     "title": "Learn Family and Clothes words in English with Toca Life World"
+    },
+    {
+     "id": "nRpM8G1wRhg",
+     "title": "Learn Furniture in English with Toca Life World"
+    },
+    {
+     "id": "Eg3ZeUh1fIU",
+     "title": "Can You Draw? Learn English Verbs GOGO CHANT"
+    },
+    {
+     "id": "UOxyzhviEZc",
+     "title": "Christmas Quiz Flash Cards Xmas Vocabulary | English for Everyone @HelenDoronSongClub"
+    },
+    {
+     "id": "3-_X7PMjmV4",
+     "title": "English Lesson 24 – REVIEW. Have or Have got? | ENGLISH VIDEO COURSE FOR KIDS"
+    },
+    {
+     "id": "9dTIQP3sAnU",
+     "title": "Writing practice DEF Letter Tracing Video | English Lessons for Children"
+    },
+    {
+     "id": "4UewrQlgIQE",
+     "title": "Talking Angela Everyday Dialogues | Learn English with Games"
+    },
+    {
+     "id": "9s-taCRLW7Y",
+     "title": "English Flashcards DEF SCHOOL | English Vocabulary Lesson 2"
+    },
+    {
+     "id": "ILEcK5aounw",
+     "title": "Halloween Vocabulary Flashcards with Sentences from Gogo Lessons"
+    },
+    {
+     "id": "Qx3I4nrJAzE",
+     "title": "Gogo Lessons Flashcards ABC | English Vocabulary Lesson 1"
+    },
+    {
+     "id": "lY_AXW57Uzk",
+     "title": "Writing practice ABC | English Lessons for Children"
+    },
+    {
+     "id": "NJXBcgSog90",
+     "title": "GAME PLAY SHOW of the Lingokids App | Learn Numbers in English 1 to 10"
+    },
+    {
+     "id": "npiRMiaNsYo",
+     "title": "Learn English with Talking Tom 2 | Fun ESL English for Kids with Games"
+    },
+    {
+     "id": "X1QZe_WJfAw",
+     "title": "My PlayHome Game App | Fun English Learning ESL for Kids"
+    },
+    {
+     "id": "b3Gi8EswM-k",
+     "title": "Learn English with Talking Ginger | Fun ESL English for Kids with Games"
+    }
+   ]
+  },
+  {
    "handle": "VOALearningEnglish",
    "name": "VOA Learning English",
    "level": "A2",

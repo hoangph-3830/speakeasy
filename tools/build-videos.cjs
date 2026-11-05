@@ -8,6 +8,8 @@ const path = require('path');
 const CHANNELS = [
   { handle: 'SuperSimpleSongs', name: 'Super Simple Songs', level: 'A1', kids: true, about: 'Bài hát tiếng Anh vui nhộn cho bé và người mới bắt đầu' },
   { handle: 'sesamestreet', name: 'Sesame Street', level: 'A1', kids: true, about: 'Elmo, Big Bird và các bạn: chữ cái, số đếm, kỹ năng sống' },
+  { handle: 'LittleFoxKids', name: 'Little Fox', level: 'A1', kids: true, about: 'Truyện hoạt hình theo cấp độ: Peter Pan, Dino Buddies, Wizard and Cat…' },
+  { handle: 'GogoLessons', name: 'Gogo Lessons', level: 'A1', kids: true, about: 'Hội thoại ngắn có phụ đề, bài hát và trò chơi từ vựng cho bé' },
   { handle: 'VOALearningEnglish', name: 'VOA Learning English', level: 'A2', about: 'Tin tức đọc chậm, rõ, từ vựng có giới hạn cho người học' },
   { handle: 'bbclearningenglish', name: 'BBC Learning English', level: 'B1', about: 'Từ vựng qua tin tức, 6 Minute English, phát âm, ngữ pháp' },
   { handle: 'TEDEd', name: 'TED-Ed', level: 'B2', about: 'Phim hoạt hình giải thích khoa học, lịch sử, tư duy' },
