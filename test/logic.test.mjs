@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as L from '../js/logic.js';
+import { buildIndex, lemmas, lookup } from '../js/dict.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -73,6 +74,29 @@ test('AI request alternates roles and carries the schema', () => {
   assert.deepEqual(body.contents.map((c) => c.role), ['user', 'model']);
   assert.equal(body.generationConfig.responseSchema.required.length, 4);
   assert.equal(L.scenarios(content).length, content.topics.length + 2);
+});
+
+test('lemmas find base forms of inflected words', () => {
+  const has = (w, base) => assert.ok(lemmas(w).includes(base), `${w} -> ${base}: ${lemmas(w)}`);
+  has('stopped', 'stop'); has('making', 'make'); has('running', 'run'); has('studies', 'study');
+  has('cities', 'city'); has('went', 'go'); has('children', 'child'); has('happier', 'happy');
+  has('biggest', 'big'); has('quickly', 'quick'); has('Wong’s', 'wong'); has('boxes', 'box'); has('lives', 'life');
+});
+
+test('every vocabulary word has what the screens show, and lookup finds inflected forms', () => {
+  const vocab = json('vocab');
+  const words = vocab.groups.flatMap((g) => g.words);
+  for (const w of words) assert.ok(w.w && w.ipa && w.vi && w.ex && w.pos, JSON.stringify(w));
+  assert.equal(new Set(words.map((w) => w.w.toLowerCase())).size, words.length);
+  buildIndex(vocab, content);
+  assert.equal(lookup('Children')?.w, 'child');
+  assert.equal(lookup('went')?.w, 'go');
+});
+
+test('categories cover every topic', () => {
+  const ids = new Set(content.categories.map((c) => c.id));
+  for (const t of content.topics) assert.ok(ids.has(t.category), t.id);
+  assert.ok(content.topics.length >= 46);
 });
 
 console.log(`\n${n} tests passed`);

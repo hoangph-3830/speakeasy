@@ -286,3 +286,34 @@ textarea.field { min-height: 48px; }
 @keyframes fade { from { opacity: 0; } }
 @keyframes pop { from { transform: scale(.92); opacity: 0; } }
 @keyframes up { from { transform: translateY(40px); } }
+
+/* ---- Vocabulary ---- */
+.tiles4 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (min-width: 700px) { .tiles4 { grid-template-columns: repeat(4, 1fr); } }
+.word-row { gap: 6px; padding: 12px 14px; }
+.pos { font-size: 11px; font-weight: 700; color: var(--muted); background: var(--line); border-radius: 6px; padding: 1px 6px; }
+.tick { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--line); color: var(--line); font-weight: 800; flex: none; }
+.tick.on { background: var(--mint); border-color: var(--mint); color: #fff; }
+.hits { display: flex; flex-direction: column; gap: 10px; }
+input[type=search].field { -webkit-appearance: none; }
+
+/* ---- News ---- */
+.news-head { padding-top: 12px; display: flex; flex-direction: column; gap: 2px; }
+.news-head .chips { margin: 8px -20px 0; }
+.news-card { flex-direction: row; gap: 12px; align-items: flex-start; }
+.news-img { width: 96px; height: 64px; object-fit: cover; border-radius: 12px; flex: none; background: var(--line); }
+.reader { gap: 14px; }
+.article-title { font-size: 24px; line-height: 1.3; font-weight: 800; margin: 4px 0 0; }
+.para { display: flex; flex-direction: column; gap: 4px; }
+.reading { font-size: 18px; line-height: 1.65; margin: 0; }
+.para-vi { margin: 0; color: var(--coral); font-size: 16px; line-height: 1.55; border-left: 3px solid var(--coral-l); padding-left: 10px; }
+.w { cursor: pointer; border-radius: 4px; }
+.w:active, .w:hover { background: var(--sun-l); }
+a.btn { text-decoration: none; }
+@media (min-width: 700px) { .reader { max-width: 720px; margin: 0 auto; width: 100%; } .reading { font-size: 19px; } }
+
+/* Word sheet */
+.sheet-back { position: fixed; inset: 0; background: rgba(20, 28, 48, .35); z-index: 55; display: flex; align-items: flex-end; animation: fade .2s; }
+.sheet { width: 100%; max-width: 560px; margin: 0 auto; background: #fff; border-radius: 28px 28px 0 0; padding: 12px 20px calc(20px + var(--safe-b)); display: flex; flex-direction: column; gap: 12px; animation: up .25s ease-out; }
+.sheet-grip { width: 44px; height: 5px; border-radius: 3px; background: var(--line); margin: 0 auto 4px; }
+.sheet .word-big { font-size: 30px; }

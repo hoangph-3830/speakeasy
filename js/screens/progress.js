@@ -66,6 +66,13 @@ export function progressScreen(app) {
           </div>
           <p class="muted tiny">Key chỉ lưu trên máy này và chỉ gửi tới Google Gemini.</p>
 
+          <div class="semi mt">📰 Proxy đọc báo (tuỳ chọn)</div>
+          <div class="row gap-s">
+            <input class="field grow" data-input="proxy" value="${esc(AiSettings.get().newsProxy || '')}" placeholder="https://ten-cua-ban.workers.dev/?url=" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <button class="btn small-btn" data-act="saveProxy">Lưu</button>
+          </div>
+          <p class="muted tiny">Để trống thì app dùng các proxy công cộng (đôi khi bận). Muốn tin tải ổn định, tự dựng proxy miễn phí theo hướng dẫn trong web/tools/README.md.</p>
+
           <div class="semi mt">💾 Sao lưu tiến độ</div>
           <div class="row gap-s">
             <button class="btn outline grow" data-act="export">Tải file sao lưu</button>
@@ -92,6 +99,11 @@ export function progressScreen(app) {
         speaker.say('Hello! Lovely to meet you.');
       },
       key: (v) => { pendingKey = v; },
+      proxy: (v) => { pendingProxy = v; },
+      saveProxy: () => {
+        AiSettings.set({ newsProxy: (pendingProxy ?? AiSettings.get().newsProxy ?? '').trim() });
+        toast(AiSettings.get().newsProxy ? 'Đã lưu proxy ✅' : 'Đã xoá proxy, dùng proxy công cộng');
+      },
       saveKey: () => {
         AiSettings.set({ apiKey: (pendingKey ?? AiSettings.get().apiKey).trim() });
         toast(AiSettings.get().apiKey ? 'Đã lưu Gemini API key ✅' : 'Đã xoá API key');
@@ -135,3 +147,4 @@ export function progressScreen(app) {
 }
 
 let pendingKey = null;
+let pendingProxy = null;

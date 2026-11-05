@@ -10,10 +10,14 @@ import * as lab from './screens/lab.js';
 import * as stories from './screens/stories.js';
 import * as aiChat from './screens/ai.js';
 import * as me from './screens/progress.js';
+import * as vocab from './screens/vocab.js';
+import * as news from './screens/news.js';
+import { buildIndex } from './dict.js';
 
 const TABS = [
   { route: 'home', label: 'Học', icon: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
   { route: 'play', label: 'Chơi', icon: '<path d="M21.6 15.2 20 8.4A4 4 0 0 0 16.1 5H7.9A4 4 0 0 0 4 8.4l-1.6 6.8A2.6 2.6 0 0 0 7 17.6L9 15h6l2 2.6a2.6 2.6 0 0 0 4.6-2.4zM10 11H8v2H7v-2H5v-1h2V8h1v2h2zm5 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>' },
+  { route: 'news', label: 'Đọc báo', icon: '<path d="M20 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14H5v-2h6zm8-4H5v-2h14zm0-4H5V7h14z"/>' },
   { route: 'ai', label: 'Nói với AI', icon: '<path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6zm8 5H6v-2h8zm4-6H6V6h12z"/>' },
   { route: 'me', label: 'Tiến độ', icon: '<path d="M21 8a2 2 0 0 0-1.9 2.6l-3.6 3.5a2 2 0 0 0-1 0l-2.5-2.5A2 2 0 1 0 8 11.6l-4.5 4.5A2 2 0 1 0 5 18a2 2 0 0 0-.1-.5l4.5-4.5a2 2 0 0 0 1 0l2.5 2.5A2 2 0 1 0 16.8 16l3.6-3.5A2 2 0 1 0 21 8zM15 9l.9-2L18 6l-2.1-1L15 3l-.9 2-2.1 1 2.1 1zM3.5 11 4 9l2-.5L4 8l-.5-2L3 8l-2 .5L3 9z"/>' },
 ];
@@ -23,6 +27,10 @@ const ROUTES = [
   [/^play$/, games.hubScreen],
   [/^ai$/, aiChat.hubScreen],
   [/^me$/, me.progressScreen],
+  [/^news$/, news.listScreen],
+  [/^article$/, news.articleScreen],
+  [/^vocab$/, vocab.hubScreen],
+  [/^vocab\/(.+)$/, vocab.groupScreen],
   [/^review$/, review.reviewScreen],
   [/^lab$/, lab.hubScreen],
   [/^lab\/(.+)$/, lab.lessonScreen],
@@ -43,13 +51,45 @@ let route = '';
 // Our own back stack: on a home-screen app there is no browser back button.
 const stack = [];
 
-const load = (name) => fetch(`data/${name}.json`).then((r) => r.json());
+// no-cache revalidates with the server (a cheap 304 when unchanged), so new lessons show up at once.
+const load = (name) => fetch(`data/${name}.json`, { cache: 'no-cache' }).then((r) => r.json());
 
 export const app = {
   content: null,
   pronunciation: null,
   stories: null,
+  vocab: null,
   topic: (id) => app.content.topics.find((t) => t.id === id),
+  /** The 3000-word list is large, so it loads on first use (and in the background after start). */
+  loadVocab() {
+    app.vocabLoading ??= load('vocab').then((v) => {
+      app.vocab = v;
+      buildIndex(v, app.content);
+      return v;
+    }).catch((e) => {
+      app.vocabLoading = null;
+      throw e;
+    });
+    return app.vocabLoading;
+  },
+  /** The reader needs the whole list item (title, summary, source), so it travels outside the URL. */
+  get article() {
+    if (app._article) return app._article;
+    try {
+      return JSON.parse(sessionStorage.getItem('se.article') || 'null');
+    } catch {
+      return null;
+    }
+  },
+  openArticle(item) {
+    try {
+      sessionStorage.setItem('se.article', JSON.stringify(item));
+    } catch {
+      // private mode: the article still opens this time
+    }
+    app._article = item;
+    app.nav('article');
+  },
   category: (id) => app.content.categories.find((c) => c.id === id),
   nav: (path) => (location.hash = `#/${path}`),
   back() {
@@ -87,6 +127,8 @@ function open() {
 
   screen?.leave?.();
   speaker.stop();
+  // Sheets and dialogs belong to the screen being left.
+  document.querySelectorAll('.sheet-back, .dialog-back').forEach((el) => el.remove());
   route = path;
   const match = ROUTES.map(([re, make]) => [path.match(re), make]).find(([m]) => m);
   if (!match) return location.replace('#/home');
@@ -157,7 +199,9 @@ async function start() {
   const p = Progress.get();
   speaker.rate = p.speechRate;
   speaker.accent = p.accent;
+  buildIndex(null, app.content);
   open();
+  setTimeout(() => app.loadVocab().catch(() => {}), 1500);
 }
 
 // Offline cache for the installed app; skipped on localhost so edits show up on reload.
