@@ -54,8 +54,12 @@ Trên localhost, service worker (bộ nhớ offline) được tắt để sửa 
   Nội dung mới soạn theo lô (`topics-*.json`, `vocab-*.json`) gộp bằng `node web/tools/merge-content.cjs <thư mục>`,
   script tự loại từ trùng và ghi vào cả hai nơi.
 - Sau mỗi lần sửa file trong `web/`, tăng `VERSION` trong `web/sw.js` để iPad tải bản mới.
-- Đưa bản mới lên GitHub Pages (https://hoangph-3830.github.io/speakeasy/): commit rồi chạy
+- Đưa bản mới lên: commit rồi chạy
   `git subtree split --prefix web -b gh-pages && git push -f origin gh-pages` (xoá nhánh `gh-pages` cục bộ trước nếu đã có).
+  Nhánh `gh-pages` được phát ở hai nơi:
+  - Link chính, Cloudflare Pages tự deploy mỗi lần nhánh đổi: https://speak-easy-english.pages.dev/
+  - GitHub Pages, link cũ vẫn chạy: https://hoangph-3830.github.io/speakeasy/
+  Tiến độ học lưu theo từng link; muốn chuyển link thì dùng Tiến độ › Sao lưu rồi Khôi phục ở link mới.
 
 ## Cấu trúc
 
