@@ -1,11 +1,15 @@
 // "Kiểm tra âm thanh" in Settings: speaks a test line, then shows what the speech engine reported,
 // so a learner with no sound can send a screenshot instead of guessing.
 import { speaker } from '../speech.js';
+import { Progress } from '../store.js';
 import { esc, openDialog } from '../ui.js';
 
 const TEST = 'Hello! Can you hear me clearly?';
 
 export const soundCheckRow = () => `
+  <div class="row center-v mt"><span class="semi grow">🌐 Giọng đọc online</span>
+    <button class="chip-toggle ${speaker.online ? 'on' : ''}" data-act="onlineVoice">${speaker.online ? 'Đang bật' : 'Đang tắt'}</button></div>
+  <p class="muted tiny">Đọc bằng giọng tải từ Google, phát như video, dùng khi máy báo đang đọc mà không ra tiếng (hay gặp trên iPad đời iOS 27). Cần có mạng; mất mạng thì app tự đọc bằng giọng của máy.</p>
   <div class="semi mt">🔊 Không nghe thấy tiếng?</div>
   <button class="btn outline" data-act="soundCheck">🔊 Kiểm tra âm thanh</button>`;
 
@@ -18,6 +22,7 @@ function report() {
     ['Số giọng tiếng Anh', `${speaker.englishVoices().length} / ${speaker.voices.length} giọng`],
     ['Giọng đang dùng', v ? `${v.name} (${v.lang})` : 'mặc định của máy'],
     ['Đang đọc', synth ? `${synth.speaking ? 'có' : 'không'}${synth.paused ? ', đang tạm dừng' : ''}` : '-'],
+    ['Giọng online', speaker.online ? 'đang bật' : 'đang tắt'],
     ['Chế độ âm thanh', navigator.audioSession?.type || 'không hỗ trợ'],
     ['Mở từ', standalone ? 'biểu tượng màn hình chính' : 'trình duyệt'],
     ['Sự kiện', (speaker.events || []).join(' · ') || 'chưa có'],
@@ -31,10 +36,16 @@ function report() {
       <li>Cài đặt › Trợ năng › Nội dung được đọc › Giọng nói › Tiếng Anh: tải một giọng (ví dụ Samantha).</li>
     </ul>
     <table class="diag">${rows.map(([k, val]) => `<tr><td class="muted">${esc(k)}</td><td>${esc(val)}</td></tr>`).join('')}</table>
+    ${speaker.online ? '' : '<p><b>Máy báo đang đọc mà không nghe gì?</b> Bật “Giọng đọc online” ngay dưới phần Cài đặt rồi thử lại.</p>'}
     <p class="muted tiny">Vẫn không được? Chụp màn hình này gửi người hỗ trợ.</p>`;
 }
 
 export const soundCheckActions = {
+  onlineVoice: () => {
+    speaker.online = !speaker.online;
+    Progress.set({ onlineVoice: speaker.online });
+    speaker.say(speaker.online ? 'Online voice is on. Can you hear me now?' : 'Device voice is on.');
+  },
   soundCheck: () => {
     speaker.events = [];
     speaker.say(TEST);

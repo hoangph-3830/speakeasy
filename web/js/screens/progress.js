@@ -5,6 +5,7 @@ import { bar, catColors, esc, openDialog, sayBtn, section } from '../ui.js';
 import { CHALLENGES } from '../challenges.js';
 import { planActions, planSettings, studyCalendar } from './study-plan-widgets.js';
 import { soundCheckActions, soundCheckRow } from './sound-check.js';
+import { speechEngineMayBeSilent } from '../online-voice.js';
 
 const BADGES = [
   ['🌱', 'Khởi đầu', 'Hoàn thành 1 bài', (p) => p.done.length > 0],
@@ -155,6 +156,7 @@ export function progressScreen(app) {
           speaker.rate = p.speechRate;
           speaker.accent = p.accent;
           speaker.voiceName = p.voiceName || '';
+          speaker.online = p.onlineVoice ?? speechEngineMayBeSilent();
           toast('Đã khôi phục tiến độ ✅');
           app.update();
         } catch (e) {

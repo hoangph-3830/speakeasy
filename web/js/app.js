@@ -20,6 +20,7 @@ import { hangmanScreen, memoryScreen } from './screens/challenge-puzzles.js';
 import { anagramScreen, clozeScreen, spellingScreen } from './screens/challenge-words.js';
 import { placementScreen } from './screens/placement-test.js';
 import { buildIndex } from './dict.js';
+import { speechEngineMayBeSilent } from './online-voice.js';
 
 const TABS = [
   { route: 'home', label: 'Học', icon: '<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>' },
@@ -257,6 +258,7 @@ async function start() {
   speaker.rate = p.speechRate;
   speaker.accent = p.accent;
   speaker.voiceName = p.voiceName || '';
+  speaker.online = p.onlineVoice ?? speechEngineMayBeSilent();
   buildIndex(null, app.content);
   open();
   setTimeout(() => app.loadVocab().catch(() => {}), 1500);

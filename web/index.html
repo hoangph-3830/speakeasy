@@ -11,6 +11,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="SpeakEasy">
   <meta name="format-detection" content="telephone=no">
+  <!-- The online voice (Google translate TTS) refuses requests that carry a Referer; the YouTube
+       player sets its own policy on the iframe, which overrides this one. -->
+  <meta name="referrer" content="no-referrer">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">

@@ -1,6 +1,7 @@
 // Text-to-speech and speech recognition through the browser's Web Speech API.
 // On iPad/iPhone Safari these use the system English voices and Siri dictation.
 import { speechChunks } from './logic.js';
+import { playOnline, stopOnline, unlockOnline } from './online-voice.js';
 
 // iOS ships joke voices under English locales; never pick them for lessons.
 const NOVELTY = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley/i;
@@ -12,6 +13,8 @@ class Speaker {
     this.lastAudioAt = -Infinity;
     /** Name of the voice picked in Settings; empty means automatic. */
     this.voiceName = '';
+    /** "Giọng đọc online": play MP3 speech instead of the browser's engine (see online-voice.js). */
+    this.online = false;
     this.speaking = null;
     this.listeners = new Set();
     this.callbacks = new Map();
@@ -98,13 +101,14 @@ class Speaker {
   }
 
   /** Speaks `text`; `onDone` runs when it finishes, fails or is stopped. */
-  say(text, { slow = false, pitch = 1, onDone } = {}) {
+  say(text, { slow = false, pitch = 1, onDone, local = false } = {}) {
     // The utterance being replaced counts as finished, so anyone waiting on it carries on.
     if (this.currentId != null) this.finish(this.currentId);
     const id = ++this.seq;
     this.currentId = id;
     this.setSpeaking(text);
     if (onDone) this.callbacks.set(id, onDone);
+    if (this.online && !local) return this.sayOnline(id, text, { slow, pitch, onDone });
     const synth = window.speechSynthesis;
     // In-app browsers expose an engine that never speaks; anywhere else an empty voice list is no
     // proof of silence (iPad home-screen apps often list none yet speak with the default voice).
@@ -159,6 +163,27 @@ class Speaker {
     setTimeout(() => this.finish(id), 5500 + (words * 650) / rate);
   }
 
+  sayOnline(id, text, { slow, pitch, onDone }) {
+    window.speechSynthesis?.cancel();
+    const speed = slow ? this.rate * 0.6 : this.rate;
+    playOnline(speechChunks(text), {
+      accent: this.accent,
+      speed,
+      onStart: () => this.note('start', 'online'),
+      onEnd: () => { this.note('end', 'online'); this.finish(id); },
+      onError: (e) => {
+        this.note('error', `online: ${e.message || e.name || e}`);
+        if (id !== this.currentId) return;
+        // No network or the service refused: read it with the device's engine instead.
+        this.callbacks.delete(id);
+        this.say(text, { slow, pitch, onDone, local: true });
+      },
+    });
+    // A stalled download must not leave a dialogue waiting forever.
+    const words = text.split(/s+/).length;
+    setTimeout(() => this.finish(id), 8000 + (words * 900) / speed);
+  }
+
   /** Resolves once `text` has been spoken (or speech was stopped). */
   sayAndWait(text, pitch = 1) {
     return new Promise((resolve) => this.say(text, { pitch, onDone: resolve }));
@@ -166,6 +191,7 @@ class Speaker {
 
   stop() {
     window.speechSynthesis?.cancel();
+    stopOnline();
     this.currentId = null;
     this.setSpeaking(null);
     // Release anyone waiting in sayAndWait so their loops don't hang.
@@ -194,6 +220,7 @@ class Speaker {
   /** iOS only allows speech after a user gesture; speaking once on the first tap unlocks it for later. */
   unlock() {
     this.keepAudioOn();
+    unlockOnline();
     const synth = window.speechSynthesis;
     if (!synth || this.unlocked) return;
     this.unlocked = true;
