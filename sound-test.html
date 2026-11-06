@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thử âm thanh</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 16px; background: #f6f8fc; color: #1d2433; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p { color: #5b6475; margin: 4px 0 14px; }
+  button { display: block; width: 100%; font-size: 18px; padding: 14px; margin: 10px 0; border: 0; border-radius: 14px; background: #3d7bfd; color: #fff; font-weight: 600; }
+  button.alt { background: #22b07d; }
+  button.gray { background: #8a93a6; }
+  pre { white-space: pre-wrap; word-break: break-word; background: #fff; border-radius: 12px; padding: 12px; font-size: 13px; min-height: 120px; }
+</style>
+</head>
+<body>
+<h1>🔊 Thử âm thanh</h1>
+<p>Bấm lần lượt từng nút, ghi lại nút nào nghe được tiếng, rồi chụp màn hình cả trang gửi người hỗ trợ.</p>
+<button id="tone">1. Phát tiếng bíp (âm thanh thường)</button>
+<button id="speak" class="alt">2. Đọc "Hello" bằng giọng mặc định</button>
+<button id="voices" class="alt">3. Đọc bằng từng giọng tiếng Anh (tối đa 3)</button>
+<button id="session" class="gray">4. Bật chế độ phát nhạc rồi đọc lại</button>
+<pre id="log"></pre>
+<script>
+const log = (m) => { document.getElementById('log').textContent += `${new Date().toLocaleTimeString()}  ${m}\n`; };
+const synth = window.speechSynthesis;
+log(`Thiết bị: ${navigator.userAgent}`);
+log(`Mở từ: ${matchMedia('(display-mode: standalone)').matches || navigator.standalone ? 'màn hình chính' : 'trình duyệt'}`);
+log(`Bộ đọc: ${synth ? 'có' : 'KHÔNG'} · audioSession: ${navigator.audioSession ? navigator.audioSession.type : 'không hỗ trợ'}`);
+const listVoices = () => (synth ? synth.getVoices() : []);
+setTimeout(() => { const v = listVoices(); log(`Giọng: ${v.length} (tiếng Anh: ${v.filter((x) => /^en/i.test(x.lang)).length})`); }, 800);
+
+function utter(text, voice) {
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = voice ? voice.lang : 'en-US';
+  if (voice) u.voice = voice;
+  const name = voice ? voice.name : 'mặc định';
+  u.onstart = () => log(`▶ bắt đầu đọc (${name})`);
+  u.onend = () => log(`■ đọc xong (${name})`);
+  u.onerror = (e) => log(`✖ lỗi đọc (${name}): ${e.error}`);
+  return u;
+}
+function speak(text, voice) {
+  if (!synth) return log('Không có bộ đọc');
+  synth.cancel();
+  synth.resume();
+  synth.speak(utter(text, voice));
+  setTimeout(() => log(`  sau 1,5 giây: speaking=${synth.speaking} pending=${synth.pending} paused=${synth.paused}`), 1500);
+}
+
+document.getElementById('tone').onclick = () => {
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctx();
+    const osc = ctx.createOscillator();
+    osc.frequency.value = 660;
+    osc.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.4);
+    log(`Bíp: đã phát (trạng thái ${ctx.state})`);
+  } catch (e) { log(`Bíp lỗi: ${e.message}`); }
+};
+document.getElementById('speak').onclick = () => { log('— Thử 2: giọng mặc định'); speak('Hello! Can you hear me?'); };
+document.getElementById('voices').onclick = () => {
+  const en = listVoices().filter((v) => /^en/i.test(v.lang)).slice(0, 3);
+  log(`— Thử 3: ${en.map((v) => v.name).join(', ') || 'không có giọng tiếng Anh'}`);
+  en.forEach((v, i) => setTimeout(() => speak(`This is ${v.name}.`, v), i * 3000));
+};
+document.getElementById('session').onclick = () => {
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { log(`audioSession lỗi: ${e.message}`); }
+  log(`— Thử 4: audioSession = ${navigator.audioSession ? navigator.audioSession.type : 'không hỗ trợ'}`);
+  speak('Hello again! Can you hear me now?');
+};
+</script>
+</body>
+</html>
