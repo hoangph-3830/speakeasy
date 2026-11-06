@@ -4,6 +4,7 @@ import { AiSettings, Progress, Review, exportBackup, importBackup } from '../sto
 import { bar, catColors, esc, openDialog, sayBtn, section } from '../ui.js';
 import { CHALLENGES } from '../challenges.js';
 import { planActions, planSettings, studyCalendar } from './study-plan-widgets.js';
+import { soundCheckActions, soundCheckRow } from './sound-check.js';
 
 const BADGES = [
   ['🌱', 'Khởi đầu', 'Hoàn thành 1 bài', (p) => p.done.length > 0],
@@ -67,6 +68,7 @@ export function progressScreen(app) {
           <div class="semi mt">Giọng bản xứ</div>
           <div class="row gap-s">${[['US', '🇺🇸 Anh - Mỹ'], ['UK', '🇬🇧 Anh - Anh']].map(([code, l]) =>
             `<button class="filter grow ${p.accent === code ? 'on' : ''}" data-act="accent" data-c="${code}">${l}</button>`).join('')}</div>
+          ${soundCheckRow()}
           <div class="semi mt">Giọng đọc</div>
           <div class="voices">${voiceList(p)}</div>
           <p class="muted tiny">Muốn giọng mượt hơn: trên iPad/iPhone vào Cài đặt › Trợ năng › Nội dung được đọc › Giọng nói › Tiếng Anh, tải giọng có chữ “Nâng cao” hoặc “Cao cấp” (ví dụ Ava, Zoe, Evan) rồi quay lại chọn ở đây. Trên máy tính, trình duyệt Edge có sẵn giọng “Natural” rất tự nhiên.</p>
@@ -99,6 +101,7 @@ export function progressScreen(app) {
     },
     actions: {
       ...planActions,
+      ...soundCheckActions,
       goal: (d) => Progress.set({ dailyGoal: +d.g }),
       rate: (v, el) => {
         const rate = Math.round(+v * 10) / 10;

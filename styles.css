@@ -452,3 +452,6 @@ canvas.wave { width: 100%; height: 110px; display: block; background: var(--canv
 .word.letter { min-width: 46px; font-size: 22px; font-weight: 800; text-transform: lowercase; }
 .field.spell { font-size: 22px; text-align: center; margin: 12px 0; }
 .field.time { width: auto; flex: 0 0 auto; }
+.diag { width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 8px; text-align: left; }
+.diag td { padding: 4px 6px; border-top: 1px solid var(--line); vertical-align: top; word-break: break-word; }
+.check-list { text-align: left; padding-left: 18px; margin: 6px 0; }
