@@ -1,5 +1,6 @@
 // Microphone recording for shadowing: MediaRecorder for playback, decoded PCM for analysis.
 import { downsample, pitchCurve, rmsFrames, trimSilence } from './audio.js';
+import { micAudioSession } from './speech.js';
 
 export const canRecord = !!(navigator.mediaDevices?.getUserMedia && window.MediaRecorder);
 
@@ -7,6 +8,7 @@ const MAX_SECONDS = 10;
 
 /** Starts recording; resolves to a handle whose stop() gives the clip and its analysis. */
 export async function startRecording(onAutoStop) {
+  micAudioSession();
   const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
   // Safari records AAC in MP4, Chrome and Firefox record Opus in WebM.
   const type = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'].find((t) => MediaRecorder.isTypeSupported?.(t));

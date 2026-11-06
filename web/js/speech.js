@@ -106,10 +106,13 @@ class Speaker {
     this.setSpeaking(text);
     if (onDone) this.callbacks.set(id, onDone);
     const synth = window.speechSynthesis;
-    if (!synth || !this.hasVoices()) {
+    // In-app browsers expose an engine that never speaks; anywhere else an empty voice list is no
+    // proof of silence (iPad home-screen apps often list none yet speak with the default voice).
+    if (!synth || (inAppBrowser && !this.hasVoices())) {
       noVoiceWarning();
       return this.finish(id);
     }
+    this.keepAudioOn();
     // iOS drops an utterance queued in the same tick as cancel(), so wait a beat when something was playing.
     const busy = synth.speaking || synth.pending;
     synth.cancel();
@@ -128,21 +131,28 @@ class Speaker {
         u.rate = rate;
         // Pitch gives story characters distinct voices with a single engine.
         u.pitch = pitch;
-        u.onstart = () => { started = true; };
-        if (i === chunks.length - 1) u.onend = () => this.finish(id);
-        u.onerror = (e) => e.error !== 'interrupted' && e.error !== 'canceled' && this.finish(id);
+        u.onstart = () => { started = true; this.note('start', voice?.name || 'mặc định'); };
+        if (i === chunks.length - 1) u.onend = () => { this.note('end'); this.finish(id); };
+        u.onerror = (e) => {
+          this.note('error', e.error);
+          if (e.error !== 'interrupted' && e.error !== 'canceled') this.finish(id);
+        };
         return u; // kept on this.utterances so they aren't garbage-collected mid-sentence
       });
       this.utterances.forEach((u) => synth.speak(u));
     };
     if (busy) setTimeout(() => id === this.currentId && queue(v), 80);
     else queue(v);
-    // A listed voice that is not downloaded (or a Siri voice) speaks nothing on iOS: retry with the default.
-    if (v?.localService) setTimeout(() => {
-      if (started || id !== this.currentId) return;
-      this.silentVoices.add(v.name);
-      synth.cancel();
-      setTimeout(() => id === this.currentId && queue(null), 80);
+    setTimeout(() => {
+      // synth.speaking means sound is playing even if the engine skipped the start event.
+      if (started || synth.speaking || id !== this.currentId) return;
+      this.note('silent', v?.name || 'mặc định');
+      // A listed voice that is not downloaded (or a Siri voice) speaks nothing on iOS: retry with the default.
+      if (v?.localService) {
+        this.silentVoices.add(v.name);
+        synth.cancel();
+        setTimeout(() => id === this.currentId && queue(null), 80);
+      } else if (!this.voices.length) noVoiceWarning();
     }, 1500);
     // Safari sometimes never fires onend; don't let a dialogue hang on it.
     const words = text.split(/\s+/).length;
@@ -164,8 +174,26 @@ class Speaker {
     pending.forEach((cb) => cb());
   }
 
+  /** Last speech events, newest last, for the sound check in Settings. */
+  note(event, detail = '') {
+    this.events = [...(this.events || []).slice(-7), `${new Date().toLocaleTimeString()} ${event}${detail ? ` (${detail})` : ''}`];
+  }
+
+  /**
+   * iOS mutes the speech engine while the device is on silent, though videos still play.
+   * Safari 17+ lets a page ask for the "playback" audio session, which plays through silent mode.
+   */
+  keepAudioOn() {
+    try {
+      if (navigator.audioSession && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback';
+    } catch {
+      // Older Safari: nothing to set; the learner has to turn silent mode off.
+    }
+  }
+
   /** iOS only allows speech after a user gesture; speaking once on the first tap unlocks it for later. */
   unlock() {
+    this.keepAudioOn();
     const synth = window.speechSynthesis;
     if (!synth || this.unlocked) return;
     this.unlocked = true;
@@ -210,6 +238,15 @@ const ERRORS = {
  * then hears nothing and never ends (WebKit bug 321436). So: wait a little after speech, and if no
  * audio arrives, throw the recognizer away and start a fresh one.
  */
+/** The microphone needs a record-capable audio session; the next speech switches back to playback. */
+export function micAudioSession() {
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = 'play-and-record';
+  } catch {
+    // Not supported: nothing to change.
+  }
+}
+
 export function listen(prompt, { onResult, onCancel = () => {} } = {}) {
   const sinceSpeech = speaker.speaking != null ? 0 : performance.now() - speaker.lastAudioAt;
   speaker.stop();
@@ -256,6 +293,7 @@ export function listen(prompt, { onResult, onCancel = () => {} } = {}) {
     attempts++;
     finals = null;
     interim = '';
+    micAudioSession();
     const r = new Recognition();
     rec = r;
     active = r;
