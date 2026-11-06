@@ -325,7 +325,7 @@ test('online voice: pieces under the length limit, request address, which device
   assert.ok(O.speechEngineMayBeSilent(ipad27, 5));
   assert.ok(!O.speechEngineMayBeSilent(ipad27, 0)); // a real Mac has no touch screen
   assert.ok(O.speechEngineMayBeSilent(iphone27, 5));
-  assert.ok(!O.speechEngineMayBeSilent(iphone17, 5));
+  assert.ok(O.speechEngineMayBeSilent(iphone17, 5)); // the user agent no longer tells the real iOS version
   assert.ok(!O.speechEngineMayBeSilent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/152.0 Safari/537.36', 0));
 });
 

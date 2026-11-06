@@ -84,11 +84,10 @@ export function stopOnline() {
 }
 
 /**
- * iPhones and iPads on iOS 27 or later, where the speech engine can run silently. iPads report
- * themselves as a Mac, so a touch screen tells them apart.
+ * iPhones and iPads, where Safari's speech engine can report that it is speaking and stay silent
+ * (seen on iPadOS 27). Safari no longer puts the real iOS version in its user agent, so all of them
+ * get the online voice by default. iPads report themselves as a Mac; a touch screen tells them apart.
  */
 export function speechEngineMayBeSilent(ua = navigator.userAgent, touchPoints = navigator.maxTouchPoints || 0) {
-  const apple = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && touchPoints > 1);
-  const version = +(ua.match(/(?:Version|OS)[/ ](\d+)/)?.[1] || 0);
-  return apple && version >= 27;
+  return /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && touchPoints > 1);
 }
