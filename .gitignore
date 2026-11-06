@@ -14,3 +14,14 @@
 .cxx
 local.properties
 /dist
+
+# Sungen generated files
+specs/.auth/
+specs/.auth-mobile/
+.env.appium
+test-results/
+playwright-report/
+.playwright-mcp/
+.sungen/figma-cache/
+.sungen/feedback/
+node_modules/

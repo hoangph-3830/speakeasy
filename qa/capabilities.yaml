@@ -1,0 +1,10 @@
+# Sungen capability profile — which runtime/drivers this project uses.
+# platform: the runtime adapter (web → Playwright, mobile → Appium). No default.
+# enabled: drivers turned on (added via `sungen capability add <driver>`).
+# verification: the TEST TYPE — which layers this project verifies (`ui` = E2E only; add `api`/`db`
+#   only if the project actually verifies via API/Database). Absent → derived from `enabled`.
+#   This keeps an E2E-only project from getting @api/@query verification it never asked for.
+
+platform: mobile
+enabled:
+  - mobile

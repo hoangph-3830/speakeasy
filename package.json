@@ -1,0 +1,38 @@
+{
+  "name": "speakeasy",
+  "version": "1.0.0",
+  "description": "App Android học **tiếng Anh giao tiếp** qua các chủ đề hằng ngày, vừa chơi vừa học. Chạy hoàn toàn offline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "sungen generate --all",
+    "test:mobile": "wdio run wdio.conf.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangph-3830/speakeasy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hoangph-3830/speakeasy/issues"
+  },
+  "homepage": "https://github.com/hoangph-3830/speakeasy#readme",
+  "private": true,
+  "overrides": {
+    "uuid": "^11.1.1",
+    "morgan": "^1.12.1",
+    "serialize-javascript": "^7.1.2",
+    "@puppeteer/browsers": "^3.2.3"
+  },
+  "devDependencies": {
+    "@sungen/driver-mobile": "^3.2.35",
+    "@types/node": "^26.6.6",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "fast-xml-parser": "^5.12.0",
+    "yaml": "^2.9.1"
+  }
+}

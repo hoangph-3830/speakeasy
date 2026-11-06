@@ -1,0 +1,8 @@
+{
+  "github.copilot.chat.agent.runTasks": true,
+  "chat.tools.terminal.autoApprove": {
+    "sungen": true,
+    "wdio": true,
+    "npx appium": true
+  }
+}
