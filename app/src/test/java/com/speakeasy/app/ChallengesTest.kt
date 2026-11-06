@@ -172,7 +172,14 @@ class ChallengesTest {
         assertEquals(5, Challenges.xp(Challenge.MEMORY, 22))
         assertEquals(8, Challenges.xp(Challenge.HANGMAN, 4))
         assertEquals(3, Challenges.xp(Challenge.TRUEFALSE, 7))
-        assertEquals(listOf("speed", "memory", "hangman", "truefalse"), Challenge.entries.map { it.id })
+        assertEquals(6, Challenges.xp(Challenge.CLOZE, 6))
+        assertEquals(8, Challenges.xp(Challenge.ANAGRAM, 8))
+        assertEquals(0, Challenges.xp(Challenge.SPELLING, 0))
+        assertEquals(
+            listOf("speed", "memory", "hangman", "truefalse", "cloze", "anagram", "spelling"),
+            Challenge.entries.map { it.id },
+        )
+        assertTrue(Challenge.entries.filter { it != Challenge.MEMORY }.none { it.lowerIsBetter })
         assertEquals(Challenge.HANGMAN, Challenge.from("hangman"))
     }
 

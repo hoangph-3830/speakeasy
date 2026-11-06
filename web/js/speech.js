@@ -18,8 +18,14 @@ class Speaker {
     this.seq = 0;
     this.currentId = null;
     this.voices = [];
+    /** Voices that stayed silent when asked to speak (e.g. listed on iOS but not downloaded). */
+    this.silentVoices = new Set();
     const synth = window.speechSynthesis;
     if (synth) {
+      // Back from the background, iOS may keep a stuck queue that blocks everything after it.
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && !this.speaking) { synth.cancel(); synth.resume(); }
+      });
       const load = () => {
         this.voices = synth.getVoices();
         // Voices arrive late on most browsers; screens listing them redraw.
@@ -66,14 +72,16 @@ class Speaker {
       (/premium/i.test(v.name) ? 11 : 0) +
       (/enhanced/i.test(v.name) ? 9 : 0) +
       (/^google/i.test(v.name) ? 8 : 0) +
-      (/siri|ava|zoe|evan|nathan|samantha|daniel|serena|arthur|karen|moira|aria|jenny|guy|libby|ryan|sonia/i.test(v.name) ? 3 : 0) +
-      (/compact|eloquence/i.test(v.name) ? -6 : 0);
+      (/ava|zoe|evan|nathan|samantha|daniel|serena|arthur|karen|moira|aria|jenny|guy|libby|ryan|sonia/i.test(v.name) ? 3 : 0) +
+      (/compact|eloquence|siri/i.test(v.name) ? -6 : 0);
     return [...pool].sort((a, b) => rank(b) - rank(a));
   }
 
   /** The learner's chosen voice when it is installed, otherwise the best one for the accent. */
   voice() {
-    return (this.voiceName && this.voices.find((v) => v.name === this.voiceName)) || this.englishVoices()[0] || null;
+    const usable = (v) => v && !this.silentVoices.has(v.name);
+    const chosen = this.voiceName && this.voices.find((v) => v.name === this.voiceName);
+    return (usable(chosen) && chosen) || this.englishVoices().find(usable) || null;
   }
 
   finish(id) {
@@ -102,26 +110,43 @@ class Speaker {
       noVoiceWarning();
       return this.finish(id);
     }
+    // iOS drops an utterance queued in the same tick as cancel(), so wait a beat when something was playing.
+    const busy = synth.speaking || synth.pending;
     synth.cancel();
+    // iOS can be left paused after the app was in the background or a video played.
+    synth.resume();
     const v = this.voice();
     const rate = slow ? this.rate * 0.6 : this.rate;
     // Long text is queued sentence by sentence: it flows without gaps and engines don't cut it off.
     const chunks = speechChunks(text);
-    this.utterances = chunks.map((chunk, i) => {
-      const u = new SpeechSynthesisUtterance(chunk);
-      u.lang = v?.lang || (this.accent === 'UK' ? 'en-GB' : 'en-US');
-      if (v) u.voice = v;
-      u.rate = rate;
-      // Pitch gives story characters distinct voices with a single engine.
-      u.pitch = pitch;
-      if (i === chunks.length - 1) u.onend = () => this.finish(id);
-      u.onerror = (e) => e.error !== 'interrupted' && e.error !== 'canceled' && this.finish(id);
-      return u; // kept on this.utterances so they aren't garbage-collected mid-sentence
-    });
+    let started = false;
+    const queue = (voice) => {
+      this.utterances = chunks.map((chunk, i) => {
+        const u = new SpeechSynthesisUtterance(chunk);
+        u.lang = voice?.lang || (this.accent === 'UK' ? 'en-GB' : 'en-US');
+        if (voice) u.voice = voice;
+        u.rate = rate;
+        // Pitch gives story characters distinct voices with a single engine.
+        u.pitch = pitch;
+        u.onstart = () => { started = true; };
+        if (i === chunks.length - 1) u.onend = () => this.finish(id);
+        u.onerror = (e) => e.error !== 'interrupted' && e.error !== 'canceled' && this.finish(id);
+        return u; // kept on this.utterances so they aren't garbage-collected mid-sentence
+      });
+      this.utterances.forEach((u) => synth.speak(u));
+    };
+    if (busy) setTimeout(() => id === this.currentId && queue(v), 80);
+    else queue(v);
+    // A listed voice that is not downloaded (or a Siri voice) speaks nothing on iOS: retry with the default.
+    if (v?.localService) setTimeout(() => {
+      if (started || id !== this.currentId) return;
+      this.silentVoices.add(v.name);
+      synth.cancel();
+      setTimeout(() => id === this.currentId && queue(null), 80);
+    }, 1500);
     // Safari sometimes never fires onend; don't let a dialogue hang on it.
     const words = text.split(/\s+/).length;
-    setTimeout(() => this.finish(id), 4000 + (words * 650) / rate);
-    this.utterances.forEach((u) => synth.speak(u));
+    setTimeout(() => this.finish(id), 5500 + (words * 650) / rate);
   }
 
   /** Resolves once `text` has been spoken (or speech was stopped). */

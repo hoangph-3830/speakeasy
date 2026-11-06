@@ -2,6 +2,8 @@ import { ACTIVITIES, doneCount, level } from '../logic.js';
 import { speaker, toast } from '../speech.js';
 import { AiSettings, Progress, Review, exportBackup, importBackup } from '../store.js';
 import { bar, catColors, esc, openDialog, sayBtn, section } from '../ui.js';
+import { CHALLENGES } from '../challenges.js';
+import { planActions, planSettings, studyCalendar } from './study-plan-widgets.js';
 
 const BADGES = [
   ['🌱', 'Khởi đầu', 'Hoàn thành 1 bài', (p) => p.done.length > 0],
@@ -12,6 +14,10 @@ const BADGES = [
   ['⭐', 'Toàn diện', 'Xong trọn 1 chủ đề', (_, full) => full >= 1],
   ['✈️', 'Sẵn sàng đi xa', 'Xong 4 chủ đề', (_, full) => full >= 4],
   ['🏆', 'Bậc thầy', 'Đạt 500 XP', (p) => p.xp >= 500],
+  ['🧭', 'Biết mình ở đâu', 'Kiểm tra trình độ', (p) => p.placedLevel != null],
+  ['💪', 'Bền bỉ', 'Chuỗi 30 ngày', (p) => p.bestStreak >= 30],
+  ['🎮', 'Game thủ', `Chơi đủ ${CHALLENGES.length} thử thách`, (p) => CHALLENGES.every((c) => p.gameBest?.[c.id] != null)],
+  ['📅', 'Đều đặn', 'Đạt 3000 XP', (p) => p.xp >= 3000],
 ];
 
 export function progressScreen(app) {
@@ -30,6 +36,9 @@ export function progressScreen(app) {
           <div class="row center-v"><div class="t-title grow" style="color:var(--lavender)">Cấp ${level(p)}</div><span class="muted">${p.xp % 100}/100 XP</span></div>
           <div class="mt-s">${bar((p.xp % 100) / 100, 'lavender', '#fff')}</div>
         </div>
+
+        ${section('Lịch học')}
+        ${studyCalendar(p)}
 
         ${section('Theo chủ đề')}
         <div class="card">${app.content.categories.map((c) => {
@@ -50,6 +59,7 @@ export function progressScreen(app) {
           <div class="semi">Mục tiêu mỗi ngày</div>
           <div class="row gap-s">${[[20, 'Nhẹ nhàng'], [30, 'Vừa phải'], [50, 'Chăm chỉ'], [80, 'Siêu tốc']].map(([g, l]) =>
             `<button class="filter grow ${p.dailyGoal === g ? 'on' : ''}" data-act="goal" data-g="${g}">${l}<br><span class="tiny">${g} XP</span></button>`).join('')}</div>
+          ${planSettings(p)}
 
           <div class="row center-v mt"><span class="semi grow">Tốc độ giọng đọc: ${p.speechRate.toFixed(1)}x</span>${sayBtn('Nice to meet you. How are you today?')}</div>
           <input type="range" min="0.5" max="1.3" step="0.1" value="${p.speechRate}" data-input="rate" class="range">
@@ -88,6 +98,7 @@ export function progressScreen(app) {
       </div></div>`;
     },
     actions: {
+      ...planActions,
       goal: (d) => Progress.set({ dailyGoal: +d.g }),
       rate: (v, el) => {
         const rate = Math.round(+v * 10) / 10;

@@ -16,6 +16,7 @@ import com.speakeasy.app.data.Dictionary
 import com.speakeasy.app.data.NewsRepository
 import com.speakeasy.app.data.ProgressStore
 import com.speakeasy.app.data.ReviewStore
+import com.speakeasy.app.reminder.ReminderScheduler
 import com.speakeasy.app.speech.Speaker
 import com.speakeasy.app.ui.AppNav
 import com.speakeasy.app.ui.theme.SpeakEasyTheme
@@ -53,6 +54,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val container = (application as SpeakEasyApp).container
+        // Keeps the daily reminder alarm in place (it is lost on force-stop); setting it again is harmless.
+        container.progress.progress.value.let { if (it.reminderOn) ReminderScheduler.apply(this, true, it.reminderTime) }
         setContent {
             SpeakEasyTheme {
                 CompositionLocalProvider(LocalApp provides container) {

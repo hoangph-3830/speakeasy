@@ -3,6 +3,7 @@ import {
 } from '../logic.js';
 import { Progress, Review } from '../store.js';
 import { badge, bar, catColors, esc, openDialog, pill, ring } from '../ui.js';
+import { placementCard, streakWarning } from './study-plan-widgets.js';
 
 const LEVEL_ORDER = Object.keys(LEVELS);
 
@@ -110,7 +111,8 @@ export function homeScreen(app) {
 
   /** Stages from easy to hard; the one in progress is open, the others fold away. */
   const pathView = (p) => {
-    const current = path.findIndex((st) => stageProgress(st, p).topicsDone < st.topics.length);
+    // The stage "continue learning" points at, which honours the placement test.
+    const current = (nextInPath(path, app.content.topics, p)?.stageNo ?? 0) - 1;
     if (ui.open == null) ui.open = new Set([Math.max(0, current)]);
     return path.map((st, i) => {
       const prog = stageProgress(st, p);
@@ -162,6 +164,8 @@ export function homeScreen(app) {
         ${greeting(p)}
         ${goalCard(p)}
         ${p.freezeUsedDay === Review.today() ? `<div class="note" style="background:var(--sky-l)">🧊 Hôm qua bạn nghỉ, một lượt đóng băng đã giữ chuỗi ${p.streak} ngày cho bạn!</div>` : ''}
+        ${streakWarning(p)}
+        ${placementCard(p)}
         ${continueCard(p)}
         ${shortcuts()}
         ${quests(p)}

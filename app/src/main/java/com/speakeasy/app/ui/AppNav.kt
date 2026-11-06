@@ -41,6 +41,7 @@ import com.speakeasy.app.ui.screens.NewsScreen
 import com.speakeasy.app.ui.screens.StoriesHubScreen
 import com.speakeasy.app.ui.screens.StoryScreen
 import com.speakeasy.app.ui.screens.PhrasesScreen
+import com.speakeasy.app.ui.screens.PlacementScreen
 import com.speakeasy.app.ui.screens.ProgressScreen
 import com.speakeasy.app.ui.screens.ReviewScreen
 import com.speakeasy.app.ui.screens.ShadowScreen
@@ -95,6 +96,7 @@ fun AppNav() {
                     openVocab = { nav.navigate("vocab") },
                     openNews = { nav.switchTab("news") },
                     openVideos = { nav.navigate("videos") },
+                    openPlacement = { nav.navigate("placement") },
                 )
             }
             composable("vocab") { VocabHubScreen(onBack = nav::popBackStack, openGroup = { nav.navigate("vocab/$it") }) }
@@ -131,7 +133,8 @@ fun AppNav() {
                 )
             }
             composable("challenge/{id}") { ChallengeScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("me") { ProgressScreen() }
+            composable("me") { ProgressScreen(openPlacement = { nav.navigate("placement") }) }
+            composable("placement") { PlacementScreen(onBack = nav::popBackStack, onContinue = { nav.switchTab("home") }) }
             composable("ai") { AiHubScreen(openChat = { nav.navigate("ai/$it") }) }
             composable("ai/{scenario}") {
                 AiChatScreen(it.arguments!!.getString("scenario")!!, onBack = nav::popBackStack)

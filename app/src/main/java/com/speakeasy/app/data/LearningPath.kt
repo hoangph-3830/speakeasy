@@ -25,13 +25,29 @@ data class PathStep(val stageIndex: Int, val stage: Stage, val topicId: String)
 object LearningPath {
     private val perTopic = Activity.entries.size
 
-    /** The first topic along the path with an activity left, or null once the whole path is done. */
-    fun next(path: List<Stage>, doneCount: (String) -> Int): PathStep? {
-        path.forEachIndexed { i, stage ->
-            stage.topics.firstOrNull { doneCount(it) < perTopic }?.let { return PathStep(i, stage, it) }
+    /**
+     * Stages at or below the level passed in the placement test are skipped by "continue learning".
+     * Placing at C2 skips nothing: there is no harder stage to send the learner to.
+     */
+    fun skippedStage(stage: Stage, placed: String?): Boolean =
+        !placed.isNullOrEmpty() && placed != "C2" && Levels.all.indexOf(stage.level) <= Levels.all.indexOf(placed)
+
+    /**
+     * The first topic along the path with an activity left, or null once the whole path is done.
+     * First the stages the learner was placed into, then anything left unfinished below them.
+     */
+    fun next(path: List<Stage>, doneCount: (String) -> Int, placed: String?): PathStep? {
+        for (skipPlaced in listOf(true, false)) {
+            path.forEachIndexed { i, stage ->
+                if (skipPlaced && skippedStage(stage, placed)) return@forEachIndexed
+                stage.topics.firstOrNull { doneCount(it) < perTopic }?.let { return PathStep(i, stage, it) }
+            }
         }
         return null
     }
+
+    /** [next] with no placement test taken. */
+    fun next(path: List<Stage>, doneCount: (String) -> Int): PathStep? = next(path, doneCount, null)
 
     fun isComplete(stage: Stage, doneCount: (String) -> Int) = stage.topics.all { doneCount(it) >= perTopic }
 

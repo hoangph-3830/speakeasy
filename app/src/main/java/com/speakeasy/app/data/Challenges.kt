@@ -2,7 +2,7 @@ package com.speakeasy.app.data
 
 import kotlin.random.Random
 
-/** The four vocabulary challenges on the "Chơi" tab; scores are kept per [id] in [Progress.gameBest]. */
+/** The seven vocabulary challenges on the "Chơi" tab; scores are kept per [id] in [Progress.gameBest]. */
 enum class Challenge(
     val id: String,
     val title: String,
@@ -14,7 +14,10 @@ enum class Challenge(
     SPEED("speed", "Đua 60 giây", "⚡", "Chọn nghĩa đúng nhanh nhất có thể, chuỗi 5 câu đúng được x2 điểm"),
     MEMORY("memory", "Lật thẻ trí nhớ", "🃏", "Tìm cặp từ tiếng Anh và nghĩa tiếng Việt, càng ít lượt càng giỏi", lowerIsBetter = true),
     HANGMAN("hangman", "Đoán chữ", "🔤", "Đoán từng chữ cái theo nghĩa và phiên âm, có 6 mạng"),
-    TRUEFALSE("truefalse", "Đúng hay Sai", "✅", "Nghĩa này đúng không? Trả lời thật nhanh trong 45 giây");
+    TRUEFALSE("truefalse", "Đúng hay Sai", "✅", "Nghĩa này đúng không? Trả lời thật nhanh trong 45 giây"),
+    CLOZE("cloze", "Điền từ vào câu", "🧩", "Chọn từ còn thiếu trong câu ví dụ, 10 câu"),
+    ANAGRAM("anagram", "Xếp chữ cái", "🔀", "Sắp lại các chữ cái bị xáo trộn thành từ đúng nghĩa"),
+    SPELLING("spelling", "Nghe & viết từ", "👂", "Nghe phát âm rồi gõ lại đúng chính tả, 10 từ");
 
     companion object {
         fun from(id: String) = entries.firstOrNull { it.id == id }
@@ -122,5 +125,7 @@ object Challenges {
         Challenge.SPEED, Challenge.TRUEFALSE -> score / 2
         Challenge.MEMORY -> 5
         Challenge.HANGMAN -> score * 2
+        // Round-based word games: one XP per right answer.
+        Challenge.CLOZE, Challenge.ANAGRAM, Challenge.SPELLING -> score
     }
 }

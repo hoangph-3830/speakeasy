@@ -8,7 +8,7 @@ import { Progress } from '../store.js';
 import { accent, esc, openDialog, topBar } from '../ui.js';
 
 /** Result dialog shared by every challenge: score, record, XP, play again. */
-export function showResult(app, id, { score, label, xp, restart }) {
+export function showResult(app, id, { score, label, xp, restart, title = 'Hết giờ!' }) {
   const c = challenge(id);
   const best = Progress.get().gameBest?.[id];
   const record = Progress.recordGameBest(id, score, c.lowerIsBetter);
@@ -16,7 +16,7 @@ export function showResult(app, id, { score, label, xp, restart }) {
   Progress.count(QUEST.LISTEN);
   openDialog({
     icon: record ? '🏆' : c.emoji,
-    title: record ? 'Kỷ lục mới!' : 'Hết giờ!',
+    title: record ? 'Kỷ lục mới!' : title,
     body: `<p class="h-md">${esc(label)}</p>
       <p class="muted">${best != null && !record ? `Kỷ lục của bạn: ${best}` : record && best != null ? `Kỷ lục cũ: ${best}` : 'Lần đầu chơi, đây là kỷ lục của bạn!'}</p>
       ${xp > 0 ? `<div class="center"><span class="pill" style="color:var(--xp-ink);background:var(--sun-soft)">+${xp} XP</span></div>` : ''}`,

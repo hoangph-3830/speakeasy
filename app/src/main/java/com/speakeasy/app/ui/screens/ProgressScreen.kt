@@ -41,12 +41,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Activity
+import com.speakeasy.app.data.Challenge
+import com.speakeasy.app.data.DailyReminder
+import com.speakeasy.app.reminder.ReminderScheduler
 import com.speakeasy.app.data.Progress
 import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.SectionTitle
@@ -75,12 +79,16 @@ private val badges = listOf(
     Badge("⭐", "Toàn diện", "Xong trọn 1 chủ đề", { _, full -> full >= 1 }),
     Badge("✈️", "Sẵn sàng đi xa", "Xong 4 chủ đề", { _, full -> full >= 4 }),
     Badge("🏆", "Bậc thầy", "Đạt 500 XP", { p, _ -> p.xp >= 500 }),
+    Badge("🧭", "Biết mình ở đâu", "Làm bài kiểm tra trình độ", { p, _ -> p.placedLevel != null }),
+    Badge("💪", "Bền bỉ", "Chuỗi 30 ngày", { p, _ -> p.bestStreak >= 30 }),
+    Badge("🎮", "Game thủ", "Có kỷ lục ở cả ${Challenge.entries.size} thử thách", { p, _ -> Challenge.entries.all { it.id in p.gameBest } }),
 )
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ProgressScreen() {
+fun ProgressScreen(openPlacement: () -> Unit) {
     val app = LocalApp.current
+    val context = LocalContext.current
     val p by app.progress.progress.collectAsState()
     val fullTopics = app.content.topics.count { p.doneCount(it.id) == Activity.entries.size }
     var confirmReset by remember { mutableStateOf(false) }
@@ -107,6 +115,8 @@ fun ProgressScreen() {
                 SoftProgress(p.levelProgress, color = Lavender, track = Color.White)
             }
         }
+
+        StudyCalendar(p)
 
         SectionTitle("Theo chủ đề")
         app.content.categories.forEach { c ->
@@ -209,7 +219,15 @@ fun ProgressScreen() {
                 }
                 VSpace(16.dp)
                 VoicePicker(p.voiceName, p.accent)
-                VSpace(4.dp)
+                VSpace(16.dp)
+                ReminderSettings(p)
+                VSpace(12.dp)
+                Text(
+                    p.placedLevel?.let { "Trình độ đã xếp: ${it.ifEmpty { "Mới bắt đầu" }}" } ?: "Chưa làm bài kiểm tra trình độ",
+                    color = Muted,
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                TextButton(onClick = openPlacement) { Text("🧭 Làm lại bài kiểm tra trình độ", color = Sky) }
                 TextButton(onClick = { confirmReset = true }) { Text("Xoá tiến độ & học lại từ đầu", color = Coral) }
             }
         }
@@ -229,7 +247,12 @@ fun ProgressScreen() {
             title = { Text("Xoá toàn bộ tiến độ?") },
             text = { Text("XP, chuỗi ngày, từ đã thuộc và huy hiệu sẽ bị xoá. Không thể hoàn tác.") },
             confirmButton = {
-                TextButton(onClick = { app.progress.reset(); app.review.reset(); confirmReset = false }) { Text("Xoá", color = Coral) }
+                TextButton(onClick = {
+                    app.progress.reset()
+                    app.review.reset()
+                    ReminderScheduler.apply(context, false, DailyReminder.DEFAULT_TIME)
+                    confirmReset = false
+                }) { Text("Xoá", color = Coral) }
             },
             dismissButton = { TextButton(onClick = { confirmReset = false }) { Text("Huỷ") } },
             containerColor = Color.White,

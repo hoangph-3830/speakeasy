@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Activity
 import com.speakeasy.app.data.LearningPath
+import com.speakeasy.app.data.LearningPlan
 import com.speakeasy.app.data.Levels
 import com.speakeasy.app.data.PathStep
 import com.speakeasy.app.data.Progress
@@ -88,6 +89,7 @@ fun HomeScreen(
     openVocab: () -> Unit,
     openNews: () -> Unit,
     openVideos: () -> Unit,
+    openPlacement: () -> Unit,
 ) {
     val app = LocalApp.current
     val progress by app.progress.progress.collectAsState()
@@ -101,7 +103,7 @@ fun HomeScreen(
     var askName by remember { mutableStateOf(progress.name.isEmpty()) }
     val path = app.content.path
     val doneCount: (String) -> Int = progress::doneCount
-    val next = LearningPath.next(path, doneCount)
+    val next = LearningPath.next(path, doneCount, progress.placedLevel)
     val topics = (category?.let { app.content.topicsIn(it) } ?: app.content.topics).sortedBy { Levels.rank(it.level) }
 
     LazyColumn(
@@ -111,6 +113,8 @@ fun HomeScreen(
     ) {
         item { Greeting(progress) }
         item { DailyGoalCard(progress) }
+        if (LearningPlan.streakAtRisk(progress, LocalTime.now().hour)) item { StreakRiskCard(progress.streak) }
+        if (progress.placedLevel == null) item { PlacementCard(onOpen = openPlacement) }
         if (progress.freezeUsedDay == app.review.todayDay) item {
             Text(
                 "🧊 Hôm qua bạn nghỉ, một lượt đóng băng đã giữ chuỗi ${progress.streak} ngày cho bạn!",

@@ -6,84 +6,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.time.LocalDate
 
-data class Progress(
-    val name: String = "",
-    val xp: Int = 0,
-    val todayXp: Int = 0,
-    val dailyGoal: Int = 30,
-    val streak: Int = 0,
-    val bestStreak: Int = 0,
-    val lastActiveDay: Long = -1,
-    /** "topicId:ACTIVITY" keys. */
-    val done: Set<String> = emptySet(),
-    val learnedWords: Set<String> = emptySet(),
-    val speechRate: Float = 0.9f,
-    val accent: String = "US",
-    /** TTS voice picked in settings; empty means the best installed voice for [accent]. */
-    val voiceName: String = "",
-    /** Streak freezes in stock (Duolingo-style): one is earned per day the goal is met, two at most. */
-    val freezes: Int = 0,
-    val freezeEarnedDay: Long = -1,
-    val freezeUsedDay: Long = -1,
-    /** Today's activity counts for daily quests ("speak", "listen", "review"), and quests already claimed. */
-    val counters: Map<String, Int> = emptyMap(),
-    val countersDay: Long = -1,
-    val claimed: Set<String> = emptySet(),
-    /** Best score (0-100) per pronunciation lesson id. */
-    val soundScores: Map<String, Int> = emptyMap(),
-    /** Best score per vocabulary challenge id ("speed", "memory"...); memory keeps the fewest moves. */
-    val gameBest: Map<String, Int> = emptyMap(),
-) {
-    fun isDone(topicId: String, activity: Activity) = "$topicId:${activity.name}" in done
-
-    fun doneCount(topicId: String) = Activity.entries.count { isDone(topicId, it) }
-
-    fun count(key: String) = if (key == Quests.XP) todayXp else counters[key] ?: 0
-
-    val level: Int get() = xp / 100 + 1
-    val levelProgress: Float get() = (xp % 100) / 100f
-    val goalProgress: Float get() = (todayXp.toFloat() / dailyGoal).coerceIn(0f, 1f)
-
-    /** ELSA-style overall pronunciation score: the average of lessons tried so far. */
-    val speakingScore: Int? get() = soundScores.values.takeIf { it.isNotEmpty() }?.average()?.toInt()
-}
-
-data class Quest(val id: String, val title: String, val emoji: String, val target: Int, val reward: Int)
-
-object Quests {
-    const val SPEAK = "speak"
-    const val LISTEN = "listen"
-    const val REVIEW = "review"
-    const val XP = "xp"
-
-    fun today(p: Progress) = listOf(
-        Quest(SPEAK, "Nói 10 câu tiếng Anh", "🎤", 10, 10),
-        Quest(LISTEN, "Hoàn thành 5 bài nghe", "🎧", 5, 10),
-        Quest(REVIEW, "Ôn 10 thẻ ghi nhớ", "🔁", 10, 10),
-        Quest(XP, "Đạt mục tiêu ${p.dailyGoal} XP", "🎯", p.dailyGoal, 5),
-    )
-}
-
-object Streaks {
-    const val MAX_FREEZES = 2
-
-    /**
-     * Brings progress up to [day]: resets today's XP and quest counters, and either breaks the streak
-     * or spends one freeze per missed day when there are enough of them.
-     */
-    fun rollOver(p: Progress, day: Long): Progress {
-        val fresh = if (p.countersDay == day) p else p.copy(counters = emptyMap(), claimed = emptySet(), countersDay = day)
-        if (p.lastActiveDay == day || p.lastActiveDay < 0) return fresh
-        val missed = (day - p.lastActiveDay - 1).toInt()
-        return when {
-            missed == 0 -> fresh.copy(todayXp = 0)
-            p.streak > 0 && p.freezes >= missed ->
-                fresh.copy(todayXp = 0, freezes = p.freezes - missed, lastActiveDay = day - 1, freezeUsedDay = day)
-            else -> fresh.copy(todayXp = 0, streak = 0)
-        }
-    }
-}
-
 /** Local, offline replacement for Engrisk's Firestore `userProgress` collection. */
 class ProgressStore(context: Context, private val today: () -> LocalDate = LocalDate::now) {
 
@@ -118,6 +40,10 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
         claimed = prefs.getStringSet("claimed", emptySet())!!.toSet(),
         soundScores = readMap("soundScores"),
         gameBest = readMap("gameBest"),
+        history = readMap("history").mapNotNull { (k, v) -> k.toLongOrNull()?.let { it to v } }.toMap(),
+        placedLevel = if (prefs.contains("placedLevel")) prefs.getString("placedLevel", "") else null,
+        reminderTime = prefs.getString("reminderTime", "20:00") ?: "20:00",
+        reminderOn = prefs.getBoolean("reminderOn", false),
     )
 
     private fun save(p: Progress) {
@@ -143,30 +69,19 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
             .putStringSet("claimed", p.claimed)
             .putStringSet("soundScores", p.soundScores.map { (k, v) -> "$k=$v" }.toSet())
             .putStringSet("gameBest", p.gameBest.map { (k, v) -> "$k=$v" }.toSet())
+            .putStringSet("history", p.history.map { (k, v) -> "$k=$v" }.toSet())
+            .apply {
+                if (p.placedLevel == null) remove("placedLevel") else putString("placedLevel", p.placedLevel)
+            }
+            .putString("reminderTime", p.reminderTime)
+            .putBoolean("reminderOn", p.reminderOn)
             .apply()
     }
 
     private fun current() = Streaks.rollOver(_progress.value, today().toEpochDay())
 
     fun addXp(amount: Int) {
-        if (amount <= 0) return
-        val p = current()
-        val day = today().toEpochDay()
-        val streak = if (p.lastActiveDay == day) p.streak else p.streak + 1
-        val todayXp = p.todayXp + amount
-        // Meeting the daily goal earns a streak freeze, once per day.
-        val earnsFreeze = todayXp >= p.dailyGoal && p.freezeEarnedDay != day && p.freezes < Streaks.MAX_FREEZES
-        save(
-            p.copy(
-                xp = p.xp + amount,
-                todayXp = todayXp,
-                streak = streak,
-                bestStreak = maxOf(p.bestStreak, streak),
-                lastActiveDay = day,
-                freezes = if (earnsFreeze) p.freezes + 1 else p.freezes,
-                freezeEarnedDay = if (earnsFreeze) day else p.freezeEarnedDay,
-            )
-        )
+        if (amount > 0) save(Streaks.addXp(current(), amount, today().toEpochDay()))
     }
 
     /** Counts toward today's quests. */
@@ -223,6 +138,8 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
     fun setSpeechRate(rate: Float) = save(_progress.value.copy(speechRate = rate))
     fun setAccent(accent: String) = save(_progress.value.copy(accent = accent))
     fun setVoiceName(name: String) = save(_progress.value.copy(voiceName = name))
+    fun setPlacedLevel(level: String) = save(_progress.value.copy(placedLevel = level))
+    fun setReminder(on: Boolean, time: String) = save(_progress.value.copy(reminderOn = on, reminderTime = time))
 
     fun reset() {
         prefs.edit().clear().apply()

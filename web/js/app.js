@@ -17,6 +17,8 @@ import * as books from './screens/books.js';
 import * as videos from './screens/videos.js';
 import { speedScreen, trueFalseScreen } from './screens/challenge-timed.js';
 import { hangmanScreen, memoryScreen } from './screens/challenge-puzzles.js';
+import { anagramScreen, clozeScreen, spellingScreen } from './screens/challenge-words.js';
+import { placementScreen } from './screens/placement-test.js';
 import { buildIndex } from './dict.js';
 
 const TABS = [
@@ -47,6 +49,10 @@ const ROUTES = [
   [/^challenge\/truefalse$/, trueFalseScreen],
   [/^challenge\/memory$/, memoryScreen],
   [/^challenge\/hangman$/, hangmanScreen],
+  [/^challenge\/cloze$/, clozeScreen],
+  [/^challenge\/anagram$/, anagramScreen],
+  [/^challenge\/spelling$/, spellingScreen],
+  [/^placement$/, placementScreen],
   [/^video\/(.+)$/, videos.videoScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],

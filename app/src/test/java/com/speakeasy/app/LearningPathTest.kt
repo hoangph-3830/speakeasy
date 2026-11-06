@@ -63,6 +63,25 @@ class LearningPathTest {
     }
 
     @Test
+    fun placementMovesContinueLearningPastEasierStagesThenBackToUnfinishedOnes() {
+        val path = content.path
+        fun next(placed: String?, done: Set<String> = emptySet()) =
+            LearningPath.next(path, { id -> Activity.entries.count { "$id:${it.name}" in done } }, placed)!!.stage.level
+        assertEquals("A1", next(null))
+        assertEquals("A1", next(""))
+        assertEquals("B2", next("B1"))
+        // Placing at C2 skips nothing: there is no harder stage to send the learner to.
+        assertEquals("A1", next("C2"))
+        // Every placed stage finished: the learner is sent back to what is left below.
+        val above = path.filter { !LearningPath.skippedStage(it, "B1") }.flatMap { it.topics }
+        val done = above.flatMap { id -> Activity.entries.map { "$id:${it.name}" } }.toSet()
+        assertEquals("A1", next("B1", done))
+        assertTrue(LearningPath.skippedStage(Stage("s", "B1", "S", topics = emptyList()), "B1"))
+        assertTrue(!LearningPath.skippedStage(Stage("s", "B2", "S", topics = emptyList()), "B1"))
+        assertTrue(!LearningPath.skippedStage(Stage("s", "A1", "S", topics = emptyList()), null))
+    }
+
+    @Test
     fun storyLevelDefaultsToA2() {
         val parsed = json.decodeFromString(
             StoryContent.serializer(),

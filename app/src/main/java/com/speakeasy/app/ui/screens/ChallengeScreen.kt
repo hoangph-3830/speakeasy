@@ -41,6 +41,7 @@ import com.speakeasy.app.data.ChoiceQuestion
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.SpeedState
 import com.speakeasy.app.data.VocabGroup
+import com.speakeasy.app.data.WordChallenges
 import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.Pill
@@ -71,6 +72,9 @@ internal fun challengeColors(c: Challenge): Pair<Color, Color> = when (c) {
     Challenge.MEMORY -> Sky to SkyLight
     Challenge.HANGMAN -> Lavender to LavenderLight
     Challenge.TRUEFALSE -> Mint to MintLight
+    Challenge.CLOZE -> Peach to PeachLight
+    Challenge.ANAGRAM -> Sky to SkyLight
+    Challenge.SPELLING -> Mint to MintLight
 }
 
 private data class ChallengeResult(val score: Int, val best: Int, val newRecord: Boolean, val xp: Int, val detail: String?)
@@ -107,6 +111,9 @@ fun ChallengeScreen(id: String, onBack: () -> Unit) {
                     Challenge.MEMORY -> MemoryGame(words, accent, ::finish)
                     Challenge.HANGMAN -> HangmanGame(words, accent, ::finish)
                     Challenge.TRUEFALSE -> TrueFalseGame(groups, accent, ::finish)
+                    Challenge.CLOZE -> ClozeGame(groups, accent, ::finish)
+                    Challenge.ANAGRAM -> AnagramGame(groups, accent, ::finish)
+                    Challenge.SPELLING -> SpellingGame(groups, accent, ::finish)
                 }
             }
         }
@@ -116,6 +123,9 @@ fun ChallengeScreen(id: String, onBack: () -> Unit) {
 private fun scoreLabel(c: Challenge, score: Int) = when (c) {
     Challenge.MEMORY -> "$score lượt"
     Challenge.HANGMAN -> "$score/${Challenges.HANGMAN_ROUNDS} từ"
+    Challenge.CLOZE -> "Đúng $score/${WordChallenges.CLOZE_ROUNDS}"
+    Challenge.ANAGRAM -> "Đúng $score/${WordChallenges.ANAGRAM_ROUNDS}"
+    Challenge.SPELLING -> "Đúng $score/${WordChallenges.SPELLING_ROUNDS}"
     else -> "$score điểm"
 }
 
@@ -279,7 +289,7 @@ internal fun WordPrompt(word: String, ipa: String, accent: Color) {
 
 /** A multiple-choice option; [state] 1 marks the right answer, 2 a wrong pick. */
 @Composable
-private fun ChallengeOption(text: String, state: Int, enabled: Boolean, onClick: () -> Unit) {
+internal fun ChallengeOption(text: String, state: Int, enabled: Boolean, onClick: () -> Unit) {
     val bg by animateColorAsState(
         when (state) { 1 -> MintLight; 2 -> CoralLight; else -> Color.White },
         label = "option",

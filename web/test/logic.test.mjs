@@ -6,6 +6,7 @@ import * as L from '../js/logic.js';
 import { buildIndex, lemmas, lookup } from '../js/dict.js';
 import * as A from '../js/audio.js';
 import * as C from '../js/challenges.js';
+import * as P from '../js/learning-plan.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -223,6 +224,87 @@ test('challenges: options hold the answer once, memory pairs, hangman rules, sco
   assert.deepEqual([1, 4, 5, 9].map(C.speedPoints), [1, 1, 2, 2]);
   assert.ok(C.isRecord(undefined, 3) && C.isRecord(5, 6) && !C.isRecord(5, 5));
   assert.ok(C.isRecord(12, 10, true) && !C.isRecord(10, 12, true));
+});
+
+test('new challenges: fill the gap, letter scramble and spelling', () => {
+  const groups = json('vocab').groups;
+  for (let i = 0; i < 200; i++) {
+    const r = C.clozeRound(groups);
+    assert.ok(r.sentence.includes('_____'), r.sentence);
+    assert.equal(new Set(r.options).size, 4);
+    assert.equal(r.options.filter((o) => o === r.answer).length, 1);
+  }
+  assert.equal(C.blankOut('He ate an apple. An apple a day.', 'apple'), 'He ate an _____. An apple a day.');
+  assert.equal(C.blankOut('Pineapple and apple', 'apple'), 'Pineapple and _____');
+  assert.equal(C.blankOut('Read it.', 'read'), '_____ it.');
+  const words = C.anagramWords(groups);
+  assert.equal(words.length, C.ANAGRAM_ROUNDS);
+  for (const w of words) {
+    const letters = C.scrambleLetters(w.w);
+    assert.notEqual(letters.join(''), w.w);
+    assert.equal([...letters].sort().join(''), [...w.w].sort().join(''));
+  }
+  assert.equal(C.spellingWords(groups).length, C.SPELLING_ROUNDS);
+  assert.ok(C.spelledRight('  Apple ', 'apple') && !C.spelledRight('aple', 'apple') && !C.spelledRight('', 'apple'));
+});
+
+test('placement test: three questions per level, early stop and the level passed', () => {
+  const quiz = P.placementQuiz(content.topics);
+  assert.equal(quiz.length, P.LEVEL_ORDER.length * P.PLACEMENT_PER_LEVEL);
+  for (const q of quiz) {
+    assert.equal(new Set(q.options).size, 4, q.prompt);
+    assert.equal(q.options.filter((o) => o === q.answer).length, 1);
+  }
+  const ans = (lv, ...oks) => oks.map((ok) => ({ level: lv, ok }));
+  assert.equal(P.placementResult([]), '');
+  assert.equal(P.placementResult(ans('A1', true, false, false)), '');
+  assert.equal(P.placementResult([...ans('A1', true, true, false), ...ans('A2', true, true, true), ...ans('B1', false, false)]), 'A2');
+  // A pass above a failed level does not count.
+  assert.equal(P.placementResult([...ans('A1', false, false), ...ans('A2', true, true, true)]), '');
+  assert.ok(P.levelFailed(ans('B1', false, false), 'B1') && !P.levelFailed(ans('B1', true, false), 'B1'));
+  assert.equal(P.studyLevel(''), 'A1');
+  assert.equal(P.studyLevel('B1'), 'B2');
+  assert.equal(P.studyLevel('C2'), 'C2');
+});
+
+test('placement moves "continue learning" past easier stages, then back to unfinished ones', () => {
+  const path = content.path;
+  const base = L.defaultProgress();
+  const next = (p) => L.nextInPath(path, content.topics, p).stage.level;
+  assert.equal(next(base), 'A1');
+  assert.equal(next({ ...base, placedLevel: '' }), 'A1');
+  assert.equal(next({ ...base, placedLevel: 'B1' }), 'B2');
+  assert.equal(next({ ...base, placedLevel: 'C2' }), 'A1');
+  // Every placed stage finished: the learner is sent back to what is left below.
+  const above = path.filter((st) => !L.skippedStage(st, 'B1')).flatMap((st) => st.topics);
+  const done = above.flatMap((id) => L.ACTIVITIES.map((a) => id + ':' + a.id));
+  assert.equal(next({ ...base, placedLevel: 'B1', done }), 'A1');
+});
+
+test('study calendar keeps XP per day for half a year and compares weeks', () => {
+  let p = L.defaultProgress();
+  p = L.addXp(p, 10, 1000);
+  p = L.addXp(p, 5, 1000);
+  p = L.addXp(p, 7, 1001);
+  assert.deepEqual(p.history, { 1000: 15, 1001: 7 });
+  assert.deepEqual(Object.keys(L.recordDay(p.history, 1000 + L.HISTORY_DAYS + 1, 3)), ['1001', String(1001 + L.HISTORY_DAYS)]);
+  const days = P.calendarDays(p.history, 1001, 2);
+  assert.equal(days.length, 14);
+  assert.deepEqual(days.slice(-2), [{ day: 1000, xp: 15 }, { day: 1001, xp: 7 }]);
+  assert.deepEqual(P.weekTotals({ 1001: 7, 994: 4, 980: 100 }, 1001), { thisWeek: 7, lastWeek: 4 });
+  assert.deepEqual([0, 5, 20, 30, 59, 60].map((x) => P.heat(x, 30)), [0, 1, 2, 3, 3, 4]);
+});
+
+test('daily reminder: evening warning and a repeating calendar event', () => {
+  assert.ok(P.streakAtRisk({ streak: 3, todayXp: 0 }, 19));
+  assert.ok(!P.streakAtRisk({ streak: 3, todayXp: 5 }, 19));
+  assert.ok(!P.streakAtRisk({ streak: 3, todayXp: 0 }, 12));
+  assert.ok(!P.streakAtRisk({ streak: 0, todayXp: 0 }, 21));
+  const ics = P.reminderIcs('07:05', 'https://example.org/', new Date(2026, 10, 6, 9, 0));
+  assert.ok(ics.includes('DTSTART:20261106T070500\r\n'));
+  assert.ok(ics.includes('RRULE:FREQ=DAILY'));
+  assert.match(ics, /BEGIN:VALARM[\s\S]*END:VALARM/);
+  assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.endsWith('END:VCALENDAR\r\n'));
 });
 
 console.log(`\n${n} tests passed`);
