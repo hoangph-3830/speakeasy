@@ -14,7 +14,7 @@ data class PictureBook(
     val id: String,
     val title: String,
     val titleVi: String,
-    /** CEFR level, "A1" to "B2". */
+    /** CEFR level, "A1" to "C2". */
     val level: String,
     val words: Int = 0,
     /** Null when the book has no illustrations on the CDN. */

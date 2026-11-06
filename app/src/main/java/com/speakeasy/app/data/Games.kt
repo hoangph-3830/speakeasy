@@ -39,7 +39,10 @@ object Games {
     fun build(topics: List<Topic>, mode: GameMode, random: Random = Random.Default, size: Int = 8): List<Round> {
         val words = topics.flatMap { it.words }.distinctBy { it.word }
         val sentences = topics.flatMap { it.sentences }.distinctBy { it.first }
-        val short = sentences.filter { it.first.split(" ").size in 3..9 }.ifEmpty { sentences }
+        // C1/C2 topics have few short lines; top up with the shortest of the rest so choices still get four options.
+        val short = sentences.filter { it.first.split(" ").size in 3..9 }.let { s ->
+            if (s.size >= 4) s else s + (sentences - s.toSet()).sortedBy { it.first.split(" ").size }.take(4 - s.size)
+        }
 
         fun match() = Round.Match(words.shuffled(random).take(5).map { it.word to it.vi })
 

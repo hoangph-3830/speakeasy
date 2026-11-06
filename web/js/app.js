@@ -15,6 +15,8 @@ import * as news from './screens/news.js';
 import * as shadow from './screens/shadow.js';
 import * as books from './screens/books.js';
 import * as videos from './screens/videos.js';
+import { speedScreen, trueFalseScreen } from './screens/challenge-timed.js';
+import { hangmanScreen, memoryScreen } from './screens/challenge-puzzles.js';
 import { buildIndex } from './dict.js';
 
 const TABS = [
@@ -41,6 +43,10 @@ const ROUTES = [
   [/^story\/(.+)$/, stories.storyScreen],
   [/^book\/(.+)$/, books.bookScreen],
   [/^videos$/, videos.hubScreen],
+  [/^challenge\/speed$/, speedScreen],
+  [/^challenge\/truefalse$/, trueFalseScreen],
+  [/^challenge\/memory$/, memoryScreen],
+  [/^challenge\/hangman$/, hangmanScreen],
   [/^video\/(.+)$/, videos.videoScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],

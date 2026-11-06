@@ -79,12 +79,14 @@ fun categoryColors(categoryId: String): Pair<Color, Color> = when (categoryId) {
     else -> Sky to SkyLight
 }
 
-/** Level accent colors, easy to hard: A1 mint, A2 sky, B1 lavender, B2 peach. */
+/** Level accent colors, easy to hard: A1 mint, A2 sky, B1 lavender, B2 peach, C1 coral, C2 sun. */
 fun levelColors(level: String): Pair<Color, Color> = when (level) {
     "A1" -> Mint to MintLight
     "A2" -> Sky to SkyLight
     "B1" -> Lavender to LavenderLight
     "B2" -> Peach to PeachLight
+    "C1" -> Coral to CoralLight
+    "C2" -> Sun to SunLight
     else -> Sky to SkyLight
 }
 

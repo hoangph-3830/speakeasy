@@ -31,6 +31,8 @@ data class Progress(
     val claimed: Set<String> = emptySet(),
     /** Best score (0-100) per pronunciation lesson id. */
     val soundScores: Map<String, Int> = emptyMap(),
+    /** Best score per vocabulary challenge id ("speed", "memory"...); memory keeps the fewest moves. */
+    val gameBest: Map<String, Int> = emptyMap(),
 ) {
     fun isDone(topicId: String, activity: Activity) = "$topicId:${activity.name}" in done
 
@@ -115,6 +117,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
         countersDay = prefs.getLong("countersDay", -1),
         claimed = prefs.getStringSet("claimed", emptySet())!!.toSet(),
         soundScores = readMap("soundScores"),
+        gameBest = readMap("gameBest"),
     )
 
     private fun save(p: Progress) {
@@ -139,6 +142,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
             .putLong("countersDay", p.countersDay)
             .putStringSet("claimed", p.claimed)
             .putStringSet("soundScores", p.soundScores.map { (k, v) -> "$k=$v" }.toSet())
+            .putStringSet("gameBest", p.gameBest.map { (k, v) -> "$k=$v" }.toSet())
             .apply()
     }
 
@@ -184,6 +188,14 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
     fun recordSound(lessonId: String, score: Int) {
         val p = current()
         if ((p.soundScores[lessonId] ?: -1) < score) save(p.copy(soundScores = p.soundScores + (lessonId to score)))
+    }
+
+    /** Keeps a challenge's best score; returns true when [score] is a new record. */
+    fun recordGameBest(id: String, score: Int, lowerIsBetter: Boolean = false): Boolean {
+        val p = current()
+        if (!Challenges.isRecord(p.gameBest[id], score, lowerIsBetter)) return false
+        save(p.copy(gameBest = p.gameBest + (id to score)))
+        return true
     }
 
     /** Marks an activity done and returns the XP earned: full XP the first time, a small bonus on replays. */

@@ -30,6 +30,7 @@ import com.speakeasy.app.ui.screens.AiChatScreen
 import com.speakeasy.app.ui.screens.ArticleScreen
 import com.speakeasy.app.ui.screens.AiHubScreen
 import com.speakeasy.app.ui.screens.BookScreen
+import com.speakeasy.app.ui.screens.ChallengeScreen
 import com.speakeasy.app.ui.screens.DialogueScreen
 import com.speakeasy.app.ui.screens.GameHubScreen
 import com.speakeasy.app.ui.screens.GameScreen
@@ -124,10 +125,12 @@ fun AppNav() {
             composable("play") {
                 GameHubScreen(
                     openGame = { mode -> nav.navigate("game/mix/$mode") },
+                    openChallenge = { nav.navigate("challenge/$it") },
                     openLab = { nav.navigate("lab") },
                     openStories = { nav.navigate("stories") },
                 )
             }
+            composable("challenge/{id}") { ChallengeScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             composable("me") { ProgressScreen() }
             composable("ai") { AiHubScreen(openChat = { nav.navigate("ai/$it") }) }
             composable("ai/{scenario}") {

@@ -2,13 +2,15 @@ package com.speakeasy.app.data
 
 /** CEFR levels used by topics, stories and path stages, easy to hard. */
 object Levels {
-    val all = listOf("A1", "A2", "B1", "B2")
+    val all = listOf("A1", "A2", "B1", "B2", "C1", "C2")
 
     fun name(level: String) = when (level) {
         "A1" -> "Mới bắt đầu"
         "A2" -> "Sơ cấp"
         "B1" -> "Trung cấp"
         "B2" -> "Khá"
+        "C1" -> "Cao cấp"
+        "C2" -> "Thành thạo"
         else -> level
     }
 

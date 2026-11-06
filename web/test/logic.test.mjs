@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import * as L from '../js/logic.js';
 import { buildIndex, lemmas, lookup } from '../js/dict.js';
 import * as A from '../js/audio.js';
+import * as C from '../js/challenges.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -186,6 +187,42 @@ test('video channels list real-looking YouTube ids with levels', () => {
     assert.ok(c.videos.length >= 10, c.handle);
     for (const v of c.videos) assert.match(v.id, /^[A-Za-z0-9_-]{11}$/);
   }
+});
+
+test('every topic builds every game mode with four options per choice round', () => {
+  for (const t of content.topics)
+    for (const m of L.GAME_MODES)
+      for (const r of L.buildGame([t], m.id))
+        if (r.options) {
+          assert.equal(r.options.length, 4, `${t.id}/${m.id}`);
+          assert.equal(r.options.filter((o) => o === r.answer).length, 1, `${t.id}/${m.id}`);
+        }
+});
+
+test('challenges: options hold the answer once, memory pairs, hangman rules, scoring, records', () => {
+  const { groups } = json('vocab');
+  for (let i = 0; i < 50; i++) {
+    const r = C.speedRound(groups);
+    assert.equal(r.options.length, 4);
+    assert.equal(r.options.filter((o) => o === r.answer).length, 1);
+    const tf = C.trueFalseRound(groups);
+    assert.equal(tf.shown === tf.word.vi, tf.correct);
+  }
+  const deck = C.memoryDeck(groups);
+  assert.equal(deck.length, 12);
+  assert.equal(new Set(deck.map((c) => c.text)).size, 12);
+  const a = deck.find((c) => c.side === 'en');
+  assert.ok(C.isPair(a, deck.find((c) => c.pair === a.pair && c.side === 'vi')));
+  assert.ok(!C.isPair(a, a));
+  const words = C.hangmanWords(groups);
+  assert.equal(words.length, C.HANGMAN_ROUNDS);
+  for (const w of words) assert.match(w.w, /^[a-z]{4,8}$/);
+  assert.equal(C.revealMask('hello', new Set(['l'])), '_ _ l l _');
+  assert.ok(C.solved('hello', new Set(['h', 'e', 'l', 'o'])));
+  assert.equal(C.livesLeft('hello', new Set(['h', 'x', 'z'])), C.HANGMAN_LIVES - 2);
+  assert.deepEqual([1, 4, 5, 9].map(C.speedPoints), [1, 1, 2, 2]);
+  assert.ok(C.isRecord(undefined, 3) && C.isRecord(5, 6) && !C.isRecord(5, 5));
+  assert.ok(C.isRecord(12, 10, true) && !C.isRecord(10, 12, true));
 });
 
 console.log(`\n${n} tests passed`);

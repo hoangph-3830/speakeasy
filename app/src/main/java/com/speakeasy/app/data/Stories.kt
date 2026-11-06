@@ -13,7 +13,7 @@ data class Story(
     val titleVi: String,
     val emoji: String,
     val category: String,
-    /** CEFR level, "A1" to "B2"; older stories without one count as A2. */
+    /** CEFR level, "A1" to "C2"; older stories without one count as A2. */
     val level: String = "A2",
     val characters: List<StoryCharacter>,
     val items: List<StoryItem>,

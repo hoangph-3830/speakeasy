@@ -21,6 +21,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
@@ -39,6 +42,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
@@ -58,6 +62,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
 import com.speakeasy.app.data.Activity
+import com.speakeasy.app.data.Challenge
 import com.speakeasy.app.data.GameMode
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.Games
@@ -68,6 +73,8 @@ import com.speakeasy.app.ui.components.BigButton
 import com.speakeasy.app.ui.components.CompleteDialog
 import com.speakeasy.app.ui.components.EmojiBadge
 import com.speakeasy.app.ui.components.HSpace
+import com.speakeasy.app.ui.components.Pill
+import com.speakeasy.app.ui.components.SectionTitle
 import com.speakeasy.app.ui.components.SoftProgress
 import com.speakeasy.app.ui.components.SpeakButton
 import com.speakeasy.app.ui.components.TopBar
@@ -100,7 +107,8 @@ private val modeColors = mapOf(
 )
 
 @Composable
-fun GameHubScreen(openGame: (String) -> Unit, openLab: () -> Unit, openStories: () -> Unit) {
+fun GameHubScreen(openGame: (String) -> Unit, openChallenge: (String) -> Unit, openLab: () -> Unit, openStories: () -> Unit) {
+    val progress by LocalApp.current.progress.progress.collectAsState()
     LazyColumn(
         Modifier.fillMaxSize().statusBarsPadding(),
         contentPadding = PaddingValues(20.dp),
@@ -111,6 +119,15 @@ fun GameHubScreen(openGame: (String) -> Unit, openLab: () -> Unit, openStories: 
             Text("Ôn lại từ vựng & mẫu câu của tất cả chủ đề.", color = Muted)
             VSpace(8.dp)
         }
+        item { Text("🎯 Thử thách từ vựng", style = MaterialTheme.typography.titleLarge) }
+        items(Challenge.entries.chunked(2)) { row ->
+            Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                row.forEach { c ->
+                    ChallengeCard(c, progress.gameBest[c.id], Modifier.weight(1f).fillMaxHeight()) { openChallenge(c.id) }
+                }
+            }
+        }
+        item { SectionTitle("🎮 Ôn theo chủ đề") }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 listOf(
@@ -145,6 +162,30 @@ fun GameHubScreen(openGame: (String) -> Unit, openLab: () -> Unit, openStories: 
                     }
                     Text("▶", color = strong, fontSize = 20.sp)
                 }
+            }
+        }
+    }
+}
+
+/** A vocabulary challenge tile: emoji, title, short description and the best score once there is one. */
+@Composable
+private fun ChallengeCard(c: Challenge, best: Int?, modifier: Modifier, onClick: () -> Unit) {
+    val (strong, light) = challengeColors(c)
+    Card(
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = BorderStroke(1.dp, Line),
+    ) {
+        Column(Modifier.padding(14.dp)) {
+            EmojiBadge(c.emoji, light, 44.dp)
+            VSpace(8.dp)
+            Text(c.title, style = MaterialTheme.typography.titleMedium)
+            Text(c.description, color = Muted, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+            if (best != null) {
+                VSpace(8.dp)
+                Pill("Kỷ lục: $best", strong, light)
             }
         }
     }

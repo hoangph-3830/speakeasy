@@ -10,7 +10,7 @@ data class VideoContent(val updated: String = "", val channels: List<VideoChanne
 data class VideoChannel(
     val handle: String,
     val name: String,
-    /** CEFR level, "A1" to "B2". */
+    /** CEFR level, "A1" to "C2". */
     val level: String,
     val kids: Boolean = false,
     /** One Vietnamese line about the channel. */

@@ -1,3 +1,4 @@
+import { CHALLENGES } from '../challenges.js';
 import { GAME_MODES, QUEST, buildGame, compare, gameMode, shuffled } from '../logic.js';
 import { speaker } from '../speech.js';
 import { Progress } from '../store.js';
@@ -8,6 +9,16 @@ export function hubScreen() {
     view: () => `<div class="screen"><div class="scroll pad" data-scroll="play">
       <h1>Vừa chơi vừa học 🎮</h1>
       <p class="muted">Ôn lại từ vựng & mẫu câu của tất cả chủ đề.</p>
+      <div class="section"><h2>🎯 Thử thách từ vựng</h2></div>
+      <div class="grid2">${CHALLENGES.map((c) => {
+        const best = Progress.get().gameBest?.[c.id];
+        return `<button class="card tile challenge" data-act="nav" data-to="challenge/${c.id}">
+          ${badge(c.emoji, 'var(--sun-l)', 56)}
+          <div class="grow"><div class="t-sub">${esc(c.title)}</div><div class="muted small">${esc(c.about)}</div>
+          ${best != null ? `<div class="tiny bold" style="color:var(--peach)">🏆 Kỷ lục: ${best}${c.lowerIsBetter ? ' lượt' : ''}</div>` : ''}</div>
+        </button>`;
+      }).join('')}</div>
+      <div class="section"><h2>🧩 Trò chơi theo chủ đề</h2></div>
       <div class="row gap">
         <button class="card quick" style="background:var(--lavender-l)" data-act="nav" data-to="lab">🎯 Phòng phát âm</button>
         <button class="card quick" style="background:var(--mint-l)" data-act="nav" data-to="stories">📖 Truyện nghe</button>

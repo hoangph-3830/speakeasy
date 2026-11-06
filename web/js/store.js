@@ -58,6 +58,15 @@ export const Progress = {
     return quest.reward;
   },
 
+  /** Keeps the best result per challenge; returns true when this one is a new record. */
+  recordGameBest(id, score, lowerIsBetter = false) {
+    const p = current();
+    const best = p.gameBest?.[id];
+    const record = best == null || (lowerIsBetter ? score < best : score > best);
+    if (record) saveProgress({ ...p, gameBest: { ...(p.gameBest || {}), [id]: score } });
+    return record;
+  },
+
   /** Keeps the best score per pronunciation lesson. */
   recordSound(lessonId, score) {
     const p = current();
