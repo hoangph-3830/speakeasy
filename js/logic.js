@@ -245,6 +245,7 @@ export const defaultProgress = () => ({
   history: {}, // epoch day -> XP earned that day, for the study calendar
   placedLevel: null, // placement test result: null = not taken, '' = start from A1, else the level passed
   reminderTime: '20:00',
+  onlineVoice: null, // null = automatic (on where the speech engine may be silent), else the learner's choice
 });
 
 export const isDone = (p, topicId, activityId) => p.done.includes(`${topicId}:${activityId}`);

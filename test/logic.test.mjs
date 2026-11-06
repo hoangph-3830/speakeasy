@@ -7,6 +7,7 @@ import { buildIndex, lemmas, lookup } from '../js/dict.js';
 import * as A from '../js/audio.js';
 import * as C from '../js/challenges.js';
 import * as P from '../js/learning-plan.js';
+import * as O from '../js/online-voice.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -305,6 +306,27 @@ test('daily reminder: evening warning and a repeating calendar event', () => {
   assert.ok(ics.includes('RRULE:FREQ=DAILY'));
   assert.match(ics, /BEGIN:VALARM[\s\S]*END:VALARM/);
   assert.ok(ics.startsWith('BEGIN:VCALENDAR\r\n') && ics.endsWith('END:VCALENDAR\r\n'));
+});
+
+test('online voice: pieces under the length limit, request address, which devices default to it', () => {
+  const long = 'word '.repeat(100).trim();
+  const pieces = O.onlineChunks(['Hello there.', long]);
+  assert.equal(pieces[0], 'Hello there.');
+  assert.ok(pieces.slice(1).every((p) => p.length <= 180 && !p.startsWith(' ')));
+  assert.equal(pieces.slice(1).join(' '), long);
+  const url = new URL(O.onlineUrl('Hi & bye?', 'UK', 0.1));
+  assert.equal(url.searchParams.get('q'), 'Hi & bye?');
+  assert.equal(url.searchParams.get('tl'), 'en-GB');
+  assert.equal(url.searchParams.get('ttsspeed'), '0.30');
+  assert.equal(new URL(O.onlineUrl('Hi', 'US', 1.3)).searchParams.get('ttsspeed'), '1.00');
+  const ipad27 = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Safari/605.1.15';
+  const iphone27 = 'Mozilla/5.0 (iPhone; CPU iPhone OS 27_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0 Mobile/15E148 Safari/604.1';
+  const iphone17 = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
+  assert.ok(O.speechEngineMayBeSilent(ipad27, 5));
+  assert.ok(!O.speechEngineMayBeSilent(ipad27, 0)); // a real Mac has no touch screen
+  assert.ok(O.speechEngineMayBeSilent(iphone27, 5));
+  assert.ok(!O.speechEngineMayBeSilent(iphone17, 5));
+  assert.ok(!O.speechEngineMayBeSilent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/152.0 Safari/537.36', 0));
 });
 
 console.log(`\n${n} tests passed`);
