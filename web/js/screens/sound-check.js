@@ -9,7 +9,7 @@ const TEST = 'Hello! Can you hear me clearly?';
 export const soundCheckRow = () => `
   <div class="row center-v mt"><span class="semi grow">🌐 Giọng đọc online</span>
     <button class="chip-toggle ${speaker.online ? 'on' : ''}" data-act="onlineVoice">${speaker.online ? 'Đang bật' : 'Đang tắt'}</button></div>
-  <p class="muted tiny">Đọc bằng giọng tải từ Google, phát như video, dùng khi máy báo đang đọc mà không ra tiếng (hay gặp trên iPad đời iOS 27). Cần có mạng; mất mạng thì app tự đọc bằng giọng của máy.</p>
+  <p class="muted tiny">Đọc bằng giọng tải từ Google, phát như video, dùng khi máy báo đang đọc mà không ra tiếng (hay gặp trên iPad/iPhone, nên ở đó được bật sẵn). Cần có mạng; mất mạng thì app tự đọc bằng giọng của máy.</p>
   <div class="semi mt">🔊 Không nghe thấy tiếng?</div>
   <button class="btn outline" data-act="soundCheck">🔊 Kiểm tra âm thanh</button>`;
 
