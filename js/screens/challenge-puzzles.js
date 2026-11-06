@@ -46,7 +46,7 @@ export function memoryScreen(app) {
           open = [];
           if (matched.size === deck.length) {
             const secs = Math.round((Date.now() - started) / 1000);
-            setTimeout(() => showResult(app, 'memory', { score: moves, label: `${moves} lượt · ${secs} giây`, xp: 5, restart: () => { start(); app.update(); } }), 300);
+            setTimeout(() => showResult(app, 'memory', { title: 'Xong rồi!', score: moves, label: `${moves} lượt · ${secs} giây`, xp: 5, restart: () => { start(); app.update(); } }), 300);
           }
           return;
         }
@@ -68,7 +68,7 @@ export function hangmanScreen(app) {
     index = 0; guessed = new Set(); wins = 0;
   }
   const finish = () =>
-    showResult(app, 'hangman', { score: wins, label: `Đoán đúng ${wins}/${HANGMAN_ROUNDS} từ`, xp: wins * 2, restart: () => { start(); app.update(); } });
+    showResult(app, 'hangman', { title: 'Xong rồi!', score: wins, label: `Đoán đúng ${wins}/${HANGMAN_ROUNDS} từ`, xp: wins * 2, restart: () => { start(); app.update(); } });
 
   return {
     enter() { app.loadVocab().then(() => { start(); app.update(); }); },

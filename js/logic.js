@@ -24,7 +24,7 @@ export const shuffled = (list) => {
 };
 export const pick = (list) => list[Math.floor(Math.random() * list.length)];
 
-const distinctBy = (list, key) => {
+export const distinctBy = (list, key) => {
   const seen = new Set();
   return list.filter((x) => (seen.has(key(x)) ? false : seen.add(key(x))));
 };
@@ -55,11 +55,24 @@ export const LEVELS = {
 };
 
 /** The first topic along the learning path that still has an unfinished step, with its stage. */
+/**
+ * Stages at or below the level passed in the placement test are skipped by "continue learning".
+ * Placing at C2 skips nothing: there is no harder stage to send the learner to.
+ */
+export const skippedStage = (stage, placed) => {
+  const order = Object.keys(LEVELS);
+  return !!placed && placed !== 'C2' && order.indexOf(stage.level) <= order.indexOf(placed);
+};
+
 export function nextInPath(path, topics, p) {
-  for (const [i, stage] of path.entries())
-    for (const id of stage.topics) {
-      const topic = topics.find((t) => t.id === id);
-      if (topic && doneCount(p, id) < ACTIVITIES.length) return { stage, stageNo: i + 1, topic };
+  // First the stages the learner was placed into, then anything left unfinished below them.
+  for (const skipPlaced of [true, false])
+    for (const [i, stage] of path.entries()) {
+      if (skipPlaced && skippedStage(stage, p.placedLevel)) continue;
+      for (const id of stage.topics) {
+        const topic = topics.find((t) => t.id === id);
+        if (topic && doneCount(p, id) < ACTIVITIES.length) return { stage, stageNo: i + 1, topic };
+      }
     }
   return null;
 }
@@ -229,6 +242,9 @@ export const defaultProgress = () => ({
   claimed: [],
   soundScores: {},
   gameBest: {},
+  history: {}, // epoch day -> XP earned that day, for the study calendar
+  placedLevel: null, // placement test result: null = not taken, '' = start from A1, else the level passed
+  reminderTime: '20:00',
 });
 
 export const isDone = (p, topicId, activityId) => p.done.includes(`${topicId}:${activityId}`);
@@ -263,6 +279,15 @@ export function rollOver(p, day) {
   return { ...fresh, todayXp: 0, streak: 0 };
 }
 
+export const HISTORY_DAYS = 182;
+
+/** Adds XP to the day's total and drops days older than about six months. */
+export function recordDay(history = {}, day, amount) {
+  const next = { ...history, [day]: (history[day] || 0) + amount };
+  for (const k of Object.keys(next)) if (+k < day - HISTORY_DAYS) delete next[k];
+  return next;
+}
+
 export function addXp(p, amount, day) {
   if (amount <= 0) return p;
   const streak = p.lastActiveDay === day ? p.streak : p.streak + 1;
@@ -276,6 +301,7 @@ export function addXp(p, amount, day) {
     streak,
     bestStreak: Math.max(p.bestStreak, streak),
     lastActiveDay: day,
+    history: recordDay(p.history, day, amount),
     freezes: earnsFreeze ? p.freezes + 1 : p.freezes,
     freezeEarnedDay: earnsFreeze ? day : p.freezeEarnedDay,
   };

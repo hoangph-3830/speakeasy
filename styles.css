@@ -434,3 +434,21 @@ canvas.wave { width: 100%; height: 110px; display: block; background: var(--canv
 .key { min-height: 44px; border-radius: 12px; background: #fff; border: 1.5px solid var(--line); font-size: 18px; font-weight: 700; text-transform: uppercase; }
 .key.hit { background: var(--mint-l); border-color: var(--mint); color: var(--mint); }
 .key.miss { background: var(--coral-l); border-color: var(--coral); color: var(--coral); }
+
+/* ---- Study plan: calendar, warnings, word challenges ---- */
+.heatmap { display: grid; grid-template-rows: repeat(7, 18px); grid-auto-flow: column; grid-auto-columns: 18px; gap: 4px; justify-content: center; }
+.heatmap i, .hm { display: block; border-radius: 4px; background: var(--line); }
+.hm { height: 10px; }
+.hm { display: inline-block; width: 10px; margin: 0 1px; vertical-align: middle; }
+.heatmap .h1, .hm.h1 { background: color-mix(in srgb, var(--mint) 30%, var(--line)); }
+.heatmap .h2, .hm.h2 { background: color-mix(in srgb, var(--mint) 55%, var(--line)); }
+.heatmap .h3, .hm.h3 { background: color-mix(in srgb, var(--mint) 80%, var(--line)); }
+.heatmap .h4, .hm.h4 { background: var(--mint); }
+.heatmap .today { outline: 2px solid var(--peach); outline-offset: 1px; }
+.note.warn { background: var(--peach-l); border: 1.5px solid var(--peach); }
+.placement-card .emo-l { font-size: 34px; }
+.prompt.cloze { font-size: 20px; line-height: 1.5; }
+.letters { justify-content: center; }
+.word.letter { min-width: 46px; font-size: 22px; font-weight: 800; text-transform: lowercase; }
+.field.spell { font-size: 22px; text-align: center; margin: 12px 0; }
+.field.time { width: auto; flex: 0 0 auto; }

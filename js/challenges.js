@@ -1,4 +1,5 @@
-// Pure rules for the vocabulary challenges (speed quiz, memory, hangman, true/false), kept free of
+// Pure rules for the vocabulary challenges (speed quiz, memory, hangman, true/false, fill the gap,
+// letter scramble, spelling), kept free of
 // the DOM so `node web/test/logic.test.mjs` checks them. Words come from the 3000-word list.
 import { pick, shuffled } from './logic.js';
 
@@ -7,6 +8,9 @@ export const CHALLENGES = [
   { id: 'memory', emoji: '🃏', title: 'Lật thẻ trí nhớ', about: 'Tìm cặp từ tiếng Anh và nghĩa tiếng Việt, càng ít lượt càng giỏi', lowerIsBetter: true },
   { id: 'hangman', emoji: '🔤', title: 'Đoán chữ', about: 'Đoán từng chữ cái theo nghĩa và phiên âm, có 6 mạng' },
   { id: 'truefalse', emoji: '✅', title: 'Đúng hay Sai', about: 'Nghĩa này đúng không? Trả lời thật nhanh trong 45 giây' },
+  { id: 'cloze', emoji: '🧩', title: 'Điền từ vào câu', about: 'Chọn từ còn thiếu trong câu ví dụ, 10 câu' },
+  { id: 'anagram', emoji: '🔀', title: 'Xếp chữ cái', about: 'Sắp lại các chữ cái bị xáo trộn thành từ đúng nghĩa' },
+  { id: 'spelling', emoji: '👂', title: 'Nghe & viết từ', about: 'Nghe phát âm rồi gõ lại đúng chính tả, 10 từ' },
 ];
 export const challenge = (id) => CHALLENGES.find((c) => c.id === id);
 
@@ -15,6 +19,9 @@ export const SPEED_PENALTY = 3;
 export const TRUEFALSE_SECONDS = 45;
 export const HANGMAN_ROUNDS = 5;
 export const HANGMAN_LIVES = 6;
+export const CLOZE_ROUNDS = 10;
+export const ANAGRAM_ROUNDS = 8;
+export const SPELLING_ROUNDS = 10;
 
 const words = (groups) => groups.flatMap((g) => g.words.map((w) => ({ ...w, group: g.id })));
 
@@ -70,3 +77,48 @@ export function trueFalseRound(groups) {
 /** Whether `score` beats `best` (none yet counts as beaten); memory is won in fewer moves. */
 export const isRecord = (best, score, lowerIsBetter = false) =>
   best == null || (lowerIsBetter ? score < best : score > best);
+
+// ---- Fill the gap -------------------------------------------------------------
+
+const BLANK = '_____';
+const tokens = (text) => text.toLowerCase().split(/[^a-z']+/);
+/** Words whose example sentence uses the word itself, so it can be blanked out. */
+const clozeable = (w) => !!w.ex && /^[a-z]+$/i.test(w.w) && tokens(w.ex).includes(w.w.toLowerCase());
+
+/** The example sentence with the word's first whole-word use replaced by a blank. */
+export const blankOut = (sentence, word) =>
+  sentence.replace(new RegExp(`(^|[^A-Za-z'])${word}(?![A-Za-z'])`, 'i'), (_, before) => before + BLANK);
+
+/** A sentence with one word missing and four words to choose from, of the same part of speech if possible. */
+export function clozeRound(groups) {
+  const all = words(groups);
+  const word = pick(all.filter(clozeable));
+  const same = all.filter((w) => w.pos === word.pos && w.w !== word.w && /^[a-z]+$/i.test(w.w));
+  const pool = same.length >= 3 ? same : all.filter((w) => w.w !== word.w && /^[a-z]+$/i.test(w.w));
+  const others = new Set();
+  while (others.size < 3) others.add(pick(pool).w);
+  return { word, sentence: blankOut(word.ex, word.w), translation: word.exVi, options: shuffled([...others, word.w]), answer: word.w };
+}
+
+// ---- Letter scramble ----------------------------------------------------------
+
+/** Words of 4-8 plain letters, so every tile is one keyboard letter. */
+export const anagramWords = (groups, n = ANAGRAM_ROUNDS) =>
+  shuffled(words(groups).filter((w) => /^[a-z]{4,8}$/.test(w.w) && new Set(w.w).size > 1)).slice(0, n);
+
+/** The letters in a new order that never spells the word already. */
+export function scrambleLetters(word) {
+  let letters = shuffled([...word]);
+  for (let i = 0; i < 10 && letters.join('') === word; i++) letters = shuffled([...word]);
+  if (letters.join('') === word) letters = [...letters.slice(1), letters[0]];
+  return letters;
+}
+
+// ---- Spelling -----------------------------------------------------------------
+
+/** Plain words of 3-10 letters, which are fair to spell from sound alone. */
+export const spellingWords = (groups, n = SPELLING_ROUNDS) =>
+  shuffled(words(groups).filter((w) => /^[a-z]{3,10}$/.test(w.w))).slice(0, n);
+
+/** Spelling is checked letter for letter; case and surrounding spaces do not count. */
+export const spelledRight = (typed, word) => typed.trim().toLowerCase() === word.toLowerCase();
