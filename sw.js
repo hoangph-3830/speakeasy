@@ -1,6 +1,6 @@
 // Offline support: the whole app and its lessons are cached on first visit.
 // Bump VERSION whenever any file below changes so devices pick up the update.
-const VERSION = 'speakeasy-v11';
+const VERSION = 'speakeasy-v12';
 // Picture-book illustrations come from a CDN; pages read once stay available offline.
 const IMAGES = 'speakeasy-images';
 const FILES = [
@@ -27,6 +27,7 @@ const FILES = [
   'js/dict.js',
   'js/news.js',
   'js/wordsheet.js',
+  'js/challenges.js',
   'js/audio.js',
   'js/recorder.js',
   'js/screens/home.js',
@@ -42,6 +43,8 @@ const FILES = [
   'js/screens/shadow.js',
   'js/screens/books.js',
   'js/screens/videos.js',
+  'js/screens/challenge-timed.js',
+  'js/screens/challenge-puzzles.js',
 ];
 
 self.addEventListener('install', (e) => {

@@ -50,6 +50,8 @@ export const LEVELS = {
   A2: { name: 'Sơ cấp', color: 'sky' },
   B1: { name: 'Trung cấp', color: 'lavender' },
   B2: { name: 'Khá', color: 'peach' },
+  C1: { name: 'Cao cấp', color: 'coral' },
+  C2: { name: 'Thành thạo', color: 'sun' },
 };
 
 /** The first topic along the learning path that still has an unfinished step, with its stage. */
@@ -226,6 +228,7 @@ export const defaultProgress = () => ({
   countersDay: -1,
   claimed: [],
   soundScores: {},
+  gameBest: {},
 });
 
 export const isDone = (p, topicId, activityId) => p.done.includes(`${topicId}:${activityId}`);
@@ -369,6 +372,9 @@ export function buildGame(topics, mode, size = 8) {
   const sentences = distinctBy(topics.flatMap(topicSentences), (s) => s[0]);
   let short = sentences.filter((s) => { const n = s[0].split(' ').length; return n >= 3 && n <= 9; });
   if (!short.length) short = sentences;
+  // Choice rounds need three distractors: topics with few short lines borrow their next-shortest ones.
+  const choices = short.length >= 4 ? short
+    : [...short, ...sentences.filter((s) => !short.includes(s)).sort((x, y) => x[0].length - y[0].length)].slice(0, 4);
 
   const match = () => ({ type: 'match', pairs: shuffled(words).slice(0, 5).map((w) => [w.word, w.vi]) });
   const scramble = () => {
@@ -381,7 +387,7 @@ export function buildGame(topics, mode, size = 8) {
   };
   const listen = () => {
     const useWords = Math.random() < 0.5 && words.length >= 4;
-    const pool = useWords ? words.map((w) => w.word) : short.map((s) => s[0]);
+    const pool = useWords ? words.map((w) => w.word) : choices.map((s) => s[0]);
     const answer = pick(pool);
     const options = shuffled([...shuffled(pool.filter((x) => x !== answer)).slice(0, 3), answer]);
     return { type: 'listen', audio: answer, options, answer };
@@ -389,7 +395,7 @@ export function buildGame(topics, mode, size = 8) {
   const meaning = () => {
     const reverse = Math.random() < 0.5;
     const [en, vi] = pick(short);
-    const others = shuffled(short.filter((s) => s[0] !== en)).slice(0, 3);
+    const others = shuffled(choices.filter((s) => s[0] !== en && s[1] !== vi)).slice(0, 3);
     return reverse
       ? { type: 'meaning', prompt: vi, options: shuffled([...others.map((o) => o[0]), en]), answer: en, speakPrompt: false }
       : { type: 'meaning', prompt: en, options: shuffled([...others.map((o) => o[1]), vi]), answer: vi, speakPrompt: true };

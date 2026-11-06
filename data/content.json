@@ -1810,6 +1810,1455 @@
       ]
     },
     {
+      "id": "leading-meeting",
+      "category": "work",
+      "title": "Leading a meeting",
+      "titleVi": "Chủ trì một cuộc họp",
+      "emoji": "📋",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "Shall we get started? We've got a lot to get through today.",
+          "vi": "Mình bắt đầu nhé? Hôm nay có khá nhiều việc cần bàn.",
+          "tip": "'get through' = giải quyết hết (một danh sách việc)."
+        },
+        {
+          "en": "I'm conscious of the time, so let's move on to the next item.",
+          "vi": "Tôi để ý thấy cũng muộn rồi, nên mình chuyển sang mục tiếp theo nhé.",
+          "tip": "'I'm conscious of the time' = cách lịch sự để nhắc mọi người sắp hết giờ."
+        },
+        {
+          "en": "That's a good point, but maybe we can take it offline.",
+          "vi": "Ý đó hay, nhưng có lẽ mình bàn riêng sau buổi họp nhé.",
+          "tip": "'take it offline' = bàn riêng sau, không bàn trong cuộc họp."
+        },
+        {
+          "en": "Let's hear from someone who hasn't had a chance to speak yet.",
+          "vi": "Mình nghe ý kiến của ai chưa có dịp phát biểu nhé."
+        },
+        {
+          "en": "Just to recap, here's what we've agreed so far.",
+          "vi": "Tóm tắt lại, đây là những gì chúng ta đã thống nhất đến giờ."
+        },
+        {
+          "en": "So who's going to take the lead on this, and by when?",
+          "vi": "Vậy ai sẽ phụ trách việc này, và hạn chót là khi nào?"
+        }
+      ],
+      "words": [
+        {
+          "word": "agenda",
+          "ipa": "/əˈdʒɛndə/",
+          "vi": "chương trình họp",
+          "example": "Let's stick to the agenda, or we'll be here all day."
+        },
+        {
+          "word": "action item",
+          "ipa": "/ˈækʃən ˌaɪtəm/",
+          "vi": "đầu việc cần làm (sau cuộc họp)",
+          "example": "Each action item needs an owner and a deadline."
+        },
+        {
+          "word": "minutes",
+          "ipa": "/ˈmɪnɪts/",
+          "vi": "biên bản cuộc họp",
+          "example": "Could someone take the minutes today?"
+        },
+        {
+          "word": "sidetracked",
+          "ipa": "/ˈsaɪdˌtrækt/",
+          "vi": "bị lạc đề, bị sao nhãng",
+          "example": "Sorry, we got a bit sidetracked there."
+        },
+        {
+          "word": "stakeholder",
+          "ipa": "/ˈsteɪkˌhoʊldər/",
+          "vi": "bên liên quan",
+          "example": "We should keep the key stakeholders in the loop."
+        },
+        {
+          "word": "follow-up",
+          "ipa": "/ˈfɑloʊˌʌp/",
+          "vi": "việc theo dõi tiếp, buổi trao đổi tiếp theo",
+          "example": "Let's schedule a follow-up for next week."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Raj (developer)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Morning. Everyone's here except Linh. She said she might be a few minutes late.",
+            "vi": "Chào buổi sáng. Mọi người đến đủ rồi, trừ Linh. Cô ấy báo có thể đến muộn vài phút."
+          },
+          {
+            "s": "B",
+            "en": "No problem, let's not hold things up. Shall we get started? We've got a lot to get through.",
+            "vi": "Không sao, mình đừng để mọi người phải chờ. Bắt đầu nhé? Hôm nay nhiều việc lắm."
+          },
+          {
+            "s": "A",
+            "en": "Sure. Can I quickly bring up the server costs first? They've gone up again.",
+            "vi": "Được. Cho tôi nói nhanh về chi phí máy chủ trước được không? Nó lại tăng nữa rồi."
+          },
+          {
+            "s": "B",
+            "en": "That's a good point, but it's not on today's agenda. Could we take it offline?",
+            "vi": "Ý đó đáng bàn, nhưng nó không có trong chương trình họp hôm nay. Mình bàn riêng sau nhé?"
+          },
+          {
+            "s": "A",
+            "en": "Of course. So, the launch date. I still think the end of March is a bit of a stretch.",
+            "vi": "Tất nhiên. Vậy thì ngày ra mắt. Tôi vẫn thấy cuối tháng Ba hơi khó kịp."
+          },
+          {
+            "s": "B",
+            "en": "I hear you. What would it take to make March realistic?",
+            "vi": "Tôi hiểu. Cần những gì để tháng Ba trở nên khả thi?"
+          },
+          {
+            "s": "A",
+            "en": "Probably one more tester, at least for the last two weeks.",
+            "vi": "Chắc là thêm một người kiểm thử, ít nhất trong hai tuần cuối."
+          },
+          {
+            "s": "B",
+            "en": "OK, I'll look into that. I'm conscious of the time, so let's move on to the budget.",
+            "vi": "Được, tôi sẽ xem xét việc đó. Cũng muộn rồi, nên mình chuyển sang ngân sách nhé."
+          },
+          {
+            "s": "A",
+            "en": "Actually, we covered most of that by email last week.",
+            "vi": "Thật ra tuần trước mình đã bàn gần hết qua email rồi."
+          },
+          {
+            "s": "B",
+            "en": "Great, that saves us some time. Just to recap: I'll ask about a tester, and you'll send the updated timeline.",
+            "vi": "Tốt quá, đỡ được ít thời gian. Tóm tắt lại: tôi sẽ hỏi về người kiểm thử, còn anh gửi lịch trình cập nhật."
+          },
+          {
+            "s": "A",
+            "en": "Sounds good. I can get it to you by Thursday.",
+            "vi": "Được đấy. Tôi gửi anh trước thứ Năm nhé."
+          },
+          {
+            "s": "B",
+            "en": "Perfect. Thanks, everyone. I'll send round the minutes this afternoon.",
+            "vi": "Tuyệt. Cảm ơn mọi người. Chiều nay tôi sẽ gửi biên bản họp cho cả nhóm."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "We have no more time.",
+          "natural": "We're running short on time, so let's wrap things up.",
+          "vi": "Chúng ta sắp hết giờ rồi, mình chốt lại thôi.",
+          "note": "'wrap up' = kết thúc, chốt lại; nghe tự nhiên hơn 'finish the meeting'."
+        },
+        {
+          "plain": "Please stop talking about this topic.",
+          "natural": "Let's park that for now and come back to it later.",
+          "vi": "Mình tạm gác chuyện đó lại, lát nữa quay lại nhé.",
+          "note": "'park' (đỗ xe) = tạm gác một ý sang bên; không làm người nói mất mặt."
+        },
+        {
+          "plain": "Does anyone have anything else to say?",
+          "natural": "Anything else before we finish up?",
+          "vi": "Còn gì nữa không trước khi mình kết thúc?",
+          "note": "Câu rút gọn, bỏ 'Is there'; người bản xứ nói vậy cho nhanh và thân thiện."
+        }
+      ]
+    },
+    {
+      "id": "handling-criticism",
+      "category": "work",
+      "title": "Handling criticism of your work",
+      "titleVi": "Đón nhận lời phê bình về công việc",
+      "emoji": "🛡️",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "I appreciate you being upfront with me.",
+          "vi": "Cảm ơn chị đã nói thẳng với tôi.",
+          "tip": "'upfront' = thẳng thắn, nói rõ ngay."
+        },
+        {
+          "en": "Could you give me a specific example, so I know what to work on?",
+          "vi": "Chị có thể cho một ví dụ cụ thể để tôi biết cần cải thiện chỗ nào không?",
+          "tip": "Xin ví dụ cụ thể giúp cuộc nói chuyện bớt cảm tính."
+        },
+        {
+          "en": "You're right, I should have flagged that sooner.",
+          "vi": "Chị nói đúng, lẽ ra tôi nên báo việc đó sớm hơn.",
+          "tip": "'flag' = báo trước, cảnh báo về một vấn đề."
+        },
+        {
+          "en": "I see it slightly differently, if I can explain.",
+          "vi": "Tôi nhìn nhận hơi khác một chút, chị cho tôi giải thích nhé."
+        },
+        {
+          "en": "Let me have a think about how to avoid this next time.",
+          "vi": "Để tôi suy nghĩ cách tránh chuyện này lần sau."
+        },
+        {
+          "en": "Would it help if I sent you a quick update every Friday?",
+          "vi": "Nếu thứ Sáu nào tôi cũng gửi chị một bản cập nhật ngắn thì có ổn hơn không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "constructive",
+          "ipa": "/kənˈstrʌktɪv/",
+          "vi": "mang tính xây dựng",
+          "example": "Her comments were tough but constructive."
+        },
+        {
+          "word": "defensive",
+          "ipa": "/dɪˈfɛnsɪv/",
+          "vi": "phòng thủ, hay chống chế",
+          "example": "Try not to get defensive when someone points out a mistake."
+        },
+        {
+          "word": "oversight",
+          "ipa": "/ˈoʊvərˌsaɪt/",
+          "vi": "sơ suất",
+          "example": "Leaving out the figures was a genuine oversight."
+        },
+        {
+          "word": "accountable",
+          "ipa": "/əˈkaʊntəbəl/",
+          "vi": "chịu trách nhiệm",
+          "example": "I'm accountable for the final version, so it's on me to check it."
+        },
+        {
+          "word": "setback",
+          "ipa": "/ˈsɛtˌbæk/",
+          "vi": "trở ngại, bước lùi",
+          "example": "Losing that client was a setback, but we learned a lot."
+        },
+        {
+          "word": "track record",
+          "ipa": "/ˈtræk ˌrɛkərd/",
+          "vi": "thành tích, quá trình làm việc",
+          "example": "You've got a great track record, so this is just a blip."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Ms Clarke (team lead)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Have you got a minute? I wanted to talk about the client report you sent on Monday.",
+            "vi": "Em có rảnh một phút không? Chị muốn nói về bản báo cáo gửi khách hàng hôm thứ Hai."
+          },
+          {
+            "s": "B",
+            "en": "Sure. Was there a problem with it?",
+            "vi": "Dạ được ạ. Báo cáo có vấn đề gì sao chị?"
+          },
+          {
+            "s": "A",
+            "en": "Frankly, yes. A few of the figures were out of date, and the client noticed.",
+            "vi": "Nói thẳng là có. Vài số liệu đã cũ, và khách hàng phát hiện ra."
+          },
+          {
+            "s": "B",
+            "en": "Oh no. I appreciate you being upfront with me. Which figures were they?",
+            "vi": "Ôi. Cảm ơn chị đã nói thẳng với em. Là những số liệu nào vậy chị?"
+          },
+          {
+            "s": "A",
+            "en": "Mainly the October sales numbers. They came from the old spreadsheet.",
+            "vi": "Chủ yếu là số liệu bán hàng tháng Mười. Chúng lấy từ bảng tính cũ."
+          },
+          {
+            "s": "B",
+            "en": "You're right, that was an oversight on my part. I should have double-checked the source.",
+            "vi": "Chị nói đúng, đó là sơ suất của em. Lẽ ra em phải kiểm tra lại nguồn."
+          },
+          {
+            "s": "A",
+            "en": "It happens, but it's not the first time this month.",
+            "vi": "Chuyện đó có thể xảy ra, nhưng đây không phải lần đầu trong tháng này."
+          },
+          {
+            "s": "B",
+            "en": "I see it slightly differently, if I can explain. Last time, finance sent the data over late.",
+            "vi": "Em thấy hơi khác một chút, chị cho em giải thích nhé. Lần trước phòng tài chính gửi số liệu muộn."
+          },
+          {
+            "s": "A",
+            "en": "OK, that's true. But for the client, the end result is the same.",
+            "vi": "Ừ, đúng là vậy. Nhưng với khách hàng thì kết quả vẫn thế."
+          },
+          {
+            "s": "B",
+            "en": "Absolutely, and I take full responsibility. Would it help if I sent you a draft a day early?",
+            "vi": "Chắc chắn rồi, và em chịu hoàn toàn trách nhiệm. Nếu em gửi chị bản nháp sớm một ngày thì có ổn hơn không?"
+          },
+          {
+            "s": "A",
+            "en": "That would be great. Then I can give it a quick once-over.",
+            "vi": "Vậy thì tốt quá. Chị có thể xem lướt qua một lượt."
+          },
+          {
+            "s": "B",
+            "en": "Will do. I'll also send the client a corrected version this afternoon.",
+            "vi": "Vâng ạ. Chiều nay em cũng sẽ gửi bản đã sửa cho khách hàng."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I made a mistake.",
+          "natural": "That's on me.",
+          "vi": "Lỗi đó là do tôi.",
+          "note": "'That's on me' = nhận trách nhiệm ngắn gọn, thẳng thắn, không vòng vo."
+        },
+        {
+          "plain": "Your criticism makes me feel bad.",
+          "natural": "That's a bit hard to hear, but I'm glad you told me.",
+          "vi": "Nghe hơi buồn, nhưng tôi mừng là chị đã nói ra.",
+          "note": "Thừa nhận cảm xúc mà vẫn chuyên nghiệp; người nghe thấy bạn chân thành."
+        },
+        {
+          "plain": "It was not my fault, it was the other team.",
+          "natural": "There's a bit more to it than that, actually.",
+          "vi": "Thật ra chuyện không đơn giản như vậy đâu.",
+          "note": "Cách mở lời để giải thích bối cảnh mà không đổ lỗi trực tiếp cho ai."
+        }
+      ]
+    },
+    {
+      "id": "persuading-stakeholders",
+      "category": "work",
+      "title": "Persuading senior stakeholders",
+      "titleVi": "Thuyết phục lãnh đạo cấp cao",
+      "emoji": "🎯",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "I'd like to make the case for piloting this in one region before we commit company-wide.",
+          "vi": "Tôi muốn đề xuất thử nghiệm ở một khu vực trước khi triển khai toàn công ty.",
+          "tip": "'make the case for' = trình bày lý lẽ ủng hộ; nghe chắc chắn mà không áp đặt."
+        },
+        {
+          "en": "Granted, the upfront cost is significant, but the payback period is under eighteen months.",
+          "vi": "Đúng là chi phí ban đầu khá lớn, nhưng thời gian hoàn vốn chưa tới mười tám tháng.",
+          "tip": "'Granted, ... but ...' = thừa nhận điểm yếu trước rồi mới phản bác; người nghe thấy bạn công tâm."
+        },
+        {
+          "en": "That's a fair concern, and it's one we've tried to build into the plan.",
+          "vi": "Đó là mối lo chính đáng, và chúng tôi đã cố tính đến nó trong kế hoạch."
+        },
+        {
+          "en": "What would you need to see to feel comfortable signing off on this?",
+          "vi": "Anh/chị cần thấy thêm điều gì thì mới yên tâm phê duyệt?",
+          "tip": "Hỏi thẳng điều kiện phê duyệt giúp biến phản đối mơ hồ thành yêu cầu cụ thể."
+        },
+        {
+          "en": "If we hold off, we risk ceding ground to competitors who are already moving.",
+          "vi": "Nếu chần chừ, chúng ta có nguy cơ mất thị phần vào tay đối thủ đang hành động rồi."
+        },
+        {
+          "en": "I'm not asking for a blank check — just a dedicated budget for the first phase.",
+          "vi": "Tôi không xin ngân sách vô hạn — chỉ cần một khoản riêng cho giai đoạn đầu."
+        }
+      ],
+      "words": [
+        {
+          "word": "buy-in",
+          "ipa": "/ˈbaɪˌɪn/",
+          "vi": "sự đồng thuận, ủng hộ (từ các bên liên quan)",
+          "example": "Without buy-in from finance, the project will stall."
+        },
+        {
+          "word": "contingency",
+          "ipa": "/kənˈtɪndʒənsi/",
+          "vi": "phương án dự phòng; khoản dự phòng",
+          "example": "We've set aside ten percent of the budget as a contingency."
+        },
+        {
+          "word": "mitigate",
+          "ipa": "/ˈmɪtəˌɡeɪt/",
+          "vi": "giảm nhẹ (rủi ro, tác động)",
+          "example": "A phased rollout would mitigate most of the operational risk."
+        },
+        {
+          "word": "trade-off",
+          "ipa": "/ˈtreɪdˌɔf/",
+          "vi": "sự đánh đổi",
+          "example": "The trade-off is a slower launch in exchange for lower risk."
+        },
+        {
+          "word": "compelling",
+          "ipa": "/kəmˈpɛlɪŋ/",
+          "vi": "thuyết phục, khó cưỡng lại",
+          "example": "The pilot results make a compelling argument for scaling up."
+        },
+        {
+          "word": "scalable",
+          "ipa": "/ˈskeɪləbəl/",
+          "vi": "có thể mở rộng quy mô",
+          "example": "The board wants to know whether the model is genuinely scalable."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Helen (CFO)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "I've read your proposal. Frankly, I'm struggling to justify that kind of spend in the current climate.",
+            "vi": "Tôi đã đọc đề xuất của anh. Thẳng thắn mà nói, trong tình hình hiện nay tôi khó biện minh cho khoản chi lớn như vậy."
+          },
+          {
+            "s": "B",
+            "en": "That's a fair concern. Granted, the upfront cost is significant, but the payback period is under eighteen months.",
+            "vi": "Đó là mối lo chính đáng. Đúng là chi phí ban đầu khá lớn, nhưng thời gian hoàn vốn chưa tới mười tám tháng."
+          },
+          {
+            "s": "A",
+            "en": "Those projections always look rosy on paper. What happens if adoption is slower than you expect?",
+            "vi": "Mấy con số dự báo đó lúc nào trên giấy cũng đẹp. Nếu người dùng tiếp nhận chậm hơn dự kiến thì sao?"
+          },
+          {
+            "s": "B",
+            "en": "We've modeled that scenario. Even at half the forecast uptake, we'd still break even within three years.",
+            "vi": "Chúng tôi đã tính kịch bản đó. Kể cả khi mức sử dụng chỉ bằng một nửa dự báo, chúng ta vẫn hòa vốn trong ba năm."
+          },
+          {
+            "s": "A",
+            "en": "And the operational risk? The last system migration was a nightmare.",
+            "vi": "Còn rủi ro vận hành? Lần chuyển đổi hệ thống trước là một cơn ác mộng."
+          },
+          {
+            "s": "B",
+            "en": "Which is precisely why I'd like to pilot it in one region first. It would mitigate most of that risk.",
+            "vi": "Chính vì thế tôi muốn thử nghiệm ở một khu vực trước. Cách đó giảm được phần lớn rủi ro."
+          },
+          {
+            "s": "A",
+            "en": "Hmm. I'm still not convinced the board will go for it.",
+            "vi": "Hừm. Tôi vẫn chưa chắc hội đồng quản trị sẽ đồng ý."
+          },
+          {
+            "s": "B",
+            "en": "Then let me ask you this: what would you need to see to feel comfortable signing off on it?",
+            "vi": "Vậy cho tôi hỏi thế này: chị cần thấy thêm điều gì thì mới yên tâm phê duyệt?"
+          },
+          {
+            "s": "A",
+            "en": "Hard numbers from the pilot, and a clear exit point if it doesn't deliver.",
+            "vi": "Số liệu thực tế từ đợt thử nghiệm, và một điểm dừng rõ ràng nếu nó không hiệu quả."
+          },
+          {
+            "s": "B",
+            "en": "That's entirely reasonable. I can build in a review gate at six months, with a contingency to pull the plug.",
+            "vi": "Hoàn toàn hợp lý. Tôi có thể đặt một mốc đánh giá ở tháng thứ sáu, kèm phương án dừng hẳn nếu cần."
+          },
+          {
+            "s": "A",
+            "en": "Alright. If you can put that in writing, I'm prepared to back a dedicated budget for phase one.",
+            "vi": "Được. Nếu anh đưa điều đó vào văn bản, tôi sẵn sàng ủng hộ một khoản ngân sách riêng cho giai đoạn một."
+          },
+          {
+            "s": "B",
+            "en": "I appreciate that. I'll have a revised draft on your desk by Thursday.",
+            "vi": "Cảm ơn chị. Tôi sẽ gửi bản chỉnh sửa lên chị trước thứ Năm."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I think my idea is very good and you should approve it.",
+          "natural": "I genuinely think there's a strong case for this, and I'd welcome the chance to walk you through it.",
+          "vi": "Tôi thực sự tin đề xuất này có cơ sở vững, và rất mong được trình bày kỹ với anh/chị.",
+          "note": "Với lãnh đạo, đừng đòi phê duyệt; hãy xin cơ hội trình bày. 'make a case' nghe chuyên nghiệp và tự tin hơn."
+        },
+        {
+          "plain": "You are wrong about the risk.",
+          "natural": "I take your point, though I'd argue the risk is more manageable than it first appears.",
+          "vi": "Tôi hiểu ý anh/chị, dù tôi cho rằng rủi ro dễ kiểm soát hơn mình tưởng.",
+          "note": "'I take your point, though...' công nhận người kia trước rồi mới phản biện — cách bất đồng rất khéo với cấp trên."
+        },
+        {
+          "plain": "If we wait, it will be bad for us.",
+          "natural": "The longer we sit on this, the more ground we cede to the competition.",
+          "vi": "Mình càng ngâm việc này lâu thì càng để đối thủ chiếm thêm lợi thế.",
+          "note": "'sit on something' = ngâm, trì hoãn; 'cede ground' = nhường trận địa. Tạo cảm giác cấp bách mà không gây áp lực thô."
+        }
+      ]
+    },
+    {
+      "id": "presenting-data",
+      "category": "work",
+      "title": "Explaining data to a non-expert audience",
+      "titleVi": "Giải thích số liệu cho người không chuyên",
+      "emoji": "📈",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "The headline figure is encouraging, but it masks quite a lot of variation between regions.",
+          "vi": "Con số tổng thể khá khả quan, nhưng nó che khuất sự chênh lệch đáng kể giữa các khu vực.",
+          "tip": "'headline figure' = con số nổi bật nhất; 'mask' = che đi. Dùng để cảnh báo người nghe đừng chỉ nhìn bề ngoài."
+        },
+        {
+          "en": "I'd take that spike with a pinch of salt — it coincides with a one-off promotion.",
+          "vi": "Tôi sẽ không quá tin vào đợt tăng vọt đó — nó trùng với một đợt khuyến mãi duy nhất.",
+          "tip": "'take something with a pinch of salt' = nghe nhưng đừng tin hoàn toàn."
+        },
+        {
+          "en": "To put that in perspective, it's roughly one customer in every twenty.",
+          "vi": "Nói cho dễ hình dung thì đó là khoảng một trên hai mươi khách hàng."
+        },
+        {
+          "en": "There's a clear correlation, but I'd stop short of saying one causes the other.",
+          "vi": "Có mối tương quan rõ ràng, nhưng tôi chưa dám khẳng định cái này gây ra cái kia.",
+          "tip": "'stop short of' = dừng lại trước khi đi quá xa; phân biệt tương quan với nhân quả."
+        },
+        {
+          "en": "The margin of error is fairly wide, so these numbers are indicative rather than definitive.",
+          "vi": "Biên độ sai số khá rộng, nên các con số này chỉ mang tính tham khảo chứ chưa phải kết luận."
+        },
+        {
+          "en": "If the current trend holds, we'd expect to hit that target by the third quarter.",
+          "vi": "Nếu xu hướng hiện tại tiếp diễn, dự kiến ta sẽ đạt mục tiêu vào quý ba."
+        }
+      ],
+      "words": [
+        {
+          "word": "outlier",
+          "ipa": "/ˈaʊtˌlaɪər/",
+          "vi": "giá trị ngoại lai, trường hợp bất thường",
+          "example": "We excluded one outlier that was clearly a data entry error."
+        },
+        {
+          "word": "plateau",
+          "ipa": "/plæˈtoʊ/",
+          "vi": "chững lại (sau giai đoạn tăng)",
+          "example": "Sign-ups grew steadily and then plateaued in the summer."
+        },
+        {
+          "word": "caveat",
+          "ipa": "/ˈkæviˌæt/",
+          "vi": "lưu ý, điều kiện kèm theo",
+          "example": "One caveat: the survey only covered urban customers."
+        },
+        {
+          "word": "extrapolate",
+          "ipa": "/ɪkˈstræpəˌleɪt/",
+          "vi": "suy rộng, ngoại suy",
+          "example": "It's risky to extrapolate from just three months of data."
+        },
+        {
+          "word": "skewed",
+          "ipa": "/skjud/",
+          "vi": "bị lệch, sai lệch",
+          "example": "The average is skewed by a handful of very large orders."
+        },
+        {
+          "word": "robust",
+          "ipa": "/roʊˈbʌst/",
+          "vi": "vững chắc, đáng tin cậy (về số liệu, phương pháp)",
+          "example": "We need a larger sample before the findings are robust."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Tom (sales director)",
+        "roleB": "You (analyst)",
+        "lines": [
+          {
+            "s": "A",
+            "en": "So, bottom line — are sales up or not? I don't need the full statistics lecture.",
+            "vi": "Nói ngắn gọn — doanh số có tăng hay không? Tôi không cần nghe cả bài giảng thống kê."
+          },
+          {
+            "s": "B",
+            "en": "In short, yes — up about twelve percent. But the headline figure masks a lot of variation between regions.",
+            "vi": "Ngắn gọn là có — tăng khoảng mười hai phần trăm. Nhưng con số tổng che khuất sự chênh lệch lớn giữa các khu vực."
+          },
+          {
+            "s": "A",
+            "en": "Variation how? Twelve percent sounds pretty solid to me.",
+            "vi": "Chênh lệch thế nào? Mười hai phần trăm nghe khá ổn mà."
+          },
+          {
+            "s": "B",
+            "en": "The north grew by over thirty, while the south has essentially plateaued. The average is skewed by one strong region.",
+            "vi": "Miền Bắc tăng hơn ba mươi, còn miền Nam gần như đứng yên. Con số trung bình bị kéo lệch bởi một khu vực mạnh."
+          },
+          {
+            "s": "A",
+            "en": "Right. And that big jump in March — is that the new ad campaign paying off?",
+            "vi": "À. Còn cú tăng vọt hồi tháng Ba — có phải chiến dịch quảng cáo mới đã có hiệu quả?"
+          },
+          {
+            "s": "B",
+            "en": "Possibly, but I'd take it with a pinch of salt. It coincides with a one-off promotion, so it's hard to disentangle the two.",
+            "vi": "Có thể, nhưng tôi sẽ không vội tin. Nó trùng với một đợt khuyến mãi duy nhất nên khó tách bạch hai yếu tố."
+          },
+          {
+            "s": "A",
+            "en": "So you're saying the campaign didn't work?",
+            "vi": "Vậy ý anh là chiến dịch không hiệu quả?"
+          },
+          {
+            "s": "B",
+            "en": "Not quite. There's a clear correlation, but I'd stop short of saying one caused the other — at least not yet.",
+            "vi": "Không hẳn. Có tương quan rõ ràng, nhưng tôi chưa dám nói cái này gây ra cái kia — ít nhất là lúc này."
+          },
+          {
+            "s": "A",
+            "en": "Fine. What can I realistically tell the board about next year?",
+            "vi": "Được. Vậy tôi có thể nói gì với hội đồng quản trị về năm sau cho thực tế?"
+          },
+          {
+            "s": "B",
+            "en": "If the current trend holds, we'd hit target by the third quarter. The one caveat is that we're extrapolating from just two quarters.",
+            "vi": "Nếu xu hướng hiện tại giữ nguyên, ta sẽ đạt mục tiêu vào quý ba. Lưu ý duy nhất là ta đang ngoại suy từ chỉ hai quý."
+          },
+          {
+            "s": "A",
+            "en": "So it's a forecast, not a promise.",
+            "vi": "Tức là dự báo chứ không phải lời hứa."
+          },
+          {
+            "s": "B",
+            "en": "Exactly. I'd present it as indicative rather than definitive — that way nobody's caught off guard.",
+            "vi": "Chính xác. Tôi sẽ trình bày nó như số liệu tham khảo chứ chưa phải kết luận — như vậy không ai bị bất ngờ."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "The data is not 100% accurate.",
+          "natural": "These figures come with a few caveats, so I'd treat them as a rough guide.",
+          "vi": "Số liệu này có vài điểm cần lưu ý, nên chỉ nên xem là định hướng.",
+          "note": "'come with caveats' thừa nhận giới hạn của dữ liệu một cách chuyên nghiệp, không làm người nghe mất niềm tin."
+        },
+        {
+          "plain": "Sales went up and then did not change.",
+          "natural": "Sales climbed steadily through spring and then leveled off.",
+          "vi": "Doanh số tăng đều suốt mùa xuân rồi chững lại.",
+          "note": "Dùng động từ mô tả xu hướng ('climb', 'level off', 'plateau', 'dip') thay vì 'go up/not change' sẽ nghe trôi chảy hơn hẳn."
+        },
+        {
+          "plain": "This number is very big. It is 5%.",
+          "natural": "Five percent might not sound like much, but to put it in perspective, that's two thousand customers.",
+          "vi": "Năm phần trăm nghe thì không nhiều, nhưng quy ra thì là hai nghìn khách hàng.",
+          "note": "'to put it in perspective' giúp người không chuyên hình dung con số — kỹ năng quan trọng nhất khi trình bày dữ liệu."
+        }
+      ]
+    },
+    {
+      "id": "senior-interview",
+      "category": "work",
+      "title": "Interviewing for a leadership role",
+      "titleVi": "Phỏng vấn vị trí quản lý cấp cao",
+      "emoji": "🧭",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "My first ninety days would be about listening before I start changing things.",
+          "vi": "Chín mươi ngày đầu tiên, tôi sẽ lắng nghe trước khi bắt đầu thay đổi gì.",
+          "tip": "Nhà tuyển dụng cấp cao rất thích ứng viên biết 'lắng nghe trước, hành động sau'."
+        },
+        {
+          "en": "In hindsight, I underestimated how much the team needed clarity on priorities.",
+          "vi": "Nhìn lại, tôi đã đánh giá thấp mức độ nhóm cần rõ ràng về thứ tự ưu tiên.",
+          "tip": "'In hindsight' = nhìn lại sau sự việc; dùng khi kể thất bại một cách thẳng thắn, trưởng thành."
+        },
+        {
+          "en": "I'd describe my leadership style as collaborative, though I'm not afraid to make the call when it's needed.",
+          "vi": "Phong cách lãnh đạo của tôi thiên về hợp tác, dù tôi không ngại ra quyết định khi cần."
+        },
+        {
+          "en": "That experience fundamentally changed how I approach stakeholder management.",
+          "vi": "Trải nghiệm đó đã thay đổi hẳn cách tôi làm việc với các bên liên quan."
+        },
+        {
+          "en": "I'd rather surface a problem early than present a polished picture that isn't accurate.",
+          "vi": "Tôi thà nêu vấn đề sớm còn hơn đưa ra một bức tranh bóng bẩy mà không đúng thực tế.",
+          "tip": "'surface a problem' = đưa vấn đề ra ánh sáng; cụm này thể hiện sự minh bạch."
+        },
+        {
+          "en": "Could you tell me how success in this role would be measured a year from now?",
+          "vi": "Anh/chị có thể cho biết thành công ở vị trí này sẽ được đánh giá thế nào sau một năm không?"
+        }
+      ],
+      "words": [
+        {
+          "word": "accountability",
+          "ipa": "/əˌkaʊntəˈbɪləti/",
+          "vi": "trách nhiệm giải trình",
+          "example": "I believe in clear accountability, starting with myself."
+        },
+        {
+          "word": "delegate",
+          "ipa": "/ˈdɛləˌɡeɪt/",
+          "vi": "ủy quyền, giao việc",
+          "example": "Learning to delegate was the hardest part of my first management role."
+        },
+        {
+          "word": "turnaround",
+          "ipa": "/ˈtɜrnəˌraʊnd/",
+          "vi": "sự xoay chuyển tình thế (từ kém sang tốt)",
+          "example": "She led the turnaround of a loss-making division."
+        },
+        {
+          "word": "pivotal",
+          "ipa": "/ˈpɪvətəl/",
+          "vi": "then chốt, mang tính bước ngoặt",
+          "example": "That project was pivotal in shaping my approach to risk."
+        },
+        {
+          "word": "headcount",
+          "ipa": "/ˈhɛdˌkaʊnt/",
+          "vi": "số lượng nhân sự",
+          "example": "I managed a headcount of around forty across three countries."
+        },
+        {
+          "word": "resilience",
+          "ipa": "/rɪˈzɪljəns/",
+          "vi": "khả năng phục hồi, sức bật",
+          "example": "The restructuring tested the team's resilience."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Ms. Patel (CEO)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Let's get straight to it. Why do you think you're ready to lead an entire division?",
+            "vi": "Vào thẳng vấn đề nhé. Vì sao anh nghĩ mình đã sẵn sàng lãnh đạo cả một khối?"
+          },
+          {
+            "s": "B",
+            "en": "Over the past four years I've grown my team from twelve to forty, and led a turnaround of a product line that was losing money.",
+            "vi": "Trong bốn năm qua, tôi đã phát triển nhóm từ mười hai lên bốn mươi người, và vực dậy một dòng sản phẩm đang thua lỗ."
+          },
+          {
+            "s": "A",
+            "en": "Impressive. Now tell me about something that didn't go to plan.",
+            "vi": "Ấn tượng đấy. Giờ hãy kể về một việc không diễn ra như kế hoạch."
+          },
+          {
+            "s": "B",
+            "en": "We launched a new platform six months late. In hindsight, I underestimated how much the team needed clarity on priorities.",
+            "vi": "Chúng tôi ra mắt một nền tảng mới trễ sáu tháng. Nhìn lại, tôi đã đánh giá thấp mức độ nhóm cần rõ ràng về thứ tự ưu tiên."
+          },
+          {
+            "s": "A",
+            "en": "And what did you take away from it?",
+            "vi": "Và anh rút ra được gì từ đó?"
+          },
+          {
+            "s": "B",
+            "en": "That I'd rather surface a problem early than present a polished picture that isn't accurate. I now run risk reviews every two weeks.",
+            "vi": "Rằng tôi thà nêu vấn đề sớm còn hơn đưa ra bức tranh bóng bẩy mà không đúng thực tế. Giờ tôi tổ chức họp rà soát rủi ro hai tuần một lần."
+          },
+          {
+            "s": "A",
+            "en": "How would your direct reports describe your leadership style?",
+            "vi": "Cấp dưới trực tiếp sẽ mô tả phong cách lãnh đạo của anh thế nào?"
+          },
+          {
+            "s": "B",
+            "en": "Collaborative, I'd hope — though I'm not afraid to make the call when consensus isn't forthcoming.",
+            "vi": "Hy vọng là thiên về hợp tác — dù tôi không ngại ra quyết định khi không đạt được đồng thuận."
+          },
+          {
+            "s": "A",
+            "en": "This division has had three heads in two years. Morale is low. Where would you start?",
+            "vi": "Khối này đã đổi ba trưởng bộ phận trong hai năm. Tinh thần nhân viên đang xuống. Anh sẽ bắt đầu từ đâu?"
+          },
+          {
+            "s": "B",
+            "en": "Honestly, my first ninety days would be about listening. Granted, people want quick wins, but trust has to come first.",
+            "vi": "Thật lòng, chín mươi ngày đầu tôi sẽ dành để lắng nghe. Đúng là mọi người muốn thấy kết quả nhanh, nhưng niềm tin phải đi trước."
+          },
+          {
+            "s": "A",
+            "en": "That's a refreshingly candid answer. Do you have any questions for me?",
+            "vi": "Một câu trả lời thẳng thắn hiếm thấy. Anh có câu hỏi gì cho tôi không?"
+          },
+          {
+            "s": "B",
+            "en": "Just one: how would you measure success in this role a year from now?",
+            "vi": "Chỉ một câu thôi: sau một năm, chị sẽ đánh giá thành công ở vị trí này như thế nào?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I made a mistake in that project.",
+          "natural": "Looking back, that's one I'd handle very differently today.",
+          "vi": "Nhìn lại, nếu là bây giờ tôi sẽ xử lý việc đó khác hẳn.",
+          "note": "Thừa nhận sai lầm nhưng hướng về bài học; người phỏng vấn cấp cao đánh giá cao sự tự nhận thức này."
+        },
+        {
+          "plain": "I am a good leader.",
+          "natural": "I'd like to think my team would say I give them room to grow but hold them to a high bar.",
+          "vi": "Tôi mong nhóm sẽ nói rằng tôi cho họ không gian phát triển nhưng vẫn đặt chuẩn mực cao.",
+          "note": "Đừng tự khen; hãy nói qua góc nhìn của người khác. 'hold someone to a high bar' = đòi hỏi tiêu chuẩn cao."
+        },
+        {
+          "plain": "I don't know the answer to that.",
+          "natural": "That's a great question, and I'd want to understand the context better before committing to a view.",
+          "vi": "Câu hỏi hay. Tôi muốn hiểu rõ bối cảnh hơn trước khi đưa ra quan điểm.",
+          "note": "Ở vị trí lãnh đạo, thừa nhận cần thêm thông tin là dấu hiệu chín chắn, không phải yếu kém."
+        }
+      ]
+    },
+    {
+      "id": "mediating-conflict",
+      "category": "work",
+      "title": "Mediating between two colleagues",
+      "titleVi": "Hòa giải mâu thuẫn giữa hai đồng nghiệp",
+      "emoji": "⚖️",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "I'm not here to apportion blame — I just want to understand where things broke down.",
+          "vi": "Tôi không ở đây để quy trách nhiệm — tôi chỉ muốn hiểu mọi chuyện đổ vỡ từ đâu.",
+          "tip": "'apportion blame' = phân chia lỗi; nói rõ ngay từ đầu để hai bên bớt phòng thủ."
+        },
+        {
+          "en": "Let's give each of you a chance to say your piece without interruption.",
+          "vi": "Mỗi người lần lượt nói hết ý mình, không ai ngắt lời nhé.",
+          "tip": "'say your piece' = nói hết điều mình muốn nói."
+        },
+        {
+          "en": "So if I'm hearing you correctly, the issue is less the deadline itself and more how it was communicated.",
+          "vi": "Nếu tôi hiểu đúng, vấn đề không hẳn là hạn chót mà là cách nó được thông báo.",
+          "tip": "Diễn đạt lại ý người nói ('If I'm hearing you correctly...') giúp họ thấy mình được lắng nghe."
+        },
+        {
+          "en": "It sounds like you both want the same outcome, but you're coming at it from different angles.",
+          "vi": "Có vẻ cả hai đều muốn cùng một kết quả, chỉ là tiếp cận từ những góc khác nhau."
+        },
+        {
+          "en": "Can we park the question of who said what and focus on how we move forward?",
+          "vi": "Mình tạm gác chuyện ai nói gì để tập trung vào hướng giải quyết được không?"
+        },
+        {
+          "en": "What would a workable compromise look like from your side?",
+          "vi": "Từ phía bạn, một giải pháp dung hòa khả thi sẽ trông như thế nào?"
+        }
+      ],
+      "words": [
+        {
+          "word": "impartial",
+          "ipa": "/ɪmˈpɑrʃəl/",
+          "vi": "công tâm, không thiên vị",
+          "example": "As their manager, I had to stay strictly impartial."
+        },
+        {
+          "word": "grievance",
+          "ipa": "/ˈɡrivəns/",
+          "vi": "nỗi bất bình, điều phàn nàn",
+          "example": "She'd been nursing a grievance about the promotion for months."
+        },
+        {
+          "word": "escalate",
+          "ipa": "/ˈɛskəˌleɪt/",
+          "vi": "leo thang; đẩy lên cấp cao hơn",
+          "example": "We want to resolve this before it escalates to HR."
+        },
+        {
+          "word": "common ground",
+          "ipa": "/ˈkɑmən ɡraʊnd/",
+          "vi": "điểm chung",
+          "example": "Once they found some common ground, the tension eased."
+        },
+        {
+          "word": "defensive",
+          "ipa": "/dɪˈfɛnsɪv/",
+          "vi": "phòng thủ, dễ tự ái",
+          "example": "He got defensive as soon as his work was mentioned."
+        },
+        {
+          "word": "friction",
+          "ipa": "/ˈfrɪkʃən/",
+          "vi": "sự va chạm, bất hòa",
+          "example": "There's been some friction between design and engineering lately."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Linh (designer)",
+        "roleB": "You (team lead)",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Honestly, I don't see the point of this meeting. Sam just ignores every deadline I set.",
+            "vi": "Thật lòng, tôi không thấy cuộc họp này có ích gì. Sam cứ phớt lờ mọi hạn chót tôi đặt ra."
+          },
+          {
+            "s": "B",
+            "en": "I hear your frustration. Just to be clear, I'm not here to apportion blame — I want to understand where things broke down.",
+            "vi": "Tôi hiểu bạn đang bực. Nói rõ là tôi không ở đây để quy lỗi — tôi muốn hiểu mọi chuyện đổ vỡ từ đâu."
+          },
+          {
+            "s": "A",
+            "en": "Fine. I sent the designs two weeks ago and heard nothing until the day before launch.",
+            "vi": "Được. Tôi gửi bản thiết kế từ hai tuần trước mà không nghe phản hồi gì cho đến ngày trước khi ra mắt."
+          },
+          {
+            "s": "B",
+            "en": "That must have been stressful. Sam mentioned the specs changed twice in that period — were you aware of that?",
+            "vi": "Chắc hẳn rất căng thẳng. Sam có nói yêu cầu kỹ thuật thay đổi hai lần trong thời gian đó — bạn có biết không?"
+          },
+          {
+            "s": "A",
+            "en": "Well, no. Nobody told me. But that's hardly my fault.",
+            "vi": "À, không. Chẳng ai báo tôi cả. Nhưng đâu phải lỗi của tôi."
+          },
+          {
+            "s": "B",
+            "en": "Nobody's suggesting it is. So if I'm hearing you correctly, the issue is less the deadline and more that you were kept out of the loop.",
+            "vi": "Không ai nói vậy cả. Nếu tôi hiểu đúng, vấn đề không hẳn là hạn chót mà là bạn không được cập nhật thông tin."
+          },
+          {
+            "s": "A",
+            "en": "Yes, exactly. I felt like my work didn't matter.",
+            "vi": "Đúng vậy. Tôi cảm thấy công sức của mình chẳng được coi trọng."
+          },
+          {
+            "s": "B",
+            "en": "That's important, and I'll make sure Sam hears it. For what it's worth, he told me he felt equally blindsided by the client.",
+            "vi": "Điều đó quan trọng, và tôi sẽ đảm bảo Sam nghe được. Nói thêm là Sam cũng kể anh ấy bị khách hàng làm cho bất ngờ không kém."
+          },
+          {
+            "s": "A",
+            "en": "I didn't realize that. I suppose we were both under pressure.",
+            "vi": "Tôi không biết chuyện đó. Chắc là cả hai đều đang chịu áp lực."
+          },
+          {
+            "s": "B",
+            "en": "It sounds like you both want the same thing. Can we park who said what and focus on how we move forward?",
+            "vi": "Có vẻ cả hai đều muốn cùng một điều. Mình gác chuyện ai nói gì để tập trung vào hướng đi tiếp được không?"
+          },
+          {
+            "s": "A",
+            "en": "Sure. Maybe a quick weekly check-in between the three of us would help.",
+            "vi": "Được. Có lẽ một buổi trao đổi ngắn hằng tuần giữa ba chúng ta sẽ có ích."
+          },
+          {
+            "s": "B",
+            "en": "That's a constructive idea. Let's put it to Sam this afternoon and see if he's on board.",
+            "vi": "Ý tưởng rất xây dựng. Chiều nay mình đề xuất với Sam xem anh ấy có đồng ý không nhé."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "You two must stop fighting.",
+          "natural": "I think we'd all benefit from taking the heat out of this a little.",
+          "vi": "Tôi nghĩ mọi người nên hạ nhiệt một chút thì tốt hơn.",
+          "note": "'take the heat out of something' = làm dịu căng thẳng. Dùng 'we' để người hòa giải đứng cùng phía, không ra lệnh."
+        },
+        {
+          "plain": "You did not tell her the information.",
+          "natural": "It seems some of the updates may not have reached Linh in time.",
+          "vi": "Có vẻ một số thông tin cập nhật chưa đến tay Linh kịp lúc.",
+          "note": "Câu bị động kèm 'may not have' giúp nêu sự việc mà không chỉ mặt ai — tránh làm người kia phòng thủ."
+        },
+        {
+          "plain": "Both of you are right.",
+          "natural": "You each have a point, and I don't think they're mutually exclusive.",
+          "vi": "Mỗi người đều có lý, và tôi nghĩ hai ý đó không hề loại trừ nhau.",
+          "note": "'mutually exclusive' = loại trừ lẫn nhau. Giúp hai bên thấy có thể cùng đúng, mở đường cho thỏa hiệp."
+        }
+      ]
+    },
+    {
+      "id": "crisis-communication",
+      "category": "work",
+      "title": "Communicating in a crisis",
+      "titleVi": "Phát ngôn khi doanh nghiệp gặp khủng hoảng",
+      "emoji": "📣",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "Let me be absolutely clear: this should never have happened, and the responsibility is ours.",
+          "vi": "Tôi xin nói thật rõ: chuyện này lẽ ra không bao giờ được xảy ra, và trách nhiệm thuộc về chúng tôi.",
+          "tip": "Nhận trách nhiệm thẳng thắn ngay từ đầu giúp lấy lại lòng tin nhanh hơn mọi lời giải thích."
+        },
+        {
+          "en": "I won't speculate while the investigation is ongoing.",
+          "vi": "Tôi sẽ không suy đoán khi cuộc điều tra vẫn đang diễn ra."
+        },
+        {
+          "en": "What I can tell you is what we know, what we don't yet know, and what we're doing about it.",
+          "vi": "Điều tôi có thể nói là những gì chúng tôi đã biết, những gì chưa rõ, và chúng tôi đang làm gì để xử lý.",
+          "tip": "Cấu trúc 'biết – chưa biết – đang làm' giúp bạn minh bạch mà không hứa quá đà."
+        },
+        {
+          "en": "Our first priority is the people affected, not our share price.",
+          "vi": "Ưu tiên hàng đầu của chúng tôi là những người bị ảnh hưởng, chứ không phải giá cổ phiếu."
+        },
+        {
+          "en": "I'd rather not get ahead of the facts.",
+          "vi": "Tôi không muốn nói trước khi có đủ dữ kiện.",
+          "tip": "Cách từ chối trả lời lịch sự, nghe có trách nhiệm chứ không né tránh."
+        },
+        {
+          "en": "We'll be back to you with a full update by close of business tomorrow.",
+          "vi": "Chúng tôi sẽ cập nhật đầy đủ cho quý vị trước giờ làm việc kết thúc ngày mai."
+        }
+      ],
+      "words": [
+        {
+          "word": "accountability",
+          "ipa": "/əˌkaʊntəˈbɪləti/",
+          "vi": "tinh thần chịu trách nhiệm, trách nhiệm giải trình",
+          "example": "The public wants accountability, not another vague apology."
+        },
+        {
+          "word": "mitigate",
+          "ipa": "/ˈmɪtəˌɡeɪt/",
+          "vi": "giảm nhẹ, hạn chế (thiệt hại)",
+          "example": "We've taken immediate steps to mitigate the damage."
+        },
+        {
+          "word": "equivocate",
+          "ipa": "/ɪˈkwɪvəˌkeɪt/",
+          "vi": "nói nước đôi, lấp lửng để né tránh",
+          "example": "If you equivocate now, the press will assume the worst."
+        },
+        {
+          "word": "remediation",
+          "ipa": "/rɪˌmidiˈeɪʃən/",
+          "vi": "việc khắc phục, sửa chữa hậu quả",
+          "example": "The remediation plan will be published in full next week."
+        },
+        {
+          "word": "contrition",
+          "ipa": "/kənˈtrɪʃən/",
+          "vi": "sự hối lỗi chân thành",
+          "example": "His statement showed genuine contrition, which helped."
+        },
+        {
+          "word": "stakeholder",
+          "ipa": "/ˈsteɪkˌhoʊldər/",
+          "vi": "bên liên quan (cổ đông, khách hàng, nhân viên...)",
+          "example": "We need to brief every stakeholder before the story breaks."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Journalist",
+        "roleB": "You (CEO)",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Customer data was exposed for nearly three weeks before you said anything. How do you justify that?",
+            "vi": "Dữ liệu khách hàng bị lộ gần ba tuần trước khi công ty lên tiếng. Ông giải thích thế nào về việc đó?"
+          },
+          {
+            "s": "B",
+            "en": "I don't think it can be justified, and I'm not going to try. We were too slow, and that's on me.",
+            "vi": "Tôi không nghĩ việc đó có thể biện minh được, và tôi sẽ không cố biện minh. Chúng tôi đã quá chậm, và đó là lỗi của tôi."
+          },
+          {
+            "s": "A",
+            "en": "Some would say that's a convenient thing to say now that it's public.",
+            "vi": "Có người sẽ bảo nói vậy thì dễ, khi chuyện đã vỡ lở rồi."
+          },
+          {
+            "s": "B",
+            "en": "That's a fair challenge. All I can do is let our actions over the next few weeks speak for themselves.",
+            "vi": "Chất vấn đó hoàn toàn hợp lý. Tôi chỉ có thể để hành động của chúng tôi trong vài tuần tới tự lên tiếng."
+          },
+          {
+            "s": "A",
+            "en": "So how many customers are we actually talking about?",
+            "vi": "Vậy thực ra là bao nhiêu khách hàng bị ảnh hưởng?"
+          },
+          {
+            "s": "B",
+            "en": "Our current estimate is around forty thousand, but I'd rather not get ahead of the facts. That figure may well change.",
+            "vi": "Ước tính hiện tại là khoảng bốn mươi nghìn, nhưng tôi không muốn nói trước khi đủ dữ kiện. Con số đó rất có thể sẽ thay đổi."
+          },
+          {
+            "s": "A",
+            "en": "Was it an outside attack, or did someone inside the company drop the ball?",
+            "vi": "Đây là tấn công từ bên ngoài, hay có người trong công ty đã lơ là?"
+          },
+          {
+            "s": "B",
+            "en": "I won't speculate while the investigation is ongoing. What I will say is that no one is being shielded, myself included.",
+            "vi": "Tôi sẽ không suy đoán khi cuộc điều tra còn đang diễn ra. Điều tôi khẳng định là không ai được bao che, kể cả bản thân tôi."
+          },
+          {
+            "s": "A",
+            "en": "And what are affected customers supposed to do in the meantime?",
+            "vi": "Trong lúc chờ đợi, những khách hàng bị ảnh hưởng nên làm gì?"
+          },
+          {
+            "s": "B",
+            "en": "Everyone affected will be contacted directly today, with free credit monitoring for two years and a dedicated helpline.",
+            "vi": "Hôm nay mọi người bị ảnh hưởng sẽ được liên hệ trực tiếp, kèm dịch vụ giám sát tín dụng miễn phí hai năm và một đường dây hỗ trợ riêng."
+          },
+          {
+            "s": "A",
+            "en": "Are you considering your own position?",
+            "vi": "Ông có tính đến chuyện từ chức không?"
+          },
+          {
+            "s": "B",
+            "en": "My job right now is to put this right. Whether I'm the right person to lead afterwards is for the board to decide, not me.",
+            "vi": "Việc của tôi lúc này là khắc phục hậu quả. Sau đó tôi có còn phù hợp để lãnh đạo hay không là do hội đồng quản trị quyết định, không phải tôi."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "It's not our fault, a supplier made the mistake.",
+          "natural": "The failure happened on our watch, so ultimately it's ours to own.",
+          "vi": "Sự cố xảy ra dưới sự quản lý của chúng tôi, nên rốt cuộc chúng tôi phải chịu trách nhiệm.",
+          "note": "'On our watch' = trong phạm vi mình phụ trách. Đổ lỗi cho đối tác lúc khủng hoảng chỉ khiến công chúng mất thiện cảm hơn."
+        },
+        {
+          "plain": "I can't answer that question.",
+          "natural": "I'm not in a position to comment on that just yet.",
+          "vi": "Hiện tôi chưa thể bình luận về việc đó.",
+          "note": "'Not in a position to' nghe chuyên nghiệp, ngụ ý có lý do chính đáng (pháp lý, điều tra) chứ không phải giấu giếm."
+        },
+        {
+          "plain": "We are very sorry for the problem.",
+          "natural": "We let our customers down, and I apologise unreservedly.",
+          "vi": "Chúng tôi đã làm khách hàng thất vọng, và tôi xin lỗi không chút bào chữa.",
+          "note": "'Unreservedly' nghĩa là xin lỗi trọn vẹn, không kèm chữ 'nhưng'. Gọi tên cái sai cụ thể thì lời xin lỗi mới có sức nặng."
+        }
+      ]
+    },
+    {
+      "id": "keynote-speech",
+      "category": "work",
+      "title": "Delivering a keynote",
+      "titleVi": "Trình bày bài phát biểu chính",
+      "emoji": "🎤",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "Ten years ago, I stood in a room much smaller than this one, with an idea nobody wanted.",
+          "vi": "Mười năm trước, tôi đứng trong một căn phòng nhỏ hơn nơi này nhiều, với một ý tưởng không ai thèm để ý.",
+          "tip": "Mở đầu bằng một câu chuyện cá nhân giữ chân khán giả tốt hơn mọi con số thống kê."
+        },
+        {
+          "en": "It was faster, it was cheaper, and, frankly, it was wrong.",
+          "vi": "Nó nhanh hơn, rẻ hơn, và nói thật thì nó sai.",
+          "tip": "Quy tắc ba: hai ý đầu dựng nhịp, ý thứ ba tạo bất ngờ hoặc nhấn mạnh."
+        },
+        {
+          "en": "So I want to leave you with one question tonight.",
+          "vi": "Vì vậy tối nay tôi muốn để lại cho quý vị một câu hỏi."
+        },
+        {
+          "en": "Remember that small room I mentioned? Well, here we are.",
+          "vi": "Quý vị còn nhớ căn phòng nhỏ tôi nhắc đến chứ? Và giờ chúng ta ở đây.",
+          "tip": "Gọi lại hình ảnh ở phần mở đầu (callback) khiến bài nói khép lại trọn vẹn, đầy cảm xúc."
+        },
+        {
+          "en": "Let that sink in for a moment.",
+          "vi": "Hãy dành một chút để thấm điều đó."
+        },
+        {
+          "en": "The question isn't whether this will change our industry. It's whether we'll be the ones to change it.",
+          "vi": "Câu hỏi không phải là điều này có thay đổi ngành của chúng ta hay không, mà là chúng ta có phải người tạo ra sự thay đổi đó hay không."
+        }
+      ],
+      "words": [
+        {
+          "word": "rhetoric",
+          "ipa": "/ˈrɛtərɪk/",
+          "vi": "thuật hùng biện, tu từ",
+          "example": "Good rhetoric makes a complex idea feel inevitable."
+        },
+        {
+          "word": "anecdote",
+          "ipa": "/ˈænɪkˌdoʊt/",
+          "vi": "giai thoại, câu chuyện nhỏ có thật",
+          "example": "She opened with an anecdote about her first failed startup."
+        },
+        {
+          "word": "callback",
+          "ipa": "/ˈkɔlˌbæk/",
+          "vi": "chi tiết được nhắc lại từ phần trước",
+          "example": "The callback to the opening story got a huge round of applause."
+        },
+        {
+          "word": "cadence",
+          "ipa": "/ˈkeɪdəns/",
+          "vi": "nhịp điệu lên xuống của giọng nói",
+          "example": "Slow your cadence before the key line so it lands."
+        },
+        {
+          "word": "galvanize",
+          "ipa": "/ˈɡælvəˌnaɪz/",
+          "vi": "khích lệ, thôi thúc hành động",
+          "example": "The speech galvanized the whole team into action."
+        },
+        {
+          "word": "poignant",
+          "ipa": "/ˈpɔɪnjənt/",
+          "vi": "gây xúc động sâu sắc",
+          "example": "It was a poignant moment when she mentioned her late mentor."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Maya (speech coach)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Okay, run me through your opening one more time.",
+            "vi": "Được rồi, bạn trình bày lại phần mở đầu cho mình nghe lần nữa nhé."
+          },
+          {
+            "s": "B",
+            "en": "\"Good evening. Today I'll talk about three trends in logistics.\" Then I go straight into the market data.",
+            "vi": "\"Chào buổi tối. Hôm nay tôi sẽ nói về ba xu hướng trong ngành logistics.\" Sau đó mình vào thẳng số liệu thị trường."
+          },
+          {
+            "s": "A",
+            "en": "Honestly? That's perfectly serviceable, and nobody will remember a word of it.",
+            "vi": "Nói thật nhé? Thế cũng tạm ổn, nhưng sẽ chẳng ai nhớ nổi chữ nào đâu."
+          },
+          {
+            "s": "B",
+            "en": "Ouch. Fair, though. What would you open with instead?",
+            "vi": "Đau đấy. Nhưng công nhận. Vậy bạn sẽ mở đầu bằng gì?"
+          },
+          {
+            "s": "A",
+            "en": "A story. Didn't you once say your first warehouse flooded the week you opened?",
+            "vi": "Một câu chuyện. Chẳng phải bạn từng kể kho hàng đầu tiên bị ngập ngay tuần khai trương sao?"
+          },
+          {
+            "s": "B",
+            "en": "It did. We lost everything. I spent three nights sleeping on pallets.",
+            "vi": "Đúng vậy. Mất sạch. Mình đã ngủ trên mấy tấm pallet ba đêm liền."
+          },
+          {
+            "s": "A",
+            "en": "That's your opening. Start there, and the data will mean something.",
+            "vi": "Đó chính là phần mở đầu của bạn. Bắt đầu từ đó thì số liệu mới có ý nghĩa."
+          },
+          {
+            "s": "B",
+            "en": "And then I could come back to the flood at the end, as a callback?",
+            "vi": "Rồi cuối bài mình nhắc lại vụ ngập lụt, như một chi tiết gọi lại?"
+          },
+          {
+            "s": "A",
+            "en": "Exactly. \"We started underwater. Now we help others stay afloat.\" Something like that.",
+            "vi": "Chính xác. \"Chúng tôi khởi đầu dưới nước. Giờ chúng tôi giúp người khác giữ mình nổi.\" Đại loại thế."
+          },
+          {
+            "s": "B",
+            "en": "That's good. Slightly cheesy, but good.",
+            "vi": "Hay đấy. Hơi sến một chút, nhưng hay."
+          },
+          {
+            "s": "A",
+            "en": "A keynote can afford a little cheese. Just pause before the last line and let it land.",
+            "vi": "Bài phát biểu chính thì sến một chút cũng được. Chỉ cần ngừng một nhịp trước câu cuối để nó thấm."
+          },
+          {
+            "s": "B",
+            "en": "Pause, breathe, deliver. I think I've just found my own rule of three.",
+            "vi": "Ngừng, thở, nói. Hình như mình vừa tìm ra quy tắc ba của riêng mình rồi."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Today I will talk about our new strategy.",
+          "natural": "I want to start not with a strategy, but with a story.",
+          "vi": "Tôi muốn bắt đầu không phải bằng một chiến lược, mà bằng một câu chuyện.",
+          "note": "Phá kỳ vọng ngay câu đầu khiến khán giả tò mò, thay vì đọc mục lục như báo cáo."
+        },
+        {
+          "plain": "This is very important.",
+          "natural": "If you remember just one thing from tonight, make it this.",
+          "vi": "Nếu tối nay quý vị chỉ nhớ một điều, hãy nhớ điều này.",
+          "note": "Thay vì nói 'quan trọng', hãy cho khán giả biết chính xác họ cần mang gì về."
+        },
+        {
+          "plain": "Thank you for listening. That is the end.",
+          "natural": "So, back to that flooded warehouse. Turns out it was the best thing that ever happened to us. Thank you.",
+          "vi": "Vậy, quay lại cái kho bị ngập. Hóa ra đó lại là điều tuyệt nhất từng xảy ra với chúng tôi. Xin cảm ơn.",
+          "note": "Kết bằng cách gọi lại câu chuyện mở đầu (callback) để bài nói tròn trịa và đọng lại lâu."
+        }
+      ]
+    },
+    {
+      "id": "formal-register",
+      "category": "work",
+      "title": "Formal register in contract talks",
+      "titleVi": "Ngôn ngữ trang trọng khi bàn hợp đồng",
+      "emoji": "⚖️",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "We'd like to seek clarification on clause seven, if we may.",
+          "vi": "Nếu được, chúng tôi muốn làm rõ thêm về điều khoản số bảy.",
+          "tip": "'If we may' giữ thái độ tôn trọng, đặc biệt khi sắp chất vấn bên kia."
+        },
+        {
+          "en": "Our position on this point remains unchanged.",
+          "vi": "Quan điểm của chúng tôi về điểm này vẫn không thay đổi."
+        },
+        {
+          "en": "Without prejudice, we'd be prepared to consider a revised figure.",
+          "vi": "Không làm ảnh hưởng đến quyền lợi pháp lý, chúng tôi sẵn sàng xem xét một con số điều chỉnh.",
+          "tip": "'Without prejudice' là thuật ngữ pháp lý: lời đề nghị này không được dùng làm bằng chứng chống lại bạn sau này."
+        },
+        {
+          "en": "That would, in our view, fall outside the scope of the agreement.",
+          "vi": "Theo quan điểm của chúng tôi, điều đó nằm ngoài phạm vi của thỏa thuận."
+        },
+        {
+          "en": "We would need to reserve our rights in that regard.",
+          "vi": "Về vấn đề đó, chúng tôi cần bảo lưu các quyền của mình.",
+          "tip": "Nghĩa là 'chúng tôi chưa đồng ý và có thể khởi kiện sau', nói rất lịch sự nhưng rất cứng."
+        },
+        {
+          "en": "Subject to board approval, I believe we have an agreement in principle.",
+          "vi": "Tùy thuộc vào sự phê duyệt của hội đồng quản trị, tôi tin chúng ta đã đạt được thỏa thuận về nguyên tắc."
+        }
+      ],
+      "words": [
+        {
+          "word": "indemnify",
+          "ipa": "/ɪnˈdɛmnəˌfaɪ/",
+          "vi": "bồi thường, đảm bảo bồi hoàn",
+          "example": "The supplier agrees to indemnify us against any third-party claims."
+        },
+        {
+          "word": "liability",
+          "ipa": "/ˌlaɪəˈbɪləti/",
+          "vi": "trách nhiệm pháp lý",
+          "example": "We can't accept unlimited liability for delays."
+        },
+        {
+          "word": "notwithstanding",
+          "ipa": "/ˌnɑtwɪθˈstændɪŋ/",
+          "vi": "bất chấp, mặc dù (văn phong pháp lý)",
+          "example": "Notwithstanding clause four, either party may terminate early."
+        },
+        {
+          "word": "breach",
+          "ipa": "/britʃ/",
+          "vi": "sự vi phạm (hợp đồng)",
+          "example": "Missing the deadline would constitute a material breach."
+        },
+        {
+          "word": "stipulate",
+          "ipa": "/ˈstɪpjəˌleɪt/",
+          "vi": "quy định rõ (trong hợp đồng)",
+          "example": "The contract stipulates payment within thirty days."
+        },
+        {
+          "word": "provision",
+          "ipa": "/prəˈvɪʒən/",
+          "vi": "điều khoản, quy định",
+          "example": "There's no provision for early termination."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Mr. Carter (client's lawyer)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Shall we turn to the liability provisions? My client has some concerns.",
+            "vi": "Chúng ta chuyển sang các điều khoản về trách nhiệm pháp lý nhé? Thân chủ của tôi có vài băn khoăn."
+          },
+          {
+            "s": "B",
+            "en": "By all means. We'd welcome the opportunity to address them.",
+            "vi": "Xin mời. Chúng tôi rất sẵn lòng giải đáp."
+          },
+          {
+            "s": "A",
+            "en": "As drafted, clause nine caps your liability at the value of a single invoice. That's simply not acceptable.",
+            "vi": "Theo bản dự thảo, điều chín giới hạn trách nhiệm của quý công ty ở mức giá trị một hóa đơn. Điều đó đơn giản là không thể chấp nhận."
+          },
+          {
+            "s": "B",
+            "en": "I appreciate the concern. However, an uncapped liability would be commercially unworkable for us.",
+            "vi": "Tôi hiểu mối lo ngại đó. Tuy nhiên, trách nhiệm không giới hạn sẽ không khả thi về mặt thương mại đối với chúng tôi."
+          },
+          {
+            "s": "A",
+            "en": "We're not asking for uncapped. We're asking for something proportionate to the risk.",
+            "vi": "Chúng tôi không đòi không giới hạn. Chúng tôi chỉ yêu cầu một mức tương xứng với rủi ro."
+          },
+          {
+            "s": "B",
+            "en": "Without prejudice, we'd be prepared to consider a cap of twelve months' fees.",
+            "vi": "Không làm ảnh hưởng đến quyền lợi pháp lý, chúng tôi sẵn sàng xem xét mức trần bằng phí của mười hai tháng."
+          },
+          {
+            "s": "A",
+            "en": "That's a step in the right direction. Would that extend to data breaches?",
+            "vi": "Đó là một bước đi đúng hướng. Mức đó có áp dụng cho các vụ rò rỉ dữ liệu không?"
+          },
+          {
+            "s": "B",
+            "en": "Data breaches would, in our view, warrant a separate provision, given the regulatory exposure.",
+            "vi": "Theo quan điểm của chúng tôi, rò rỉ dữ liệu cần một điều khoản riêng, xét đến rủi ro về mặt pháp quy."
+          },
+          {
+            "s": "A",
+            "en": "My client would want that drafted before we go any further.",
+            "vi": "Thân chủ của tôi muốn điều khoản đó được soạn thảo trước khi chúng ta tiến thêm."
+          },
+          {
+            "s": "B",
+            "en": "That seems entirely reasonable. We can circulate a revised draft by Friday.",
+            "vi": "Điều đó hoàn toàn hợp lý. Chúng tôi có thể gửi bản dự thảo sửa đổi trước thứ Sáu."
+          },
+          {
+            "s": "A",
+            "en": "Very well. And for the avoidance of doubt, nothing is agreed until everything is agreed.",
+            "vi": "Được. Và để tránh hiểu nhầm, chưa có gì được thống nhất cho đến khi mọi thứ được thống nhất."
+          },
+          {
+            "s": "B",
+            "en": "Understood. We'd expect nothing less.",
+            "vi": "Đã rõ. Chúng tôi cũng nghĩ như vậy."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "We don't agree with this part.",
+          "natural": "We'd have some difficulty accepting that clause as currently drafted.",
+          "vi": "Chúng tôi khó có thể chấp nhận điều khoản đó theo cách soạn thảo hiện tại.",
+          "note": "'As currently drafted' để ngỏ khả năng sửa đổi, phản đối nhưng vẫn mời đàm phán tiếp."
+        },
+        {
+          "plain": "If you are late, you must pay us money.",
+          "natural": "Any delay beyond the agreed date would give rise to liquidated damages.",
+          "vi": "Bất kỳ sự chậm trễ nào sau ngày đã thỏa thuận sẽ phát sinh khoản bồi thường thiệt hại định trước.",
+          "note": "'Liquidated damages' là khoản phạt được ấn định sẵn trong hợp đồng. Dùng đúng thuật ngữ khiến bạn được nể trọng hơn."
+        },
+        {
+          "plain": "Let me ask my boss first.",
+          "natural": "I'll need to take instructions on that before I can commit.",
+          "vi": "Tôi cần xin ý kiến chỉ đạo về việc đó trước khi có thể cam kết.",
+          "note": "'Take instructions' là cách nói của luật sư, tư vấn viên: không mất uy tín như câu 'để tôi hỏi sếp'."
+        }
+      ]
+    },
+    {
       "id": "coffee",
       "category": "life",
       "title": "At the coffee shop",
@@ -2962,6 +4411,167 @@
       ]
     },
     {
+      "id": "money-talk",
+      "category": "life",
+      "title": "Talking about money",
+      "titleVi": "Chuyện tiền bạc hằng ngày",
+      "emoji": "💵",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "I'm trying to cut back on eating out this month.",
+          "vi": "Tháng này tôi đang cố bớt ăn ngoài.",
+          "tip": "'cut back on' = cắt giảm (chi tiêu, thói quen)."
+        },
+        {
+          "en": "Money's a bit tight at the moment.",
+          "vi": "Dạo này tiền nong hơi eo hẹp.",
+          "tip": "'tight' = eo hẹp; cách nói tế nhị, đỡ ngại hơn 'I'm poor'."
+        },
+        {
+          "en": "I've started putting a bit aside every payday.",
+          "vi": "Tôi bắt đầu để dành một ít mỗi lần nhận lương."
+        },
+        {
+          "en": "Is it really worth the money, though?",
+          "vi": "Nhưng nó có thật sự đáng tiền không?"
+        },
+        {
+          "en": "I'd rather not put all my eggs in one basket.",
+          "vi": "Tôi không muốn bỏ hết trứng vào một giỏ.",
+          "tip": "Thành ngữ giống hệt tiếng Việt: đừng dồn hết tiền vào một chỗ."
+        },
+        {
+          "en": "We've been splashing out a bit too much lately.",
+          "vi": "Dạo này tụi mình vung tay hơi quá."
+        }
+      ],
+      "words": [
+        {
+          "word": "budget",
+          "ipa": "/ˈbʌdʒɪt/",
+          "vi": "ngân sách; lập kế hoạch chi tiêu",
+          "example": "I budget about two million a month for groceries."
+        },
+        {
+          "word": "savings",
+          "ipa": "/ˈseɪvɪŋz/",
+          "vi": "tiền tiết kiệm",
+          "example": "We dipped into our savings to fix the roof."
+        },
+        {
+          "word": "interest rate",
+          "ipa": "/ˈɪntrəst ˌreɪt/",
+          "vi": "lãi suất",
+          "example": "Interest rates are pretty low right now."
+        },
+        {
+          "word": "emergency fund",
+          "ipa": "/ɪˈmɜrdʒənsi ˌfʌnd/",
+          "vi": "quỹ dự phòng khẩn cấp",
+          "example": "Try to keep three months' salary in an emergency fund."
+        },
+        {
+          "word": "impulse buy",
+          "ipa": "/ˈɪmpʌls ˌbaɪ/",
+          "vi": "món mua theo cảm hứng",
+          "example": "These headphones were a total impulse buy."
+        },
+        {
+          "word": "afford",
+          "ipa": "/əˈfɔrd/",
+          "vi": "đủ khả năng chi trả",
+          "example": "We can't really afford a holiday this year."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Jess (friend)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "You've been bringing lunch from home all week. What's going on?",
+            "vi": "Cả tuần nay cậu mang cơm từ nhà đi. Có chuyện gì thế?"
+          },
+          {
+            "s": "B",
+            "en": "I'm trying to cut back on eating out. Money's a bit tight at the moment.",
+            "vi": "Tớ đang cố bớt ăn ngoài. Dạo này tiền nong hơi eo hẹp."
+          },
+          {
+            "s": "A",
+            "en": "Tell me about it. My rent just went up again.",
+            "vi": "Ai mà chẳng thế. Tiền thuê nhà của tớ lại vừa tăng."
+          },
+          {
+            "s": "B",
+            "en": "Ouch. Do you have any kind of budget, or do you just wing it?",
+            "vi": "Ôi. Cậu có lập ngân sách không, hay cứ tiêu tới đâu tính tới đó?"
+          },
+          {
+            "s": "A",
+            "en": "Honestly, I just wing it. Then I panic at the end of the month.",
+            "vi": "Nói thật là tới đâu tính tới đó. Rồi cuối tháng lại cuống lên."
+          },
+          {
+            "s": "B",
+            "en": "I used to be the same. Now I put a bit aside every payday, before I can spend it.",
+            "vi": "Tớ trước cũng thế. Giờ cứ nhận lương là tớ để dành một ít luôn, trước khi kịp tiêu."
+          },
+          {
+            "s": "A",
+            "en": "That's smart. Are you investing any of it?",
+            "vi": "Khôn đấy. Cậu có đầu tư phần nào không?"
+          },
+          {
+            "s": "B",
+            "en": "A little, in an index fund. I'd rather not put all my eggs in one basket.",
+            "vi": "Một ít, vào quỹ chỉ số. Tớ không muốn bỏ hết trứng vào một giỏ."
+          },
+          {
+            "s": "A",
+            "en": "My cousin keeps telling me to buy crypto. Apparently he's made a fortune.",
+            "vi": "Anh họ tớ cứ bảo tớ mua tiền mã hóa. Nghe nói anh ấy kiếm bộn tiền."
+          },
+          {
+            "s": "B",
+            "en": "Maybe, but I'd be careful. Make sure you've got an emergency fund first.",
+            "vi": "Có thể, nhưng tớ sẽ cẩn thận. Cứ có quỹ dự phòng trước đã."
+          },
+          {
+            "s": "A",
+            "en": "Good point. To be honest, I don't even have one yet.",
+            "vi": "Phải đấy. Nói thật là tớ còn chưa có quỹ đó."
+          },
+          {
+            "s": "B",
+            "en": "Then that's the place to start. Even a small amount each month adds up.",
+            "vi": "Vậy thì bắt đầu từ đó đi. Mỗi tháng một ít thôi, lâu dần cũng thành nhiều."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I don't have money.",
+          "natural": "I'm a bit strapped for cash right now.",
+          "vi": "Giờ tôi đang hơi kẹt tiền.",
+          "note": "'strapped for cash' = kẹt tiền; nhẹ nhàng và đỡ ngại hơn."
+        },
+        {
+          "plain": "This is very expensive.",
+          "natural": "That costs an arm and a leg.",
+          "vi": "Cái đó đắt cắt cổ.",
+          "note": "Thành ngữ phóng đại: đắt đến mức phải trả bằng cả 'tay và chân'."
+        },
+        {
+          "plain": "I bought it because it was cheap.",
+          "natural": "It was a steal, so I couldn't say no.",
+          "vi": "Rẻ như cho nên tôi không cưỡng lại được.",
+          "note": "'a steal' = món hời, rẻ đến mức như 'ăn cắp'."
+        }
+      ]
+    },
+    {
       "id": "airport",
       "category": "travel",
       "title": "At the airport",
@@ -4105,6 +5715,167 @@
           "natural": "Everything I need is in that bag.",
           "vi": "Mọi thứ tôi cần đều ở trong cái túi đó.",
           "note": "Nhấn mạnh mức độ cần thiết một cách tự nhiên."
+        }
+      ]
+    },
+    {
+      "id": "travel-problems",
+      "category": "travel",
+      "title": "Sorting out travel problems",
+      "titleVi": "Khiếu nại và đòi bồi thường khi đi du lịch",
+      "emoji": "🎫",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "I understand it's not your fault, but I'd like this sorted out today.",
+          "vi": "Tôi hiểu đây không phải lỗi của anh, nhưng tôi muốn việc này được giải quyết trong hôm nay.",
+          "tip": "Tách người nhân viên khỏi vấn đề giúp bạn cứng rắn mà vẫn lịch sự."
+        },
+        {
+          "en": "Under your policy, I believe I'm entitled to compensation.",
+          "vi": "Theo chính sách của bên anh, tôi nghĩ mình có quyền được bồi thường.",
+          "tip": "'be entitled to' = có quyền được hưởng."
+        },
+        {
+          "en": "Could I speak to someone who's able to make that decision?",
+          "vi": "Tôi có thể nói chuyện với người có thẩm quyền quyết định việc đó không?",
+          "tip": "Cách lịch sự để xin gặp cấp trên thay vì 'I want your manager'."
+        },
+        {
+          "en": "That's not really good enough, I'm afraid.",
+          "vi": "Tôi e là như vậy chưa thỏa đáng lắm."
+        },
+        {
+          "en": "Could you put that in writing for me?",
+          "vi": "Anh có thể xác nhận việc đó bằng văn bản cho tôi không?"
+        },
+        {
+          "en": "I'd rather have a refund than a voucher, if possible.",
+          "vi": "Nếu được, tôi muốn được hoàn tiền hơn là nhận phiếu quà tặng."
+        }
+      ],
+      "words": [
+        {
+          "word": "compensation",
+          "ipa": "/ˌkɑmpənˈseɪʃən/",
+          "vi": "tiền bồi thường",
+          "example": "Passengers can claim compensation for long delays."
+        },
+        {
+          "word": "overbooked",
+          "ipa": "/ˌoʊvərˈbʊkt/",
+          "vi": "bán quá số chỗ",
+          "example": "The flight was overbooked, so they asked for volunteers."
+        },
+        {
+          "word": "voucher",
+          "ipa": "/ˈvaʊtʃər/",
+          "vi": "phiếu quà tặng, phiếu ưu đãi",
+          "example": "They gave us a meal voucher while we waited."
+        },
+        {
+          "word": "refund",
+          "ipa": "/ˈriˌfʌnd/",
+          "vi": "tiền hoàn lại",
+          "example": "It took three weeks to get a full refund."
+        },
+        {
+          "word": "escalate",
+          "ipa": "/ˈɛskəˌleɪt/",
+          "vi": "chuyển (khiếu nại) lên cấp cao hơn",
+          "example": "If they don't reply, I'll escalate the complaint."
+        },
+        {
+          "word": "itinerary",
+          "ipa": "/aɪˈtɪnəˌrɛri/",
+          "vi": "lịch trình chuyến đi",
+          "example": "The cancellation threw our whole itinerary off."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Sam (airline agent)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Good evening. I'm afraid the 8:15 to Singapore has been cancelled due to a technical issue.",
+            "vi": "Chào buổi tối. Rất tiếc chuyến 8 giờ 15 đi Singapore đã bị hủy do sự cố kỹ thuật."
+          },
+          {
+            "s": "B",
+            "en": "Cancelled? I've got a connecting flight and a hotel booked. What are you offering?",
+            "vi": "Hủy à? Tôi còn chuyến nối chuyến và khách sạn đã đặt. Bên anh hỗ trợ thế nào?"
+          },
+          {
+            "s": "A",
+            "en": "We can rebook you on tomorrow's flight at 10 a.m.",
+            "vi": "Chúng tôi có thể đổi cho anh sang chuyến 10 giờ sáng mai."
+          },
+          {
+            "s": "B",
+            "en": "That means losing a whole day of my itinerary. Is there nothing earlier?",
+            "vi": "Vậy là tôi mất trọn một ngày trong lịch trình. Không có chuyến nào sớm hơn sao?"
+          },
+          {
+            "s": "A",
+            "en": "Not with us, unfortunately. Everything tonight is fully booked.",
+            "vi": "Rất tiếc là bên tôi không còn. Các chuyến tối nay đều kín chỗ."
+          },
+          {
+            "s": "B",
+            "en": "I understand it's not your fault, but I need this sorted out properly. Will you cover a hotel tonight?",
+            "vi": "Tôi hiểu đây không phải lỗi của anh, nhưng tôi cần việc này được giải quyết thỏa đáng. Bên anh có lo khách sạn tối nay không?"
+          },
+          {
+            "s": "A",
+            "en": "Yes, we'll provide a hotel room and meal vouchers.",
+            "vi": "Có, chúng tôi sẽ cấp phòng khách sạn và phiếu ăn."
+          },
+          {
+            "s": "B",
+            "en": "Thank you. And under your policy, I believe I'm entitled to compensation for the delay.",
+            "vi": "Cảm ơn anh. Và theo chính sách bên anh, tôi nghĩ mình có quyền được bồi thường vì chậm trễ."
+          },
+          {
+            "s": "A",
+            "en": "I can offer you a travel voucher for 100 dollars.",
+            "vi": "Tôi có thể tặng anh một phiếu du lịch trị giá 100 đô."
+          },
+          {
+            "s": "B",
+            "en": "That's not really good enough, I'm afraid. I'd rather have a cash refund, if possible.",
+            "vi": "Tôi e là như vậy chưa thỏa đáng lắm. Nếu được, tôi muốn nhận hoàn tiền mặt hơn."
+          },
+          {
+            "s": "A",
+            "en": "That's above my pay grade, but I can escalate it to my supervisor.",
+            "vi": "Việc đó vượt quá thẩm quyền của tôi, nhưng tôi có thể chuyển lên cấp trên."
+          },
+          {
+            "s": "B",
+            "en": "I'd appreciate that. And could you put everything we've agreed in writing for me?",
+            "vi": "Vậy thì tốt quá. Anh ghi lại bằng văn bản mọi thứ chúng ta đã thống nhất giúp tôi nhé?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "This is not acceptable.",
+          "natural": "I'm sorry, but that just doesn't cut it.",
+          "vi": "Xin lỗi, nhưng như vậy là không ổn.",
+          "note": "'doesn't cut it' = không đạt yêu cầu; cứng rắn nhưng không thô lỗ."
+        },
+        {
+          "plain": "I am very angry about this.",
+          "natural": "I'm really not happy about this, to be honest.",
+          "vi": "Nói thật là tôi không hài lòng chút nào.",
+          "note": "Người bản xứ hay nói giảm 'not happy' thay vì 'angry', nhưng ý vẫn rất rõ."
+        },
+        {
+          "plain": "Give me my money back.",
+          "natural": "I'd like my money back, please.",
+          "vi": "Tôi muốn được hoàn lại tiền.",
+          "note": "Dùng 'I'd like... please': yêu cầu rõ ràng mà vẫn giữ lịch sự."
         }
       ]
     },
@@ -5862,6 +7633,1133 @@
       ]
     },
     {
+      "id": "environment-debate",
+      "category": "social",
+      "title": "Debating climate and lifestyle",
+      "titleVi": "Tranh luận về khí hậu và lối sống",
+      "emoji": "🌍",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "I'm not saying it'll fix everything, but every little helps.",
+          "vi": "Tôi không nói nó giải quyết được mọi thứ, nhưng góp chút nào hay chút ấy.",
+          "tip": "'every little helps' = góp gió thành bão."
+        },
+        {
+          "en": "That's true to some extent, but it's not the whole picture.",
+          "vi": "Điều đó đúng ở mức độ nào đó, nhưng chưa phải toàn bộ vấn đề.",
+          "tip": "'to some extent' giúp đồng ý một phần mà vẫn phản bác được."
+        },
+        {
+          "en": "Where did you hear that, out of interest?",
+          "vi": "Tò mò chút, cậu nghe điều đó ở đâu vậy?",
+          "tip": "'out of interest' làm câu hỏi về nguồn tin bớt gay gắt."
+        },
+        {
+          "en": "The thing is, it's not either-or. We need both.",
+          "vi": "Vấn đề là đâu phải chọn một trong hai. Mình cần cả hai."
+        },
+        {
+          "en": "I get that it's inconvenient, but it adds up over time.",
+          "vi": "Tôi hiểu là nó bất tiện, nhưng lâu dần sẽ tạo ra khác biệt."
+        },
+        {
+          "en": "Let's look at it from a different angle.",
+          "vi": "Mình thử nhìn từ một góc độ khác xem."
+        }
+      ],
+      "words": [
+        {
+          "word": "carbon footprint",
+          "ipa": "/ˈkɑrbən ˈfʊtˌprɪnt/",
+          "vi": "lượng khí thải carbon (của một người hay hoạt động)",
+          "example": "Flying less is the quickest way to cut your carbon footprint."
+        },
+        {
+          "word": "renewable",
+          "ipa": "/rɪˈnuəbəl/",
+          "vi": "tái tạo được",
+          "example": "More of our electricity now comes from renewable sources."
+        },
+        {
+          "word": "sustainable",
+          "ipa": "/səˈsteɪnəbəl/",
+          "vi": "bền vững",
+          "example": "Is fast fashion really sustainable in the long run?"
+        },
+        {
+          "word": "emissions",
+          "ipa": "/ɪˈmɪʃənz/",
+          "vi": "khí thải",
+          "example": "Cars are a major source of emissions in big cities."
+        },
+        {
+          "word": "greenwashing",
+          "ipa": "/ˈɡrinˌwɑʃɪŋ/",
+          "vi": "quảng cáo giả vờ thân thiện với môi trường",
+          "example": "A green logo on plastic bottles is just greenwashing."
+        },
+        {
+          "word": "skeptical",
+          "ipa": "/ˈskɛptɪkəl/",
+          "vi": "hoài nghi",
+          "example": "I'm a bit skeptical about those 'eco-friendly' labels."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Ben (friend)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "You're still taking the bus to work? Your car's sitting right there.",
+            "vi": "Cậu vẫn đi xe buýt đi làm à? Xe hơi để ngay đó mà."
+          },
+          {
+            "s": "B",
+            "en": "Yeah, I'm trying to shrink my carbon footprint a bit.",
+            "vi": "Ừ, tớ đang cố giảm lượng khí thải của mình một chút."
+          },
+          {
+            "s": "A",
+            "en": "Come on, one person on a bus isn't going to save the planet.",
+            "vi": "Thôi nào, một người đi xe buýt đâu cứu được trái đất."
+          },
+          {
+            "s": "B",
+            "en": "I'm not saying it'll fix everything, but every little helps.",
+            "vi": "Tớ không nói nó giải quyết được mọi thứ, nhưng góp chút nào hay chút ấy."
+          },
+          {
+            "s": "A",
+            "en": "Honestly, it's big factories that cause most of the pollution, not people like us.",
+            "vi": "Nói thật, chính các nhà máy lớn mới gây ra phần lớn ô nhiễm, chứ đâu phải người như tụi mình."
+          },
+          {
+            "s": "B",
+            "en": "That's true to some extent, but it's not the whole picture. Transport is a big chunk too.",
+            "vi": "Đúng ở mức độ nào đó, nhưng chưa phải toàn bộ vấn đề. Giao thông cũng chiếm phần lớn đấy."
+          },
+          {
+            "s": "A",
+            "en": "Maybe. But I read that electric cars are actually worse for the environment.",
+            "vi": "Có thể. Nhưng tớ đọc thấy xe điện thật ra còn hại môi trường hơn."
+          },
+          {
+            "s": "B",
+            "en": "Where did you hear that, out of interest? Most studies I've seen say the opposite.",
+            "vi": "Tò mò chút, cậu nghe điều đó ở đâu vậy? Phần lớn nghiên cứu tớ đọc đều nói ngược lại."
+          },
+          {
+            "s": "A",
+            "en": "Some video online. I'll admit I didn't check the source.",
+            "vi": "Một video trên mạng. Công nhận là tớ không kiểm tra nguồn."
+          },
+          {
+            "s": "B",
+            "en": "No worries. Let's look at it from a different angle: the bus saves me money as well.",
+            "vi": "Không sao. Mình thử nhìn từ góc khác xem: đi xe buýt còn giúp tớ tiết kiệm tiền nữa."
+          },
+          {
+            "s": "A",
+            "en": "OK, now that's an argument I can get behind.",
+            "vi": "Ừ, lý lẽ đó thì tớ ủng hộ được."
+          },
+          {
+            "s": "B",
+            "en": "See? You don't have to be an eco-warrior to give it a try.",
+            "vi": "Thấy chưa? Đâu cần phải là nhà hoạt động môi trường mới thử được."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I think you are wrong.",
+          "natural": "I'm not sure that really adds up.",
+          "vi": "Tôi không chắc điều đó hợp lý.",
+          "note": "'add up' = hợp lý, khớp với thực tế; phản bác mà không công kích người nói."
+        },
+        {
+          "plain": "This problem is very serious.",
+          "natural": "It's a much bigger deal than people think.",
+          "vi": "Chuyện này nghiêm trọng hơn mọi người nghĩ nhiều.",
+          "note": "'a big deal' = chuyện lớn; rất hay dùng trong hội thoại thân mật."
+        },
+        {
+          "plain": "I will change my habits to help.",
+          "natural": "I'm just trying to do my bit.",
+          "vi": "Tôi chỉ đang cố góp phần của mình thôi.",
+          "note": "'do my bit' = làm phần việc của mình cho cái chung; hay gặp khi nói về môi trường."
+        }
+      ]
+    },
+    {
+      "id": "academic-discussion",
+      "category": "social",
+      "title": "Challenging an argument in a seminar",
+      "titleVi": "Phản biện trong buổi thảo luận học thuật",
+      "emoji": "🎓",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "I'd like to push back on that slightly, if I may.",
+          "vi": "Cho phép tôi phản biện ý đó một chút.",
+          "tip": "'push back on' = phản bác; thêm 'slightly, if I may' để giữ lịch sự trong môi trường học thuật."
+        },
+        {
+          "en": "The evidence you cite is compelling, but the sample seems rather narrow.",
+          "vi": "Bằng chứng bạn dẫn khá thuyết phục, nhưng mẫu nghiên cứu có vẻ hơi hẹp."
+        },
+        {
+          "en": "Doesn't that rest on the assumption that people behave rationally?",
+          "vi": "Chẳng phải lập luận đó dựa trên giả định rằng con người luôn hành xử lý trí sao?",
+          "tip": "Câu hỏi phủ định ('Doesn't that...?') giúp chỉ ra giả định ngầm mà không tấn công trực tiếp."
+        },
+        {
+          "en": "To play devil's advocate for a moment, what if the causality runs the other way?",
+          "vi": "Thử đóng vai phản biện một chút: nếu quan hệ nhân quả đi theo chiều ngược lại thì sao?",
+          "tip": "'play devil's advocate' = cố tình nói ngược để kiểm tra lập luận."
+        },
+        {
+          "en": "There's a growing body of research that points in the opposite direction.",
+          "vi": "Ngày càng có nhiều nghiên cứu chỉ ra điều ngược lại."
+        },
+        {
+          "en": "I take your point, but I'm not sure it fully accounts for the cultural context.",
+          "vi": "Tôi hiểu ý bạn, nhưng không chắc nó đã tính hết đến bối cảnh văn hóa."
+        }
+      ],
+      "words": [
+        {
+          "word": "premise",
+          "ipa": "/ˈprɛmɪs/",
+          "vi": "tiền đề (của lập luận)",
+          "example": "The whole argument rests on a questionable premise."
+        },
+        {
+          "word": "nuance",
+          "ipa": "/ˈnuˌɑns/",
+          "vi": "sắc thái, sự tinh tế",
+          "example": "The paper lacks nuance on how income affects the results."
+        },
+        {
+          "word": "empirical",
+          "ipa": "/ɛmˈpɪrɪkəl/",
+          "vi": "dựa trên thực nghiệm",
+          "example": "There's very little empirical evidence to support that claim."
+        },
+        {
+          "word": "conflate",
+          "ipa": "/kənˈfleɪt/",
+          "vi": "đánh đồng, gộp lẫn (hai khái niệm)",
+          "example": "I think you're conflating correlation with causation."
+        },
+        {
+          "word": "tenuous",
+          "ipa": "/ˈtɛnjuəs/",
+          "vi": "mong manh, thiếu cơ sở",
+          "example": "The link between the two studies seems tenuous at best."
+        },
+        {
+          "word": "corroborate",
+          "ipa": "/kəˈrɑbəˌreɪt/",
+          "vi": "chứng thực, củng cố (bằng bằng chứng khác)",
+          "example": "Later studies have corroborated those early findings."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Dr. Evans (tutor)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "So the author argues that remote work boosts productivity across the board. Any reactions?",
+            "vi": "Tác giả lập luận rằng làm việc từ xa giúp tăng năng suất ở mọi lĩnh vực. Mọi người nghĩ sao?"
+          },
+          {
+            "s": "B",
+            "en": "I'd like to push back on that slightly, if I may. The evidence is compelling, but the sample seems rather narrow.",
+            "vi": "Cho phép tôi phản biện một chút. Bằng chứng khá thuyết phục, nhưng mẫu nghiên cứu có vẻ hơi hẹp."
+          },
+          {
+            "s": "A",
+            "en": "Narrow in what sense?",
+            "vi": "Hẹp theo nghĩa nào?"
+          },
+          {
+            "s": "B",
+            "en": "Almost all the participants were software engineers. I'm not sure we can extrapolate that to, say, nurses or teachers.",
+            "vi": "Gần như tất cả người tham gia là kỹ sư phần mềm. Tôi không chắc ta có thể suy rộng ra cho, chẳng hạn, y tá hay giáo viên."
+          },
+          {
+            "s": "A",
+            "en": "Granted, but the author does acknowledge that limitation in the conclusion.",
+            "vi": "Đúng là vậy, nhưng tác giả cũng đã thừa nhận hạn chế đó ở phần kết luận."
+          },
+          {
+            "s": "B",
+            "en": "True, though the title still claims it applies across the board. That feels like a bit of an overreach.",
+            "vi": "Đúng, dù tiêu đề vẫn khẳng định nó áp dụng cho mọi lĩnh vực. Như vậy hơi quá đà."
+          },
+          {
+            "s": "A",
+            "en": "Fair point. What about the productivity data itself?",
+            "vi": "Ý hay. Còn bản thân số liệu về năng suất thì sao?"
+          },
+          {
+            "s": "B",
+            "en": "It's self-reported, which is a concern. Doesn't that rest on the assumption that people assess themselves accurately?",
+            "vi": "Số liệu đó do người tham gia tự đánh giá, đó là điểm đáng lo. Chẳng phải nó dựa trên giả định rằng người ta tự nhận xét chính xác sao?"
+          },
+          {
+            "s": "A",
+            "en": "So you'd dismiss the findings entirely?",
+            "vi": "Vậy bạn bác bỏ hoàn toàn kết quả nghiên cứu?"
+          },
+          {
+            "s": "B",
+            "en": "Not at all. I'd just want them corroborated by objective measures — output, error rates, that kind of thing.",
+            "vi": "Hoàn toàn không. Tôi chỉ muốn chúng được củng cố bằng các thước đo khách quan — sản lượng, tỷ lệ lỗi, những thứ như vậy."
+          },
+          {
+            "s": "A",
+            "en": "That's a nuanced position. Is there research that does that?",
+            "vi": "Một quan điểm khá tinh tế. Có nghiên cứu nào làm được điều đó không?"
+          },
+          {
+            "s": "B",
+            "en": "There's a growing body of it, and the picture is far more mixed — gains for focused tasks, losses for collaboration.",
+            "vi": "Ngày càng có nhiều, và bức tranh phức tạp hơn nhiều — năng suất tăng với việc cần tập trung, nhưng giảm ở việc cần phối hợp."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I disagree with you.",
+          "natural": "I see where you're coming from, but I'd read the evidence a little differently.",
+          "vi": "Tôi hiểu quan điểm của bạn, nhưng tôi hiểu bằng chứng theo cách hơi khác.",
+          "note": "Trong môi trường học thuật, phản bác cách hiểu bằng chứng chứ không phản bác người nói — vừa sắc bén vừa lịch sự."
+        },
+        {
+          "plain": "This study is bad.",
+          "natural": "The methodology raises a few questions for me.",
+          "vi": "Phương pháp nghiên cứu khiến tôi có vài băn khoăn.",
+          "note": "'raise questions' là cách phê bình nhẹ nhàng nhưng nghiêm túc; người bản xứ hiếm khi chê thẳng 'bad' trong seminar."
+        },
+        {
+          "plain": "You are mixing two different things.",
+          "natural": "I wonder if we're conflating two separate issues here.",
+          "vi": "Tôi tự hỏi liệu chúng ta có đang đánh đồng hai vấn đề khác nhau không.",
+          "note": "'I wonder if we're...' dùng 'we' thay vì 'you' để chỉ ra lỗi lập luận mà không khiến ai mất mặt."
+        }
+      ]
+    },
+    {
+      "id": "cultural-differences",
+      "category": "social",
+      "title": "Discussing cultural differences tactfully",
+      "titleVi": "Bàn về khác biệt văn hóa một cách tế nhị",
+      "emoji": "🌏",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "I'd be wary of generalizing, but in my experience people tend to be less direct.",
+          "vi": "Tôi ngại khái quát hóa, nhưng theo kinh nghiệm của tôi thì mọi người thường ít nói thẳng hơn.",
+          "tip": "Mở đầu bằng 'I'd be wary of generalizing' để tránh bị cho là rập khuôn định kiến."
+        },
+        {
+          "en": "What comes across as blunt in one culture can be perfectly normal in another.",
+          "vi": "Điều bị xem là thô thẳng ở nền văn hóa này có thể hoàn toàn bình thường ở nền văn hóa khác.",
+          "tip": "'come across as' = tạo ấn tượng là; rất hữu ích khi nói về cảm nhận."
+        },
+        {
+          "en": "In Vietnam, a lot is left unsaid — you're expected to read between the lines.",
+          "vi": "Ở Việt Nam, nhiều điều không được nói ra — người ta mong bạn tự hiểu ý.",
+          "tip": "'read between the lines' = hiểu ẩn ý."
+        },
+        {
+          "en": "Humor is notoriously hard to translate, especially irony.",
+          "vi": "Hài hước vốn nổi tiếng là khó dịch, nhất là lối nói mỉa mai."
+        },
+        {
+          "en": "It took me a while to realize that silence in a meeting doesn't necessarily mean agreement.",
+          "vi": "Mãi một thời gian tôi mới nhận ra im lặng trong cuộc họp không hẳn là đồng ý."
+        },
+        {
+          "en": "I suppose it comes down to how much weight people place on hierarchy.",
+          "vi": "Tôi nghĩ suy cho cùng là do người ta coi trọng thứ bậc đến mức nào."
+        }
+      ],
+      "words": [
+        {
+          "word": "stereotype",
+          "ipa": "/ˈstɛriəˌtaɪp/",
+          "vi": "khuôn mẫu, định kiến",
+          "example": "It's easy to fall back on stereotypes when you first move abroad."
+        },
+        {
+          "word": "deference",
+          "ipa": "/ˈdɛfərəns/",
+          "vi": "sự tôn kính, nhường nhịn (với người trên)",
+          "example": "Younger staff show a lot of deference to senior managers."
+        },
+        {
+          "word": "faux pas",
+          "ipa": "/ˌfoʊ ˈpɑ/",
+          "vi": "lỗi ứng xử (gây ngượng)",
+          "example": "I committed a real faux pas by calling my boss by her first name."
+        },
+        {
+          "word": "subtle",
+          "ipa": "/ˈsʌtəl/",
+          "vi": "tinh tế, khó nhận ra",
+          "example": "The differences are subtle, but they matter a lot in business."
+        },
+        {
+          "word": "tactful",
+          "ipa": "/ˈtæktfəl/",
+          "vi": "khéo léo, tế nhị",
+          "example": "She gave a tactful answer that didn't offend anyone."
+        },
+        {
+          "word": "ingrained",
+          "ipa": "/ɪnˈɡreɪnd/",
+          "vi": "ăn sâu, bám rễ",
+          "example": "Respect for elders is deeply ingrained in Vietnamese culture."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Chris (Australian colleague)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Can I ask you something? In meetings, I can never tell whether people here actually agree with me.",
+            "vi": "Cho tôi hỏi chút nhé? Trong các cuộc họp, tôi không bao giờ đoán được mọi người ở đây có thực sự đồng ý với tôi không."
+          },
+          {
+            "s": "B",
+            "en": "Ah, that's a common one. I'd be wary of generalizing, but people here tend to be less direct about disagreeing.",
+            "vi": "À, chuyện này nhiều người gặp lắm. Tôi ngại khái quát hóa, nhưng người ở đây thường ít nói thẳng khi không đồng ý."
+          },
+          {
+            "s": "A",
+            "en": "So when someone says 'that might be difficult', they actually mean no?",
+            "vi": "Vậy khi ai đó nói 'việc đó có thể hơi khó', ý họ thực ra là không?"
+          },
+          {
+            "s": "B",
+            "en": "More often than not, yes. A lot is left unsaid — you're expected to read between the lines.",
+            "vi": "Phần lớn là vậy. Nhiều điều không nói ra — người ta mong bạn tự hiểu ý."
+          },
+          {
+            "s": "A",
+            "en": "That's the opposite of home. In Australia, we'd just say it outright, and nobody would take offence.",
+            "vi": "Ngược hẳn với quê tôi. Ở Úc, chúng tôi cứ nói thẳng ra, và chẳng ai phật lòng."
+          },
+          {
+            "s": "B",
+            "en": "Right, and what comes across as honest to you can come across as rather blunt here — especially toward someone senior.",
+            "vi": "Đúng, và điều bạn thấy là thành thật thì ở đây có thể bị coi là hơi thô — nhất là với người cấp trên."
+          },
+          {
+            "s": "A",
+            "en": "Hmm, I may have committed a faux pas or two, then. I challenged the director in front of everyone last week.",
+            "vi": "Hừm, vậy có lẽ tôi đã phạm vài lỗi ứng xử rồi. Tuần trước tôi phản bác giám đốc ngay trước mặt mọi người."
+          },
+          {
+            "s": "B",
+            "en": "It's probably not the end of the world, but a quiet word afterwards usually goes down better than a public challenge.",
+            "vi": "Chắc không đến mức nghiêm trọng, nhưng nói riêng sau đó thường được đón nhận tốt hơn là phản bác công khai."
+          },
+          {
+            "s": "A",
+            "en": "Good to know. What about humor? My jokes seem to fall flat.",
+            "vi": "Hay đấy. Còn chuyện hài hước thì sao? Mấy câu đùa của tôi có vẻ chẳng ai cười."
+          },
+          {
+            "s": "B",
+            "en": "Australian humor leans heavily on irony and teasing, which doesn't always translate. People might think you're being serious.",
+            "vi": "Kiểu hài của người Úc dựa nhiều vào mỉa mai và trêu chọc, mà cái đó không phải lúc nào cũng dịch được. Người ta có thể tưởng bạn nói thật."
+          },
+          {
+            "s": "A",
+            "en": "That explains a few awkward silences! Granted, I could probably tone it down a bit.",
+            "vi": "Hèn gì có mấy lần im lặng ngượng ngùng! Phải công nhận là tôi nên tiết chế lại một chút."
+          },
+          {
+            "s": "B",
+            "en": "Don't change too much, though — people do appreciate your openness. It's just a matter of reading the room.",
+            "vi": "Nhưng đừng thay đổi nhiều quá — mọi người thật sự quý sự cởi mở của bạn. Chỉ là cần biết nhìn không khí mà nói thôi."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Vietnamese people never say no.",
+          "natural": "People here often find softer ways of saying no.",
+          "vi": "Người ở đây thường tìm cách từ chối nhẹ nhàng hơn.",
+          "note": "Tránh từ tuyệt đối như 'never', 'always' khi nói về văn hóa; 'often', 'tend to' giúp bạn không bị coi là định kiến."
+        },
+        {
+          "plain": "Your behavior was rude.",
+          "natural": "That might not have landed quite the way you intended.",
+          "vi": "Có lẽ điều đó không được hiểu đúng như ý bạn muốn.",
+          "note": "'land' = được đón nhận. Câu này góp ý mà không phán xét con người, rất phù hợp khi nói chuyện văn hóa."
+        },
+        {
+          "plain": "You must change how you speak here.",
+          "natural": "It's really just a matter of reading the room.",
+          "vi": "Thật ra chỉ cần biết nhìn không khí mà ứng xử thôi.",
+          "note": "'read the room' = cảm nhận bầu không khí để nói cho phù hợp. Lời khuyên nhẹ nhàng thay cho mệnh lệnh."
+        }
+      ]
+    },
+    {
+      "id": "tech-ethics",
+      "category": "social",
+      "title": "Debating AI and privacy",
+      "titleVi": "Tranh luận về AI và quyền riêng tư",
+      "emoji": "🤖",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "It's a double-edged sword — the same technology that diagnoses cancer can be used for surveillance.",
+          "vi": "Đó là con dao hai lưỡi — chính công nghệ chẩn đoán ung thư cũng có thể dùng để giám sát người dân.",
+          "tip": "'double-edged sword' = con dao hai lưỡi; dùng để mở đầu một quan điểm cân bằng."
+        },
+        {
+          "en": "Granted, convenience matters, but not at the expense of our basic rights.",
+          "vi": "Đúng là sự tiện lợi quan trọng, nhưng không thể đánh đổi bằng quyền cơ bản của chúng ta.",
+          "tip": "'at the expense of' = đánh đổi bằng, gây thiệt hại cho."
+        },
+        {
+          "en": "Most people click 'accept' without having the faintest idea what they're agreeing to.",
+          "vi": "Phần lớn mọi người bấm 'đồng ý' mà chẳng hề biết mình đang chấp nhận điều gì."
+        },
+        {
+          "en": "The question isn't whether to regulate, but how to do it without stifling innovation.",
+          "vi": "Vấn đề không phải có nên quản lý hay không, mà là quản lý thế nào để không bóp nghẹt đổi mới.",
+          "tip": "Cấu trúc 'The question isn't X, but Y' giúp chuyển tranh luận sang hướng sâu hơn."
+        },
+        {
+          "en": "I'm somewhat skeptical of the claim that the data is truly anonymized.",
+          "vi": "Tôi khá hoài nghi về khẳng định rằng dữ liệu thực sự đã được ẩn danh."
+        },
+        {
+          "en": "Where do we draw the line between personalization and manipulation?",
+          "vi": "Ranh giới giữa cá nhân hóa và thao túng nằm ở đâu?"
+        }
+      ],
+      "words": [
+        {
+          "word": "surveillance",
+          "ipa": "/sərˈveɪləns/",
+          "vi": "sự giám sát, theo dõi",
+          "example": "Facial recognition has made mass surveillance far cheaper."
+        },
+        {
+          "word": "consent",
+          "ipa": "/kənˈsɛnt/",
+          "vi": "sự đồng ý, chấp thuận",
+          "example": "Real consent means people understand what they're agreeing to."
+        },
+        {
+          "word": "bias",
+          "ipa": "/ˈbaɪəs/",
+          "vi": "thiên kiến, sự thiên lệch",
+          "example": "If the training data is biased, the algorithm will be too."
+        },
+        {
+          "word": "transparency",
+          "ipa": "/trænsˈpɛrənsi/",
+          "vi": "sự minh bạch",
+          "example": "Users are demanding more transparency about how decisions are made."
+        },
+        {
+          "word": "unprecedented",
+          "ipa": "/ʌnˈprɛsəˌdɛntɪd/",
+          "vi": "chưa từng có tiền lệ",
+          "example": "Tech companies now hold an unprecedented amount of personal data."
+        },
+        {
+          "word": "slippery slope",
+          "ipa": "/ˈslɪpəri sloʊp/",
+          "vi": "con dốc trơn (một bước nhỏ dẫn đến hậu quả lớn)",
+          "example": "Some argue that tracking for safety is a slippery slope."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Daniel (friend)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Honestly, I don't get the fuss about privacy. If you've got nothing to hide, why worry?",
+            "vi": "Thật lòng tôi không hiểu sao người ta làm ầm chuyện quyền riêng tư. Nếu chẳng có gì phải giấu thì lo gì?"
+          },
+          {
+            "s": "B",
+            "en": "I hear that a lot, but I think it misses the point. Privacy isn't about hiding wrongdoing — it's about who controls information about you.",
+            "vi": "Tôi nghe câu này nhiều rồi, nhưng nó trật trọng tâm. Quyền riêng tư không phải để che giấu sai trái — mà là ai kiểm soát thông tin về bạn."
+          },
+          {
+            "s": "A",
+            "en": "But I actually like getting personalized recommendations. It saves me time.",
+            "vi": "Nhưng tôi thích được gợi ý theo sở thích. Tiết kiệm thời gian mà."
+          },
+          {
+            "s": "B",
+            "en": "Granted, convenience matters. But where do we draw the line between personalization and manipulation?",
+            "vi": "Đúng là tiện lợi quan trọng. Nhưng ranh giới giữa cá nhân hóa và thao túng nằm ở đâu?"
+          },
+          {
+            "s": "A",
+            "en": "Manipulation feels a bit strong. They're just showing me ads.",
+            "vi": "Gọi là thao túng thì hơi nặng. Họ chỉ cho tôi xem quảng cáo thôi mà."
+          },
+          {
+            "s": "B",
+            "en": "Perhaps, but the same models are used to shape what news you see, or even how much you're charged for a flight.",
+            "vi": "Có thể, nhưng chính những mô hình đó còn định hướng tin tức bạn đọc, thậm chí cả giá vé máy bay bạn phải trả."
+          },
+          {
+            "s": "A",
+            "en": "OK, that's a bit unsettling. But the data's anonymized, isn't it?",
+            "vi": "Được rồi, nghe hơi đáng lo. Nhưng dữ liệu đã được ẩn danh rồi mà, đúng không?"
+          },
+          {
+            "s": "B",
+            "en": "I'm somewhat skeptical. Studies have shown you can re-identify people from just a handful of data points.",
+            "vi": "Tôi khá hoài nghi. Nhiều nghiên cứu cho thấy chỉ cần vài mẩu dữ liệu là có thể nhận diện lại một người."
+          },
+          {
+            "s": "A",
+            "en": "So what's the answer — ban AI altogether? That seems like throwing the baby out with the bathwater.",
+            "vi": "Vậy giải pháp là gì — cấm AI luôn à? Như vậy là vơ đũa cả nắm, bỏ cả cái tốt lẫn cái xấu."
+          },
+          {
+            "s": "B",
+            "en": "Not at all. The question isn't whether to regulate, but how to do it without stifling innovation.",
+            "vi": "Hoàn toàn không. Vấn đề không phải có nên quản lý hay không, mà là quản lý sao cho không bóp nghẹt đổi mới."
+          },
+          {
+            "s": "A",
+            "en": "Fair enough. I suppose more transparency wouldn't hurt.",
+            "vi": "Cũng có lý. Chắc là minh bạch hơn thì cũng chẳng hại gì."
+          },
+          {
+            "s": "B",
+            "en": "Exactly. If people genuinely understood what they were consenting to, a lot of the problem would take care of itself.",
+            "vi": "Chính xác. Nếu mọi người thực sự hiểu mình đang đồng ý với điều gì, phần lớn vấn đề sẽ tự được giải quyết."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "AI has good points and bad points.",
+          "natural": "AI is very much a double-edged sword.",
+          "vi": "AI đúng là con dao hai lưỡi.",
+          "note": "Thành ngữ 'double-edged sword' gói gọn ý 'có lợi có hại' — ngắn gọn và nghe sắc sảo hơn nhiều."
+        },
+        {
+          "plain": "Your argument is too extreme.",
+          "natural": "Isn't that throwing the baby out with the bathwater?",
+          "vi": "Như vậy chẳng phải là vứt bỏ cả cái tốt cùng với cái xấu sao?",
+          "note": "Thành ngữ chỉ việc loại bỏ cả điều tốt khi muốn xử lý điều xấu; dùng dạng câu hỏi để phản bác nhẹ nhàng."
+        },
+        {
+          "plain": "I don't believe the company.",
+          "natural": "I'd take those assurances with a healthy dose of skepticism.",
+          "vi": "Tôi sẽ nghe những lời cam kết đó với một chút hoài nghi.",
+          "note": "'a healthy dose of skepticism' = sự hoài nghi lành mạnh; thể hiện bạn suy xét chứ không phủ nhận mù quáng."
+        }
+      ]
+    },
+    {
+      "id": "witty-banter",
+      "category": "social",
+      "title": "Witty banter with friends",
+      "titleVi": "Bông đùa dí dỏm với bạn bè",
+      "emoji": "😏",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "Well, that went well.",
+          "vi": "Chà, thế là suôn sẻ quá nhỉ.",
+          "tip": "Nói sau một thảm họa: mỉa mai kiểu Anh, ý thật là 'hỏng bét rồi'."
+        },
+        {
+          "en": "It's a bit nippy out, isn't it?",
+          "vi": "Ngoài trời hơi se lạnh nhỉ?",
+          "tip": "Nói giảm kiểu Anh: dùng khi trời rét cắt da, càng nói nhẹ càng buồn cười."
+        },
+        {
+          "en": "Don't flatter yourself.",
+          "vi": "Đừng có tự mãn thế.",
+          "tip": "Chỉ dùng với bạn thân, giọng đùa; nói với người lạ sẽ thành xúc phạm."
+        },
+        {
+          "en": "I'll have you know I'm a delight in the mornings.",
+          "vi": "Cho cậu biết, buổi sáng tớ dễ thương lắm đấy."
+        },
+        {
+          "en": "Steady on, it's only Tuesday.",
+          "vi": "Từ từ thôi, mới thứ Ba mà."
+        },
+        {
+          "en": "Says the man who got lost in his own street.",
+          "vi": "Nói nghe hay nhỉ, cái ông đi lạc ngay trên phố nhà mình."
+        }
+      ],
+      "words": [
+        {
+          "word": "understatement",
+          "ipa": "/ˈʌndərˌsteɪtmənt/",
+          "vi": "lối nói giảm, nói nhẹ đi",
+          "example": "Calling the storm \"a bit breezy\" was a classic understatement."
+        },
+        {
+          "word": "deadpan",
+          "ipa": "/ˈdɛdˌpæn/",
+          "vi": "(nói đùa) với gương mặt tỉnh bơ",
+          "example": "His deadpan delivery makes everything twice as funny."
+        },
+        {
+          "word": "irony",
+          "ipa": "/ˈaɪrəni/",
+          "vi": "sự mỉa mai, trớ trêu",
+          "example": "The irony is that the fire station burned down."
+        },
+        {
+          "word": "self-deprecating",
+          "ipa": "/ˌsɛlf ˈdɛprəˌkeɪtɪŋ/",
+          "vi": "tự giễu, tự trào",
+          "example": "Her self-deprecating humour puts everyone at ease."
+        },
+        {
+          "word": "quip",
+          "ipa": "/kwɪp/",
+          "vi": "câu nói đùa ngắn, dí dỏm",
+          "example": "He always has a quick quip ready."
+        },
+        {
+          "word": "take the mickey",
+          "ipa": "/teɪk ðə ˈmɪki/",
+          "vi": "trêu chọc, chọc ghẹo (tiếng lóng Anh)",
+          "example": "Relax, I'm only taking the mickey."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Ollie (friend)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Nice of you to join us. Only forty minutes late.",
+            "vi": "Quý hóa quá, cậu cũng đến. Chỉ trễ có bốn mươi phút thôi."
+          },
+          {
+            "s": "B",
+            "en": "I'll have you know I was fashionably late. There's a difference.",
+            "vi": "Cho cậu biết, tớ trễ một cách sành điệu. Khác nhau đấy."
+          },
+          {
+            "s": "A",
+            "en": "Is there? Enlighten me.",
+            "vi": "Thế à? Giảng giải cho tớ nghe xem."
+          },
+          {
+            "s": "B",
+            "en": "Fashionably late means you were missed. Which, judging by your face, I clearly was.",
+            "vi": "Trễ sành điệu tức là mọi người nhớ mình. Mà nhìn mặt cậu thì rõ là tớ được nhớ lắm."
+          },
+          {
+            "s": "A",
+            "en": "Don't flatter yourself. I was just worried about the bill.",
+            "vi": "Đừng có tự mãn. Tớ chỉ lo đến tiền hóa đơn thôi."
+          },
+          {
+            "s": "B",
+            "en": "Charming. Anyway, the train broke down in a tunnel. It was a bit warm.",
+            "vi": "Dễ thương ghê. Mà thôi, tàu bị hỏng trong đường hầm. Hơi nóng một chút."
+          },
+          {
+            "s": "A",
+            "en": "\"A bit warm\"? It's thirty-five degrees today.",
+            "vi": "\"Hơi nóng\"? Hôm nay ba mươi lăm độ đấy."
+          },
+          {
+            "s": "B",
+            "en": "Fine, I may have lost a kilo. Character-building, really.",
+            "vi": "Thôi được, chắc tớ sụt mất một ký. Rèn luyện ý chí ấy mà."
+          },
+          {
+            "s": "A",
+            "en": "Well, you've earned a drink. I'd offer to pay, but I'm not made of money.",
+            "vi": "Thôi, cậu xứng đáng được một ly. Tớ định mời, nhưng tớ đâu phải đại gia."
+          },
+          {
+            "s": "B",
+            "en": "Says the man who just bought a second electric bike.",
+            "vi": "Nói nghe hay nhỉ, cái ông vừa sắm chiếc xe đạp điện thứ hai."
+          },
+          {
+            "s": "A",
+            "en": "That was an investment. Completely different thing.",
+            "vi": "Đó là đầu tư. Hoàn toàn khác nhau."
+          },
+          {
+            "s": "B",
+            "en": "Of course it was. Mine's a pint, investor.",
+            "vi": "Dĩ nhiên rồi. Cho tớ một vại bia nhé, nhà đầu tư."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "That was a terrible party.",
+          "natural": "Well, it wasn't the worst party I've ever been to. Top five, maybe.",
+          "vi": "Thì cũng chưa phải bữa tiệc tệ nhất tớ từng dự. Chắc lọt top năm thôi.",
+          "note": "Mở đầu như khen rồi đảo ngược ở câu sau: kiểu đùa tỉnh bơ rất Anh, chê mà không gay gắt."
+        },
+        {
+          "plain": "You are very late.",
+          "natural": "Oh good, you made it. We were about to send a search party.",
+          "vi": "Ồ hay quá, cậu đến rồi. Bọn tớ suýt đi tìm người mất tích đấy.",
+          "note": "Phóng đại để trêu thay vì trách thẳng. Người Anh hay cà khịa bạn thân như một cách thể hiện thân thiết."
+        },
+        {
+          "plain": "I am very bad at cooking.",
+          "natural": "Let's just say the smoke alarm and I are on first-name terms.",
+          "vi": "Nói thế này thôi: tớ với cái chuông báo cháy giờ thân nhau lắm rồi.",
+          "note": "Tự giễu (self-deprecating) là nền tảng của kiểu đùa Anh: chê mình trước để không ai thấy bị chê."
+        }
+      ]
+    },
+    {
+      "id": "reading-between-lines",
+      "category": "social",
+      "title": "Reading between the lines",
+      "titleVi": "Hiểu ý ngoài lời",
+      "emoji": "🔍",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "That's certainly an interesting choice.",
+          "vi": "Đó đúng là một lựa chọn thú vị.",
+          "tip": "Thường là chê khéo: 'interesting' ở đây nghĩa là 'lạ, không hay lắm'."
+        },
+        {
+          "en": "With the greatest respect, I think you may have overlooked something.",
+          "vi": "Với tất cả sự tôn trọng, tôi nghĩ có lẽ anh đã bỏ sót điều gì đó.",
+          "tip": "'With the greatest respect' thường báo hiệu một lời phản đối khá mạnh sắp tới."
+        },
+        {
+          "en": "I'll bear that in mind.",
+          "vi": "Tôi sẽ ghi nhớ điều đó.",
+          "tip": "Nhiều khi nghĩa thật là 'tôi sẽ không làm theo đâu'."
+        },
+        {
+          "en": "Not that it's any of my business, but...",
+          "vi": "Không phải chuyện của tôi, nhưng mà..."
+        },
+        {
+          "en": "I'm sure it'll be fine. Eventually.",
+          "vi": "Chắc chắn sẽ ổn thôi. Rồi sẽ đến lúc."
+        },
+        {
+          "en": "I hear what you're saying.",
+          "vi": "Tôi hiểu anh đang nói gì."
+        }
+      ],
+      "words": [
+        {
+          "word": "implicature",
+          "ipa": "/ˈɪmplɪkəˌtʃʊr/",
+          "vi": "hàm ý (điều được ngụ ý chứ không nói thẳng)",
+          "example": "The implicature of \"some students passed\" is that not all did."
+        },
+        {
+          "word": "veiled",
+          "ipa": "/veɪld/",
+          "vi": "kín đáo, che đậy (lời chỉ trích, đe dọa)",
+          "example": "His comment about punctuality was a veiled criticism."
+        },
+        {
+          "word": "backhanded compliment",
+          "ipa": "/ˈbækˌhændɪd ˈkɑmpləmənt/",
+          "vi": "lời khen đá xoáy, khen như chê",
+          "example": "\"You look great for your age\" is a backhanded compliment."
+        },
+        {
+          "word": "tact",
+          "ipa": "/tækt/",
+          "vi": "sự tế nhị, khéo léo",
+          "example": "It took a lot of tact to turn down his offer."
+        },
+        {
+          "word": "subtext",
+          "ipa": "/ˈsʌbˌtɛkst/",
+          "vi": "ẩn ý, tầng nghĩa bên dưới",
+          "example": "The subtext of the email was clear: fix it, or else."
+        },
+        {
+          "word": "disingenuous",
+          "ipa": "/ˌdɪsɪnˈdʒɛnjuəs/",
+          "vi": "giả vờ thật thà, không thành thật",
+          "example": "It's a bit disingenuous to say you didn't know."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Hannah (colleague)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "So, how did the presentation go with the director?",
+            "vi": "Thế buổi thuyết trình với giám đốc thế nào?"
+          },
+          {
+            "s": "B",
+            "en": "She said it was \"a very brave proposal\". I took that as a good sign.",
+            "vi": "Bà ấy bảo đó là \"một đề xuất rất táo bạo\". Mình nghĩ thế là tín hiệu tốt."
+          },
+          {
+            "s": "A",
+            "en": "Oh dear. In British English, \"brave\" is rarely a compliment.",
+            "vi": "Ôi trời. Trong tiếng Anh kiểu Anh, \"táo bạo\" hiếm khi là lời khen đâu."
+          },
+          {
+            "s": "B",
+            "en": "Hang on, are you saying she hated it?",
+            "vi": "Khoan, ý cậu là bà ấy ghét nó à?"
+          },
+          {
+            "s": "A",
+            "en": "Not hated, exactly. More like she thinks it's risky and doesn't want to say so outright.",
+            "vi": "Không hẳn là ghét. Đúng hơn là bà ấy thấy nó rủi ro nhưng không muốn nói thẳng ra."
+          },
+          {
+            "s": "B",
+            "en": "Then she said she'd \"bear it in mind\". That's positive, surely?",
+            "vi": "Rồi bà ấy bảo sẽ \"ghi nhớ\". Thế thì chắc là tích cực chứ?"
+          },
+          {
+            "s": "A",
+            "en": "I'm afraid that's usually the polite way of filing something in the bin.",
+            "vi": "Mình e đó thường là cách lịch sự để cho thứ gì đó vào thùng rác."
+          },
+          {
+            "s": "B",
+            "en": "Brilliant. So the subtext was \"thanks, but no thanks\".",
+            "vi": "Tuyệt vời. Vậy ẩn ý là \"cảm ơn, nhưng thôi khỏi\"."
+          },
+          {
+            "s": "A",
+            "en": "Pretty much. Did she ask any follow-up questions about the budget?",
+            "vi": "Gần như vậy. Bà ấy có hỏi thêm gì về ngân sách không?"
+          },
+          {
+            "s": "B",
+            "en": "Actually, yes. She asked if it could be done for half the cost.",
+            "vi": "Có đấy. Bà ấy hỏi liệu có làm được với một nửa chi phí không."
+          },
+          {
+            "s": "A",
+            "en": "Ah, now that's different. That means she likes the idea but not the price tag.",
+            "vi": "À, thế thì khác. Nghĩa là bà ấy thích ý tưởng, chỉ không thích cái giá thôi."
+          },
+          {
+            "s": "B",
+            "en": "So there's hope. I just need a cheaper kind of brave.",
+            "vi": "Vậy là vẫn còn hy vọng. Mình chỉ cần một kiểu táo bạo rẻ hơn thôi."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "Your report has many mistakes.",
+          "natural": "It's a great start. Shall we have another pass at it together?",
+          "vi": "Khởi đầu tốt đấy. Mình cùng xem lại thêm một lượt nhé?",
+          "note": "'A great start' ngụ ý còn xa mới xong. Người nghe tinh ý sẽ hiểu cần sửa nhiều, mà không bị mất mặt."
+        },
+        {
+          "plain": "I don't want to go to your party.",
+          "natural": "I'll do my best to swing by, but it's a bit of a manic week.",
+          "vi": "Mình sẽ cố ghé qua, nhưng tuần này hơi bận tối mắt.",
+          "note": "Cách từ chối khéo: 'do my best' cộng với lý do bận gần như luôn có nghĩa là sẽ không đến."
+        },
+        {
+          "plain": "I think your idea is bad.",
+          "natural": "I wonder if we've fully thought through the downsides.",
+          "vi": "Không biết chúng ta đã cân nhắc kỹ các mặt trái chưa nhỉ.",
+          "note": "Dùng 'I wonder' và 'we' để chê ý tưởng mà không chê người, lời phê bình được bọc trong một câu hỏi."
+        }
+      ]
+    },
+    {
+      "id": "book-club",
+      "category": "social",
+      "title": "Discussing a novel at book club",
+      "titleVi": "Bàn luận tiểu thuyết ở câu lạc bộ sách",
+      "emoji": "📚",
+      "level": "C2",
+      "phrases": [
+        {
+          "en": "What struck me most was how little actually happens, and yet I couldn't put it down.",
+          "vi": "Điều khiến mình ấn tượng nhất là gần như chẳng có gì xảy ra, vậy mà mình không thể dừng đọc.",
+          "tip": "'What struck me most' là cách mở đầu ý kiến rất tự nhiên ở câu lạc bộ sách."
+        },
+        {
+          "en": "I read the lighthouse as a symbol of something she can see but never reach.",
+          "vi": "Mình hiểu ngọn hải đăng là biểu tượng của thứ cô ấy nhìn thấy nhưng không bao giờ chạm tới.",
+          "tip": "'I read X as Y' là cách diễn đạt khiêm tốn cho một cách hiểu, không áp đặt người khác."
+        },
+        {
+          "en": "The prose is gorgeous, if a little overwrought in places.",
+          "vi": "Văn phong rất đẹp, dù có chỗ hơi cầu kỳ quá mức."
+        },
+        {
+          "en": "I found the narrator deeply unreliable, which I suspect was the point.",
+          "vi": "Mình thấy người kể chuyện rất không đáng tin, mà mình đoán đó chính là chủ ý.",
+          "tip": "'Unreliable narrator' là khái niệm văn học quen thuộc: người kể chuyện có thể đang tự lừa mình hoặc lừa độc giả."
+        },
+        {
+          "en": "The ending left me cold, to be honest.",
+          "vi": "Nói thật, cái kết chẳng làm mình rung động gì."
+        },
+        {
+          "en": "I'm not sure it earns its ending, though.",
+          "vi": "Nhưng mình không chắc câu chuyện đủ sức dẫn tới cái kết đó."
+        }
+      ],
+      "words": [
+        {
+          "word": "symbolism",
+          "ipa": "/ˈsɪmbəˌlɪzəm/",
+          "vi": "tính biểu tượng, lối dùng biểu tượng",
+          "example": "The symbolism is heavy-handed, but it works."
+        },
+        {
+          "word": "ambiguity",
+          "ipa": "/ˌæmbɪˈɡjuəti/",
+          "vi": "sự mơ hồ, đa nghĩa",
+          "example": "I loved the ambiguity of the final chapter."
+        },
+        {
+          "word": "foreshadowing",
+          "ipa": "/fɔrˈʃædoʊɪŋ/",
+          "vi": "chi tiết báo trước, điềm báo",
+          "example": "The broken clock was clever foreshadowing."
+        },
+        {
+          "word": "protagonist",
+          "ipa": "/proʊˈtæɡənɪst/",
+          "vi": "nhân vật chính",
+          "example": "I didn't like the protagonist, but I understood her."
+        },
+        {
+          "word": "evocative",
+          "ipa": "/ɪˈvɑkətɪv/",
+          "vi": "giàu sức gợi, gợi cảm xúc",
+          "example": "Her descriptions of the monsoon are incredibly evocative."
+        },
+        {
+          "word": "melancholy",
+          "ipa": "/ˈmɛlənˌkɑli/",
+          "vi": "nỗi u sầu, man mác buồn",
+          "example": "There's a quiet melancholy running through the whole book."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Clara (book club host)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "Right, who wants to kick things off? Did anyone actually finish it?",
+            "vi": "Nào, ai muốn mở màn? Có ai đọc hết thật không đấy?"
+          },
+          {
+            "s": "B",
+            "en": "I did, though I'll admit the middle section tested my patience.",
+            "vi": "Mình đọc hết rồi, dù phải thừa nhận phần giữa khá thử thách lòng kiên nhẫn."
+          },
+          {
+            "s": "A",
+            "en": "The fifty pages about the garden? I think that's where the whole book lives.",
+            "vi": "Năm mươi trang về khu vườn ấy hả? Mình nghĩ đó là linh hồn của cả cuốn sách."
+          },
+          {
+            "s": "B",
+            "en": "Interesting. I read the garden as a symbol of the marriage. Beautiful on the surface, slowly rotting underneath.",
+            "vi": "Thú vị đấy. Mình hiểu khu vườn là biểu tượng của cuộc hôn nhân. Bề ngoài đẹp đẽ, bên dưới đang mục ruỗng dần."
+          },
+          {
+            "s": "A",
+            "en": "Oh, I hadn't thought of that. So the weeds are the secrets?",
+            "vi": "Ồ, mình chưa nghĩ đến chuyện đó. Vậy cỏ dại là những bí mật à?"
+          },
+          {
+            "s": "B",
+            "en": "Possibly. Or I'm reading far too much into a few dandelions.",
+            "vi": "Có thể. Hoặc mình đang suy diễn quá nhiều từ mấy cây bồ công anh."
+          },
+          {
+            "s": "A",
+            "en": "Ha! What did you make of the narrator? I couldn't trust a word she said.",
+            "vi": "Ha! Bạn nghĩ sao về người kể chuyện? Mình không tin nổi chữ nào cô ta nói."
+          },
+          {
+            "s": "B",
+            "en": "Neither could I, which I suspect was the point. She's lying to herself more than to us.",
+            "vi": "Mình cũng vậy, mà mình đoán đó chính là chủ ý. Cô ấy tự lừa dối bản thân nhiều hơn là lừa độc giả."
+          },
+          {
+            "s": "A",
+            "en": "And the ending? I found it devastating.",
+            "vi": "Còn cái kết? Mình thấy nó day dứt kinh khủng."
+          },
+          {
+            "s": "B",
+            "en": "It's beautifully written, but I'm not sure the book earns it. It felt a little rushed.",
+            "vi": "Viết rất hay, nhưng mình không chắc cuốn sách đủ sức dẫn tới cái kết ấy. Nó hơi vội."
+          },
+          {
+            "s": "A",
+            "en": "Fair. Would you recommend it, then?",
+            "vi": "Cũng phải. Vậy bạn có giới thiệu nó cho người khác không?"
+          },
+          {
+            "s": "B",
+            "en": "Yes, with a caveat: bring patience, and maybe a gardening manual.",
+            "vi": "Có, nhưng kèm một lưu ý: chuẩn bị sẵn kiên nhẫn, và có lẽ cả một cuốn sách hướng dẫn làm vườn."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "The book was boring in the middle.",
+          "natural": "It sags a bit in the middle, but it more than makes up for it in the final act.",
+          "vi": "Phần giữa hơi đuối một chút, nhưng phần cuối bù lại thừa thãi.",
+          "note": "'Sags' (võng xuống) là cách nói tinh tế về nhịp truyện chùng, kèm lời khen để nhận xét cân bằng."
+        },
+        {
+          "plain": "I think the author wants to say something about family.",
+          "natural": "It seems to me the novel is really an extended meditation on what we owe our parents.",
+          "vi": "Mình thấy cuốn tiểu thuyết thực chất là một suy ngẫm dài về những gì ta nợ cha mẹ.",
+          "note": "'An extended meditation on' là cách nói rất 'văn chương' để gọi tên chủ đề cốt lõi của tác phẩm."
+        },
+        {
+          "plain": "I didn't like the main character.",
+          "natural": "I found her hard to like, but impossible to look away from.",
+          "vi": "Mình thấy cô ấy khó mà ưa nổi, nhưng lại không thể rời mắt.",
+          "note": "Người đọc tinh tế phân biệt 'không thích' và 'không hấp dẫn': nhân vật khó ưa vẫn có thể được viết rất hay."
+        }
+      ]
+    },
+    {
       "id": "renting",
       "category": "home",
       "title": "Renting an apartment",
@@ -6914,6 +9812,167 @@
       ]
     },
     {
+      "id": "property-negotiation",
+      "category": "home",
+      "title": "Negotiating a house purchase or long lease",
+      "titleVi": "Thương lượng mua nhà hoặc thuê dài hạn",
+      "emoji": "🏡",
+      "level": "C1",
+      "phrases": [
+        {
+          "en": "We're seriously interested, but the asking price feels a little ambitious given the condition of the place.",
+          "vi": "Chúng tôi thực sự quan tâm, nhưng giá chào bán có vẻ hơi tham vọng so với tình trạng căn nhà.",
+          "tip": "'ambitious' là cách nói khéo thay cho 'quá đắt' — không xúc phạm người bán."
+        },
+        {
+          "en": "Comparable properties on this street have gone for around ten percent less.",
+          "vi": "Những căn tương tự trên con phố này đã bán với giá thấp hơn khoảng mười phần trăm.",
+          "tip": "Dẫn chứng giá bán thực tế ('comparable properties') là đòn bẩy mạnh nhất khi trả giá."
+        },
+        {
+          "en": "We're in a strong position — we're cash buyers with nothing to sell first.",
+          "vi": "Chúng tôi có lợi thế — chúng tôi trả tiền mặt và không cần bán nhà cũ trước."
+        },
+        {
+          "en": "Would the landlord be open to a longer lease in exchange for a lower monthly rent?",
+          "vi": "Chủ nhà có sẵn lòng cho thuê dài hạn hơn để đổi lấy giá thuê tháng thấp hơn không?",
+          "tip": "Mẫu 'open to X in exchange for Y' đưa ra trao đổi đôi bên cùng có lợi."
+        },
+        {
+          "en": "The inspection flagged some damp in the basement, which we'd need to factor into our offer.",
+          "vi": "Kết quả kiểm định nhà phát hiện tầng hầm bị ẩm, điều mà chúng tôi phải tính vào giá đề nghị."
+        },
+        {
+          "en": "That's our final offer, and it's valid until the end of the week.",
+          "vi": "Đó là mức giá cuối cùng của chúng tôi, có hiệu lực đến cuối tuần."
+        }
+      ],
+      "words": [
+        {
+          "word": "asking price",
+          "ipa": "/ˈæskɪŋ praɪs/",
+          "vi": "giá chào bán",
+          "example": "They accepted an offer just below the asking price."
+        },
+        {
+          "word": "deposit",
+          "ipa": "/dɪˈpɑzɪt/",
+          "vi": "tiền đặt cọc",
+          "example": "We'd need to put down a ten percent deposit."
+        },
+        {
+          "word": "clause",
+          "ipa": "/klɔz/",
+          "vi": "điều khoản (trong hợp đồng)",
+          "example": "I'd like a break clause after the first two years."
+        },
+        {
+          "word": "contingent",
+          "ipa": "/kənˈtɪndʒənt/",
+          "vi": "phụ thuộc vào, có điều kiện",
+          "example": "Our offer is contingent on a satisfactory inspection."
+        },
+        {
+          "word": "motivated seller",
+          "ipa": "/ˈmoʊtəˌveɪtɪd ˈsɛlər/",
+          "vi": "người bán đang cần bán gấp",
+          "example": "If it's a motivated seller, there may be room to negotiate."
+        },
+        {
+          "word": "lowball",
+          "ipa": "/ˈloʊˌbɔl/",
+          "vi": "trả giá thấp quá mức",
+          "example": "We don't want to lowball them and sour the relationship."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Jenny (real estate agent)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "So, now that you've seen the house twice, what are your thoughts?",
+            "vi": "Anh chị đã xem nhà hai lần rồi, anh chị thấy sao?"
+          },
+          {
+            "s": "B",
+            "en": "We love the location, and we're seriously interested. But the asking price feels a little ambitious given the condition.",
+            "vi": "Chúng tôi rất thích vị trí và thực sự quan tâm. Nhưng giá chào bán có vẻ hơi tham vọng so với tình trạng căn nhà."
+          },
+          {
+            "s": "A",
+            "en": "It is priced in line with the market. This is a very sought-after area.",
+            "vi": "Giá này phù hợp với thị trường đấy. Khu này rất được săn đón."
+          },
+          {
+            "s": "B",
+            "en": "I don't doubt that. But comparable properties on this street have gone for around ten percent less in the last six months.",
+            "vi": "Tôi không nghi ngờ điều đó. Nhưng những căn tương tự trên phố này đã bán thấp hơn khoảng mười phần trăm trong sáu tháng qua."
+          },
+          {
+            "s": "A",
+            "en": "Those needed a lot more work, to be fair.",
+            "vi": "Công bằng mà nói, mấy căn đó cần sửa nhiều hơn."
+          },
+          {
+            "s": "B",
+            "en": "Granted, but our inspection flagged damp in the basement and an old furnace. We'd need to factor that into our offer.",
+            "vi": "Đúng vậy, nhưng kết quả kiểm định nhà của chúng tôi phát hiện tầng hầm bị ẩm và hệ thống sưởi đã cũ. Chúng tôi phải tính chuyện đó vào giá đề nghị."
+          },
+          {
+            "s": "A",
+            "en": "I see. What sort of figure did you have in mind?",
+            "vi": "Tôi hiểu. Anh chị đang nghĩ đến mức giá khoảng bao nhiêu?"
+          },
+          {
+            "s": "B",
+            "en": "We'd like to offer eight percent below asking. And bear in mind, we're cash buyers with nothing to sell first, so we can move quickly.",
+            "vi": "Chúng tôi muốn trả thấp hơn giá chào tám phần trăm. Và xin lưu ý, chúng tôi trả tiền mặt, không cần bán nhà cũ trước, nên có thể tiến hành nhanh."
+          },
+          {
+            "s": "A",
+            "en": "That certainly helps. The sellers are keen to complete before the summer, so I'll put it to them.",
+            "vi": "Điều đó chắc chắn có lợi. Bên bán muốn hoàn tất trước mùa hè, nên tôi sẽ chuyển lời đề nghị cho họ."
+          },
+          {
+            "s": "B",
+            "en": "Thank you. Just to be clear, the offer is contingent on the furnace being replaced or a reduction to cover it.",
+            "vi": "Cảm ơn chị. Nói rõ là lời đề nghị này có điều kiện: hệ thống sưởi phải được thay hoặc giảm giá tương ứng."
+          },
+          {
+            "s": "A",
+            "en": "Understood. If they come back with a counteroffer, how much flexibility do you have?",
+            "vi": "Tôi hiểu. Nếu họ trả giá lại, anh chị còn linh động được bao nhiêu?"
+          },
+          {
+            "s": "B",
+            "en": "A little, but not much. I'd rather not tip our hand just yet — let's see how they respond first.",
+            "vi": "Một chút, nhưng không nhiều. Tôi chưa muốn để lộ bài lúc này — cứ xem họ phản hồi thế nào đã."
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "The house is too expensive.",
+          "natural": "It's a lovely place, but we'd struggle to justify that figure.",
+          "vi": "Căn nhà rất đẹp, nhưng chúng tôi khó lòng chấp nhận mức giá đó.",
+          "note": "Khen trước rồi mới nói khó khăn của mình ('we'd struggle to justify') — trả giá mà không làm mất lòng bên bán."
+        },
+        {
+          "plain": "I will not tell you my maximum price.",
+          "natural": "I'd rather not tip our hand just yet.",
+          "vi": "Tôi chưa muốn để lộ bài lúc này.",
+          "note": "'tip your hand' (từ chơi bài) = để lộ ý định. Cách nói khéo để giữ lợi thế thương lượng."
+        },
+        {
+          "plain": "We can pay quickly, so give us a discount.",
+          "natural": "We can move fast, which should count for something.",
+          "vi": "Chúng tôi có thể tiến hành nhanh, chắc điều đó cũng đáng được tính đến.",
+          "note": "'count for something' = có giá trị, đáng cân nhắc. Gợi ý giảm giá một cách tinh tế thay vì đòi thẳng."
+        }
+      ]
+    },
+    {
       "id": "doctor",
       "category": "health",
       "title": "At the doctor's",
@@ -7513,6 +10572,167 @@
           "note": "'wiped out' = kiệt sức sau khi tập."
         }
       ]
+    },
+    {
+      "id": "health-advice",
+      "category": "health",
+      "title": "Making a health decision with your doctor",
+      "titleVi": "Cân nhắc quyết định sức khỏe cùng bác sĩ",
+      "emoji": "🏥",
+      "level": "B2",
+      "phrases": [
+        {
+          "en": "What are my options, realistically?",
+          "vi": "Thực tế thì tôi có những lựa chọn nào?"
+        },
+        {
+          "en": "How likely is it that I'd get side effects?",
+          "vi": "Khả năng tôi bị tác dụng phụ là bao nhiêu?",
+          "tip": "'How likely is it...' = hỏi về xác suất, mức độ rủi ro."
+        },
+        {
+          "en": "Is there anything I can do in the meantime?",
+          "vi": "Trong lúc chờ đợi, tôi có thể làm gì không?",
+          "tip": "'in the meantime' = trong khoảng thời gian chờ đợi."
+        },
+        {
+          "en": "I'd like to think it over before I go ahead with surgery.",
+          "vi": "Tôi muốn suy nghĩ thêm trước khi quyết định phẫu thuật."
+        },
+        {
+          "en": "Would you mind if I got a second opinion?",
+          "vi": "Bác sĩ có phiền không nếu tôi hỏi thêm ý kiến bác sĩ khác?",
+          "tip": "'second opinion' = ý kiến của bác sĩ thứ hai; hỏi vậy là bình thường, không bất lịch sự."
+        },
+        {
+          "en": "What would you do if you were in my shoes?",
+          "vi": "Nếu ở vào hoàn cảnh của tôi, bác sĩ sẽ làm gì?"
+        }
+      ],
+      "words": [
+        {
+          "word": "diagnosis",
+          "ipa": "/ˌdaɪəɡˈnoʊsɪs/",
+          "vi": "chẩn đoán",
+          "example": "The diagnosis came as a bit of a shock."
+        },
+        {
+          "word": "procedure",
+          "ipa": "/prəˈsidʒər/",
+          "vi": "thủ thuật (y khoa)",
+          "example": "It's a simple procedure, and you can go home the same day."
+        },
+        {
+          "word": "side effect",
+          "ipa": "/ˈsaɪd ɪˌfɛkt/",
+          "vi": "tác dụng phụ",
+          "example": "Drowsiness is a common side effect of this medicine."
+        },
+        {
+          "word": "recovery",
+          "ipa": "/rɪˈkʌvəri/",
+          "vi": "sự hồi phục",
+          "example": "Recovery usually takes about six weeks."
+        },
+        {
+          "word": "chronic",
+          "ipa": "/ˈkrɑnɪk/",
+          "vi": "mãn tính",
+          "example": "She's been dealing with chronic back pain for years."
+        },
+        {
+          "word": "referral",
+          "ipa": "/rɪˈfɜrəl/",
+          "vi": "giấy giới thiệu (chuyển khám chuyên khoa)",
+          "example": "You'll need a referral to see a specialist."
+        }
+      ],
+      "dialogue": {
+        "roleA": "Dr Patel (doctor)",
+        "roleB": "You",
+        "lines": [
+          {
+            "s": "A",
+            "en": "So, the scan confirms what we suspected. There's quite a bit of wear and tear in your knee.",
+            "vi": "Vậy là kết quả chụp đã xác nhận điều chúng ta nghi ngờ. Đầu gối của anh bị thoái hóa khá nhiều."
+          },
+          {
+            "s": "B",
+            "en": "I see. What are my options, realistically?",
+            "vi": "Tôi hiểu. Thực tế thì tôi có những lựa chọn nào?"
+          },
+          {
+            "s": "A",
+            "en": "We could try physiotherapy for three months, or go straight to keyhole surgery.",
+            "vi": "Chúng ta có thể thử vật lý trị liệu trong ba tháng, hoặc phẫu thuật nội soi luôn."
+          },
+          {
+            "s": "B",
+            "en": "What does the surgery involve, and how long is the recovery?",
+            "vi": "Phẫu thuật thì như thế nào, và hồi phục mất bao lâu?"
+          },
+          {
+            "s": "A",
+            "en": "It's a fairly routine procedure. Most people are back on their feet in about six weeks.",
+            "vi": "Đó là thủ thuật khá thông thường. Phần lớn mọi người đi lại bình thường sau khoảng sáu tuần."
+          },
+          {
+            "s": "B",
+            "en": "And how likely is it that something goes wrong?",
+            "vi": "Còn khả năng có biến chứng là bao nhiêu?"
+          },
+          {
+            "s": "A",
+            "en": "The risk is low, but there's always a small chance of infection.",
+            "vi": "Rủi ro thấp, nhưng luôn có một khả năng nhỏ bị nhiễm trùng."
+          },
+          {
+            "s": "B",
+            "en": "I see. What would you do if you were in my shoes?",
+            "vi": "Tôi hiểu. Nếu ở vào hoàn cảnh của tôi, bác sĩ sẽ làm gì?"
+          },
+          {
+            "s": "A",
+            "en": "Personally, I'd give physio a go first. Surgery is still an option if it doesn't help.",
+            "vi": "Cá nhân tôi thì sẽ thử vật lý trị liệu trước. Nếu không đỡ thì vẫn còn phương án phẫu thuật."
+          },
+          {
+            "s": "B",
+            "en": "That makes sense. Would you mind if I got a second opinion as well?",
+            "vi": "Hợp lý ạ. Bác sĩ có phiền không nếu tôi hỏi thêm ý kiến bác sĩ khác?"
+          },
+          {
+            "s": "A",
+            "en": "Not at all. I can write you a referral to a specialist today.",
+            "vi": "Không hề. Hôm nay tôi có thể viết giấy giới thiệu anh đến bác sĩ chuyên khoa."
+          },
+          {
+            "s": "B",
+            "en": "Thank you. Is there anything I can do in the meantime to ease the pain?",
+            "vi": "Cảm ơn bác sĩ. Trong lúc chờ, tôi có thể làm gì để đỡ đau không?"
+          }
+        ]
+      },
+      "native": [
+        {
+          "plain": "I am afraid of the operation.",
+          "natural": "I'm a bit nervous about going under the knife.",
+          "vi": "Tôi hơi lo khi phải lên bàn mổ.",
+          "note": "'go under the knife' = phẫu thuật; cách nói thân mật, phổ biến."
+        },
+        {
+          "plain": "I feel better now.",
+          "natural": "I'm on the mend.",
+          "vi": "Tôi đang hồi phục dần rồi.",
+          "note": "'on the mend' = đang khỏe lại, đang bình phục."
+        },
+        {
+          "plain": "Please explain more simply.",
+          "natural": "Sorry, could you put that in plain English?",
+          "vi": "Xin lỗi, bác sĩ giải thích dễ hiểu hơn được không?",
+          "note": "'in plain English' = bằng lời đơn giản, không dùng thuật ngữ chuyên môn."
+        }
+      ]
     }
   ],
   "path": [
@@ -7628,8 +10848,8 @@
     {
       "id": "advanced",
       "level": "B2",
-      "title": "Nâng cao",
-      "subtitle": "Thương lượng, tranh luận, góp ý và nói chuyện thời sự",
+      "title": "Thảo luận & thương lượng",
+      "subtitle": "Thương lượng, góp ý, tranh luận, thời sự, giải quyết mâu thuẫn",
       "topics": [
         "salary",
         "negotiating",
@@ -7637,6 +10857,58 @@
         "sharing-opinions",
         "news-talk",
         "resolving-conflict"
+      ]
+    },
+    {
+      "id": "b2-life",
+      "level": "B2",
+      "title": "Công việc & cuộc sống nâng cao",
+      "subtitle": "Điều hành họp, nhận phê bình, tiền bạc, môi trường, sức khỏe, khiếu nại",
+      "topics": [
+        "leading-meeting",
+        "handling-criticism",
+        "money-talk",
+        "environment-debate",
+        "health-advice",
+        "travel-problems"
+      ]
+    },
+    {
+      "id": "c1-lead",
+      "level": "C1",
+      "title": "Lãnh đạo & thuyết phục",
+      "subtitle": "Thuyết phục cấp trên, trình bày số liệu, phỏng vấn vị trí cao, hoà giải",
+      "topics": [
+        "persuading-stakeholders",
+        "presenting-data",
+        "senior-interview",
+        "mediating-conflict"
+      ]
+    },
+    {
+      "id": "c1-ideas",
+      "level": "C1",
+      "title": "Tranh luận & văn hoá",
+      "subtitle": "Thảo luận học thuật, khác biệt văn hoá, đạo đức công nghệ, mua nhà",
+      "topics": [
+        "academic-discussion",
+        "cultural-differences",
+        "tech-ethics",
+        "property-negotiation"
+      ]
+    },
+    {
+      "id": "c2-mastery",
+      "level": "C2",
+      "title": "Thành thạo như người bản xứ",
+      "subtitle": "Khủng hoảng truyền thông, diễn thuyết, đùa kiểu Anh, ẩn ý, văn phong trang trọng, bàn sách",
+      "topics": [
+        "crisis-communication",
+        "keynote-speech",
+        "witty-banter",
+        "reading-between-lines",
+        "formal-register",
+        "book-club"
       ]
     }
   ]

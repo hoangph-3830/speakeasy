@@ -1,20 +1,177 @@
 [
-  { "id": "start", "level": "A1", "title": "Khởi động", "subtitle": "Chào hỏi, gọi đồ, hỏi đường: những câu dùng hằng ngày",
-    "topics": ["meet-people", "coffee", "supermarket", "weather", "family-dinner", "directions", "taxi"] },
-  { "id": "services", "level": "A2", "title": "Mua sắm & dịch vụ", "subtitle": "Cửa hàng, ngân hàng, hiệu thuốc, gọi đồ ăn",
-    "topics": ["shopping", "food-delivery", "bank", "hair-salon", "pharmacy"] },
-  { "id": "home-health", "level": "A2", "title": "Nhà cửa & sức khỏe", "subtitle": "Việc nhà, hàng xóm, đi khám, tập thể dục",
-    "topics": ["cooking", "chores", "neighbors", "repair", "doctor", "dentist", "gym"] },
-  { "id": "travel", "level": "A2", "title": "Đi lại & du lịch", "subtitle": "Tàu xe, sân bay, khách sạn, nhà hàng, tham quan",
-    "topics": ["train", "airport", "hotel", "restaurant", "sightseeing"] },
-  { "id": "friends", "level": "A2", "title": "Bạn bè & giải trí", "subtitle": "Sở thích, rủ đi chơi, tiệc, phim nhạc",
-    "topics": ["hobbies", "weekend", "invitation", "party", "movies-music", "compliments", "keep-in-touch"] },
-  { "id": "work-basics", "level": "A2", "title": "Công việc cơ bản", "subtitle": "Ngày đầu đi làm, họp online, báo sự cố máy tính",
-    "topics": ["first-day", "video-call", "it-problem"] },
-  { "id": "office", "level": "B1", "title": "Tự tin ở công sở", "subtitle": "Họp, gọi điện, thuyết trình, phỏng vấn, khách hàng",
-    "topics": ["meeting", "phone-call", "deadline", "presentation", "interview", "customer-complaint"] },
-  { "id": "situations", "level": "B1", "title": "Xử lý tình huống", "subtitle": "Mất hành lý, cấp cứu, thuê nhà, xin lỗi, hẹn hò",
-    "topics": ["lost-luggage", "emergency", "renting", "apologizing", "asking-out"] },
-  { "id": "advanced", "level": "B2", "title": "Nâng cao", "subtitle": "Thương lượng, tranh luận, góp ý và nói chuyện thời sự",
-    "topics": ["salary"] }
+  {
+    "id": "start",
+    "level": "A1",
+    "title": "Khởi động",
+    "subtitle": "Chào hỏi, gọi đồ, hỏi đường: những câu dùng hằng ngày",
+    "topics": [
+      "meet-people",
+      "coffee",
+      "supermarket",
+      "weather",
+      "family-dinner",
+      "directions",
+      "taxi"
+    ]
+  },
+  {
+    "id": "services",
+    "level": "A2",
+    "title": "Mua sắm & dịch vụ",
+    "subtitle": "Cửa hàng, ngân hàng, hiệu thuốc, gọi đồ ăn",
+    "topics": [
+      "shopping",
+      "food-delivery",
+      "bank",
+      "hair-salon",
+      "pharmacy"
+    ]
+  },
+  {
+    "id": "home-health",
+    "level": "A2",
+    "title": "Nhà cửa & sức khỏe",
+    "subtitle": "Việc nhà, hàng xóm, đi khám, tập thể dục",
+    "topics": [
+      "cooking",
+      "chores",
+      "neighbors",
+      "repair",
+      "doctor",
+      "dentist",
+      "gym"
+    ]
+  },
+  {
+    "id": "travel",
+    "level": "A2",
+    "title": "Đi lại & du lịch",
+    "subtitle": "Tàu xe, sân bay, khách sạn, nhà hàng, tham quan",
+    "topics": [
+      "train",
+      "airport",
+      "hotel",
+      "restaurant",
+      "sightseeing"
+    ]
+  },
+  {
+    "id": "friends",
+    "level": "A2",
+    "title": "Bạn bè & giải trí",
+    "subtitle": "Sở thích, rủ đi chơi, tiệc, phim nhạc",
+    "topics": [
+      "hobbies",
+      "weekend",
+      "invitation",
+      "party",
+      "movies-music",
+      "compliments",
+      "keep-in-touch"
+    ]
+  },
+  {
+    "id": "work-basics",
+    "level": "A2",
+    "title": "Công việc cơ bản",
+    "subtitle": "Ngày đầu đi làm, họp online, báo sự cố máy tính",
+    "topics": [
+      "first-day",
+      "video-call",
+      "it-problem"
+    ]
+  },
+  {
+    "id": "office",
+    "level": "B1",
+    "title": "Tự tin ở công sở",
+    "subtitle": "Họp, gọi điện, thuyết trình, phỏng vấn, khách hàng",
+    "topics": [
+      "meeting",
+      "phone-call",
+      "deadline",
+      "presentation",
+      "interview",
+      "customer-complaint"
+    ]
+  },
+  {
+    "id": "situations",
+    "level": "B1",
+    "title": "Xử lý tình huống",
+    "subtitle": "Mất hành lý, cấp cứu, thuê nhà, xin lỗi, hẹn hò",
+    "topics": [
+      "lost-luggage",
+      "emergency",
+      "renting",
+      "apologizing",
+      "asking-out"
+    ]
+  },
+  {
+    "id": "advanced",
+    "level": "B2",
+    "title": "Thảo luận & thương lượng",
+    "subtitle": "Thương lượng, góp ý, tranh luận, thời sự, giải quyết mâu thuẫn",
+    "topics": [
+      "salary",
+      "negotiating",
+      "giving-feedback",
+      "sharing-opinions",
+      "news-talk",
+      "resolving-conflict"
+    ]
+  },
+  {
+    "id": "b2-life",
+    "level": "B2",
+    "title": "Công việc & cuộc sống nâng cao",
+    "subtitle": "Điều hành họp, nhận phê bình, tiền bạc, môi trường, sức khỏe, khiếu nại",
+    "topics": [
+      "leading-meeting",
+      "handling-criticism",
+      "money-talk",
+      "environment-debate",
+      "health-advice",
+      "travel-problems"
+    ]
+  },
+  {
+    "id": "c1-lead",
+    "level": "C1",
+    "title": "Lãnh đạo & thuyết phục",
+    "subtitle": "Thuyết phục cấp trên, trình bày số liệu, phỏng vấn vị trí cao, hoà giải",
+    "topics": [
+      "persuading-stakeholders",
+      "presenting-data",
+      "senior-interview",
+      "mediating-conflict"
+    ]
+  },
+  {
+    "id": "c1-ideas",
+    "level": "C1",
+    "title": "Tranh luận & văn hoá",
+    "subtitle": "Thảo luận học thuật, khác biệt văn hoá, đạo đức công nghệ, mua nhà",
+    "topics": [
+      "academic-discussion",
+      "cultural-differences",
+      "tech-ethics",
+      "property-negotiation"
+    ]
+  },
+  {
+    "id": "c2-mastery",
+    "level": "C2",
+    "title": "Thành thạo như người bản xứ",
+    "subtitle": "Khủng hoảng truyền thông, diễn thuyết, đùa kiểu Anh, ẩn ý, văn phong trang trọng, bàn sách",
+    "topics": [
+      "crisis-communication",
+      "keynote-speech",
+      "witty-banter",
+      "reading-between-lines",
+      "formal-register",
+      "book-club"
+    ]
+  }
 ]
