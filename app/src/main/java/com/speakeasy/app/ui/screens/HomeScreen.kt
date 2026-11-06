@@ -37,6 +37,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -55,7 +56,9 @@ import com.speakeasy.app.data.Quest
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.Stage
 import com.speakeasy.app.data.Topic
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.ui.components.BigButton
+import com.speakeasy.app.ui.components.dialogTestTag
 import com.speakeasy.app.ui.components.EmojiBadge
 import com.speakeasy.app.ui.components.HSpace
 import com.speakeasy.app.ui.components.Pill
@@ -131,12 +134,12 @@ fun HomeScreen(
         }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                Shortcut("🔁", "Ôn tập", LavenderLight, Modifier.weight(1f), badge = due, onClick = openReview)
-                Shortcut("📚", "Từ vựng", SkyLight, Modifier.weight(1f), onClick = openVocab)
-                Shortcut("🎯", "Phát âm", CoralLight, Modifier.weight(1f), onClick = openLab)
-                Shortcut("📖", "Truyện", MintLight, Modifier.weight(1f), onClick = openStories)
-                Shortcut("📰", "Đọc báo", SunLight, Modifier.weight(1f), onClick = openNews)
-                Shortcut("🎬", "Video", PeachLight, Modifier.weight(1f), onClick = openVideos)
+                Shortcut("🔁", "Ôn tập", LavenderLight, Modifier.weight(1f).testTag(TestTags.shortcut("review")), badge = due, onClick = openReview)
+                Shortcut("📚", "Từ vựng", SkyLight, Modifier.weight(1f).testTag(TestTags.shortcut("vocab")), onClick = openVocab)
+                Shortcut("🎯", "Phát âm", CoralLight, Modifier.weight(1f).testTag(TestTags.shortcut("lab")), onClick = openLab)
+                Shortcut("📖", "Truyện", MintLight, Modifier.weight(1f).testTag(TestTags.shortcut("stories")), onClick = openStories)
+                Shortcut("📰", "Đọc báo", SunLight, Modifier.weight(1f).testTag(TestTags.shortcut("news")), onClick = openNews)
+                Shortcut("🎬", "Video", PeachLight, Modifier.weight(1f).testTag(TestTags.shortcut("videos")), onClick = openVideos)
             }
         }
         item { QuestsCard(progress, questsOpen, onToggle = { questsOpen = !questsOpen }, onClaim = { app.progress.claim(it) }) }
@@ -254,6 +257,7 @@ private fun TopicRow(t: Topic, p: Progress, onClick: () -> Unit) {
     val done = p.doneCount(t.id)
     Card(
         onClick = onClick,
+        modifier = Modifier.testTag(TestTags.topic(t.id)),
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         border = androidx.compose.foundation.BorderStroke(1.dp, Line),
@@ -291,11 +295,19 @@ private fun NameDialog(onDone: (String) -> Unit) {
                     singleLine = true,
                     placeholder = { Text("Tên của bạn") },
                     shape = RoundedCornerShape(14.dp),
+                    modifier = Modifier.testTag(TestTags.NAME_INPUT),
                 )
             }
         },
-        confirmButton = { TextButton(onClick = { onDone(name) }) { Text("Bắt đầu học", color = Mint, fontWeight = FontWeight.Bold) } },
-        dismissButton = { TextButton(onClick = { onDone("") }) { Text("Để sau", color = Peach) } },
+        confirmButton = {
+            TextButton(onClick = { onDone(name) }, modifier = Modifier.testTag(TestTags.NAME_CONFIRM)) {
+                Text("Bắt đầu học", color = Mint, fontWeight = FontWeight.Bold)
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { onDone("") }, modifier = Modifier.testTag(TestTags.NAME_SKIP)) { Text("Để sau", color = Peach) }
+        },
+        modifier = Modifier.dialogTestTag(TestTags.NAME_DIALOG),
         containerColor = Color.White,
         shape = RoundedCornerShape(28.dp),
     )
@@ -373,7 +385,7 @@ private fun ContinueCard(next: PathStep?, topic: Topic?, p: Progress, onOpen: ()
                 Text("Bạn đã học hết lộ trình 🎉", style = MaterialTheme.typography.titleLarge, color = Ink)
                 Text("Ôn lại thẻ ghi nhớ để không quên nhé.", color = Muted)
                 VSpace(12.dp)
-                BigButton("🔁 Ôn tập", onClick = onReview, color = strong)
+                BigButton("🔁 Ôn tập", onClick = onReview, color = strong, modifier = Modifier.testTag(TestTags.CONTINUE_REVIEW))
                 return@Column
             }
             val step = Activity.entries.first { !p.isDone(topic.id, it) }
@@ -401,7 +413,7 @@ private fun ContinueCard(next: PathStep?, topic: Topic?, p: Progress, onOpen: ()
                 }
             }
             VSpace(12.dp)
-            BigButton("Học tiếp →", onClick = onOpen, color = strong)
+            BigButton("Học tiếp →", onClick = onOpen, color = strong, modifier = Modifier.testTag(TestTags.CONTINUE_LEARNING))
         }
     }
 }
@@ -522,7 +534,8 @@ private fun StageCard(
 @Composable
 private fun PathTopicRow(t: Topic, p: Progress, light: Color, strong: Color, onClick: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).clickable(onClick = onClick).padding(horizontal = 6.dp, vertical = 8.dp),
+        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).clickable(onClick = onClick).testTag(TestTags.topic(t.id))
+            .padding(horizontal = 6.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         EmojiBadge(t.emoji, light, 40.dp)

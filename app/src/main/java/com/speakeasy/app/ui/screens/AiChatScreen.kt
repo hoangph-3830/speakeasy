@@ -94,6 +94,8 @@ import com.speakeasy.app.ui.theme.Sun
 import com.speakeasy.app.ui.theme.SunLight
 import com.speakeasy.app.ui.theme.categoryColors
 import kotlinx.coroutines.launch
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 /** Picks who the AI should be and how hard it should talk. */
 @Composable
@@ -306,7 +308,7 @@ fun AiChatScreen(scenarioId: String, onBack: () -> Unit) {
             OutlinedTextField(
                 value = input,
                 onValueChange = { input = it },
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.weight(1f).testTag(TestTags.CHAT_INPUT),
                 placeholder = { Text("Hoặc gõ tiếng Anh…") },
                 shape = RoundedCornerShape(22.dp),
                 maxLines = 3,
@@ -317,7 +319,7 @@ fun AiChatScreen(scenarioId: String, onBack: () -> Unit) {
             FilledIconButton(
                 onClick = { send(input) },
                 enabled = input.isNotBlank() && !loading,
-                modifier = Modifier.size(48.dp),
+                modifier = Modifier.size(48.dp).testTag(TestTags.CHAT_SEND),
                 colors = IconButtonDefaults.filledIconButtonColors(containerColor = Sky),
             ) { Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Gửi") }
         }

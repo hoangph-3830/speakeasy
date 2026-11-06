@@ -40,17 +40,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.ui.theme.Coral
 import com.speakeasy.app.ui.theme.Line
 import com.speakeasy.app.ui.theme.Muted
@@ -64,7 +69,7 @@ fun TopBar(title: String, subtitle: String? = null, onBack: () -> Unit, trailing
         Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 8.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Quay lại") }
+        IconButton(onClick = onBack, modifier = Modifier.testTag(TestTags.BACK)) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Quay lại") }
         Column(Modifier.weight(1f)) {
             Text(title, style = MaterialTheme.typography.titleLarge, maxLines = 1)
             if (subtitle != null) Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = Muted, maxLines = 1)
@@ -93,7 +98,7 @@ fun SpeakButton(
     val scale by pulse.animateFloat(1f, 1.15f, infiniteRepeatable(tween(450), RepeatMode.Reverse), label = "scale")
     FilledIconButton(
         onClick = { if (long) speaker.sayLong(text) else speaker.say(text, slow) },
-        modifier = modifier.size(size).scale(if (active) scale else 1f),
+        modifier = modifier.size(size).scale(if (active) scale else 1f).testTag(if (slow) TestTags.SPEAK_SLOW else TestTags.SPEAK),
         colors = IconButtonDefaults.filledIconButtonColors(
             containerColor = if (active) tint else tint.copy(alpha = 0.14f),
             contentColor = if (active) Color.White else tint,
@@ -108,7 +113,7 @@ fun SpeakButton(
 fun MicButton(onClick: () -> Unit, modifier: Modifier = Modifier, size: Dp = 72.dp) {
     FilledIconButton(
         onClick = onClick,
-        modifier = modifier.size(size),
+        modifier = modifier.size(size).testTag(TestTags.MIC),
         colors = IconButtonDefaults.filledIconButtonColors(containerColor = Coral, contentColor = Color.White),
     ) {
         Icon(Icons.Filled.Mic, contentDescription = "Nói", modifier = Modifier.size(size * 0.45f))
@@ -186,12 +191,22 @@ fun CompleteDialog(title: String, message: String, xp: Int, onDismiss: () -> Uni
                 Pill("+$xp XP", color = Color(0xFF8A5A00), background = Sun.copy(alpha = 0.35f))
             }
         },
-        confirmButton = { Button(onClick = onDismiss, shape = RoundedCornerShape(14.dp)) { Text("Tiếp tục") } },
-        dismissButton = onAgain?.let { { TextButton(onClick = it) { Text("Làm lại") } } },
+        confirmButton = {
+            Button(onClick = onDismiss, shape = RoundedCornerShape(14.dp), modifier = Modifier.testTag(TestTags.DIALOG_CONTINUE)) { Text("Tiếp tục") }
+        },
+        dismissButton = onAgain?.let { { TextButton(onClick = it, modifier = Modifier.testTag(TestTags.DIALOG_AGAIN)) { Text("Làm lại") } } },
+        modifier = Modifier.dialogTestTag(TestTags.DIALOG_COMPLETE),
         containerColor = Color.White,
         shape = RoundedCornerShape(28.dp),
     )
 }
+
+/**
+ * Tags a dialog's root. A dialog is its own window, outside the app root that turns tags into
+ * resource-ids, so it has to switch that on again for itself and its buttons.
+ */
+@OptIn(ExperimentalComposeUiApi::class)
+fun Modifier.dialogTestTag(tag: String) = semantics { testTagsAsResourceId = true }.testTag(tag)
 
 @Composable
 fun SectionTitle(text: String, modifier: Modifier = Modifier, action: (@Composable () -> Unit)? = null) {

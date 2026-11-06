@@ -33,6 +33,8 @@ import com.speakeasy.app.ui.components.VSpace
 import com.speakeasy.app.ui.theme.Line
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Sky
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 private fun needsPermission(context: Context) =
     Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
@@ -56,6 +58,7 @@ internal fun ReminderSettings(p: Progress) {
         Text("⏰ Nhắc học mỗi ngày", fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
         Switch(
             checked = p.reminderOn,
+            modifier = Modifier.testTag(TestTags.REMINDER_SWITCH),
             onCheckedChange = { on ->
                 when {
                     !on -> update(false, p.reminderTime)

@@ -1,6 +1,8 @@
 package com.speakeasy.app.ui
 
 import android.net.Uri
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Chat
@@ -16,11 +18,17 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -63,12 +71,15 @@ private val tabs = listOf(
     Tab("me", "Tiến độ", Icons.Filled.Insights),
 )
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AppNav() {
     val nav = rememberNavController()
     val entry by nav.currentBackStackEntryAsState()
     val route = entry?.destination?.route
     Scaffold(
+        // Exposes every testTag below as a resource-id, which is what Appium/UiAutomator can see.
+        modifier = Modifier.semantics { testTagsAsResourceId = true },
         containerColor = Color.Transparent,
         bottomBar = {
             if (tabs.any { it.route == route }) {
@@ -77,6 +88,7 @@ fun AppNav() {
                         NavigationBarItem(
                             selected = route == tab.route,
                             onClick = { nav.switchTab(tab.route) },
+                            modifier = Modifier.testTag(TestTags.tab(tab.route)),
                             icon = { Icon(tab.icon, contentDescription = null) },
                             label = { Text(tab.label) },
                             colors = NavigationBarItemDefaults.colors(indicatorColor = SkyLight),
@@ -87,7 +99,7 @@ fun AppNav() {
         },
     ) { padding ->
         NavHost(nav, startDestination = "home", modifier = Modifier.padding(bottom = padding.calculateBottomPadding())) {
-            composable("home") {
+            screen("home") {
                 HomeScreen(
                     openTopic = { nav.navigate("topic/$it") },
                     openReview = { nav.navigate("review") },
@@ -99,12 +111,12 @@ fun AppNav() {
                     openPlacement = { nav.navigate("placement") },
                 )
             }
-            composable("vocab") { VocabHubScreen(onBack = nav::popBackStack, openGroup = { nav.navigate("vocab/$it") }) }
-            composable("vocab/{id}") { VocabGroupScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("news") { NewsScreen(openArticle = { link -> nav.navigate("article/${Uri.encode(link)}") }) }
-            composable("article/{link}") { ArticleScreen(it.arguments!!.getString("link")!!, onBack = nav::popBackStack) }
-            composable("videos") { VideoHubScreen(onBack = nav::popBackStack, openVideo = { nav.navigate("video/$it") }) }
-            composable("video/{id}") {
+            screen("vocab") { VocabHubScreen(onBack = nav::popBackStack, openGroup = { nav.navigate("vocab/$it") }) }
+            screen("vocab/{id}") { VocabGroupScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("news") { NewsScreen(openArticle = { link -> nav.navigate("article/${Uri.encode(link)}") }) }
+            screen("article/{link}") { ArticleScreen(it.arguments!!.getString("link")!!, onBack = nav::popBackStack) }
+            screen("videos") { VideoHubScreen(onBack = nav::popBackStack, openVideo = { nav.navigate("video/$it") }) }
+            screen("video/{id}") {
                 VideoScreen(
                     it.arguments!!.getString("id")!!,
                     onBack = nav::popBackStack,
@@ -112,19 +124,19 @@ fun AppNav() {
                     openVideo = { id -> nav.navigate("video/$id") { popUpTo("videos") } },
                 )
             }
-            composable("review") { ReviewScreen(onBack = nav::popBackStack) }
-            composable("lab") { LabHubScreen(onBack = nav::popBackStack, openLesson = { nav.navigate("lab/$it") }) }
-            composable("lab/{id}") { LabLessonScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("stories") {
+            screen("review") { ReviewScreen(onBack = nav::popBackStack) }
+            screen("lab") { LabHubScreen(onBack = nav::popBackStack, openLesson = { nav.navigate("lab/$it") }) }
+            screen("lab/{id}") { LabLessonScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("stories") {
                 StoriesHubScreen(
                     onBack = nav::popBackStack,
                     openStory = { nav.navigate("story/$it") },
                     openBook = { nav.navigate("book/$it") },
                 )
             }
-            composable("book/{id}") { BookScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("story/{id}") { StoryScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("play") {
+            screen("book/{id}") { BookScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("story/{id}") { StoryScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("play") {
                 GameHubScreen(
                     openGame = { mode -> nav.navigate("game/mix/$mode") },
                     openChallenge = { nav.navigate("challenge/$it") },
@@ -132,33 +144,33 @@ fun AppNav() {
                     openStories = { nav.navigate("stories") },
                 )
             }
-            composable("challenge/{id}") { ChallengeScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
-            composable("me") { ProgressScreen(openPlacement = { nav.navigate("placement") }) }
-            composable("placement") { PlacementScreen(onBack = nav::popBackStack, onContinue = { nav.switchTab("home") }) }
-            composable("ai") { AiHubScreen(openChat = { nav.navigate("ai/$it") }) }
-            composable("ai/{scenario}") {
+            screen("challenge/{id}") { ChallengeScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("me") { ProgressScreen(openPlacement = { nav.navigate("placement") }) }
+            screen("placement") { PlacementScreen(onBack = nav::popBackStack, onContinue = { nav.switchTab("home") }) }
+            screen("ai") { AiHubScreen(openChat = { nav.navigate("ai/$it") }) }
+            screen("ai/{scenario}") {
                 AiChatScreen(it.arguments!!.getString("scenario")!!, onBack = nav::popBackStack)
             }
-            composable("topic/{id}") {
+            screen("topic/{id}") {
                 TopicScreen(
                     topicId = it.arguments!!.getString("id")!!,
                     onBack = nav::popBackStack,
                     open = { path -> nav.navigate(path) },
                 )
             }
-            composable("topic/{id}/phrases") {
+            screen("topic/{id}/phrases") {
                 PhrasesScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
             }
-            composable("topic/{id}/dialogue") {
+            screen("topic/{id}/dialogue") {
                 DialogueScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
             }
-            composable("topic/{id}/speak") {
+            screen("topic/{id}/speak") {
                 SpeakScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
             }
-            composable("topic/{id}/shadow") {
+            screen("topic/{id}/shadow") {
                 ShadowScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack)
             }
-            composable("game/{id}/{mode}") {
+            screen("game/{id}/{mode}") {
                 GameScreen(
                     topicId = it.arguments!!.getString("id")!!,
                     mode = it.arguments!!.getString("mode")!!,
@@ -168,6 +180,10 @@ fun AppNav() {
         }
     }
 }
+
+/** A destination wrapped in a box tagged after its route, so tests can tell which screen is showing. */
+private fun NavGraphBuilder.screen(route: String, content: @Composable (NavBackStackEntry) -> Unit) =
+    composable(route) { Box(Modifier.fillMaxSize().testTag(TestTags.screen(route))) { content(it) } }
 
 private fun NavHostController.switchTab(route: String) = navigate(route) {
     popUpTo(graph.findStartDestination().id) { saveState = true }

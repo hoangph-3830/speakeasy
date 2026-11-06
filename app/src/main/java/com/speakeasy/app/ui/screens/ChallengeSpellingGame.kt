@@ -31,6 +31,8 @@ import com.speakeasy.app.ui.components.SpeakButton
 import com.speakeasy.app.ui.theme.Ink
 import com.speakeasy.app.ui.theme.Muted
 import kotlinx.coroutines.delay
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 /** Ten words only heard, never shown: type each one back letter for letter. */
 @Composable
@@ -67,7 +69,7 @@ internal fun SpellingGame(groups: List<VocabGroup>, accent: Color, onFinish: (In
         OutlinedTextField(
             value = typed,
             onValueChange = { if (result == null) typed = it },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag(TestTags.SPELLING_INPUT),
             placeholder = { Text("Gõ từ bạn nghe được…") },
             singleLine = true,
             readOnly = result != null,

@@ -67,6 +67,9 @@ import com.speakeasy.app.ui.theme.PeachLight
 import com.speakeasy.app.ui.theme.Sky
 import com.speakeasy.app.ui.theme.SkyLight
 import com.speakeasy.app.ui.theme.categoryColors
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
+import com.speakeasy.app.ui.components.dialogTestTag
 
 private data class Badge(val emoji: String, val title: String, val hint: String, val earned: (Progress, Int) -> Boolean)
 
@@ -194,6 +197,7 @@ fun ProgressScreen(openPlacement: () -> Unit) {
                         app.speaker.rate = it
                     },
                     valueRange = 0.5f..1.3f,
+                    modifier = Modifier.testTag(TestTags.SPEECH_RATE),
                     steps = 7,
                 )
                 VSpace(8.dp)
@@ -252,9 +256,10 @@ fun ProgressScreen(openPlacement: () -> Unit) {
                     app.review.reset()
                     ReminderScheduler.apply(context, false, DailyReminder.DEFAULT_TIME)
                     confirmReset = false
-                }) { Text("Xoá", color = Coral) }
+                }, modifier = Modifier.testTag(TestTags.RESET_CONFIRM)) { Text("Xoá", color = Coral) }
             },
-            dismissButton = { TextButton(onClick = { confirmReset = false }) { Text("Huỷ") } },
+            dismissButton = { TextButton(onClick = { confirmReset = false }, modifier = Modifier.testTag(TestTags.RESET_CANCEL)) { Text("Huỷ") } },
+            modifier = Modifier.dialogTestTag(TestTags.RESET_DIALOG),
             containerColor = Color.White,
         )
     }

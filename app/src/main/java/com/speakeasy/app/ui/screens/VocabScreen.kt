@@ -68,6 +68,8 @@ import com.speakeasy.app.ui.theme.MintLight
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Sky
 import com.speakeasy.app.ui.theme.SkyLight
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 /** The 3000 most common words, grouped by theme, with search across all of them. */
 @Composable
@@ -104,7 +106,7 @@ fun VocabHubScreen(onBack: () -> Unit, openGroup: (String) -> Unit) {
                 OutlinedTextField(
                     value = query,
                     onValueChange = { query = it.take(40) },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().testTag(TestTags.VOCAB_SEARCH),
                     singleLine = true,
                     leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
                     placeholder = { Text("Tìm từ tiếng Anh hoặc nghĩa tiếng Việt") },

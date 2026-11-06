@@ -65,6 +65,8 @@ import com.speakeasy.app.ui.theme.MintLight
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.categoryColors
 import com.speakeasy.app.ui.theme.levelColors
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 @Composable
 fun StoriesHubScreen(onBack: () -> Unit, openStory: (String) -> Unit, openBook: (String) -> Unit) {
@@ -112,6 +114,7 @@ private fun StoryKindSwitch(pictures: Boolean, onChange: (Boolean) -> Unit) {
                 label,
                 modifier = Modifier
                     .weight(1f)
+                    .testTag(TestTags.storyKind(value))
                     .clip(CircleShape)
                     .background(if (on) Mint else Color.Transparent)
                     .clickable { onChange(value) }

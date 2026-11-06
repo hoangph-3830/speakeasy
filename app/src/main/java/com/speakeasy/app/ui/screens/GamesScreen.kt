@@ -96,6 +96,8 @@ import com.speakeasy.app.ui.theme.SunLight
 import com.speakeasy.app.ui.theme.categoryColors
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.compose.ui.platform.testTag
+import com.speakeasy.app.ui.TestTags
 
 private val modeColors = mapOf(
     GameMode.MIX to (Sun to SunLight),
@@ -536,7 +538,7 @@ private fun DictationRound(round: Round.Dictation, accent: Color, onDone: (Boole
         OutlinedTextField(
             value = typed,
             onValueChange = { if (result == null) typed = it },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag(TestTags.GAME_INPUT),
             placeholder = { Text("Gõ câu bạn nghe được…") },
             shape = RoundedCornerShape(18.dp),
             keyboardOptions = KeyboardOptions(autoCorrectEnabled = false, imeAction = ImeAction.Done),
