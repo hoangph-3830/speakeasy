@@ -74,6 +74,15 @@ export function playOnline(sentences, { accent, speed, onStart, onEnd, onError }
   next();
 }
 
+/** Stops and empties the player so it no longer holds the audio hardware (before using the microphone). */
+export function releaseOnline() {
+  stopOnline();
+  if (audio) {
+    audio.removeAttribute('src');
+    audio.load();
+  }
+}
+
 export function stopOnline() {
   token++;
   if (audio) {

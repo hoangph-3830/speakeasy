@@ -10,7 +10,7 @@
   p { color: #5b6475; margin: 4px 0 14px; }
   button { display: block; width: 100%; font-size: 18px; padding: 14px; margin: 10px 0; border: 0; border-radius: 14px; background: #3d7bfd; color: #fff; font-weight: 600; }
   button.alt { background: #22b07d; }
-  button.gray { background: #8a93a6; }
+  button.mic { background: #e5684f; }
   pre { white-space: pre-wrap; word-break: break-word; background: #fff; border-radius: 12px; padding: 12px; font-size: 13px; min-height: 120px; }
 </style>
 </head>
@@ -20,7 +20,8 @@
 <button id="tone">1. Phát tiếng bíp (âm thanh thường)</button>
 <button id="speak" class="alt">2. Đọc "Hello" bằng giọng mặc định</button>
 <button id="voices" class="alt">3. Đọc bằng từng giọng tiếng Anh (tối đa 3)</button>
-<button id="session" class="gray">4. Bật chế độ phát nhạc rồi đọc lại</button>
+<button id="level" class="mic">4. Thử micro: nói vài giây, xem có thu được tiếng</button>
+<button id="recognize" class="mic">5. Thử nhận diện: nói "hello, thank you"</button>
 <pre id="log"></pre>
 <script>
 const log = (m) => { document.getElementById('log').textContent += `${new Date().toLocaleTimeString()}  ${m}\n`; };
@@ -67,10 +68,44 @@ document.getElementById('voices').onclick = () => {
   log(`— Thử 3: ${en.map((v) => v.name).join(', ') || 'không có giọng tiếng Anh'}`);
   en.forEach((v, i) => setTimeout(() => speak(`This is ${v.name}.`, v), i * 3000));
 };
-document.getElementById('session').onclick = () => {
-  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { log(`audioSession lỗi: ${e.message}`); }
-  log(`— Thử 4: audioSession = ${navigator.audioSession ? navigator.audioSession.type : 'không hỗ trợ'}`);
-  speak('Hello again! Can you hear me now?');
+document.getElementById('level').onclick = async () => {
+  log('— Thử 4: micro');
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    const ctx = new Ctx();
+    const an = ctx.createAnalyser();
+    ctx.createMediaStreamSource(stream).connect(an);
+    const buf = new Float32Array(an.fftSize);
+    let peak = 0;
+    const t0 = performance.now();
+    await new Promise((done) => {
+      const tick = () => {
+        an.getFloatTimeDomainData(buf);
+        for (const x of buf) peak = Math.max(peak, Math.abs(x));
+        if (performance.now() - t0 < 4000) requestAnimationFrame(tick); else done();
+      };
+      tick();
+    });
+    stream.getTracks().forEach((t) => t.stop());
+    ctx.close();
+    log(`Micro: độ to lớn nhất ${peak.toFixed(3)} ${peak > 0.02 ? '✅ có thu tiếng' : '⚠️ gần như im lặng'} (trạng thái ${ctx.state})`);
+  } catch (e) { log(`Micro lỗi: ${e.name} ${e.message}`); }
+};
+document.getElementById('recognize').onclick = () => {
+  const R = window.SpeechRecognition || window.webkitSpeechRecognition;
+  log(`— Thử 5: nhận diện ${R ? '' : '(KHÔNG hỗ trợ)'}`);
+  if (!R) return;
+  const r = new R();
+  r.lang = 'en-US';
+  r.interimResults = true;
+  r.continuous = false;
+  for (const ev of ['start', 'audiostart', 'soundstart', 'speechstart', 'speechend', 'soundend', 'audioend', 'nomatch']) r.addEventListener(ev, () => log(`  sự kiện: ${ev}`));
+  r.onresult = (e) => log(`  nghe được: "${[...e.results].map((x) => x[0].transcript).join(' ')}" ${e.results[e.results.length - 1].isFinal ? '(xong)' : ''}`);
+  r.onerror = (e) => log(`  ✖ lỗi: ${e.error} ${e.message || ''}`);
+  r.onend = () => log('  kết thúc');
+  try { r.start(); } catch (e) { log(`  không bật được: ${e.message}`); }
+  setTimeout(() => { try { r.stop(); } catch { /* already ended */ } }, 8000);
 };
 </script>
 </body>
