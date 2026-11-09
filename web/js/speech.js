@@ -1,7 +1,7 @@
 // Text-to-speech and speech recognition through the browser's Web Speech API.
 // On iPad/iPhone Safari these use the system English voices and Siri dictation.
 import { speechChunks } from './logic.js';
-import { playOnline, stopOnline, unlockOnline } from './online-voice.js';
+import { playOnline, releaseOnline, stopOnline, unlockOnline } from './online-voice.js';
 
 // iOS ships joke voices under English locales; never pick them for lessons.
 const NOVELTY = /albert|bad news|bahh|bells|boing|bubbles|cellos|good news|jester|organ|superstar|trinoids|whisper|wobble|zarvox|fred|junior|ralph|kathy|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley/i;
@@ -116,7 +116,6 @@ class Speaker {
       noVoiceWarning();
       return this.finish(id);
     }
-    this.keepAudioOn();
     // iOS drops an utterance queued in the same tick as cancel(), so wait a beat when something was playing.
     const busy = synth.speaking || synth.pending;
     synth.cancel();
@@ -205,21 +204,8 @@ class Speaker {
     this.events = [...(this.events || []).slice(-7), `${new Date().toLocaleTimeString()} ${event}${detail ? ` (${detail})` : ''}`];
   }
 
-  /**
-   * iOS mutes the speech engine while the device is on silent, though videos still play.
-   * Safari 17+ lets a page ask for the "playback" audio session, which plays through silent mode.
-   */
-  keepAudioOn() {
-    try {
-      if (navigator.audioSession && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback';
-    } catch {
-      // Older Safari: nothing to set; the learner has to turn silent mode off.
-    }
-  }
-
   /** iOS only allows speech after a user gesture; speaking once on the first tap unlocks it for later. */
   unlock() {
-    this.keepAudioOn();
     unlockOnline();
     const synth = window.speechSynthesis;
     if (!synth || this.unlocked) return;
@@ -258,6 +244,20 @@ const ERRORS = {
 };
 
 /**
+ * Hands the audio hardware to the microphone. Forcing Safari's audio session to "playback" left the
+ * iPad microphone recording silence, so the page never sets a session type and puts back the
+ * default; the online voice's player lets go of its audio as well.
+ */
+export function prepareMic() {
+  releaseOnline();
+  try {
+    if (navigator.audioSession && navigator.audioSession.type !== 'auto') navigator.audioSession.type = 'auto';
+  } catch {
+    // Not supported: nothing to change.
+  }
+}
+
+/**
  * Listens for one English utterance and calls `onResult(alternatives)` with every guess, best first.
  * Shows a full-screen "listening" sheet with `prompt`, like Android's recognizer dialog.
  *
@@ -265,15 +265,6 @@ const ERRORS = {
  * then hears nothing and never ends (WebKit bug 321436). So: wait a little after speech, and if no
  * audio arrives, throw the recognizer away and start a fresh one.
  */
-/** The microphone needs a record-capable audio session; the next speech switches back to playback. */
-export function micAudioSession() {
-  try {
-    if (navigator.audioSession) navigator.audioSession.type = 'play-and-record';
-  } catch {
-    // Not supported: nothing to change.
-  }
-}
-
 export function listen(prompt, { onResult, onCancel = () => {} } = {}) {
   const sinceSpeech = speaker.speaking != null ? 0 : performance.now() - speaker.lastAudioAt;
   speaker.stop();
@@ -320,7 +311,7 @@ export function listen(prompt, { onResult, onCancel = () => {} } = {}) {
     attempts++;
     finals = null;
     interim = '';
-    micAudioSession();
+    prepareMic();
     const r = new Recognition();
     rec = r;
     active = r;
