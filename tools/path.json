@@ -1,5 +1,33 @@
 [
   {
+    "id": "kids-1",
+    "level": "A1",
+    "audience": "kids",
+    "title": "Bé học tiếng Anh",
+    "subtitle": "Trường lớp, con vật, sinh nhật, sân chơi, vẽ tranh",
+    "topics": [
+      "kids-my-classroom",
+      "kids-zoo-animals",
+      "kids-birthday-party",
+      "kids-playground",
+      "kids-colours-shapes"
+    ]
+  },
+  {
+    "id": "kids-2",
+    "level": "A2",
+    "audience": "kids",
+    "title": "Bé tự tin nói",
+    "subtitle": "Ốm đau, đồ chơi, bữa trưa, đi biển, giờ đi ngủ",
+    "topics": [
+      "kids-feeling-sick",
+      "kids-toys-sharing",
+      "kids-lunch-favourites",
+      "kids-beach-summer",
+      "kids-bedtime-routine"
+    ]
+  },
+  {
     "id": "start",
     "level": "A1",
     "title": "Khởi động",
@@ -109,6 +137,17 @@
     ]
   },
   {
+    "id": "work-pro",
+    "level": "B1",
+    "title": "Công sở chuyên nghiệp",
+    "subtitle": "Email, họp đứng đầu ngày, giao lưu kết nối",
+    "topics": [
+      "work-email-follow-up",
+      "daily-stand-up-update",
+      "networking-event-small-talk"
+    ]
+  },
+  {
     "id": "advanced",
     "level": "B2",
     "title": "Thảo luận & thương lượng",
@@ -137,6 +176,18 @@
     ]
   },
   {
+    "id": "work-team",
+    "level": "B2",
+    "title": "Làm việc nhóm & khách hàng",
+    "subtitle": "Góp ý review, báo trễ hạn, làm từ xa, đánh giá năng lực",
+    "topics": [
+      "code-design-review-feedback",
+      "client-call-project-delay",
+      "working-remotely-across-time-zones",
+      "performance-review-conversation"
+    ]
+  },
+  {
     "id": "c1-lead",
     "level": "C1",
     "title": "Lãnh đạo & thuyết phục",
@@ -158,6 +209,17 @@
       "cultural-differences",
       "tech-ethics",
       "property-negotiation"
+    ]
+  },
+  {
+    "id": "work-lead",
+    "level": "C1",
+    "title": "Trình bày & thuyết phục",
+    "subtitle": "Báo cáo quý, phỏng vấn STAR, đề xuất dự án",
+    "topics": [
+      "presenting-quarterly-results",
+      "behavioural-interview-star-answers",
+      "pitching-project-proposal"
     ]
   },
   {

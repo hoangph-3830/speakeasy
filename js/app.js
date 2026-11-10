@@ -19,6 +19,8 @@ import { speedScreen, trueFalseScreen } from './screens/challenge-timed.js';
 import { hangmanScreen, memoryScreen } from './screens/challenge-puzzles.js';
 import { anagramScreen, clozeScreen, spellingScreen } from './screens/challenge-words.js';
 import { placementScreen } from './screens/placement-test.js';
+import { dailyWordScreen } from './screens/daily-word-screen.js';
+import { ipaScreen, twistersScreen } from './screens/lab-extras.js';
 import { buildIndex } from './dict.js';
 import { speechEngineMayBeSilent } from './online-voice.js';
 
@@ -41,6 +43,8 @@ const ROUTES = [
   [/^vocab\/(.+)$/, vocab.groupScreen],
   [/^review$/, review.reviewScreen],
   [/^lab$/, lab.hubScreen],
+  [/^lab\/ipa$/, ipaScreen],
+  [/^lab\/twisters$/, twistersScreen],
   [/^lab\/(.+)$/, lab.lessonScreen],
   [/^stories$/, stories.hubScreen],
   [/^story\/(.+)$/, stories.storyScreen],
@@ -54,6 +58,7 @@ const ROUTES = [
   [/^challenge\/anagram$/, anagramScreen],
   [/^challenge\/spelling$/, spellingScreen],
   [/^placement$/, placementScreen],
+  [/^daily$/, dailyWordScreen],
   [/^video\/(.+)$/, videos.videoScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],

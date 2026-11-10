@@ -1,14 +1,28 @@
 import { CHALLENGES } from '../challenges.js';
-import { GAME_MODES, QUEST, buildGame, compare, gameMode, shuffled } from '../logic.js';
+import { GAME_MODES, QUEST, WRITE_PASS, buildGame, compare, epochDay, gameMode, shuffled } from '../logic.js';
 import { speaker } from '../speech.js';
 import { Progress } from '../store.js';
 import { accent, badge, bar, bigBtn, catColors, completeDialog, esc, sayBtn, scored, sleep, topBar } from '../ui.js';
+
+/** The daily word puzzle sits on top of the games hub: one word a day keeps people coming back. */
+function dailyCard() {
+  const p = Progress.get();
+  const playedToday = p.daily?.day === epochDay();
+  const streak = p.dailyStats?.streak || 0;
+  return `<button class="card next-card daily-card" data-act="nav" data-to="daily" style="--a:var(--mint);--al:var(--mint-l)">
+    <div class="row center-v gap">${badge('🔠', 'var(--mint-l)', 56)}
+      <div class="grow"><div class="tiny bold" style="color:var(--a)">MỖI NGÀY MỘT TỪ</div><div class="t-sub">Từ của ngày</div>
+        <div class="muted small">Đoán từ 5 chữ cái trong 6 lần. Ai cũng giải cùng một từ.</div></div>
+      <span class="go">${streak ? `🔥 ${streak}` : playedToday ? 'Xem →' : 'Chơi →'}</span></div>
+  </button>`;
+}
 
 export function hubScreen() {
   return {
     view: () => `<div class="screen"><div class="scroll pad" data-scroll="play">
       <h1>Vừa chơi vừa học 🎮</h1>
       <p class="muted">Ôn lại từ vựng & mẫu câu của tất cả chủ đề.</p>
+      ${dailyCard()}
       <div class="section"><h2>🎯 Thử thách từ vựng</h2></div>
       <div class="grid2">${CHALLENGES.map((c) => {
         const best = Progress.get().gameBest?.[c.id];
@@ -138,11 +152,23 @@ export function gameScreen(app, topicId, modeId) {
         : bigBtn('Kiểm tra', 'checkDictation', { disabled: !typed.trim() })}`;
   }
 
+  /** Writing: the Vietnamese meaning is shown, the learner writes the English; small slips pass. */
+  function writeView() {
+    return `<h3>Viết câu này bằng tiếng Anh</h3>
+      <div class="prompt">${esc(r.prompt)}</div>
+      ${showHint ? `<p class="muted">💡 Bắt đầu bằng: <b>${esc(r.answer.split(' ').slice(0, 2).join(' '))}…</b></p>` : '<button class="link bold" data-act="hint" style="color:var(--a)">💡 Gợi ý vài chữ đầu</button>'}
+      <textarea class="field" rows="2" data-input="typed" placeholder="Gõ câu tiếng Anh…" autocapitalize="sentences" autocorrect="off" spellcheck="false" ${result ? 'readonly' : ''}>${esc(typed)}</textarea>
+      ${result
+        ? `<div class="card"><div class="muted tiny">Câu mẫu · khớp ${result.score}%</div>${scored(result)}</div>${feedback(result.score >= WRITE_PASS)}`
+        : bigBtn('Kiểm tra', 'checkWrite', { disabled: !typed.trim() })}`;
+  }
+
   const roundView = () =>
     ({
       match: matchView,
       scramble: scrambleView,
       dictation: dictationView,
+      write: writeView,
       listen: () => choiceView('Nghe và chọn câu đúng', null, r.audio, r.options, r.answer),
       meaning: () => choiceView(r.speakPrompt ? 'Câu này nghĩa là gì?' : 'Nói câu này bằng tiếng Anh thế nào?', r.prompt, r.speakPrompt ? r.prompt : null, r.options, r.answer),
     })[r.type]();
@@ -184,10 +210,14 @@ export function gameScreen(app, topicId, modeId) {
       hint: () => { showHint = true; },
       typed: (v, el) => {
         typed = v;
-        const btn = el.closest('.round').querySelector('[data-act=checkDictation]');
+        const btn = el.closest('.round').querySelector('[data-act=checkDictation], [data-act=checkWrite]');
         if (btn) btn.disabled = !v.trim();
       },
       checkDictation: () => { result = compare(r.sentence, typed); },
+      checkWrite: () => {
+        result = compare(r.answer, typed);
+        speaker.say(r.answer);
+      },
     },
   };
 }

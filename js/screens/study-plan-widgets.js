@@ -38,7 +38,12 @@ export function studyCalendar(p) {
 /** Progress settings: placement retake and the daily reminder. */
 export function planSettings(p) {
   const placed = p.placedLevel;
-  return `<div class="semi mt">🧭 Trình độ</div>
+  return `<div class="semi mt">👪 Lộ trình dành cho</div>
+    <div class="row gap-s">${[['adult', '🧑 Người lớn'], ['kids', '🧸 Trẻ em']].map(([id, label]) =>
+      `<button class="filter grow ${(p.audience || 'adult') === id ? 'on' : ''}" data-act="audience" data-a="${id}">${label}</button>`).join('')}</div>
+    <p class="muted tiny">Trẻ em học các chủ đề thiếu nhi trước (trường lớp, con vật, sinh nhật…), rồi mới sang lộ trình chung.</p>
+
+    <div class="semi mt">🧭 Trình độ</div>
     <div class="row center-v gap-s"><span class="grow muted small">${placed == null ? 'Chưa làm bài kiểm tra trình độ.'
       : placed ? `Đã xếp lớp: ${esc(placed)} · ${esc(LEVELS[placed].name)}` : 'Bắt đầu từ A1.'}</span>
       <button class="btn small-btn" data-act="nav" data-to="placement">${placed == null ? 'Làm bài' : 'Làm lại'}</button></div>
@@ -52,6 +57,7 @@ export function planSettings(p) {
 }
 
 export const planActions = {
+  audience: (d) => { Progress.set({ audience: d.a }); },
   reminderTime: (v) => { if (/^\d{2}:\d{2}$/.test(v)) Progress.set({ reminderTime: v }); return false; },
   addReminder: () => {
     const ics = reminderIcs(Progress.get().reminderTime || '20:00', location.href.split('#')[0]);
