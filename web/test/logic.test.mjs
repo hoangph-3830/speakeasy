@@ -8,6 +8,7 @@ import * as A from '../js/audio.js';
 import * as C from '../js/challenges.js';
 import * as P from '../js/learning-plan.js';
 import * as O from '../js/online-voice.js';
+import * as D from '../js/daily-word.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -156,8 +157,14 @@ test('learning path covers every topic once, easy to hard, and finds the next to
   assert.equal(ids.length, content.topics.length);
   assert.equal(new Set(ids).size, ids.length);
   const order = Object.keys(L.LEVELS);
-  const levels = content.path.map((s) => order.indexOf(s.level));
-  assert.deepEqual(levels, [...levels].sort((a, b) => a - b));
+  // Each audience's path runs easy to hard on its own; the kids' stages sit outside the adults' one.
+  const kids = content.path.filter((s) => s.audience === 'kids');
+  for (const part of [kids, L.visiblePath(content.path, 'adult')]) {
+    const levels = part.map((s) => order.indexOf(s.level));
+    assert.deepEqual(levels, [...levels].sort((a, b) => a - b));
+  }
+  assert.ok(kids.length >= 2 && kids.every((s) => s.topics.every((id) => content.topics.find((t) => t.id === id).category === 'kids')));
+  assert.equal(L.visiblePath(content.path, 'kids')[0].audience, 'kids');
   for (const s of content.path) for (const id of s.topics) assert.equal(content.topics.find((t) => t.id === id).level, s.level, id);
   const p = L.defaultProgress();
   assert.equal(L.nextInPath(content.path, content.topics, p).topic.id, content.path[0].topics[0]);
@@ -327,6 +334,48 @@ test('online voice: pieces under the length limit, request address, which device
   assert.ok(O.speechEngineMayBeSilent(iphone27, 5));
   assert.ok(O.speechEngineMayBeSilent(iphone17, 5)); // the user agent no longer tells the real iOS version
   assert.ok(!O.speechEngineMayBeSilent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/152.0 Safari/537.36', 0));
+});
+
+test('write mode: every topic gives a Vietnamese prompt with an English answer that passes itself', () => {
+  for (const t of content.topics)
+    for (const r of L.buildGame([t], 'write')) {
+      assert.equal(r.type, 'write');
+      assert.ok(r.prompt && r.answer, t.id);
+      assert.equal(L.compare(r.answer, r.answer.toLowerCase()).score, 100);
+    }
+  assert.ok(L.buildGame(content.topics, 'mix', 12).some((r) => r.type === 'write'));
+  assert.ok(L.compare('I would like a coffee, please.', 'I would like coffee please').score >= L.WRITE_PASS);
+  assert.ok(L.compare('I would like a coffee, please.', 'I like tea').score < L.WRITE_PASS);
+});
+
+test('kids path comes first for children and stays hidden from adults', () => {
+  const path = [{ id: 'a', level: 'A1' }, { id: 'k', level: 'A1', audience: 'kids' }, { id: 'b', level: 'A2' }];
+  assert.deepEqual(L.visiblePath(path, 'adult').map((s) => s.id), ['a', 'b']);
+  assert.deepEqual(L.visiblePath(path, 'kids').map((s) => s.id), ['k', 'a', 'b']);
+  assert.deepEqual(L.visiblePath(path, undefined).map((s) => s.id), ['a', 'b']);
+});
+
+test('word of the day: same word for a day, letter colours with repeats, streaks and sharing', () => {
+  const words = D.puzzleWords(json('vocab').groups);
+  assert.ok(words.length > 100 && words.every((w) => /^[a-z]{5}$/.test(w.w)));
+  assert.equal(new Set(words.map((w) => w.w)).size, words.length);
+  assert.equal(D.wordOfDay(words, 20400).w, D.wordOfDay(words, 20400).w);
+  const week = new Set(Array.from({ length: 7 }, (_, i) => D.wordOfDay(words, 20400 + i).w));
+  assert.equal(week.size, 7);
+  assert.deepEqual(D.scoreGuess('crane', 'crane'), ['hit', 'hit', 'hit', 'hit', 'hit']);
+  assert.deepEqual(D.scoreGuess('eerie', 'there'), ['near', 'miss', 'near', 'miss', 'hit']);
+  assert.deepEqual(D.scoreGuess('lllll', 'hello'), ['miss', 'miss', 'hit', 'hit', 'miss']);
+  assert.deepEqual(D.scoreGuess('apple', 'paper'), ['near', 'near', 'hit', 'miss', 'near']);
+  assert.ok(D.validGuess('hello') && !D.validGuess('hell') && !D.validGuess('Hello') && !D.validGuess('he1lo'));
+  assert.ok(D.isOver(['aaaaa', 'bbbbb', 'ccccc', 'ddddd', 'eeeee', 'fffff'], 'hello') && !D.isWon(['aaaaa'], 'hello'));
+  assert.deepEqual(D.keyColours(['hxllx', 'hello'], 'hello'), { h: 'hit', x: 'miss', l: 'hit', e: 'hit', o: 'hit' });
+  const start = { played: 0, won: 0, streak: 0, best: 0, lastWonDay: -1, dist: [0, 0, 0, 0, 0, 0] };
+  let s = D.recordResult(start, 100, true, 3);
+  s = D.recordResult(s, 101, true, 4);
+  assert.deepEqual([s.played, s.won, s.streak, s.best, s.dist[2], s.dist[3]], [2, 2, 2, 2, 1, 1]);
+  assert.equal(D.recordResult(s, 103, true, 2).streak, 1); // skipped a day
+  assert.deepEqual([D.recordResult(s, 102, false, 6).streak, D.recordResult(s, 102, false, 6).best], [0, 2]);
+  assert.equal(D.shareText(['crate', 'crane'], 'crane', 7), 'SpeakEasy · Từ của ngày #7 2/6\n🟩🟩🟩⬜🟩\n🟩🟩🟩🟩🟩');
 });
 
 console.log(`\n${n} tests passed`);

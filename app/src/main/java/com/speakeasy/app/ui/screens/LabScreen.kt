@@ -63,6 +63,7 @@ import com.speakeasy.app.ui.theme.Mint
 import com.speakeasy.app.ui.theme.MintLight
 import com.speakeasy.app.ui.theme.Muted
 import com.speakeasy.app.ui.theme.Peach
+import com.speakeasy.app.ui.theme.PeachLight
 import com.speakeasy.app.ui.theme.SunLight
 import kotlin.random.Random
 
@@ -74,7 +75,7 @@ fun scoreColor(score: Int): Color = when {
 }
 
 @Composable
-fun LabHubScreen(onBack: () -> Unit, openLesson: (String) -> Unit) {
+fun LabHubScreen(onBack: () -> Unit, openLesson: (String) -> Unit, openIpa: () -> Unit, openTwisters: () -> Unit) {
     val app = LocalApp.current
     val p by app.progress.progress.collectAsState()
     val lessons = app.content.pronunciation.lessons
@@ -99,6 +100,23 @@ fun LabHubScreen(onBack: () -> Unit, openLesson: (String) -> Unit) {
                             else "Trung bình ${p.soundScores.size}/${lessons.size} bài. Luyện âm có điểm đỏ trước nhé!",
                             color = Muted,
                             style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }
+                }
+            }
+            item {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    listOf(
+                        Triple("🔤 Bảng phiên âm IPA", LavenderLight, openIpa),
+                        Triple("👅 Câu líu lưỡi", PeachLight, openTwisters),
+                    ).forEach { (label, bg, open) ->
+                        Text(
+                            label,
+                            modifier = Modifier.weight(1f).clip(RoundedCornerShape(18.dp)).background(bg).clickable(onClick = open)
+                                .padding(vertical = 16.dp),
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.Bold,
+                            color = Ink,
                         )
                     }
                 }

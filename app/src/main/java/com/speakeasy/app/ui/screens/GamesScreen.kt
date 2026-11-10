@@ -106,10 +106,17 @@ private val modeColors = mapOf(
     GameMode.LISTEN to (Mint to MintLight),
     GameMode.MEANING to (Lavender to LavenderLight),
     GameMode.DICTATION to (Coral to Coral.copy(alpha = 0.12f)),
+    GameMode.WRITE to (Sky to SkyLight),
 )
 
 @Composable
-fun GameHubScreen(openGame: (String) -> Unit, openChallenge: (String) -> Unit, openLab: () -> Unit, openStories: () -> Unit) {
+fun GameHubScreen(
+    openGame: (String) -> Unit,
+    openChallenge: (String) -> Unit,
+    openLab: () -> Unit,
+    openStories: () -> Unit,
+    openDaily: () -> Unit,
+) {
     val progress by LocalApp.current.progress.progress.collectAsState()
     LazyColumn(
         Modifier.fillMaxSize().statusBarsPadding(),
@@ -121,6 +128,7 @@ fun GameHubScreen(openGame: (String) -> Unit, openChallenge: (String) -> Unit, o
             Text("Ôn lại từ vựng & mẫu câu của tất cả chủ đề.", color = Muted)
             VSpace(8.dp)
         }
+        item { DailyWordCard(progress, onOpen = openDaily) }
         item { Text("🎯 Thử thách từ vựng", style = MaterialTheme.typography.titleLarge) }
         items(Challenge.entries.chunked(2)) { row ->
             Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -254,6 +262,7 @@ fun GameScreen(topicId: String, mode: String, onBack: () -> Unit) {
                         onDone = ::answered,
                     )
                     is Round.Dictation -> DictationRound(r, accent, onDone = ::answered)
+                    is Round.Write -> WriteRound(r, accent, onDone = ::answered)
                 }
             }
         }
@@ -276,7 +285,7 @@ fun GameScreen(topicId: String, mode: String, onBack: () -> Unit) {
 
 /** Feedback banner + continue button shown after answering a question. */
 @Composable
-private fun AnswerFeedback(ok: Boolean, correctAnswer: String?, onNext: () -> Unit) {
+internal fun AnswerFeedback(ok: Boolean, correctAnswer: String?, onNext: () -> Unit) {
     Column(
         Modifier.fillMaxWidth().clip(RoundedCornerShape(20.dp)).background(if (ok) MintLight else Coral.copy(alpha = 0.12f)).padding(16.dp),
     ) {

@@ -4,7 +4,19 @@ import com.speakeasy.app.speech.SpeechMatch
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PronunciationContent(val lessons: List<SoundLesson>)
+data class PronunciationContent(
+    val lessons: List<SoundLesson>,
+    val twisters: List<Twister> = emptyList(),
+    val ipa: List<IpaSound> = emptyList(),
+)
+
+/** A tongue twister; [level] is "easy", "medium" or "hard", [focus] names the sounds it drills. */
+@Serializable
+data class Twister(val id: String, val en: String, val vi: String, val level: String, val focus: String = "")
+
+/** One sound of the IPA chart; [type] is "vowel", "diphthong" or "consonant". */
+@Serializable
+data class IpaSound(val symbol: String, val type: String, val example: String, val hint: String = "")
 
 /**
  * One ELSA-style drill. [pairs] are minimal pairs: the first word carries the lesson's sound,

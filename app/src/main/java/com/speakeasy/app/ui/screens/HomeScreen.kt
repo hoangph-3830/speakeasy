@@ -104,7 +104,7 @@ fun HomeScreen(
     // Stage ids the learner toggled away from the default (only the current stage open).
     var toggled by rememberSaveable { mutableStateOf(listOf<String>()) }
     var askName by remember { mutableStateOf(progress.name.isEmpty()) }
-    val path = app.content.path
+    val path = LearningPath.visible(app.content.path, progress.audience)
     val doneCount: (String) -> Int = progress::doneCount
     val next = LearningPath.next(path, doneCount, progress.placedLevel)
     val topics = (category?.let { app.content.topicsIn(it) } ?: app.content.topics).sortedBy { Levels.rank(it.level) }

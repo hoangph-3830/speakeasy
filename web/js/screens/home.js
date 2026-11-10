@@ -1,5 +1,5 @@
 import {
-  ACTIVITIES, LEVELS, doneCount, goalProgress, isDone, level, nextInPath, questCount, questsToday, stageProgress,
+  ACTIVITIES, LEVELS, doneCount, goalProgress, isDone, level, nextInPath, questCount, questsToday, stageProgress, visiblePath,
 } from '../logic.js';
 import { Progress, Review } from '../store.js';
 import { badge, bar, catColors, esc, openDialog, pill, ring } from '../ui.js';
@@ -12,7 +12,8 @@ const ui = { view: 'path', open: null, quests: false };
 
 export function homeScreen(app) {
   let category = null;
-  const path = app.content.path || [];
+  // Read on every use: switching between the adults' and the kids' path changes it.
+  const paths = () => visiblePath(app.content.path || [], Progress.get().audience);
 
   const greeting = (p) => {
     const h = new Date().getHours();
@@ -37,7 +38,7 @@ export function homeScreen(app) {
 
   /** The next unfinished topic along the path, so learners never wonder what to do next. */
   const continueCard = (p) => {
-    const next = nextInPath(path, app.content.topics, p);
+    const next = nextInPath(paths(), app.content.topics, p);
     if (!next)
       return `<div class="card next-card"><div class="t-sub">Bạn đã học hết lộ trình 🎉</div>
         <div class="muted small">Ôn lại thẻ ghi nhớ và đọc báo mỗi ngày để giữ phong độ.</div>
@@ -112,6 +113,7 @@ export function homeScreen(app) {
   /** Stages from easy to hard; the one in progress is open, the others fold away. */
   const pathView = (p) => {
     // The stage "continue learning" points at, which honours the placement test.
+    const path = paths();
     const current = (nextInPath(path, app.content.topics, p)?.stageNo ?? 0) - 1;
     if (ui.open == null) ui.open = new Set([Math.max(0, current)]);
     return path.map((st, i) => {

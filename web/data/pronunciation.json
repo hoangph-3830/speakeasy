@@ -6,11 +6,45 @@
       "ipa": "/θ/ /ð/",
       "emoji": "👅",
       "tip": "Đặt đầu lưỡi nhẹ giữa hai hàm răng rồi thổi hơi ra. /θ/ (think) chỉ có hơi, /ð/ (they) rung cổ họng. Người Việt hay đọc thành /t/, /s/ hoặc /d/.",
-      "pairs": [["think", "sink"], ["three", "tree"], ["thank", "tank"], ["mouth", "mouse"], ["they", "day"], ["thin", "tin"]],
+      "pairs": [
+        [
+          "think",
+          "sink"
+        ],
+        [
+          "three",
+          "tree"
+        ],
+        [
+          "thank",
+          "tank"
+        ],
+        [
+          "mouth",
+          "mouse"
+        ],
+        [
+          "they",
+          "day"
+        ],
+        [
+          "thin",
+          "tin"
+        ]
+      ],
       "sentences": [
-        { "en": "Thank you for thinking of me.", "vi": "Cảm ơn bạn đã nghĩ đến mình." },
-        { "en": "I think the weather is better on Thursday.", "vi": "Mình nghĩ thời tiết thứ Năm đẹp hơn." },
-        { "en": "My brother and father are together.", "vi": "Anh trai và bố mình đang ở cùng nhau." }
+        {
+          "en": "Thank you for thinking of me.",
+          "vi": "Cảm ơn bạn đã nghĩ đến mình."
+        },
+        {
+          "en": "I think the weather is better on Thursday.",
+          "vi": "Mình nghĩ thời tiết thứ Năm đẹp hơn."
+        },
+        {
+          "en": "My brother and father are together.",
+          "vi": "Anh trai và bố mình đang ở cùng nhau."
+        }
       ]
     },
     {
@@ -19,11 +53,45 @@
       "ipa": "/s/ /t/ /k/ /f/",
       "emoji": "🔚",
       "tip": "Tiếng Việt hay nuốt âm cuối, nhưng trong tiếng Anh âm cuối đổi cả nghĩa của từ. Kết thúc từ rõ ràng: bật nhẹ /t/, /k/, xì hơi /s/, cắn môi /f/.",
-      "pairs": [["rice", "rye"], ["life", "lie"], ["bike", "buy"], ["make", "may"], ["weeks", "week"], ["note", "no"]],
+      "pairs": [
+        [
+          "rice",
+          "rye"
+        ],
+        [
+          "life",
+          "lie"
+        ],
+        [
+          "bike",
+          "buy"
+        ],
+        [
+          "make",
+          "may"
+        ],
+        [
+          "weeks",
+          "week"
+        ],
+        [
+          "note",
+          "no"
+        ]
+      ],
       "sentences": [
-        { "en": "I like rice and fruits.", "vi": "Mình thích cơm và trái cây." },
-        { "en": "She takes the bus to work.", "vi": "Cô ấy đi xe buýt đi làm." },
-        { "en": "It's nice to meet you.", "vi": "Rất vui được gặp bạn." }
+        {
+          "en": "I like rice and fruits.",
+          "vi": "Mình thích cơm và trái cây."
+        },
+        {
+          "en": "She takes the bus to work.",
+          "vi": "Cô ấy đi xe buýt đi làm."
+        },
+        {
+          "en": "It's nice to meet you.",
+          "vi": "Rất vui được gặp bạn."
+        }
       ]
     },
     {
@@ -32,11 +100,45 @@
       "ipa": "/ɪ/ /iː/",
       "emoji": "🐑",
       "tip": "/iː/ (sheep) kéo dài, môi bành ra như đang cười. /ɪ/ (ship) ngắn, thả lỏng, hơi giống 'i' pha 'ê'. Đọc nhầm là 'ship' (con tàu) thành 'sheep' (con cừu)!",
-      "pairs": [["ship", "sheep"], ["live", "leave"], ["sit", "seat"], ["fill", "feel"], ["hit", "heat"], ["bin", "bean"]],
+      "pairs": [
+        [
+          "ship",
+          "sheep"
+        ],
+        [
+          "live",
+          "leave"
+        ],
+        [
+          "sit",
+          "seat"
+        ],
+        [
+          "fill",
+          "feel"
+        ],
+        [
+          "hit",
+          "heat"
+        ],
+        [
+          "bin",
+          "bean"
+        ]
+      ],
       "sentences": [
-        { "en": "Please sit in this seat.", "vi": "Mời bạn ngồi ghế này." },
-        { "en": "I feel it's time to leave.", "vi": "Mình thấy đã đến lúc phải đi." },
-        { "en": "The ship is big, not the sheep.", "vi": "Con tàu mới to, không phải con cừu." }
+        {
+          "en": "Please sit in this seat.",
+          "vi": "Mời bạn ngồi ghế này."
+        },
+        {
+          "en": "I feel it's time to leave.",
+          "vi": "Mình thấy đã đến lúc phải đi."
+        },
+        {
+          "en": "The ship is big, not the sheep.",
+          "vi": "Con tàu mới to, không phải con cừu."
+        }
       ]
     },
     {
@@ -45,11 +147,45 @@
       "ipa": "/æ/ /e/",
       "emoji": "😮",
       "tip": "/æ/ (bad) mở miệng rộng, hạ hàm dưới, như nói 'a' và 'e' cùng lúc. /e/ (bed) miệng mở vừa, giống 'e' tiếng Việt.",
-      "pairs": [["bad", "bed"], ["man", "men"], ["sad", "said"], ["pan", "pen"], ["bag", "beg"], ["had", "head"]],
+      "pairs": [
+        [
+          "bad",
+          "bed"
+        ],
+        [
+          "man",
+          "men"
+        ],
+        [
+          "sad",
+          "said"
+        ],
+        [
+          "pan",
+          "pen"
+        ],
+        [
+          "bag",
+          "beg"
+        ],
+        [
+          "had",
+          "head"
+        ]
+      ],
       "sentences": [
-        { "en": "That man has a black bag.", "vi": "Người đàn ông đó có cái túi đen." },
-        { "en": "Can I have a pen, please?", "vi": "Cho mình xin cây bút nhé?" },
-        { "en": "Don't be sad, it's not bad.", "vi": "Đừng buồn, không tệ đâu." }
+        {
+          "en": "That man has a black bag.",
+          "vi": "Người đàn ông đó có cái túi đen."
+        },
+        {
+          "en": "Can I have a pen, please?",
+          "vi": "Cho mình xin cây bút nhé?"
+        },
+        {
+          "en": "Don't be sad, it's not bad.",
+          "vi": "Đừng buồn, không tệ đâu."
+        }
       ]
     },
     {
@@ -58,11 +194,45 @@
       "ipa": "/ʃ/ /s/",
       "emoji": "🤫",
       "tip": "/ʃ/ (she) chu môi tròn ra trước, lưỡi lùi về sau, như khi nói 'suỵt'. /s/ (see) môi bành, đầu lưỡi gần răng trên.",
-      "pairs": [["she", "see"], ["ship", "sip"], ["shoe", "sue"], ["sheet", "seat"], ["shell", "sell"], ["shave", "save"]],
+      "pairs": [
+        [
+          "she",
+          "see"
+        ],
+        [
+          "ship",
+          "sip"
+        ],
+        [
+          "shoe",
+          "sue"
+        ],
+        [
+          "sheet",
+          "seat"
+        ],
+        [
+          "shell",
+          "sell"
+        ],
+        [
+          "shave",
+          "save"
+        ]
+      ],
       "sentences": [
-        { "en": "She sells shoes at the shop.", "vi": "Cô ấy bán giày ở cửa hàng." },
-        { "en": "Should I sit here?", "vi": "Mình ngồi đây được không?" },
-        { "en": "I'm sure it's the same size.", "vi": "Mình chắc nó cùng cỡ." }
+        {
+          "en": "She sells shoes at the shop.",
+          "vi": "Cô ấy bán giày ở cửa hàng."
+        },
+        {
+          "en": "Should I sit here?",
+          "vi": "Mình ngồi đây được không?"
+        },
+        {
+          "en": "I'm sure it's the same size.",
+          "vi": "Mình chắc nó cùng cỡ."
+        }
       ]
     },
     {
@@ -71,11 +241,45 @@
       "ipa": "/l/ /n/",
       "emoji": "💡",
       "tip": "/l/ đầu lưỡi chạm lợi trên, hơi thoát ra hai bên lưỡi, không qua mũi. /n/ hơi thoát qua mũi. Bịt mũi thử: /l/ vẫn nói được, /n/ thì không.",
-      "pairs": [["light", "night"], ["lot", "not"], ["line", "nine"], ["lap", "nap"], ["lock", "knock"], ["low", "no"]],
+      "pairs": [
+        [
+          "light",
+          "night"
+        ],
+        [
+          "lot",
+          "not"
+        ],
+        [
+          "line",
+          "nine"
+        ],
+        [
+          "lap",
+          "nap"
+        ],
+        [
+          "lock",
+          "knock"
+        ],
+        [
+          "low",
+          "no"
+        ]
+      ],
       "sentences": [
-        { "en": "Turn on the light at night.", "vi": "Bật đèn vào buổi tối nhé." },
-        { "en": "I'd love a lot of noodles.", "vi": "Mình muốn thật nhiều mì." },
-        { "en": "Please call me later.", "vi": "Gọi lại cho mình sau nhé." }
+        {
+          "en": "Turn on the light at night.",
+          "vi": "Bật đèn vào buổi tối nhé."
+        },
+        {
+          "en": "I'd love a lot of noodles.",
+          "vi": "Mình muốn thật nhiều mì."
+        },
+        {
+          "en": "Please call me later.",
+          "vi": "Gọi lại cho mình sau nhé."
+        }
       ]
     },
     {
@@ -84,11 +288,45 @@
       "ipa": "/r/ /l/",
       "emoji": "🐯",
       "tip": "/r/ (right) cong đầu lưỡi về sau, không chạm vòm miệng, môi hơi tròn. /l/ (light) đầu lưỡi chạm lợi trên. Đừng rung lưỡi như 'r' tiếng Việt.",
-      "pairs": [["right", "light"], ["read", "lead"], ["rock", "lock"], ["fry", "fly"], ["grass", "glass"], ["pray", "play"]],
+      "pairs": [
+        [
+          "right",
+          "light"
+        ],
+        [
+          "read",
+          "lead"
+        ],
+        [
+          "rock",
+          "lock"
+        ],
+        [
+          "fry",
+          "fly"
+        ],
+        [
+          "grass",
+          "glass"
+        ],
+        [
+          "pray",
+          "play"
+        ]
+      ],
       "sentences": [
-        { "en": "Turn right at the traffic light.", "vi": "Rẽ phải ở đèn giao thông." },
-        { "en": "I really like reading.", "vi": "Mình rất thích đọc sách." },
-        { "en": "Please play the radio.", "vi": "Mở đài lên đi." }
+        {
+          "en": "Turn right at the traffic light.",
+          "vi": "Rẽ phải ở đèn giao thông."
+        },
+        {
+          "en": "I really like reading.",
+          "vi": "Mình rất thích đọc sách."
+        },
+        {
+          "en": "Please play the radio.",
+          "vi": "Mở đài lên đi."
+        }
       ]
     },
     {
@@ -97,11 +335,45 @@
       "ipa": "/tʃ/ /ʃ/",
       "emoji": "🪑",
       "tip": "/tʃ/ (chair) bắt đầu bằng /t/ rồi bật ra 'ch' mạnh. /ʃ/ (share) chỉ là hơi kéo dài, không có tiếng bật.",
-      "pairs": [["chair", "share"], ["chip", "ship"], ["cheap", "sheep"], ["watch", "wash"], ["catch", "cash"], ["chop", "shop"]],
+      "pairs": [
+        [
+          "chair",
+          "share"
+        ],
+        [
+          "chip",
+          "ship"
+        ],
+        [
+          "cheap",
+          "sheep"
+        ],
+        [
+          "watch",
+          "wash"
+        ],
+        [
+          "catch",
+          "cash"
+        ],
+        [
+          "chop",
+          "shop"
+        ]
+      ],
       "sentences": [
-        { "en": "Can I share your chair?", "vi": "Mình ngồi chung ghế với bạn được không?" },
-        { "en": "Let's watch the match.", "vi": "Cùng xem trận đấu nhé." },
-        { "en": "This shop is cheap.", "vi": "Cửa hàng này rẻ." }
+        {
+          "en": "Can I share your chair?",
+          "vi": "Mình ngồi chung ghế với bạn được không?"
+        },
+        {
+          "en": "Let's watch the match.",
+          "vi": "Cùng xem trận đấu nhé."
+        },
+        {
+          "en": "This shop is cheap.",
+          "vi": "Cửa hàng này rẻ."
+        }
       ]
     },
     {
@@ -112,12 +384,36 @@
       "tip": "Người bản xứ nối phụ âm cuối với nguyên âm đầu của từ sau và nói rút gọn: 'check it out' nghe như 'che-ki-dout', 'going to' thành 'gonna'. Nghe kỹ cách nối rồi nói theo.",
       "pairs": [],
       "sentences": [
-        { "en": "Check it out!", "vi": "Xem cái này đi!", "sounds": "che-ki-dout" },
-        { "en": "What do you want to do?", "vi": "Bạn muốn làm gì?", "sounds": "whaddaya wanna do" },
-        { "en": "I'm going to get a cup of coffee.", "vi": "Mình sẽ đi lấy một cốc cà phê.", "sounds": "I'm gonna ge-da cuppa coffee" },
-        { "en": "Did you eat yet?", "vi": "Bạn ăn chưa?", "sounds": "didja eat yet" },
-        { "en": "Turn it off.", "vi": "Tắt nó đi.", "sounds": "tur-ni-doff" },
-        { "en": "Let me know.", "vi": "Cho mình biết nhé.", "sounds": "lemme know" }
+        {
+          "en": "Check it out!",
+          "vi": "Xem cái này đi!",
+          "sounds": "che-ki-dout"
+        },
+        {
+          "en": "What do you want to do?",
+          "vi": "Bạn muốn làm gì?",
+          "sounds": "whaddaya wanna do"
+        },
+        {
+          "en": "I'm going to get a cup of coffee.",
+          "vi": "Mình sẽ đi lấy một cốc cà phê.",
+          "sounds": "I'm gonna ge-da cuppa coffee"
+        },
+        {
+          "en": "Did you eat yet?",
+          "vi": "Bạn ăn chưa?",
+          "sounds": "didja eat yet"
+        },
+        {
+          "en": "Turn it off.",
+          "vi": "Tắt nó đi.",
+          "sounds": "tur-ni-doff"
+        },
+        {
+          "en": "Let me know.",
+          "vi": "Cho mình biết nhé.",
+          "sounds": "lemme know"
+        }
       ]
     },
     {
@@ -128,12 +424,816 @@
       "tip": "Âm tiết in HOA được nhấn: nói to hơn, dài hơn, cao hơn. Trong câu, nhấn vào từ mang nghĩa; câu hỏi Yes/No lên giọng ở cuối, câu hỏi Wh- xuống giọng.",
       "pairs": [],
       "sentences": [
-        { "en": "Can I see the photograph?", "vi": "Cho mình xem bức ảnh nhé?", "sounds": "can i SEE the PHO-to-graph ↗" },
-        { "en": "I love photography.", "vi": "Mình mê nhiếp ảnh.", "sounds": "i LOVE pho-TO-gra-phy" },
-        { "en": "Where are you from?", "vi": "Bạn đến từ đâu?", "sounds": "WHERE are you FROM ↘" },
-        { "en": "Are you coming tonight?", "vi": "Tối nay bạn đến không?", "sounds": "are you COM-ing to-NIGHT ↗" },
-        { "en": "It's an important meeting.", "vi": "Đó là cuộc họp quan trọng.", "sounds": "it's an im-POR-tant MEET-ing" }
+        {
+          "en": "Can I see the photograph?",
+          "vi": "Cho mình xem bức ảnh nhé?",
+          "sounds": "can i SEE the PHO-to-graph ↗"
+        },
+        {
+          "en": "I love photography.",
+          "vi": "Mình mê nhiếp ảnh.",
+          "sounds": "i LOVE pho-TO-gra-phy"
+        },
+        {
+          "en": "Where are you from?",
+          "vi": "Bạn đến từ đâu?",
+          "sounds": "WHERE are you FROM ↘"
+        },
+        {
+          "en": "Are you coming tonight?",
+          "vi": "Tối nay bạn đến không?",
+          "sounds": "are you COM-ing to-NIGHT ↗"
+        },
+        {
+          "en": "It's an important meeting.",
+          "vi": "Đó là cuộc họp quan trọng.",
+          "sounds": "it's an im-POR-tant MEET-ing"
+        }
       ]
+    },
+    {
+      "id": "v-w",
+      "title": "Âm /v/ và /w/",
+      "ipa": "/v/ /w/",
+      "emoji": "🍷",
+      "tip": "/v/: răng trên chạm nhẹ môi dưới, thổi hơi ra và rung cổ họng. /w/: tròn môi như chữ 'u', không chạm răng, rồi mở ra. Người Việt hay đọc /w/ thành 'v' (wine thành vine) hoặc ngược lại.",
+      "pairs": [
+        [
+          "vine",
+          "wine"
+        ],
+        [
+          "vest",
+          "west"
+        ],
+        [
+          "vet",
+          "wet"
+        ],
+        [
+          "verse",
+          "worse"
+        ],
+        [
+          "vent",
+          "went"
+        ],
+        [
+          "veil",
+          "whale"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "We have a very nice view of the water.",
+          "vi": "Chúng mình có tầm nhìn rất đẹp ra mặt nước."
+        },
+        {
+          "en": "Vincent will visit the vet on Wednesday.",
+          "vi": "Vincent sẽ đưa thú cưng đến bác sĩ thú y vào thứ Tư."
+        },
+        {
+          "en": "Wow, this wine is very good.",
+          "vi": "Chà, rượu vang này ngon thật."
+        }
+      ]
+    },
+    {
+      "id": "z-s",
+      "title": "Âm /z/ và /s/",
+      "ipa": "/z/ /s/",
+      "emoji": "🐝",
+      "tip": "Vị trí lưỡi giống nhau, khác ở cổ họng: /s/ chỉ có hơi, /z/ rung cổ họng như tiếng ong vo ve. Người Việt hay đọc /z/ thành /s/ hoặc 'd/gi', nhất là ở cuối từ (rise nghe thành rice).",
+      "pairs": [
+        [
+          "zoo",
+          "Sue"
+        ],
+        [
+          "zip",
+          "sip"
+        ],
+        [
+          "buzz",
+          "bus"
+        ],
+        [
+          "rise",
+          "rice"
+        ],
+        [
+          "peace",
+          "peas"
+        ],
+        [
+          "prize",
+          "price"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "The zoo closes at six, so please hurry.",
+          "vi": "Sở thú đóng cửa lúc sáu giờ, nên làm ơn nhanh lên."
+        },
+        {
+          "en": "Prices rise when there is a busy season.",
+          "vi": "Giá tăng lên khi vào mùa đông khách."
+        },
+        {
+          "en": "She has fresh peas and rice for lunch.",
+          "vi": "Cô ấy có đậu Hà Lan tươi và cơm cho bữa trưa."
+        }
+      ]
+    },
+    {
+      "id": "u-oo",
+      "title": "/ʊ/ ngắn và /uː/ dài",
+      "ipa": "/ʊ/ /uː/",
+      "emoji": "📚",
+      "tip": "/uː/ (food) tròn môi chặt, kéo dài. /ʊ/ (foot) môi tròn lỏng, ngắn và nhanh, gần giống 'u' ngắn của tiếng Việt. Người Việt hay đọc cả hai thành một âm 'u' như nhau nên book và boot nghe giống hệt.",
+      "pairs": [
+        [
+          "full",
+          "fool"
+        ],
+        [
+          "pull",
+          "pool"
+        ],
+        [
+          "look",
+          "Luke"
+        ],
+        [
+          "soot",
+          "suit"
+        ],
+        [
+          "should",
+          "shooed"
+        ],
+        [
+          "could",
+          "cooed"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "Could you put the book on the table?",
+          "vi": "Bạn đặt cuốn sách lên bàn giúp mình được không?"
+        },
+        {
+          "en": "I took a cool pool of water to my room.",
+          "vi": "Mình mang một chậu nước mát vào phòng."
+        },
+        {
+          "en": "The good cook made a full bowl of food.",
+          "vi": "Người đầu bếp giỏi làm đầy một tô thức ăn."
+        }
+      ]
+    },
+    {
+      "id": "cup-cart",
+      "title": "/ʌ/ và /ɑː/",
+      "ipa": "/ʌ/ /ɑː/",
+      "emoji": "☕",
+      "tip": "/ʌ/ (cup) ngắn, miệng mở vừa, giống 'ă' trong tiếng Việt. /ɑː/ (cart) dài, miệng mở rộng, hàm hạ thấp, giống 'a' kéo dài. Người Việt hay đọc cả hai thành 'a' ngắn nên cut và cart lẫn vào nhau.",
+      "pairs": [
+        [
+          "cut",
+          "cart"
+        ],
+        [
+          "luck",
+          "lark"
+        ],
+        [
+          "hut",
+          "heart"
+        ],
+        [
+          "duck",
+          "dark"
+        ],
+        [
+          "bun",
+          "barn"
+        ],
+        [
+          "much",
+          "march"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "My uncle drinks a cup of tea every Sunday.",
+          "vi": "Chú mình uống một tách trà vào mỗi Chủ nhật."
+        },
+        {
+          "en": "It is dark in the barn after the army leaves.",
+          "vi": "Trong chuồng tối om sau khi quân đội rời đi."
+        },
+        {
+          "en": "The car is parked far from the market.",
+          "vi": "Chiếc xe đậu xa chợ."
+        }
+      ]
+    },
+    {
+      "id": "j-y",
+      "title": "Âm /dʒ/ và /j/ (j, y)",
+      "ipa": "/dʒ/ /j/",
+      "emoji": "🧃",
+      "tip": "/dʒ/ (job) bắt đầu bằng lưỡi chạm vòm miệng như /d/ rồi bật ra, môi hơi chu. /j/ (yes) giống 'i' lướt nhanh, lưỡi không chạm vòm. Người Việt hay đọc 'j' thành 'gi/d' hoặc /j/: 'jet' nghe thành 'yet'.",
+      "pairs": [
+        [
+          "jet",
+          "yet"
+        ],
+        [
+          "jam",
+          "yam"
+        ],
+        [
+          "joke",
+          "yolk"
+        ],
+        [
+          "jello",
+          "yellow"
+        ],
+        [
+          "jeer",
+          "year"
+        ],
+        [
+          "Jess",
+          "yes"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "The judge gave the jury a large page of notes.",
+          "vi": "Thẩm phán đưa cho bồi thẩm đoàn một trang ghi chú dài."
+        },
+        {
+          "en": "Jack enjoys orange juice in June.",
+          "vi": "Jack thích uống nước cam vào tháng Sáu."
+        },
+        {
+          "en": "The manager changed the job schedule.",
+          "vi": "Quản lý đã đổi lịch làm việc."
+        }
+      ]
+    },
+    {
+      "id": "ed-endings",
+      "title": "Đuôi -ed: /t/, /d/, /ɪd/",
+      "ipa": "/t/ /d/ /ɪd/",
+      "emoji": "⏳",
+      "tip": "Sau âm vô thanh (k, p, f, s...) đọc -ed là /t/ (walked). Sau âm hữu thanh và nguyên âm đọc là /d/ (played). Sau /t/ hoặc /d/ đọc thành một âm tiết mới /ɪd/ (wanted). Người Việt hay bỏ luôn đuôi -ed hoặc đọc tất cả thành 'ét'.",
+      "pairs": [
+        [
+          "walk",
+          "walked"
+        ],
+        [
+          "help",
+          "helped"
+        ],
+        [
+          "play",
+          "played"
+        ],
+        [
+          "clean",
+          "cleaned"
+        ],
+        [
+          "want",
+          "wanted"
+        ],
+        [
+          "need",
+          "needed"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "I walked home and cleaned the kitchen.",
+          "vi": "Mình đi bộ về nhà và dọn bếp."
+        },
+        {
+          "en": "She wanted to help, so she stayed and worked.",
+          "vi": "Cô ấy muốn giúp nên ở lại làm việc."
+        },
+        {
+          "en": "We played football and then rested.",
+          "vi": "Chúng mình chơi bóng đá rồi nghỉ ngơi."
+        }
+      ]
+    },
+    {
+      "id": "s-endings",
+      "title": "Đuôi -s/-es: /s/, /z/, /ɪz/",
+      "ipa": "/s/ /z/ /ɪz/",
+      "emoji": "🐈",
+      "tip": "Sau âm vô thanh (p, t, k, f) đọc /s/ (cats). Sau âm hữu thanh và nguyên âm đọc /z/ (dogs). Sau s, z, ʃ, tʃ, dʒ thêm một âm tiết /ɪz/ (buses). Người Việt hay bỏ hẳn đuôi -s nên số ít và số nhiều nghe giống nhau.",
+      "pairs": [
+        [
+          "cat",
+          "cats"
+        ],
+        [
+          "book",
+          "books"
+        ],
+        [
+          "dog",
+          "dogs"
+        ],
+        [
+          "bag",
+          "bags"
+        ],
+        [
+          "bus",
+          "buses"
+        ],
+        [
+          "watch",
+          "watches"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "She watches movies and reads books every night.",
+          "vi": "Cô ấy xem phim và đọc sách mỗi tối."
+        },
+        {
+          "en": "My dogs like the buses near the park.",
+          "vi": "Mấy con chó của mình thích những chiếc xe buýt gần công viên."
+        },
+        {
+          "en": "He fixes cars and washes bags for a living.",
+          "vi": "Anh ấy kiếm sống bằng sửa xe và giặt túi."
+        }
+      ]
+    },
+    {
+      "id": "clusters",
+      "title": "Cụm phụ âm (str, spl, pr...)",
+      "ipa": "/str/ /spr/ /sp/ /st/",
+      "emoji": "🧩",
+      "tip": "Tiếng Việt không có cụm phụ âm, nên người học hay chèn thêm một nguyên âm ('sờ-po' cho sport) hoặc bỏ bớt âm đầu. Hãy nối các âm liền nhau, không chen nguyên âm, và để /s/ nhẹ rồi lướt sang âm kế tiếp.",
+      "pairs": [
+        [
+          "sport",
+          "port"
+        ],
+        [
+          "stop",
+          "top"
+        ],
+        [
+          "street",
+          "treat"
+        ],
+        [
+          "spring",
+          "ring"
+        ],
+        [
+          "scream",
+          "cream"
+        ],
+        [
+          "spray",
+          "pray"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "The street is strangely quiet this spring.",
+          "vi": "Con phố yên tĩnh lạ thường vào mùa xuân này."
+        },
+        {
+          "en": "Please stop and sprinkle some cream on the toast.",
+          "vi": "Làm ơn dừng lại và rưới chút kem lên bánh mì nướng."
+        },
+        {
+          "en": "Our friends play sports at school.",
+          "vi": "Bạn của chúng mình chơi thể thao ở trường."
+        }
+      ]
+    }
+  ],
+  "twisters": [
+    {
+      "id": "tw-01",
+      "en": "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair.",
+      "vi": "Gấu Fuzzy Wuzzy không có lông.",
+      "level": "easy",
+      "focus": "Luyện /f/, /z/ và /w/ xen kẽ"
+    },
+    {
+      "id": "tw-02",
+      "en": "Big black bug bit a big black bear.",
+      "vi": "Con bọ đen to cắn một con gấu đen to.",
+      "level": "easy",
+      "focus": "Luyện âm /b/ và âm cuối /g/, /k/"
+    },
+    {
+      "id": "tw-03",
+      "en": "Fresh fried fish, fish fresh fried.",
+      "vi": "Cá chiên tươi, cá tươi chiên.",
+      "level": "easy",
+      "focus": "Luyện /f/ (cắn môi) và /ʃ/"
+    },
+    {
+      "id": "tw-04",
+      "en": "Three free throws.",
+      "vi": "Ba cú ném phạt.",
+      "level": "easy",
+      "focus": "Luyện /θr/ và /fr/, hay bị đọc thành /t/"
+    },
+    {
+      "id": "tw-05",
+      "en": "Toy boat, toy boat, toy boat.",
+      "vi": "Thuyền đồ chơi, thuyền đồ chơi.",
+      "level": "easy",
+      "focus": "Luyện /ɔɪ/ và /b/, /t/ cuối"
+    },
+    {
+      "id": "tw-06",
+      "en": "Unique New York.",
+      "vi": "Một New York độc nhất.",
+      "level": "easy",
+      "focus": "Luyện /j/ và /n/ liền nhau"
+    },
+    {
+      "id": "tw-07",
+      "en": "I scream, you scream, we all scream for ice cream.",
+      "vi": "Ai cũng la lên vì muốn ăn kem.",
+      "level": "easy",
+      "focus": "Luyện cụm /skr/ và /iː/ dài"
+    },
+    {
+      "id": "tw-08",
+      "en": "She sells seashells by the seashore.",
+      "vi": "Cô ấy bán vỏ sò bên bờ biển.",
+      "level": "medium",
+      "focus": "Phân biệt /s/ và /ʃ/"
+    },
+    {
+      "id": "tw-09",
+      "en": "Peter Piper picked a peck of pickled peppers.",
+      "vi": "Peter Piper hái một thúng ớt muối.",
+      "level": "medium",
+      "focus": "Luyện /p/ bật hơi và /ɪ/ ngắn"
+    },
+    {
+      "id": "tw-10",
+      "en": "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
+      "vi": "Nếu chuột marmot ném được gỗ thì nó ném bao nhiêu?",
+      "level": "medium",
+      "focus": "Luyện /w/, /ʊ/ và /tʃ/"
+    },
+    {
+      "id": "tw-11",
+      "en": "Red lorry, yellow lorry.",
+      "vi": "Xe tải đỏ, xe tải vàng.",
+      "level": "medium",
+      "focus": "Phân biệt /r/ và /l/"
+    },
+    {
+      "id": "tw-12",
+      "en": "Betty Botter bought some butter, but she said the butter's bitter.",
+      "vi": "Betty mua bơ nhưng nói bơ bị đắng.",
+      "level": "medium",
+      "focus": "Luyện /b/, /t/ và /ɪ/ ngắn"
+    },
+    {
+      "id": "tw-13",
+      "en": "Vincent will visit the vet on Wednesday.",
+      "vi": "Vincent sẽ đến phòng khám thú y vào thứ Tư.",
+      "level": "medium",
+      "focus": "Phân biệt /v/ và /w/"
+    },
+    {
+      "id": "tw-14",
+      "en": "How can a clam cram in a clean cream can?",
+      "vi": "Làm sao một con sò nhét vừa lon kem sạch?",
+      "level": "medium",
+      "focus": "Luyện cụm /kl/, /kr/ và /æ/"
+    },
+    {
+      "id": "tw-15",
+      "en": "I thought a thought, but the thought I thought wasn't the thought I thought I thought.",
+      "vi": "Ý nghĩ tôi nghĩ không phải ý nghĩ tôi tưởng mình nghĩ.",
+      "level": "hard",
+      "focus": "Luyện /θ/ và /ɔː/ liên tục"
+    },
+    {
+      "id": "tw-16",
+      "en": "The sixth sick sheik's sixth sheep's sick.",
+      "vi": "Con cừu thứ sáu của ông hoàng thứ sáu bị ốm.",
+      "level": "hard",
+      "focus": "Luyện /s/, /ʃ/, /ks/ và /θ/"
+    },
+    {
+      "id": "tw-17",
+      "en": "Can you can a can as a canner can can a can?",
+      "vi": "Bạn có đóng hộp được một cái hộp như thợ đóng hộp không?",
+      "level": "hard",
+      "focus": "Luyện /æ/ và âm yếu /ə/ trong 'can'"
+    },
+    {
+      "id": "tw-18",
+      "en": "The thirty-three thieves thought that they thrilled the throne throughout Thursday.",
+      "vi": "Ba mươi ba tên trộm tưởng rằng chúng làm ngai vàng hồi hộp suốt thứ Năm.",
+      "level": "hard",
+      "focus": "Luyện /θ/ và cụm /θr/ liên tục"
+    },
+    {
+      "id": "tw-19",
+      "en": "Irish wristwatch, Swiss wristwatch.",
+      "vi": "Đồng hồ đeo tay Ireland, đồng hồ đeo tay Thụy Sĩ.",
+      "level": "hard",
+      "focus": "Luyện /r/, /sw/ và cụm /stw/"
+    },
+    {
+      "id": "tw-20",
+      "en": "Strict strong streets stretch straight toward the strange street stall.",
+      "vi": "Những con phố chắc chắn nghiêm ngặt kéo thẳng đến quầy hàng lạ.",
+      "level": "hard",
+      "focus": "Luyện cụm /str/ không chèn nguyên âm"
+    }
+  ],
+  "ipa": [
+    {
+      "symbol": "iː",
+      "type": "vowel",
+      "example": "see",
+      "hint": "gần giống 'i' nhưng kéo dài, môi bành ra"
+    },
+    {
+      "symbol": "ɪ",
+      "type": "vowel",
+      "example": "sit",
+      "hint": "'i' ngắn, giữa 'i' và 'ê', môi thả lỏng"
+    },
+    {
+      "symbol": "e",
+      "type": "vowel",
+      "example": "bed",
+      "hint": "gần giống 'e' tiếng Việt, miệng mở vừa"
+    },
+    {
+      "symbol": "æ",
+      "type": "vowel",
+      "example": "cat",
+      "hint": "giữa 'a' và 'e', miệng mở rộng sang hai bên"
+    },
+    {
+      "symbol": "ɑː",
+      "type": "vowel",
+      "example": "father",
+      "hint": "'a' kéo dài, miệng mở to, lưỡi hạ thấp"
+    },
+    {
+      "symbol": "ɒ",
+      "type": "vowel",
+      "example": "hot",
+      "hint": "gần giống 'o' ngắn, miệng tròn và mở"
+    },
+    {
+      "symbol": "ɔː",
+      "type": "vowel",
+      "example": "door",
+      "hint": "gần giống 'o' nhưng dài, môi tròn"
+    },
+    {
+      "symbol": "ʊ",
+      "type": "vowel",
+      "example": "book",
+      "hint": "'u' ngắn, môi tròn lỏng"
+    },
+    {
+      "symbol": "uː",
+      "type": "vowel",
+      "example": "food",
+      "hint": "'u' kéo dài, môi tròn chặt"
+    },
+    {
+      "symbol": "ʌ",
+      "type": "vowel",
+      "example": "cup",
+      "hint": "gần giống 'ă', ngắn và dứt khoát"
+    },
+    {
+      "symbol": "ɜː",
+      "type": "vowel",
+      "example": "bird",
+      "hint": "giữa 'ơ' và 'ơ' dài, lưỡi giữa miệng"
+    },
+    {
+      "symbol": "ə",
+      "type": "vowel",
+      "example": "about",
+      "hint": "'ơ' rất nhẹ và ngắn, hay gặp ở âm yếu"
+    },
+    {
+      "symbol": "eɪ",
+      "type": "diphthong",
+      "example": "day",
+      "hint": "từ 'ê' trượt sang 'i'"
+    },
+    {
+      "symbol": "aɪ",
+      "type": "diphthong",
+      "example": "my",
+      "hint": "từ 'a' trượt sang 'i', giống 'ai'"
+    },
+    {
+      "symbol": "ɔɪ",
+      "type": "diphthong",
+      "example": "boy",
+      "hint": "từ 'o' trượt sang 'i', giống 'oi'"
+    },
+    {
+      "symbol": "aʊ",
+      "type": "diphthong",
+      "example": "now",
+      "hint": "từ 'a' trượt sang 'u', giống 'ao'"
+    },
+    {
+      "symbol": "əʊ",
+      "type": "diphthong",
+      "example": "go",
+      "hint": "từ 'ơ' trượt sang 'u', môi tròn dần"
+    },
+    {
+      "symbol": "ɪə",
+      "type": "diphthong",
+      "example": "here",
+      "hint": "từ 'i' ngắn trượt về 'ơ'"
+    },
+    {
+      "symbol": "eə",
+      "type": "diphthong",
+      "example": "hair",
+      "hint": "từ 'e' trượt về 'ơ'"
+    },
+    {
+      "symbol": "ʊə",
+      "type": "diphthong",
+      "example": "tour",
+      "hint": "từ 'u' ngắn trượt về 'ơ'"
+    },
+    {
+      "symbol": "p",
+      "type": "consonant",
+      "example": "pen",
+      "hint": "gần giống 'p' nhưng bật hơi mạnh hơn"
+    },
+    {
+      "symbol": "b",
+      "type": "consonant",
+      "example": "big",
+      "hint": "giống 'b' tiếng Việt, rung cổ họng"
+    },
+    {
+      "symbol": "t",
+      "type": "consonant",
+      "example": "top",
+      "hint": "gần giống 't' nhưng bật hơi, đầu lưỡi chạm lợi trên"
+    },
+    {
+      "symbol": "d",
+      "type": "consonant",
+      "example": "dog",
+      "hint": "giống 'đ' tiếng Việt, rung cổ họng"
+    },
+    {
+      "symbol": "k",
+      "type": "consonant",
+      "example": "cat",
+      "hint": "gần giống 'c/k', bật hơi từ cuống lưỡi"
+    },
+    {
+      "symbol": "g",
+      "type": "consonant",
+      "example": "go",
+      "hint": "giống 'g' trong 'gà', rung cổ họng"
+    },
+    {
+      "symbol": "f",
+      "type": "consonant",
+      "example": "fish",
+      "hint": "giống 'ph/f', răng trên chạm môi dưới"
+    },
+    {
+      "symbol": "v",
+      "type": "consonant",
+      "example": "very",
+      "hint": "như /f/ nhưng rung cổ họng, giống 'v'"
+    },
+    {
+      "symbol": "θ",
+      "type": "consonant",
+      "example": "think",
+      "hint": "đầu lưỡi giữa hai răng, chỉ thổi hơi"
+    },
+    {
+      "symbol": "ð",
+      "type": "consonant",
+      "example": "this",
+      "hint": "như /θ/ nhưng rung cổ họng"
+    },
+    {
+      "symbol": "s",
+      "type": "consonant",
+      "example": "see",
+      "hint": "giống 'x' nhẹ, chỉ có hơi, không rung"
+    },
+    {
+      "symbol": "z",
+      "type": "consonant",
+      "example": "zoo",
+      "hint": "như /s/ nhưng rung cổ họng, như tiếng ong"
+    },
+    {
+      "symbol": "ʃ",
+      "type": "consonant",
+      "example": "she",
+      "hint": "giống 'sh', gần 'x' nhưng môi chu ra"
+    },
+    {
+      "symbol": "ʒ",
+      "type": "consonant",
+      "example": "vision",
+      "hint": "như /ʃ/ nhưng rung cổ họng, gần 'gi' miền Nam"
+    },
+    {
+      "symbol": "h",
+      "type": "consonant",
+      "example": "hat",
+      "hint": "giống 'h' tiếng Việt, hơi nhẹ từ cổ họng"
+    },
+    {
+      "symbol": "tʃ",
+      "type": "consonant",
+      "example": "chair",
+      "hint": "gần giống 'ch' nhưng môi chu và bật hơi"
+    },
+    {
+      "symbol": "dʒ",
+      "type": "consonant",
+      "example": "job",
+      "hint": "như /tʃ/ nhưng rung cổ họng, không phải 'gi/d'"
+    },
+    {
+      "symbol": "m",
+      "type": "consonant",
+      "example": "man",
+      "hint": "giống 'm' tiếng Việt, hai môi khép"
+    },
+    {
+      "symbol": "n",
+      "type": "consonant",
+      "example": "no",
+      "hint": "giống 'n', đầu lưỡi chạm lợi trên"
+    },
+    {
+      "symbol": "ŋ",
+      "type": "consonant",
+      "example": "sing",
+      "hint": "giống 'ng' cuối từ, không phát âm /g/"
+    },
+    {
+      "symbol": "l",
+      "type": "consonant",
+      "example": "light",
+      "hint": "giống 'l', đầu lưỡi chạm lợi trên"
+    },
+    {
+      "symbol": "r",
+      "type": "consonant",
+      "example": "red",
+      "hint": "cuộn lưỡi lên, không chạm vòm miệng, không rung"
+    },
+    {
+      "symbol": "w",
+      "type": "consonant",
+      "example": "we",
+      "hint": "tròn môi như 'u' rồi mở ra, giống 'qu'"
+    },
+    {
+      "symbol": "j",
+      "type": "consonant",
+      "example": "yes",
+      "hint": "giống 'i' đầu từ, lướt nhanh sang nguyên âm"
     }
   ]
 }

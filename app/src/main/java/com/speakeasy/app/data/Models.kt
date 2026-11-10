@@ -19,6 +19,8 @@ data class Stage(
     val title: String,
     val subtitle: String = "",
     val topics: List<String>,
+    /** "kids" for stages meant for children; null for the general path. */
+    val audience: String? = null,
 )
 
 @Serializable

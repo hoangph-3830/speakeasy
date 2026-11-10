@@ -46,6 +46,17 @@ object LearningPath {
         return null
     }
 
+    const val KIDS = "kids"
+
+    /**
+     * The learning path for who is learning: children get the kids' stages first and then the general
+     * path; adults (or anyone else) never see the kids' stages.
+     */
+    fun visible(path: List<Stage>, audience: String?): List<Stage> {
+        val (kids, general) = path.partition { it.audience == KIDS }
+        return if (audience == KIDS) kids + general else general
+    }
+
     /** [next] with no placement test taken. */
     fun next(path: List<Stage>, doneCount: (String) -> Int): PathStep? = next(path, doneCount, null)
 

@@ -23,6 +23,10 @@ export function hubScreen(app) {
               <div class="muted small">${score == null ? 'Làm một bài để biết điểm của bạn.' : `Trung bình ${Object.keys(p.soundScores).length}/${lessons.length} bài. Luyện âm có điểm đỏ trước nhé!`}</div>
             </div>
           </div>
+          <div class="row gap">
+            <button class="card quick" style="background:var(--lavender-l)" data-act="nav" data-to="lab/ipa">🔤 Bảng phiên âm IPA</button>
+            <button class="card quick" style="background:var(--peach-l)" data-act="nav" data-to="lab/twisters">👅 Câu líu lưỡi</button>
+          </div>
           <div class="grid2">
           ${lessons.map((l) => {
             const s = p.soundScores[l.id];

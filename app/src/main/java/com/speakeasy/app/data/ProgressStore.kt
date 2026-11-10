@@ -44,6 +44,12 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
         placedLevel = if (prefs.contains("placedLevel")) prefs.getString("placedLevel", "") else null,
         reminderTime = prefs.getString("reminderTime", "20:00") ?: "20:00",
         reminderOn = prefs.getBoolean("reminderOn", false),
+        twisterBest = readMap("twisterBest"),
+        audience = prefs.getString("audience", "adult") ?: "adult",
+        daily = prefs.getString("dailyGuesses", null)?.let { g ->
+            DailyBoard(prefs.getLong("dailyDay", -1), g.split(',').filter { it.isNotEmpty() })
+        },
+        dailyStats = DailyStats.decode(prefs.getString("dailyStats", null)),
     )
 
     private fun save(p: Progress) {
@@ -75,6 +81,13 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
             }
             .putString("reminderTime", p.reminderTime)
             .putBoolean("reminderOn", p.reminderOn)
+            .putStringSet("twisterBest", p.twisterBest.map { (k, v) -> "$k=$v" }.toSet())
+            .putString("audience", p.audience)
+            .apply {
+                if (p.daily == null) remove("dailyGuesses").remove("dailyDay")
+                else putLong("dailyDay", p.daily.day).putString("dailyGuesses", p.daily.guesses.joinToString(","))
+            }
+            .putString("dailyStats", p.dailyStats.encode())
             .apply()
     }
 
@@ -103,6 +116,27 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
     fun recordSound(lessonId: String, score: Int) {
         val p = current()
         if ((p.soundScores[lessonId] ?: -1) < score) save(p.copy(soundScores = p.soundScores + (lessonId to score)))
+    }
+
+    /** Keeps the best score per tongue twister. */
+    fun recordTwister(id: String, score: Int) {
+        val p = current()
+        if ((p.twisterBest[id] ?: -1) < score) save(p.copy(twisterBest = p.twisterBest + (id to score)))
+    }
+
+    /**
+     * Saves the guesses of [day]'s word puzzle; finishing it updates the record, and solving it earns XP.
+     * Returns the XP earned.
+     */
+    fun saveDaily(day: Long, guesses: List<String>, answer: String): Int {
+        val p = current()
+        val over = DailyWord.isOver(guesses, answer)
+        val won = DailyWord.isWon(guesses, answer)
+        val stats = if (over) DailyWord.recordResult(p.dailyStats, day, won, guesses.size) else p.dailyStats
+        save(p.copy(daily = DailyBoard(day, guesses), dailyStats = stats))
+        val xp = if (won) DailyWord.xpFor(guesses.size) else 0
+        addXp(xp)
+        return xp
     }
 
     /** Keeps a challenge's best score; returns true when [score] is a new record. */
@@ -139,6 +173,7 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
     fun setAccent(accent: String) = save(_progress.value.copy(accent = accent))
     fun setVoiceName(name: String) = save(_progress.value.copy(voiceName = name))
     fun setPlacedLevel(level: String) = save(_progress.value.copy(placedLevel = level))
+    fun setAudience(audience: String) = save(_progress.value.copy(audience = audience))
     fun setReminder(on: Boolean, time: String) = save(_progress.value.copy(reminderOn = on, reminderTime = time))
 
     fun reset() {

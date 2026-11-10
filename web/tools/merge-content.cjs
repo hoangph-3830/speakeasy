@@ -15,6 +15,7 @@ const content = read(path.join(assets, 'content.json'));
 const NEW_CATEGORIES = [
   { id: 'home', name: 'Gia đình & nhà cửa', nameEn: 'Family & home', emoji: '🏠', color: '#FFD166' },
   { id: 'health', name: 'Sức khỏe', nameEn: 'Health', emoji: '🩺', color: '#F2667A' },
+  { id: 'kids', name: 'Thiếu nhi', nameEn: 'Kids', emoji: '🧸', color: '#7BC8F6' },
 ];
 for (const c of NEW_CATEGORIES) if (!content.categories.some((x) => x.id === c.id)) content.categories.push(c);
 const ids = new Set(content.topics.map((t) => t.id));
@@ -25,7 +26,7 @@ for (const f of files('topics-')) {
     const where = `${f}:${t.id}`;
     if (!content.categories.some((c) => c.id === t.category)) problems.push(`${where} unknown category ${t.category}`);
     for (const k of ['title', 'titleVi', 'emoji', 'level']) if (!t[k]) problems.push(`${where} missing ${k}`);
-    if (t.phrases?.length !== 6 || t.words?.length !== 6 || !(t.native?.length >= 1)) problems.push(`${where} wrong counts`);
+    if (t.phrases?.length !== 6 || t.words?.length !== 6 || !(t.native?.length >= 3)) problems.push(`${where} wrong counts`);
     const lines = t.dialogue?.lines || [];
     if (lines.length < 6 || lines[0].s !== 'A' || !lines.some((l) => l.s === 'B')) problems.push(`${where} bad dialogue`);
     for (const l of lines) if (!l.en || !l.vi || !['A', 'B'].includes(l.s)) problems.push(`${where} bad line`);

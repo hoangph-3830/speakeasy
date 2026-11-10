@@ -39,6 +39,9 @@ import com.speakeasy.app.ui.screens.ArticleScreen
 import com.speakeasy.app.ui.screens.AiHubScreen
 import com.speakeasy.app.ui.screens.BookScreen
 import com.speakeasy.app.ui.screens.ChallengeScreen
+import com.speakeasy.app.ui.screens.DailyWordScreen
+import com.speakeasy.app.ui.screens.IpaChartScreen
+import com.speakeasy.app.ui.screens.TongueTwistersScreen
 import com.speakeasy.app.ui.screens.DialogueScreen
 import com.speakeasy.app.ui.screens.GameHubScreen
 import com.speakeasy.app.ui.screens.GameScreen
@@ -125,7 +128,16 @@ fun AppNav() {
                 )
             }
             screen("review") { ReviewScreen(onBack = nav::popBackStack) }
-            screen("lab") { LabHubScreen(onBack = nav::popBackStack, openLesson = { nav.navigate("lab/$it") }) }
+            screen("lab") {
+                LabHubScreen(
+                    onBack = nav::popBackStack,
+                    openLesson = { nav.navigate("lab/$it") },
+                    openIpa = { nav.navigate("lab/ipa") },
+                    openTwisters = { nav.navigate("lab/twisters") },
+                )
+            }
+            screen("lab/ipa") { IpaChartScreen(onBack = nav::popBackStack) }
+            screen("lab/twisters") { TongueTwistersScreen(onBack = nav::popBackStack) }
             screen("lab/{id}") { LabLessonScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             screen("stories") {
                 StoriesHubScreen(
@@ -142,8 +154,10 @@ fun AppNav() {
                     openChallenge = { nav.navigate("challenge/$it") },
                     openLab = { nav.navigate("lab") },
                     openStories = { nav.navigate("stories") },
+                    openDaily = { nav.navigate("daily") },
                 )
             }
+            screen("daily") { DailyWordScreen(onBack = nav::popBackStack) }
             screen("challenge/{id}") { ChallengeScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
             screen("me") { ProgressScreen(openPlacement = { nav.navigate("placement") }) }
             screen("placement") { PlacementScreen(onBack = nav::popBackStack, onContinue = { nav.switchTab("home") }) }

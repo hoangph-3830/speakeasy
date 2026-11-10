@@ -224,6 +224,8 @@ fun ProgressScreen(openPlacement: () -> Unit) {
                 VSpace(16.dp)
                 VoicePicker(p.voiceName, p.accent)
                 VSpace(16.dp)
+                AudienceSettings(p)
+                VSpace(16.dp)
                 ReminderSettings(p)
                 VSpace(12.dp)
                 Text(

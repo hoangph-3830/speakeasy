@@ -64,6 +64,15 @@ export const skippedStage = (stage, placed) => {
   return !!placed && placed !== 'C2' && order.indexOf(stage.level) <= order.indexOf(placed);
 };
 
+/**
+ * The learning path for who is learning: children get the kids' stages first and then the general
+ * path; adults never see the kids' stages.
+ */
+export const visiblePath = (path, audience) =>
+  audience === 'kids'
+    ? [...path.filter((st) => st.audience === 'kids'), ...path.filter((st) => st.audience !== 'kids')]
+    : path.filter((st) => st.audience !== 'kids');
+
 export function nextInPath(path, topics, p) {
   // First the stages the learner was placed into, then anything left unfinished below them.
   for (const skipPlaced of [true, false])
@@ -245,6 +254,10 @@ export const defaultProgress = () => ({
   history: {}, // epoch day -> XP earned that day, for the study calendar
   placedLevel: null, // placement test result: null = not taken, '' = start from A1, else the level passed
   reminderTime: '20:00',
+  twisterBest: {}, // tongue twister id -> best score
+  audience: 'adult', // 'adult' or 'kids': which learning path Home shows
+  daily: null, // today's word puzzle: { day, guesses }
+  dailyStats: { played: 0, won: 0, streak: 0, best: 0, lastWonDay: -1, dist: [0, 0, 0, 0, 0, 0] },
   onlineVoice: null, // null = automatic (on where the speech engine may be silent), else the learner's choice
 });
 
@@ -390,7 +403,11 @@ export const GAME_MODES = [
   { id: 'listen', title: 'Nghe & chọn', emoji: '🎧', description: 'Nghe câu nói rồi chọn đáp án đúng', color: 'mint' },
   { id: 'dictation', title: 'Nghe & chép', emoji: '✍️', description: 'Nghe người bản xứ nói rồi gõ lại từng từ', color: 'coral' },
   { id: 'meaning', title: 'Đoán nghĩa', emoji: '💡', description: 'Chọn nghĩa đúng của mẫu câu', color: 'lavender' },
+  { id: 'write', title: 'Viết câu', emoji: '📝', description: 'Đọc nghĩa tiếng Việt rồi tự viết câu tiếng Anh', color: 'sky' },
 ];
+
+/** A written answer passes at this compare() score: small slips are fine, missing words are not. */
+export const WRITE_PASS = 70;
 export const gameMode = (id) => GAME_MODES.find((m) => m.id === id) || GAME_MODES[0];
 
 /** Builds a session from the given topics; one topic for a lesson, all topics for free play. */
@@ -428,9 +445,10 @@ export function buildGame(topics, mode, size = 8) {
       : { type: 'meaning', prompt: en, options: shuffled([...others.map((o) => o[1]), vi]), answer: vi, speakPrompt: true };
   };
   const dictation = () => { const [en, vi] = pick(short); return { type: 'dictation', sentence: en, hint: vi }; };
+  const write = () => { const [en, vi] = pick(short); return { type: 'write', prompt: vi, answer: en }; };
 
-  const makers = { match: [match], scramble: [scramble], listen: [listen], meaning: [meaning], dictation: [dictation] }[mode]
-    || [match, scramble, listen, dictation, meaning];
+  const makers = { match: [match], scramble: [scramble], listen: [listen], meaning: [meaning], dictation: [dictation], write: [write] }[mode]
+    || [match, scramble, listen, dictation, meaning, write];
   const count = mode === 'match' ? 4 : mode === 'mix' ? size + 2 : size;
   return Array.from({ length: count }, (_, i) => makers[i % makers.length]());
 }

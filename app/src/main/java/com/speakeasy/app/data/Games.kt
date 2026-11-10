@@ -18,6 +18,9 @@ sealed interface Round {
 
     /** Hear a sentence and type it out. */
     data class Dictation(val sentence: String, val hint: String) : Round
+
+    /** Read the Vietnamese meaning, write the English sentence. */
+    data class Write(val prompt: String, val answer: String) : Round
 }
 
 enum class GameMode(val id: String, val title: String, val emoji: String, val description: String) {
@@ -26,7 +29,8 @@ enum class GameMode(val id: String, val title: String, val emoji: String, val de
     SCRAMBLE("scramble", "Xếp câu", "🧱", "Sắp xếp các từ thành câu hoàn chỉnh"),
     LISTEN("listen", "Nghe & chọn", "🎧", "Nghe câu nói rồi chọn đáp án đúng"),
     DICTATION("dictation", "Nghe & chép", "✍️", "Nghe người bản xứ nói rồi gõ lại từng từ"),
-    MEANING("meaning", "Đoán nghĩa", "💡", "Chọn nghĩa đúng của mẫu câu");
+    MEANING("meaning", "Đoán nghĩa", "💡", "Chọn nghĩa đúng của mẫu câu"),
+    WRITE("write", "Viết câu", "📝", "Đọc nghĩa tiếng Việt rồi tự viết câu tiếng Anh");
 
     companion object {
         fun from(id: String) = entries.firstOrNull { it.id == id } ?: MIX
@@ -34,6 +38,9 @@ enum class GameMode(val id: String, val title: String, val emoji: String, val de
 }
 
 object Games {
+
+    /** A written answer passes at this compare() score: small slips are fine, missing words are not. */
+    const val WRITE_PASS = 70
 
     /** Builds a session from the given topics; one topic for a lesson, all topics for free play. */
     fun build(topics: List<Topic>, mode: GameMode, random: Random = Random.Default, size: Int = 8): List<Round> {
@@ -79,13 +86,19 @@ object Games {
             return Round.Dictation(en, vi)
         }
 
+        fun write(): Round.Write {
+            val (en, vi) = short.random(random)
+            return Round.Write(vi, en)
+        }
+
         val makers: List<() -> Round> = when (mode) {
             GameMode.MATCH -> listOf(::match)
             GameMode.SCRAMBLE -> listOf(::scramble)
             GameMode.LISTEN -> listOf(::listen)
             GameMode.MEANING -> listOf(::meaning)
             GameMode.DICTATION -> listOf(::dictation)
-            GameMode.MIX -> listOf(::match, ::scramble, ::listen, ::dictation, ::meaning)
+            GameMode.WRITE -> listOf(::write)
+            GameMode.MIX -> listOf(::match, ::scramble, ::listen, ::dictation, ::meaning, ::write)
         }
         val count = when (mode) {
             GameMode.MATCH -> 4

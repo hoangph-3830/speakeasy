@@ -34,6 +34,13 @@ data class Progress(
     /** Daily reminder time "HH:MM", and whether the reminder notification is on. */
     val reminderTime: String = "20:00",
     val reminderOn: Boolean = false,
+    /** Best score (0-100) per tongue twister id. */
+    val twisterBest: Map<String, Int> = emptyMap(),
+    /** "adult" or "kids": which learning path Home shows. */
+    val audience: String = "adult",
+    /** Today's word puzzle, and the record over all days played. */
+    val daily: DailyBoard? = null,
+    val dailyStats: DailyStats = DailyStats(),
 ) {
     fun isDone(topicId: String, activity: Activity) = "$topicId:${activity.name}" in done
 

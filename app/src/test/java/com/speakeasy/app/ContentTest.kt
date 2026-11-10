@@ -46,6 +46,7 @@ class ContentTest {
                         is Round.Listen -> assertTrue(r.answer in r.options && r.options.size == 4)
                         is Round.Meaning -> assertTrue(r.answer in r.options && r.options.size == 4)
                         is Round.Dictation -> assertEquals(100, SpeechMatch.compare(r.sentence, r.sentence.lowercase()).score)
+                        is Round.Write -> assertEquals(100, SpeechMatch.compare(r.answer, r.answer.lowercase()).score)
                     }
                 }
             }

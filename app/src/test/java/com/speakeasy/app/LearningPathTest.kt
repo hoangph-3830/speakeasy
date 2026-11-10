@@ -30,9 +30,29 @@ class LearningPathTest {
 
     @Test
     fun stagesGoEasyToHard() {
-        val ranks = content.path.map { Levels.rank(it.level) }
         assertTrue(content.path.all { it.level in Levels.all && it.title.isNotBlank() && it.topics.isNotEmpty() })
-        assertEquals(ranks.sorted(), ranks)
+        // Each audience's path runs easy to hard on its own; the kids' stages sit outside the adults' one.
+        val kids = content.path.filter { it.audience == "kids" }
+        for (part in listOf(kids, LearningPath.visible(content.path, "adult"))) {
+            val ranks = part.map { Levels.rank(it.level) }
+            assertEquals(ranks.sorted(), ranks)
+        }
+        assertTrue(kids.size >= 2)
+        assertTrue(kids.all { s -> s.topics.all { id -> content.topics.first { it.id == id }.category == "kids" } })
+        assertEquals("kids", LearningPath.visible(content.path, "kids").first().audience)
+        for (s in content.path) for (id in s.topics) assertEquals(id, s.level, content.topics.first { it.id == id }.level)
+    }
+
+    @Test
+    fun kidsPathComesFirstForChildrenAndStaysHiddenFromAdults() {
+        val path = listOf(
+            Stage("a", "A1", "A", topics = emptyList()),
+            Stage("k", "A1", "K", topics = emptyList(), audience = "kids"),
+            Stage("b", "A2", "B", topics = emptyList()),
+        )
+        assertEquals(listOf("a", "b"), LearningPath.visible(path, "adult").map { it.id })
+        assertEquals(listOf("k", "a", "b"), LearningPath.visible(path, "kids").map { it.id })
+        assertEquals(listOf("a", "b"), LearningPath.visible(path, null).map { it.id })
     }
 
     @Test

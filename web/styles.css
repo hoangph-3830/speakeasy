@@ -455,3 +455,24 @@ canvas.wave { width: 100%; height: 110px; display: block; background: var(--canv
 .diag { width: 100%; font-size: 12px; border-collapse: collapse; margin-top: 8px; text-align: left; }
 .diag td { padding: 4px 6px; border-top: 1px solid var(--line); vertical-align: top; word-break: break-word; }
 .check-list { text-align: left; padding-left: 18px; margin: 6px 0; }
+
+/* ---- Daily word, IPA chart, tongue twisters ---- */
+.dw-board { display: grid; gap: 6px; justify-content: center; margin: 8px 0; }
+.dw-row { display: grid; grid-template-columns: repeat(5, 52px); gap: 6px; }
+.dw-tile { height: 52px; border: 2px solid var(--line); border-radius: 10px; display: grid; place-items: center; font-size: 26px; font-weight: 800; text-transform: uppercase; background: #fff; }
+.dw-tile.typed { border-color: #555; }
+.dw-tile.hit, .dw-key.hit { background: #3fb67b; border-color: #3fb67b; color: #fff; }
+.dw-tile.near, .dw-key.near { background: #e8b931; border-color: #e8b931; color: #fff; }
+.dw-tile.miss, .dw-key.miss { background: #8c94a3; border-color: #8c94a3; color: #fff; }
+.dw-keys { display: grid; gap: 6px; margin-top: 8px; }
+.dw-key-row { display: flex; gap: 5px; justify-content: center; }
+.dw-key { flex: 1; max-width: 44px; height: 48px; border-radius: 8px; background: var(--line); font-weight: 700; text-transform: uppercase; }
+.dw-key.wide { max-width: 72px; flex: 1.6; font-size: 13px; text-transform: none; }
+.dw-stats > div { flex: 1; display: grid; }
+.ipa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+.ipa-cell { border-radius: 14px; background: var(--lavender-l); padding: 10px 4px; display: grid; gap: 2px; font-size: 20px; }
+.ipa-cell.on { outline: 2px solid var(--lavender); }
+.ipa-pick { display: flex; align-items: center; gap: 12px; }
+.ipa-big { font-size: 36px; font-weight: 800; color: var(--lavender); }
+.twister-head { text-align: left; width: 100%; }
+.twister .center { padding-top: 8px; }
