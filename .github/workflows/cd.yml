@@ -1,0 +1,71 @@
+name: CD
+
+on:
+  push:
+    branches: [master]
+    paths: ["web/**"]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-web:
+    name: Publish web/ to gh-pages (Cloudflare Pages + GitHub Pages)
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: deploy-web
+      cancel-in-progress: false
+    environment:
+      name: web
+      url: https://speak-easy-english.pages.dev/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Web logic tests must pass before publishing
+        run: npm test
+        working-directory: web
+      # Same as the manual step in web/README.md: gh-pages holds the web/ folder at its root,
+      # and Cloudflare Pages redeploys whenever that branch changes.
+      - name: Push web/ to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix web -b gh-pages-build
+          git push -f origin gh-pages-build:gh-pages
+
+  release-android:
+    name: Release APK for a version tag
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      # The AI chat key is baked into the APK, so anyone holding the APK can read it.
+      # Only set the GEMINI_API_KEY secret if that is acceptable for this key.
+      - name: Write local.properties
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -n "$GEMINI_API_KEY" ]; then echo "GEMINI_API_KEY=$GEMINI_API_KEY" > local.properties; fi
+      - name: Unit tests and APK
+        run: ./gradlew :app:testDebugUnitTest :app:assembleDebug --console=plain
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk "SpeakEasy-${GITHUB_REF_NAME}.apk"
+          gh release create "$GITHUB_REF_NAME" "SpeakEasy-${GITHUB_REF_NAME}.apk" \
+            --title "SpeakEasy $GITHUB_REF_NAME" --generate-notes

@@ -28,6 +28,7 @@
     "@puppeteer/browsers": "^3.2.3"
   },
   "devDependencies": {
+    "@sun-asterisk/sungen": "3.2.35",
     "@sungen/driver-mobile": "^3.2.35",
     "@types/node": "^26.6.6",
     "ajv": "^8.20.0",

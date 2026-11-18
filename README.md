@@ -57,6 +57,34 @@ GEMINI_API_KEY=<key tạo tại https://aistudio.google.com/apikey>
 Key được build vào `BuildConfig.GEMINI_API_KEY`. Lưu ý: ai có file APK đều có thể trích key ra, nên chỉ dùng key miễn phí
 và giới hạn key cho ứng dụng Android `com.speakeasy.app` trong Google Cloud Console trước khi phát hành.
 
+## Kiểm thử tự động (E2E)
+
+Test giao diện viết bằng [sungen](https://www.npmjs.com/package/@sun-asterisk/sungen): Gherkin trong `qa/screens/<màn>/`
+được biên dịch thành spec WebdriverIO + Appium ở `specs/generated/` (file sinh ra, có commit).
+App gắn `testTag` cho các phần tử chính và bật `testTagsAsResourceId`, nên selector dùng resource-id
+(danh sách tag ở `app/src/main/java/com/speakeasy/app/ui/TestTags.kt`).
+
+```bash
+npm ci
+npx appium driver install uiautomator2@8.7.3
+npx sungen generate --all --framework appium   # sau khi sửa .feature / selectors
+./gradlew installDebug                           # cài app lên emulator đang chạy
+MOBILE_PLATFORM=android npm run test:mobile      # cả bộ (~40 phút)
+SUNGEN_SPECS=./specs/generated/home/home.spec.ts MOBILE_PLATFORM=android npm run test:mobile
+```
+
+Mỗi kịch bản chạy từ trạng thái vừa cài (`@reset:data`). Kịch bản `@known-defect:DEF-NNN` cố ý đỏ cho tới khi
+lỗi được sửa (xem `qa/defects/`). Bản ghi lỗi máy cục bộ: `test-results/mobile/`.
+
+## CI/CD (GitHub Actions)
+
+- `ci.yml` — mỗi push và PR: build + unit test Android, test logic web, kiểm `specs/generated` khớp với Gherkin.
+  E2E trên emulator API 35 chỉ chạy cho PR vào `master`, push lên `master`, hoặc chạy tay (Run workflow);
+  bỏ qua các kịch bản `@known-defect`.
+- `cd.yml` — push lên `master` có thay đổi trong `web/`: chạy test web rồi đẩy `web/` sang nhánh `gh-pages`
+  (Cloudflare Pages và GitHub Pages tự deploy từ nhánh này). Tag `v*` (ví dụ `git tag v1.1 && git push origin v1.1`):
+  build APK và tạo GitHub Release. Đặt secret `GEMINI_API_KEY` nếu muốn APK phát hành có AI chat.
+
 ## Thêm nội dung
 
 Toàn bộ bài học ở `app/src/main/assets/content.json`. Thêm một object vào `topics` (cần `phrases`, `words`,

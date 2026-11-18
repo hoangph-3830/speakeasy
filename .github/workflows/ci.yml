@@ -1,0 +1,137 @@
+name: CI
+
+on:
+  push:
+    branches: [master, "feat/**", "fix/**"]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      e2e:
+        description: Run the Appium E2E suite on an emulator
+        type: boolean
+        default: true
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    name: Android build + unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Unit tests and debug APK
+        run: ./gradlew :app:testDebugUnitTest :app:assembleDebug --console=plain
+      - name: Upload unit test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-unit-test-report
+          path: app/build/reports/tests/
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: speakeasy-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
+
+  web:
+    name: Web (PWA) logic tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm test
+        working-directory: web
+
+  qa-specs:
+    name: Sungen specs match the Gherkin
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - name: Recompile every feature
+        run: npx sungen generate --all --framework appium
+      - name: Fail when a committed spec is stale
+        run: |
+          if ! git diff --exit-code -- specs/generated; then
+            echo "::error::specs/generated is out of date. Run 'npx sungen generate --all --framework appium' and commit the result."
+            exit 1
+          fi
+
+  e2e:
+    name: E2E (Appium on Android emulator)
+    needs: android
+    # The suite takes ~40 min on an emulator: run it for master and PRs into master, or on demand.
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
+      (github.event_name == 'workflow_dispatch' && inputs.e2e)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      APP_PACKAGE: com.speakeasy.app
+      APP_ACTIVITY: com.speakeasy.app.MainActivity
+      ANDROID_UDID: emulator-5554
+      MOBILE_PLATFORM: android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+      - name: Install the Appium UiAutomator2 driver
+        run: npx appium driver install uiautomator2@8.7.3
+      - uses: actions/download-artifact@v4
+        with:
+          name: speakeasy-debug-apk
+          path: apk
+      - name: Enable KVM for the emulator
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Run the suite on an API 35 emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          # @known-defect scenarios are red by design (tracked in qa/defects/), so the gate skips them.
+          script: |
+            adb install -r apk/app-debug.apk
+            npm run test:mobile -- --mochaOpts.grep "@known-defect" --mochaOpts.invert
+      - name: Upload E2E evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-results
+          path: test-results/
+          retention-days: 14
