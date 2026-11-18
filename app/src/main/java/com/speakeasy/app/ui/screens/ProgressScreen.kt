@@ -181,7 +181,7 @@ fun ProgressScreen(openPlacement: () -> Unit) {
                             onClick = { app.progress.setDailyGoal(g) },
                             label = { Text("$label\n$g XP", textAlign = TextAlign.Center, fontSize = 11.sp) },
                             shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f).testTag(TestTags.goal(g)),
                         )
                     }
                 }
@@ -217,7 +217,7 @@ fun ProgressScreen(openPlacement: () -> Unit) {
                             },
                             label = { Text(label) },
                             shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.weight(1f),
+                            modifier = Modifier.weight(1f).testTag(TestTags.accent(code)),
                         )
                     }
                 }

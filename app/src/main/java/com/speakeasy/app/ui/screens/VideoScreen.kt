@@ -41,6 +41,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -52,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.speakeasy.app.LocalApp
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.Video
 import com.speakeasy.app.data.VideoChannel
@@ -146,6 +148,7 @@ private fun ChannelChip(c: VideoChannel, on: Boolean, onClick: () -> Unit) {
 private fun VideoCard(v: Video, watched: Boolean, onClick: () -> Unit) {
     Card(
         onClick = onClick,
+        modifier = Modifier.testTag(TestTags.VIDEO_CARD),
         shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         border = BorderStroke(1.dp, Line),

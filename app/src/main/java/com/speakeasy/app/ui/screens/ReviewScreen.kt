@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.data.Grade
 import com.speakeasy.app.data.Quests
 import com.speakeasy.app.data.Srs
@@ -127,6 +129,7 @@ fun ReviewScreen(onBack: () -> Unit) {
                 .clip(RoundedCornerShape(28.dp))
                 .background(LavenderLight)
                 .clickable { flipped = true }
+                .testTag(TestTags.REVIEW_CARD)
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,

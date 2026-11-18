@@ -80,6 +80,7 @@ internal fun WriteRound(round: Round.Write, accent: Color, onDone: (Boolean) -> 
         if (r == null) {
             BigButton(
                 "Kiểm tra",
+                modifier = Modifier.testTag(TestTags.CHECK_ANSWER),
                 enabled = typed.isNotBlank(),
                 onClick = {
                     result = SpeechMatch.compare(round.answer, typed)

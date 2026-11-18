@@ -226,7 +226,12 @@ private fun DailyGoalCard(p: Progress) {
             Column(Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("Mục tiêu hôm nay", color = Color.White.copy(alpha = 0.85f), modifier = Modifier.weight(1f))
-                    Text("${p.todayXp} / ${p.dailyGoal} XP", color = Color.White, style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        "${p.todayXp} / ${p.dailyGoal} XP",
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.testTag(TestTags.DAILY_GOAL),
+                    )
                 }
                 VSpace(2.dp)
                 Text(

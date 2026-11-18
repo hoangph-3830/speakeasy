@@ -20,11 +20,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.data.DailyWord
 import com.speakeasy.app.data.LetterState
 import com.speakeasy.app.data.Progress
@@ -113,9 +115,9 @@ internal fun DailyKeyboard(keys: Map<Char, LetterState>, onKey: (Char) -> Unit, 
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         keyRows.forEachIndexed { r, row ->
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                if (r == 2) Key("Đoán", Modifier.weight(1.6f), null, onEnter)
-                row.forEach { ch -> Key(ch.toString(), Modifier.weight(1f), keys[ch]) { onKey(ch) } }
-                if (r == 2) Key("⌫", Modifier.weight(1.6f), null, onBack)
+                if (r == 2) Key("Đoán", Modifier.weight(1.6f).testTag(TestTags.KEY_ENTER), null, onEnter)
+                row.forEach { ch -> Key(ch.toString(), Modifier.weight(1f).testTag(TestTags.key(ch)), keys[ch]) { onKey(ch) } }
+                if (r == 2) Key("⌫", Modifier.weight(1.6f).testTag(TestTags.KEY_BACKSPACE), null, onBack)
             }
         }
     }

@@ -28,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +36,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.speakeasy.app.LocalApp
+import com.speakeasy.app.ui.TestTags
 import com.speakeasy.app.data.Challenge
 import com.speakeasy.app.data.Challenges
 import com.speakeasy.app.data.ChoiceQuestion
@@ -303,6 +305,7 @@ internal fun ChallengeOption(text: String, state: Int, enabled: Boolean, onClick
             .background(bg)
             .border(2.dp, when (state) { 1 -> Mint; 2 -> Coral; else -> Line }, RoundedCornerShape(18.dp))
             .clickable(enabled = enabled, onClick = onClick)
+            .testTag(TestTags.ANSWER_OPTION)
             .padding(16.dp),
         style = MaterialTheme.typography.bodyLarge,
         fontWeight = FontWeight.SemiBold,
