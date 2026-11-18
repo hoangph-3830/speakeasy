@@ -1,0 +1,5 @@
+learner_name: "Minh"
+# Without a name the greeting ends straight after the time of day.
+greeting_suffix: "! "
+new_goal_text: "0 / 30 XP"
+first_topic_title: "Meeting new people"

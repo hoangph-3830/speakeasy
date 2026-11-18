@@ -1,0 +1,118 @@
+# Home selectors. Compose test tags are exposed as resource-ids (type: id);
+# plain text nodes are matched with UiSelector text queries.
+
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+
+name dialog:
+  type: id
+  value: dialog_name
+name input:
+  type: id
+  value: input_name
+start button:
+  type: id
+  value: btn_name_confirm
+later button:
+  type: id
+  value: btn_name_skip
+
+greeting:
+  type: android-uiautomator
+  value: new UiSelector().textStartsWith("Good ")
+daily goal:
+  type: id
+  value: text_daily_goal
+first topic title:
+  type: android-uiautomator
+  value: new UiSelector().text("Meeting new people")
+
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: new UiSelector().textContains("Kiểm tra trình độ")
+
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+news shortcut:
+  type: id
+  value: shortcut_news
+videos shortcut:
+  type: id
+  value: shortcut_videos
+
+by topic switch:
+  type: android-uiautomator
+  value: new UiSelector().textContains("Theo chủ đề")
+all categories chip:
+  type: android-uiautomator
+  value: new UiSelector().textContains("Tất cả")
+first topic row:
+  type: android-uiautomator
+  value: new UiSelector().resourceIdMatches("topic_.*")
+
+topic screen:
+  type: id
+  value: screen_topic_detail
+topic back:
+  type: id
+  value: btn_back
+placement screen:
+  type: id
+  value: screen_placement
+review screen:
+  type: id
+  value: screen_review
+vocab screen:
+  type: id
+  value: screen_vocab
+lab screen:
+  type: id
+  value: screen_lab
+stories screen:
+  type: id
+  value: screen_stories
+news screen:
+  type: id
+  value: screen_news
+videos screen:
+  type: id
+  value: screen_videos
+play screen:
+  type: id
+  value: screen_play
+ai screen:
+  type: id
+  value: screen_ai
+progress screen:
+  type: id
+  value: screen_me
+
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me

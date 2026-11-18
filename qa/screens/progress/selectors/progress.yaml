@@ -1,0 +1,121 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+progress screen:
+  type: id
+  value: screen_me
+placement screen:
+  type: id
+  value: screen_placement
+level label:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Cấp 1")'
+level xp:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("/100 XP")'
+learned words label:
+  type: android-uiautomator
+  value: 'new UiSelector().text("từ đã thuộc")'
+goal 50 option:
+  type: id
+  value: goal_50
+uk accent chip:
+  type: id
+  value: accent_uk
+reset button:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Xoá tiến độ")'
+reset dialog:
+  type: id
+  value: dialog_reset
+reset confirm:
+  type: id
+  value: btn_reset_confirm
+reset cancel:
+  type: id
+  value: btn_reset_cancel
+retake placement button:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Làm lại bài kiểm tra trình độ")'
+reminder switch:
+  type: id
+  value: switch_reminder
+reminder time:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("20:00")'
+goal 30 option:
+  type: id
+  value: goal_30
+kids path option:
+  type: android-uiautomator
+  value: 'new UiSelector().textMatches(".* Trẻ em")'
+next stage label:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Chặng 1 ·")'
+kids first topic:
+  type: android-uiautomator
+  value: 'new UiSelector().text("At school: my classroom")'

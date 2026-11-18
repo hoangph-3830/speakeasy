@@ -1,0 +1,118 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "News",
+      "specs": [
+        {
+          "title": "VP-UI-001 News displays the sources and categories [@high @spec:FR-NW-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:49:28.394Z",
+                  "duration": 10082,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-001 Choosing CNN lists only CNN articles [@high @spec:FR-NW-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:49:38.477Z",
+                  "duration": 13298,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-002 Every article row on the default list is from BBC [@high @spec:FR-NW-04]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:49:51.776Z",
+                  "duration": 9615,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-003 After refresh the list still shows BBC articles [@normal @spec:FR-NW-05]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:50:01.392Z",
+                  "duration": 12854,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-004 After scrolling down the feed, the rows are still BBC articles [@normal @spec:FR-NW-04]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:50:14.246Z",
+                  "duration": 29196,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 Opening an article opens the reader [@normal @spec:FR-NW-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:50:43.442Z",
+                  "duration": 12040,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

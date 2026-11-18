@@ -1,0 +1,103 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+stories screen:
+  type: id
+  value: screen_stories
+story screen:
+  type: id
+  value: screen_story_detail
+book screen:
+  type: id
+  value: screen_book_detail
+first story title:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Lost at the Station")'
+first story counts:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("25 câu")'
+picture books tab:
+  type: id
+  value: tab_story_pictures
+first book title:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Different Plays")'
+book pages:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("trang")'
+first sentence:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Mia is in London")'
+first translation:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Mia đến London")'
+story continue button:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Tiếp tục")'
+mia line:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Where is platform nine?")'

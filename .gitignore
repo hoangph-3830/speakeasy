@@ -25,3 +25,9 @@ playwright-report/
 .sungen/figma-cache/
 .sungen/feedback/
 node_modules/
+
+# sungen secret test data (see .env.qa.example)
+.env.qa*
+!.env.qa.example
+.sungen/triage/
+.sungen/reports/

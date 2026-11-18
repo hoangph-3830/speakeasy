@@ -1,0 +1,101 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "Stories",
+      "specs": [
+        {
+          "title": "VP-UI-001 Audio stories are listed with their counts [@high @spec:FR-ST-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:58:47.253Z",
+                  "duration": 7823,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-001 The picture-book tab lists books with page counts [@high @spec:FR-ST-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:58:55.077Z",
+                  "duration": 7628,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 A story opens on its first sentence with the translation [@high @spec:FR-ST-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:59:02.705Z",
+                  "duration": 7956,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-002 A picture book opens the reader [@normal @spec:FR-ST-04]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:59:10.662Z",
+                  "duration": 9739,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-002 Continue reveals the next line of the story [@high @spec:FR-ST-05]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:59:20.401Z",
+                  "duration": 11347,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

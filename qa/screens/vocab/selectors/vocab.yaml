@@ -1,0 +1,124 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+vocab screen:
+  type: id
+  value: screen_vocab
+vocab detail screen:
+  type: id
+  value: screen_vocab_detail
+vocab summary:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("từ · đã thuộc")'
+search field:
+  type: id
+  value: input_vocab_search
+first group:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Con người & gia đình")'
+meaning of person:
+  type: android-uiautomator
+  value: 'new UiSelector().text("người")'
+word man:
+  type: android-uiautomator
+  value: 'new UiSelector().text("man")'
+no result message:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Không tìm thấy từ nào khớp")'
+group progress:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("đã thuộc")'
+first word:
+  type: android-uiautomator
+  value: 'new UiSelector().text("person")'
+mark learned button:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Đánh dấu đã thuộc")'
+add to review button:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Thêm vào ôn tập")'
+added message:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("thẻ vào Ôn tập")'
+review counter:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("thẻ · đã ôn")'
+review card:
+  type: id
+  value: card_review
+grade prompt:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Bạn nhớ câu này")'
+easy interval:
+  type: android-uiautomator
+  value: 'new UiSelector().text("14 ngày")'
+remember button:
+  type: android-uiautomator
+  value: 'new UiSelector().textMatches(".* Nhớ")'
+forget button:
+  type: android-uiautomator
+  value: 'new UiSelector().textMatches(".* Quên")'

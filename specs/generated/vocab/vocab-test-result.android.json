@@ -1,0 +1,220 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "Vocabulary",
+      "specs": [
+        {
+          "title": "VP-UI-001 Vocabulary hub displays the word total and the search field [@high @spec:FR-VC-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:02:27.027Z",
+                  "duration": 7316,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-001 Searching an English word lists its meaning [@high @spec:FR-VC-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:02:34.344Z",
+                  "duration": 9313,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-002 Searching a Vietnamese meaning finds the English word [@normal @spec:FR-VC-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:02:43.658Z",
+                  "duration": 10880,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-VAL-001 An unknown word shows the not-found message instead of the groups [@normal @spec:FR-VC-04]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:02:54.538Z",
+                  "duration": 11364,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 Opening a group shows its words and learned count [@high @spec:FR-VC-05]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:03:05.902Z",
+                  "duration": 8713,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-003 Marking a word as learned raises the group count [@high @spec:FR-VC-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:03:14.616Z",
+                  "duration": 8663,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-004 A learned word is still counted after an app restart [@high @spec:FR-VC-07]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:03:23.280Z",
+                  "duration": 14537,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-005 Adding a group to review reports the number of cards added [@high @spec:FR-VC-08]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:03:37.817Z",
+                  "duration": 8842,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-006 Added cards are served in Review, 30 per session [@high @spec:FR-VC-09]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:03:46.663Z",
+                  "duration": 14701,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-007 Flipping a card shows the grades and their intervals [@high @spec:FR-VC-10]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:04:01.365Z",
+                  "duration": 35285,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-008 Grading Nhớ moves the card out of today's queue [@high @spec:FR-VC-11]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:04:36.651Z",
+                  "duration": 19460,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-009 Grading Quên keeps the card in today's queue [@high @spec:FR-VC-12]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T06:04:56.112Z",
+                  "duration": 20296,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

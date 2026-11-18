@@ -1,0 +1,94 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+news screen:
+  type: id
+  value: screen_news
+article screen:
+  type: id
+  value: screen_article_detail
+bbc source:
+  type: android-uiautomator
+  value: 'new UiSelector().text("BBC")'
+cnn source:
+  type: android-uiautomator
+  value: 'new UiSelector().text("CNN")'
+featured category:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Nổi bật")'
+article source label:
+  type: android-uiautomator
+  value: 'new UiSelector().clickable(false).textMatches("(BBC|CNN|Reuters|The Guardian|NPR)( · .*)?")'
+refresh button:
+  type: accessibility-id
+  value: Làm mới
+updated label:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Cập nhật lúc")'
+article list:
+  type: android-uiautomator
+  value: 'new UiSelector().scrollable(true).instance(2)'

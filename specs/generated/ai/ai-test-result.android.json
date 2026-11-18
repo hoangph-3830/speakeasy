@@ -1,0 +1,67 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "AI conversation",
+      "specs": [
+        {
+          "title": "VP-UI-001 AI tab displays difficulty levels and scenarios [@high @spec:FR-AI-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:43:00.511Z",
+                  "duration": 10440,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 Free talk opens the chat with Alex [@high @spec:FR-AI-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:43:10.952Z",
+                  "duration": 16088,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-VAL-001 Send is disabled while the message is empty [@high @spec:FR-AI-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:43:27.040Z",
+                  "duration": 13494,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

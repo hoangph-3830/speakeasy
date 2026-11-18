@@ -1,0 +1,67 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "Review",
+      "specs": [
+        {
+          "title": "VP-UI-001 A new learner sees the empty review state [@high @spec:FR-RV-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:58:10.595Z",
+                  "duration": 8375,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 \"Về trang chủ\" returns to Home [@high @spec:FR-RV-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:58:18.971Z",
+                  "duration": 10520,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-002 The back arrow returns to Home [@normal @spec:FR-RV-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:58:29.491Z",
+                  "duration": 11171,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

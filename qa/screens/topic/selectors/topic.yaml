@@ -1,0 +1,139 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+topic screen:
+  type: id
+  value: screen_topic_detail
+topic title:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Meeting new people")'
+home topic title:
+  type: android-uiautomator
+  value: 'new UiSelector().resourceId("screen_home").childSelector(new UiSelector().text("Meeting new people"))'
+topic counts:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("mẫu câu ·")'
+step phrases:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Cụm từ & từ vựng")'
+step dialogue:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Hội thoại nhập vai")'
+step speak:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Luyện nói")'
+step game:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Chơi mà học")'
+shadowing card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Luyện nhại")'
+phrases screen:
+  type: id
+  value: screen_topic_phrases
+first phrase:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("I don''t think we''ve met")'
+dialogue screen:
+  type: id
+  value: screen_topic_dialogue
+alex line:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("I''m Alex")'
+speak screen:
+  type: id
+  value: screen_topic_speak
+game screen:
+  type: id
+  value: screen_game_detail
+round counter:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Vòng ")'
+shadow screen:
+  type: id
+  value: screen_topic_shadow
+vocab cards tab:
+  type: android-uiautomator
+  value: 'new UiSelector().clickable(true).textContains("Từ vựng")'
+next card button:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Tiếp →")'
+finish button:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Hoàn thành")'
+complete title:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Hoàn thành bài học")'
+review screen:
+  type: id
+  value: screen_review
+review empty title:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Chưa có thẻ nào cần ôn")'
+review counter:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("thẻ · đã ôn")'

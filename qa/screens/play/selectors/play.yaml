@@ -1,0 +1,124 @@
+# Compose test tags are resource-ids (type: id); text nodes use UiSelector queries.
+home:
+  type: id
+  value: screen_home
+home screen:
+  type: id
+  value: screen_home
+later button:
+  type: id
+  value: btn_name_skip
+back button:
+  type: id
+  value: btn_back
+home tab:
+  type: id
+  value: tab_home
+play tab:
+  type: id
+  value: tab_play
+news tab:
+  type: id
+  value: tab_news
+ai tab:
+  type: id
+  value: tab_ai
+progress tab:
+  type: id
+  value: tab_me
+review shortcut:
+  type: id
+  value: shortcut_review
+vocab shortcut:
+  type: id
+  value: shortcut_vocab
+lab shortcut:
+  type: id
+  value: shortcut_lab
+stories shortcut:
+  type: id
+  value: shortcut_stories
+videos shortcut:
+  type: id
+  value: shortcut_videos
+continue learning:
+  type: id
+  value: btn_continue_learning
+placement card:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Kiểm tra trình độ ·")'
+daily goal:
+  type: id
+  value: text_daily_goal
+speak button:
+  type: id
+  value: btn_speak
+mic button:
+  type: id
+  value: btn_mic
+answer option:
+  type: id
+  value: btn_answer_option
+complete dialog:
+  type: id
+  value: dialog_complete
+dialog continue button:
+  type: id
+  value: btn_dialog_continue
+play screen:
+  type: id
+  value: screen_play
+challenge screen:
+  type: id
+  value: screen_challenge_detail
+race card:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Đua 60 giây")'
+memory card:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Lật thẻ trí nhớ")'
+true false card:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Đúng hay Sai")'
+spelling card:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Nghe & viết từ")'
+memory title:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Lật thẻ trí nhớ")'
+true false title:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Đúng hay Sai")'
+score label:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Điểm:")'
+timer label:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("giây")'
+spelling field:
+  type: id
+  value: input_spelling
+write mode card:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Viết câu")'
+game screen:
+  type: id
+  value: screen_game_detail
+write title:
+  type: android-uiautomator
+  value: 'new UiSelector().text("Viết câu này bằng tiếng Anh")'
+game input:
+  type: id
+  value: input_game_answer
+check button:
+  type: id
+  value: btn_check_answer
+model answer label:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Câu mẫu · khớp")'
+hint link:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Gợi ý vài chữ đầu")'
+hint text:
+  type: android-uiautomator
+  value: 'new UiSelector().textContains("Bắt đầu bằng:")'

@@ -1,0 +1,347 @@
+{
+  "config": {
+    "projects": [
+      {
+        "name": "Android 15 (Appium) — sdk_gphone64_x86_64"
+      }
+    ]
+  },
+  "suites": [
+    {
+      "title": "Home screen",
+      "specs": [
+        {
+          "title": "VP-ONB-001 First launch asks for the learner's name [@high @spec:FR-HOME-01]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:44:52.778Z",
+                  "duration": 5265,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-ONB-002 A saved name appears in the greeting [@high @spec:FR-HOME-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:44:58.044Z",
+                  "duration": 7641,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-ONB-005 A saved name survives an app restart [@high @spec:FR-HOME-02]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:05.686Z",
+                  "duration": 11477,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-ONB-003 Later closes the name dialog and shows Home [@high @spec:FR-HOME-03]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:17.164Z",
+                  "duration": 6778,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-UI-001 Goal card, continue button and shortcut row are displayed on load [@high @spec:FR-HOME-04 @spec:FR-HOME-05 @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:23.942Z",
+                  "duration": 7226,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-001 A new learner starts at zero XP of the daily goal [@high @spec:FR-HOME-04]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:31.169Z",
+                  "duration": 6342,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-002 Continue card points at the first topic and opens it [@high @spec:FR-HOME-05]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:37.512Z",
+                  "duration": 7767,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-001 Placement card opens the placement test [@high @spec:FR-HOME-07]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:45.279Z",
+                  "duration": 7221,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-002 Review shortcut opens the review screen [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:52.500Z",
+                  "duration": 7007,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-003 Vocabulary shortcut opens the vocabulary hub [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:45:59.508Z",
+                  "duration": 7761,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-004 Pronunciation shortcut opens the pronunciation lab [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:07.270Z",
+                  "duration": 7298,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-005 Stories shortcut opens the stories hub [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:14.568Z",
+                  "duration": 7012,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-006 News shortcut opens the news tab [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:21.580Z",
+                  "duration": 7395,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-007 Video shortcut opens the video hub [@high @spec:FR-HOME-06]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:28.975Z",
+                  "duration": 7254,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-LOGIC-003 Switching to \"by topic\" lists topics with category chips [@normal @spec:FR-HOME-08]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:36.230Z",
+                  "duration": 9400,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-NAV-008 Bottom tabs switch between the main screens [@high @spec:FR-HOME-09]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "passed",
+                  "startTime": "2026-11-18T05:46:45.631Z",
+                  "duration": 15013,
+                  "retry": 0,
+                  "attachments": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "VP-ONB-004 Home tab shows Home again after choosing Later [@high @spec:FR-HOME-03 @known-defect:DEF-001]",
+          "tests": [
+            {
+              "projectName": "Android 15 (Appium) — sdk_gphone64_x86_64",
+              "results": [
+                {
+                  "status": "running",
+                  "startTime": "2026-11-18T05:47:00.645Z",
+                  "duration": 0,
+                  "retry": 0,
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\screenshot.png",
+                      "contentType": "image/png"
+                    },
+                    {
+                      "name": "page-source",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\page-source.xml",
+                      "contentType": "application/xml"
+                    },
+                    {
+                      "name": "device-log",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\device.log",
+                      "contentType": "text/plain"
+                    }
+                  ]
+                },
+                {
+                  "status": "failed",
+                  "startTime": "2026-11-18T05:47:33.640Z",
+                  "duration": 33182,
+                  "retry": 1,
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\screenshot.png",
+                      "contentType": "image/png"
+                    },
+                    {
+                      "name": "page-source",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\page-source.xml",
+                      "contentType": "application/xml"
+                    },
+                    {
+                      "name": "device-log",
+                      "path": "test-results\\mobile\\home-screen\\vp-onb-004-home-tab-shows-home-again-after-choosing-later-high-spec-fr-home-03-k\\device.log",
+                      "contentType": "text/plain"
+                    }
+                  ],
+                  "error": {
+                    "message": "Expect $(`android=new UiSelector().resourceId(\"dialog_name\")`) not to be displayed\n\nExpected: \"not displayed\"\nReceived: \"displayed\""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
