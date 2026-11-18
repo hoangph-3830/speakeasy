@@ -49,6 +49,9 @@ class ContentRepository(private val context: Context) {
     fun video(id: String): Pair<VideoChannel, Video>? =
         videos.channels.firstNotNullOfOrNull { c -> c.videos.firstOrNull { it.id == id }?.let { c to it } }
 
+    /** "Luyện thi": built-in TOEIC and IELTS plus exams the learner imported. */
+    val exams: ExamLibrary by lazy { ExamLibrary(context) }
+
     private val prefs = context.getSharedPreferences("content_ui", Context.MODE_PRIVATE)
 
     /** Whether the stories hub last showed the picture books rather than the listening stories. */

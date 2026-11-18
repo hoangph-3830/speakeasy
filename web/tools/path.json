@@ -223,6 +223,20 @@
     ]
   },
   {
+    "id": "native-c1",
+    "level": "C1",
+    "title": "Nói như người bản xứ",
+    "subtitle": "Khiếu nại khéo, tranh luận tế nhị, phản biện sếp, mentor",
+    "topics": [
+      "tactful-complaint-refund",
+      "supporting-friend-breakup",
+      "landlord-repairs-negotiation",
+      "disagreeing-with-your-boss",
+      "handling-hostile-q-and-a",
+      "office-banter-reading-the-room"
+    ]
+  },
+  {
     "id": "c2-mastery",
     "level": "C2",
     "title": "Thành thạo như người bản xứ",
@@ -234,6 +248,20 @@
       "reading-between-lines",
       "formal-register",
       "book-club"
+    ]
+  },
+  {
+    "id": "native-c2",
+    "level": "C2",
+    "title": "Tinh tế & thuyết phục",
+    "subtitle": "Đàm phán căng, báo tin xấu, câu hỏi khó, đùa nơi công sở",
+    "topics": [
+      "dinner-party-hot-topics",
+      "telling-funny-anecdote",
+      "neighbour-noise-dispute",
+      "supplier-hard-negotiation",
+      "delivering-bad-news-to-team",
+      "mentoring-junior-career-advice"
     ]
   }
 ]

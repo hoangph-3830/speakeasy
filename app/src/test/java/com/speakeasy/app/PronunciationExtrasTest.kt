@@ -14,11 +14,21 @@ class PronunciationExtrasTest {
 
     @Test
     fun twistersHaveALevelAndUniqueIds() {
-        assertEquals(18, content.lessons.size)
+        assertEquals(24, content.lessons.size)
         assertTrue(content.twisters.isNotEmpty())
         assertEquals(content.twisters.size, content.twisters.map { it.id }.toSet().size)
         assertTrue(content.twisters.all { it.level in setOf("easy", "medium", "hard") && it.en.isNotBlank() && it.vi.isNotBlank() })
         listOf("easy", "medium", "hard").forEach { l -> assertTrue(l, content.twisters.any { it.level == l }) }
+    }
+
+    @Test
+    fun lessonsWithoutMinimalPairsAreSentenceDrills() {
+        val noPairs = content.lessons.filter { it.pairs.isEmpty() }
+        assertTrue(noPairs.size >= 2)
+        // The lab skips the word steps for these, so the sentences carry the whole lesson.
+        assertTrue(noPairs.all { it.sentences.size >= 5 })
+        assertEquals(content.lessons.size, content.lessons.map { it.id }.toSet().size)
+        assertTrue(content.lessons.flatMap { it.sentences }.any { !it.sounds.isNullOrBlank() })
     }
 
     @Test

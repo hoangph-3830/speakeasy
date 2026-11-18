@@ -93,6 +93,7 @@ fun HomeScreen(
     openNews: () -> Unit,
     openVideos: () -> Unit,
     openPlacement: () -> Unit,
+    openExam: () -> Unit,
 ) {
     val app = LocalApp.current
     val progress by app.progress.progress.collectAsState()
@@ -142,6 +143,7 @@ fun HomeScreen(
                 Shortcut("🎬", "Video", PeachLight, Modifier.weight(1f).testTag(TestTags.shortcut("videos")), onClick = openVideos)
             }
         }
+        item { ExamShortcut(onClick = openExam) }
         item { QuestsCard(progress, questsOpen, onToggle = { questsOpen = !questsOpen }, onClaim = { app.progress.claim(it) }) }
         item {
             VSpace(4.dp)

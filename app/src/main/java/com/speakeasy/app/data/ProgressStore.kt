@@ -50,6 +50,8 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
             DailyBoard(prefs.getLong("dailyDay", -1), g.split(',').filter { it.isNotEmpty() })
         },
         dailyStats = DailyStats.decode(prefs.getString("dailyStats", null)),
+        examBest = readMap("examBest"),
+        examHistory = Exams.decodeHistory(prefs.getString("examHistory", null)),
     )
 
     private fun save(p: Progress) {
@@ -88,6 +90,8 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
                 else putLong("dailyDay", p.daily.day).putString("dailyGuesses", p.daily.guesses.joinToString(","))
             }
             .putString("dailyStats", p.dailyStats.encode())
+            .putStringSet("examBest", p.examBest.map { (k, v) -> "$k=$v" }.toSet())
+            .putString("examHistory", Exams.encodeHistory(p.examHistory))
             .apply()
     }
 
@@ -137,6 +141,18 @@ class ProgressStore(context: Context, private val today: () -> LocalDate = Local
         val xp = if (won) DailyWord.xpFor(guesses.size) else 0
         addXp(xp)
         return xp
+    }
+
+    /** Keeps the best practice % per exam section. */
+    fun recordExamBest(sectionId: String, score: Int) {
+        val p = current()
+        if ((p.examBest[sectionId] ?: -1) < score) save(p.copy(examBest = p.examBest + (sectionId to score)))
+    }
+
+    /** Adds a finished timed test to the history, keeping the newest ones. */
+    fun recordExamTest(examId: String, results: List<SkillResult>) {
+        val p = current()
+        save(p.copy(examHistory = Exams.addRecord(p.examHistory, ExamRecord(examId, today().toEpochDay(), results))))
     }
 
     /** Keeps a challenge's best score; returns true when [score] is a new record. */

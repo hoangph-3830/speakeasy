@@ -1,0 +1,1803 @@
+{
+  "id": "ielts",
+  "title": "IELTS",
+  "emoji": "🎓",
+  "about": "Luyện thi IELTS Academic cả 4 kỹ năng với đề tự biên soạn: nghe, đọc, viết (Task 1 và 2) và nói (Part 1–3), kèm đáp án giải thích và bài mẫu band 7.5–8.",
+  "sections": [
+    {
+      "id": "ielts-listening",
+      "skill": "listening",
+      "title": "Listening · Nghe",
+      "about": "Bài nghe có 4 phần, nghe một lần duy nhất: Part 1 hội thoại đời thường (điền thông tin), Part 2 độc thoại giới thiệu, Part 3 thảo luận học thuật, Part 4 bài giảng. Chiến lược: đọc nhanh câu hỏi và gạch từ khóa trước khi nghe; cẩn thận với bẫy \"người nói tự sửa lại\" (đổi giờ, đổi giá, đổi ngày) — đáp án thường là con số cuối cùng được chốt.",
+      "items": [
+        {
+          "id": "ielts-l-s1-01",
+          "title": "Part 1 · Đặt lớp nấu ăn",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Good morning, Riverside Cooking School, Daniel speaking."
+            },
+            {
+              "who": "W",
+              "en": "Hello, I'd like to book a place on one of your weekend courses, please."
+            },
+            {
+              "who": "M",
+              "en": "Certainly. We have Italian pasta, Thai street food and a baking class. Which one interests you?"
+            },
+            {
+              "who": "W",
+              "en": "The Thai one sounds great. Is it on Saturday?"
+            },
+            {
+              "who": "M",
+              "en": "It used to be on Saturday, but from this term it runs on Sunday mornings, starting at ten thirty and finishing at one."
+            },
+            {
+              "who": "W",
+              "en": "Sunday is actually better for me. How much is it?"
+            },
+            {
+              "who": "M",
+              "en": "It's forty-five pounds per person, though it was fifty until last month. That includes all the ingredients."
+            },
+            {
+              "who": "W",
+              "en": "Okay. And can I book for two? My sister would love to come."
+            },
+            {
+              "who": "M",
+              "en": "Of course. Can I take a name?"
+            },
+            {
+              "who": "W",
+              "en": "It's Marina Kowalski. That's K-O-W-A-L-S-K-I."
+            },
+            {
+              "who": "M",
+              "en": "Thank you. And a contact number?"
+            },
+            {
+              "who": "W",
+              "en": "Oh seven seven four, nine three one, eight six two."
+            },
+            {
+              "who": "M",
+              "en": "Great. One more thing. Do either of you have any food allergies?"
+            },
+            {
+              "who": "W",
+              "en": "My sister can't eat peanuts, but I'm fine."
+            },
+            {
+              "who": "M",
+              "en": "Noted. We'll make sure the recipes are peanut-free. Oh, and you'll need to bring your own apron."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Which class does the caller book?",
+              "options": [
+                "Spanish tapas",
+                "Baking",
+                "Italian pasta",
+                "Thai street food"
+              ],
+              "answer": 3,
+              "explain": "Người gọi nói \"The Thai one sounds great\" — Thai street food."
+            },
+            {
+              "q": "When does the class take place?",
+              "options": [
+                "Sunday at 10.30",
+                "Saturday at 10.30",
+                "Sunday at 1.00",
+                "Saturday at 10.00"
+              ],
+              "answer": 0,
+              "explain": "Lớp từng học thứ Bảy nhưng \"from this term\" chuyển sang sáng Chủ nhật, 10:30–1:00. Thứ Bảy là thông tin cũ (bẫy)."
+            },
+            {
+              "q": "How much does the class cost per person?",
+              "options": [
+                "£45",
+                "£50",
+                "£40",
+                "£54"
+              ],
+              "answer": 0,
+              "explain": "Giá hiện tại là forty-five pounds. £50 là giá cũ \"until last month\". Chú ý forty-five (45) dễ nhầm với fifty-four (54)."
+            },
+            {
+              "q": "What is the caller's phone number?",
+              "options": [
+                "0774 931 682",
+                "0744 931 862",
+                "0774 913 862",
+                "0774 931 862"
+              ],
+              "answer": 3,
+              "explain": "Số đọc là 0-7-7-4, 9-3-1, 8-6-2 nên là 0774 931 862. Các phương án khác đảo hoặc đổi một chữ số."
+            },
+            {
+              "q": "What does the caller's sister need to avoid?",
+              "options": [
+                "Dairy",
+                "Shellfish",
+                "Peanuts",
+                "Gluten"
+              ],
+              "answer": 2,
+              "explain": "Cô nói \"My sister can't eat peanuts\" nên cần tránh đậu phộng."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s1-02",
+          "title": "Part 1 · Hỏi về thẻ phòng gym",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Lakeside Leisure Centre, how can I help?"
+            },
+            {
+              "who": "M",
+              "en": "Hi, I'm interested in joining the gym and I'd like to know about your membership options."
+            },
+            {
+              "who": "W",
+              "en": "We have three. Standard covers the gym only, premium includes the pool and classes, and off-peak is for weekdays before four p.m."
+            },
+            {
+              "who": "M",
+              "en": "What's the difference in price?"
+            },
+            {
+              "who": "W",
+              "en": "Standard is twenty-eight pounds a month, premium is thirty-eight, and off-peak is nineteen."
+            },
+            {
+              "who": "M",
+              "en": "I work shifts, so I'd probably need the premium. Is there a joining fee?"
+            },
+            {
+              "who": "W",
+              "en": "Normally it's thirty pounds, but it's waived if you sign up before the end of the month."
+            },
+            {
+              "who": "M",
+              "en": "That is good news. What time do you open on Sundays?"
+            },
+            {
+              "who": "W",
+              "en": "Sundays we open at eight and close at six. On weekdays it is six a.m. until ten p.m."
+            },
+            {
+              "who": "M",
+              "en": "And is there parking?"
+            },
+            {
+              "who": "W",
+              "en": "There's a car park behind the building, free for the first three hours, but you'll need to register your car number at reception."
+            },
+            {
+              "who": "M",
+              "en": "Fine. Could I start next Monday, the fourteenth?"
+            },
+            {
+              "who": "W",
+              "en": "Certainly. You'll need to come in with photo ID and proof of address, such as a utility bill."
+            },
+            {
+              "who": "M",
+              "en": "Would a bank statement be okay?"
+            },
+            {
+              "who": "W",
+              "en": "A utility bill or a council tax letter, I'm afraid, not a bank statement."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Which membership does the man decide to take?",
+              "options": [
+                "Family",
+                "Standard",
+                "Premium",
+                "Off-peak"
+              ],
+              "answer": 2,
+              "explain": "Anh làm theo ca nên \"I'd probably need the premium\" — gói Premium (có hồ bơi và lớp tập)."
+            },
+            {
+              "q": "How much will he pay each month?",
+              "options": [
+                "£19",
+                "£28",
+                "£38",
+                "£30"
+              ],
+              "answer": 2,
+              "explain": "Premium là thirty-eight pounds a month. £30 là phí gia nhập (được miễn), £28 là gói Standard, £19 là Off-peak."
+            },
+            {
+              "q": "What are the Sunday opening hours?",
+              "options": [
+                "6 a.m. to 6 p.m.",
+                "8 a.m. to 10 p.m.",
+                "6 a.m. to 10 p.m.",
+                "8 a.m. to 6 p.m."
+              ],
+              "answer": 3,
+              "explain": "Chủ nhật mở 8 giờ, đóng 6 giờ. Giờ 6 a.m. đến 10 p.m. là của các ngày trong tuần."
+            },
+            {
+              "q": "What is said about parking?",
+              "options": [
+                "It is free for the first three hours",
+                "It is free all day",
+                "It is free for the first hour",
+                "It is free for the first two hours"
+              ],
+              "answer": 0,
+              "explain": "\"Free for the first three hours\" và cần đăng ký biển số tại quầy lễ tân."
+            },
+            {
+              "q": "Which document will NOT be accepted as proof of address?",
+              "options": [
+                "A utility bill",
+                "A bank statement",
+                "A council tax letter",
+                "A photo ID"
+              ],
+              "answer": 1,
+              "explain": "Nhân viên nói chấp nhận hóa đơn tiện ích hoặc thư thuế, \"not a bank statement\" — sao kê ngân hàng bị từ chối. Photo ID là giấy tờ khác, dùng để xác minh danh tính."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s2-01",
+          "title": "Part 2 · Giới thiệu khu bảo tồn thiên nhiên",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Welcome to Heron Island Nature Reserve. My name is Claire, and I'll give you a short orientation before you set off."
+            },
+            {
+              "who": "W",
+              "en": "The reserve covers about two hundred and forty hectares, and it was established in nineteen seventy-eight to protect the wetlands that many migrating birds depend on."
+            },
+            {
+              "who": "W",
+              "en": "There are three marked trails. The red trail is a one-kilometre boardwalk, which is suitable for wheelchairs and pushchairs. The blue trail is three kilometres long and takes you through the woodland, and the yellow trail, at seven kilometres, circles the whole lake."
+            },
+            {
+              "who": "W",
+              "en": "If you only have a couple of hours, I'd recommend the blue trail, as it passes two bird hides and usually offers the best chance of seeing kingfishers."
+            },
+            {
+              "who": "W",
+              "en": "Please keep to the paths, because the ground beside them is nesting habitat. Dogs, I'm afraid, are not allowed anywhere in the reserve except the car park."
+            },
+            {
+              "who": "W",
+              "en": "The visitor centre, where you're standing now, has a café which serves hot food until three o'clock, and a small shop. All profits go to conservation work."
+            },
+            {
+              "who": "W",
+              "en": "Guided walks run every day at eleven in the morning and cost four pounds, although they're free for members."
+            },
+            {
+              "who": "W",
+              "en": "This month we also have a special evening walk on Friday, to listen for owls. Numbers are limited to fifteen, so you need to book at the desk."
+            },
+            {
+              "who": "W",
+              "en": "Now, a few safety points. The lake is deep and the banks are slippery, so please don't leave the paths, particularly after rain."
+            },
+            {
+              "who": "W",
+              "en": "Mobile phone signal is poor here, so in an emergency, use the orange phones at each bird hide."
+            },
+            {
+              "who": "W",
+              "en": "The reserve closes at five in summer, but the car park gates lock at five thirty, so please don't leave it too late."
+            },
+            {
+              "who": "W",
+              "en": "Finally, if you spot anything unusual, such as an injured animal, tell a member of staff rather than trying to help it yourself. Enjoy your visit."
+            }
+          ],
+          "questions": [
+            {
+              "q": "When was the reserve established?",
+              "options": [
+                "1987",
+                "1968",
+                "1978",
+                "1998"
+              ],
+              "answer": 2,
+              "explain": "Nineteen seventy-eight = 1978. Các năm còn lại là những cách nghe nhầm các chữ số."
+            },
+            {
+              "q": "Which trail is suitable for wheelchairs?",
+              "options": [
+                "The yellow trail",
+                "The blue trail",
+                "The red trail",
+                "All three trails"
+              ],
+              "answer": 2,
+              "explain": "Chỉ đường red (ván gỗ dài một km) được nói là phù hợp xe lăn và xe đẩy."
+            },
+            {
+              "q": "Which trail does the speaker recommend for visitors with limited time?",
+              "options": [
+                "The lake circuit",
+                "The evening walk",
+                "The boardwalk",
+                "The woodland trail"
+              ],
+              "answer": 3,
+              "explain": "Cô khuyên đường blue (rừng, 3 km) cho người chỉ có vài giờ, vì đi qua hai chòi quan sát chim."
+            },
+            {
+              "q": "How many people can join the Friday evening walk?",
+              "options": [
+                "15",
+                "5",
+                "30",
+                "50"
+              ],
+              "answer": 0,
+              "explain": "Fifteen (15). Đừng nhầm với fifty (50) — chú ý trọng âm: fifTEEN và FIFty."
+            },
+            {
+              "q": "What time do the car park gates lock?",
+              "options": [
+                "6.30",
+                "3.00",
+                "5.00",
+                "5.30"
+              ],
+              "answer": 3,
+              "explain": "Khu bảo tồn đóng cửa lúc 5 giờ nhưng cổng bãi xe khóa lúc five thirty (5:30)."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s2-02",
+          "title": "Part 2 · Hướng dẫn tham quan bảo tàng hàng hải",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Good afternoon, everyone, and welcome to the Harbourside Maritime Museum. I'm Tom, and I'll be taking you round for the next hour."
+            },
+            {
+              "who": "M",
+              "en": "Before we begin, a few practical points. Photography is allowed throughout the museum, but please don't use flash in the Navigation Gallery, as it can damage the old maps."
+            },
+            {
+              "who": "M",
+              "en": "Coats and large bags can be left in the lockers next to the main entrance. They take a one-pound coin, which you get back afterwards."
+            },
+            {
+              "who": "M",
+              "en": "We start on the ground floor in the Boat Hall, where you can see the restored fishing vessels. The largest, the Morning Star, was built in nineteen twelve and worked out of this harbour for almost sixty years."
+            },
+            {
+              "who": "M",
+              "en": "Next to it is the Children's Workshop, open every weekday afternoon, where families can try knot-tying and rope making."
+            },
+            {
+              "who": "M",
+              "en": "Then we go up to the first floor by the lift, or by the staircase on your left, to the Navigation Gallery I mentioned, and the Radio Room with its collection of old ship radios."
+            },
+            {
+              "who": "M",
+              "en": "The café is on the second floor and has a terrace overlooking the harbour. It's well worth going up there, even just for the view."
+            },
+            {
+              "who": "M",
+              "en": "The temporary exhibition this season is about lighthouse keepers. You will find it in the room at the end of the first floor, and it is free with your ticket."
+            },
+            {
+              "who": "M",
+              "en": "At half past three there will be a short film in the cinema room about the great storm of eighteen eighty-one. It lasts twenty minutes."
+            },
+            {
+              "who": "M",
+              "en": "The museum closes at five, although the shop stays open until half past five."
+            },
+            {
+              "who": "M",
+              "en": "If you would like to come back, your ticket is valid for a whole year, so you can return as often as you like for free."
+            },
+            {
+              "who": "M",
+              "en": "Right, if you would like to follow me to the Boat Hall, we can make a start."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What are visitors asked not to do in the Navigation Gallery?",
+              "options": [
+                "Eat or drink",
+                "Touch the maps",
+                "Use their phones",
+                "Use a camera flash"
+              ],
+              "answer": 3,
+              "explain": "Chụp ảnh được cho phép nhưng \"please don't use flash\" vì đèn flash có thể làm hỏng bản đồ cổ."
+            },
+            {
+              "q": "What is said about the lockers?",
+              "options": [
+                "A coin is needed, which is returned",
+                "They are for large bags only",
+                "They only accept cards",
+                "They are free to use"
+              ],
+              "answer": 0,
+              "explain": "Tủ cần một đồng một bảng và được hoàn lại sau đó. Áo khoác cũng gửi được nên không phải \"chỉ túi lớn\"."
+            },
+            {
+              "q": "Where is the café?",
+              "options": [
+                "Second floor",
+                "First floor",
+                "Next to the entrance",
+                "Ground floor"
+              ],
+              "answer": 0,
+              "explain": "Quán cà phê ở second floor, có sân thượng nhìn ra bến cảng. Tầng một là phòng triển lãm tạm thời về người gác hải đăng."
+            },
+            {
+              "q": "For how long did the Morning Star work from the harbour?",
+              "options": [
+                "Almost sixteen years",
+                "Almost twelve years",
+                "Almost fifty years",
+                "Almost sixty years"
+              ],
+              "answer": 3,
+              "explain": "\"Almost sixty years\". Sixteen/sixty dễ nghe nhầm, và nineteen twelve là năm đóng tàu (1912), không phải thời gian hoạt động."
+            },
+            {
+              "q": "How long does the film last?",
+              "options": [
+                "15 minutes",
+                "20 minutes",
+                "30 minutes",
+                "25 minutes"
+              ],
+              "answer": 1,
+              "explain": "Phim bắt đầu lúc 3:30 và kéo dài twenty minutes. 3:30 là giờ chiếu, không phải độ dài."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s3-01",
+          "title": "Part 3 · Sinh viên và giảng viên bàn về đề tài nghiên cứu",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Come in, Hannah. You wanted to talk about your research project?"
+            },
+            {
+              "who": "W",
+              "en": "Yes, Dr Patel. I've decided to look at how sleep affects memory in teenagers, but I'm not sure my method is right."
+            },
+            {
+              "who": "M",
+              "en": "Remind me what you planned to do."
+            },
+            {
+              "who": "W",
+              "en": "I was going to give two hundred students a questionnaire about their sleep habits, then test their memory with a word list."
+            },
+            {
+              "who": "M",
+              "en": "Two hundred is ambitious for a four-month project. What's your main concern?"
+            },
+            {
+              "who": "W",
+              "en": "That self-reported sleep isn't very reliable. People often just guess how long they slept."
+            },
+            {
+              "who": "M",
+              "en": "Good point. Have you thought about wristband sleep trackers? The department has twenty of them you could borrow."
+            },
+            {
+              "who": "W",
+              "en": "That would be much more accurate, but with only twenty devices I'd end up with a much smaller sample."
+            },
+            {
+              "who": "M",
+              "en": "True, but a small sample with accurate data is better than a large one with unreliable data. Perhaps thirty participants, tested over a week, in two groups using the devices in turn."
+            },
+            {
+              "who": "W",
+              "en": "I suppose I could recruit from the first-year psychology course. They get course credit for taking part."
+            },
+            {
+              "who": "M",
+              "en": "That would solve your recruitment problem, although it narrows your age range, as most first-years are eighteen or nineteen. You would need to mention that as a limitation in your discussion."
+            },
+            {
+              "who": "W",
+              "en": "Right. And the ethics form. When's the deadline?"
+            },
+            {
+              "who": "M",
+              "en": "The committee meets on the twelfth of March, so submit by the fifth. Last year several students missed it and lost a month."
+            },
+            {
+              "who": "W",
+              "en": "I'll get it done this week. Should I include the memory test with the form?"
+            },
+            {
+              "who": "M",
+              "en": "Yes, attach the full test and the consent sheet."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is Hannah's main concern about her original method?",
+              "options": [
+                "The sample is too small",
+                "Self-reported sleep data is unreliable",
+                "There is not enough time",
+                "The memory test is too easy"
+              ],
+              "answer": 1,
+              "explain": "Hannah nói \"self-reported sleep isn't very reliable\" — mọi người thường chỉ đoán họ ngủ bao lâu. Cỡ mẫu chỉ trở thành vấn đề sau khi dùng thiết bị."
+            },
+            {
+              "q": "What does Dr Patel suggest using?",
+              "options": [
+                "Video recording",
+                "Wristband sleep trackers",
+                "Brain scans",
+                "A sleep diary"
+              ],
+              "answer": 1,
+              "explain": "Dr Patel đề nghị mượn vòng đeo tay theo dõi giấc ngủ của khoa (wristband sleep trackers)."
+            },
+            {
+              "q": "How many participants does Dr Patel suggest?",
+              "options": [
+                "200",
+                "13",
+                "30",
+                "20"
+              ],
+              "answer": 2,
+              "explain": "Ông gợi ý \"perhaps thirty participants\". Twenty là số thiết bị khoa có, two hundred là kế hoạch ban đầu của Hannah."
+            },
+            {
+              "q": "What limitation will Hannah need to mention?",
+              "options": [
+                "The short length of the memory test",
+                "The lack of a control group",
+                "The unequal number of men and women",
+                "The narrow age range of the participants"
+              ],
+              "answer": 3,
+              "explain": "Sinh viên năm nhất hầu hết 18–19 tuổi nên khoảng tuổi hẹp — cần nêu trong phần thảo luận như một hạn chế."
+            },
+            {
+              "q": "When should the ethics form be submitted?",
+              "options": [
+                "By 2 March",
+                "By 12 March",
+                "By 15 March",
+                "By 5 March"
+              ],
+              "answer": 3,
+              "explain": "Hội đồng họp ngày 12/3 nhưng phải nộp \"by the fifth\" (5/3). Fifteen và fifth dễ nghe nhầm."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s3-02",
+          "title": "Part 3 · Hai sinh viên chuẩn bị bài thuyết trình nhóm",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Hi Jamal. Have you had a chance to look at the presentation brief?"
+            },
+            {
+              "who": "M",
+              "en": "Yes. Fifteen minutes in total, so five minutes each. Shall we divide it into three parts: the problem, the alternatives and the recommendations?"
+            },
+            {
+              "who": "W",
+              "en": "That makes sense. Priya's away this week, so we should decide who does what and tell her."
+            },
+            {
+              "who": "M",
+              "en": "I'd like to take the alternatives. I found a really interesting study about edible seaweed packaging."
+            },
+            {
+              "who": "W",
+              "en": "Great. Then I'll do the problem, and leave the recommendations to Priya, since she's good at that kind of argument."
+            },
+            {
+              "who": "M",
+              "en": "Good. For the problem section, do you have any figures yet?"
+            },
+            {
+              "who": "W",
+              "en": "I found a report saying supermarkets use around eight hundred thousand tonnes of plastic a year, but it's from 2015, so it's quite old."
+            },
+            {
+              "who": "M",
+              "en": "Hmm, we had better find something more recent. The tutor said anything older than five years should be avoided."
+            },
+            {
+              "who": "W",
+              "en": "I will look at the government website. They publish annual statistics."
+            },
+            {
+              "who": "M",
+              "en": "On the slides, I think we should keep text to a minimum. Last term my group lost marks because the slides were too crowded."
+            },
+            {
+              "who": "W",
+              "en": "Agreed. One striking picture and a few words on each. And maybe a short video from a supermarket for the introduction."
+            },
+            {
+              "who": "M",
+              "en": "A video might take up too much of our time. Why not use a simple graph instead?"
+            },
+            {
+              "who": "W",
+              "en": "Fine, a graph then. Shall we meet to rehearse on Thursday?"
+            },
+            {
+              "who": "M",
+              "en": "I've got a lab in the afternoon, so how about Thursday morning at ten, in the library?"
+            },
+            {
+              "who": "W",
+              "en": "Perfect. Group study room three can be booked online. I'll reserve it."
+            }
+          ],
+          "questions": [
+            {
+              "q": "How long will each student speak for?",
+              "options": [
+                "3 minutes",
+                "15 minutes",
+                "5 minutes",
+                "10 minutes"
+              ],
+              "answer": 2,
+              "explain": "Tổng 15 phút chia cho ba người nên mỗi người nói five minutes."
+            },
+            {
+              "q": "Who will present the recommendations?",
+              "options": [
+                "Lucy",
+                "Jamal",
+                "Priya",
+                "The tutor"
+              ],
+              "answer": 2,
+              "explain": "Jamal lấy phần alternatives, Lucy lấy phần problem, nên phần recommendations để cho Priya."
+            },
+            {
+              "q": "Why does Lucy decide not to use the 2015 report?",
+              "options": [
+                "It is too expensive to access",
+                "It is too technical",
+                "It is out of date",
+                "It comes from an unreliable source"
+              ],
+              "answer": 2,
+              "explain": "Báo cáo năm 2015 cũ; giảng viên nói tài liệu quá năm năm nên tránh — tức là lỗi thời (out of date)."
+            },
+            {
+              "q": "What do they decide about the slides?",
+              "options": [
+                "Use animation to hold attention",
+                "Use a lot of text for detail",
+                "Use a supermarket video in the introduction",
+                "Use little text and a graph rather than a video"
+              ],
+              "answer": 3,
+              "explain": "Họ thống nhất ít chữ, một hình ảnh nổi bật, và dùng biểu đồ đơn giản thay vì video vì video tốn thời gian."
+            },
+            {
+              "q": "When and where will they rehearse?",
+              "options": [
+                "Thursday morning in the library",
+                "Thursday afternoon in the library",
+                "Friday morning in a study room",
+                "Thursday morning in the lab"
+              ],
+              "answer": 0,
+              "explain": "Jamal có buổi thực hành chiều thứ Năm nên hẹn sáng thứ Năm lúc mười giờ ở thư viện (phòng học nhóm số ba)."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s4-01",
+          "title": "Part 4 · Bài giảng về hiện tượng tẩy trắng san hô",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Today I would like to look at coral bleaching, a phenomenon that has become one of the most visible signs of ocean warming."
+            },
+            {
+              "who": "M",
+              "en": "Corals are animals, but most of them live in a partnership with microscopic algae called zooxanthellae, which live inside the coral tissue."
+            },
+            {
+              "who": "M",
+              "en": "The algae carry out photosynthesis and supply up to ninety per cent of the coral's energy. In return, the coral provides shelter and the chemicals the algae need."
+            },
+            {
+              "who": "M",
+              "en": "When the water becomes too warm, even by one or two degrees above the usual summer maximum, the algae start producing harmful substances, and the coral expels them."
+            },
+            {
+              "who": "M",
+              "en": "Because the algae give coral its colour, the coral turns white, hence the term bleaching. Importantly, a bleached coral is not dead. It is starving."
+            },
+            {
+              "who": "M",
+              "en": "If temperatures fall within a few weeks, the algae can return and the coral recovers. If the heat persists for more than around eight weeks, the coral usually dies."
+            },
+            {
+              "who": "M",
+              "en": "Mass bleaching has become more frequent. In some regions the gap between severe events has shrunk from about a quarter of a century to about six years, which gives reefs little time to recover."
+            },
+            {
+              "who": "M",
+              "en": "Researchers have also noticed that some corals are more heat-tolerant. Corals living in shallow, warm lagoons often survive higher temperatures than those on open reefs, which suggests they have adapted."
+            },
+            {
+              "who": "M",
+              "en": "This has led to a restoration approach called assisted evolution, in which scientists breed the most heat-tolerant corals and plant them on damaged reefs."
+            },
+            {
+              "who": "M",
+              "en": "However, critics point out that this method is slow and expensive, and cannot replace the need to reduce carbon emissions."
+            },
+            {
+              "who": "M",
+              "en": "Another factor is water quality. Run-off from farmland carries nutrients which encourage algae to grow on the reef and reduce its resilience."
+            },
+            {
+              "who": "M",
+              "en": "So reef managers work at two levels: globally, by supporting cuts in emissions, and locally, by improving water quality and limiting the fishing of fish that graze on algae."
+            },
+            {
+              "who": "M",
+              "en": "For next week, please read the two papers on the course site and be ready to discuss which approach is more cost-effective."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What proportion of a coral's energy can the algae supply?",
+              "options": [
+                "Nineteen per cent",
+                "Ninety per cent",
+                "Nine per cent",
+                "Forty per cent"
+              ],
+              "answer": 1,
+              "explain": "\"Up to ninety per cent\". Nineteen và ninety nghe gần giống nhau — chú ý trọng âm của -teen và -ty."
+            },
+            {
+              "q": "What happens to the algae when the water becomes too warm?",
+              "options": [
+                "They reproduce too quickly",
+                "They die inside the coral",
+                "They move deeper into the tissue",
+                "The coral pushes them out"
+              ],
+              "answer": 3,
+              "explain": "San hô \"expels\" tảo khi nước quá ấm vì tảo tạo ra chất có hại; mất tảo nên san hô trắng ra."
+            },
+            {
+              "q": "How long does heat usually have to persist before the coral dies?",
+              "options": [
+                "About a quarter of a year",
+                "A few weeks",
+                "About six weeks",
+                "About eight weeks"
+              ],
+              "answer": 3,
+              "explain": "Nếu nóng kéo dài hơn khoảng tám tuần thì san hô thường chết. \"A few weeks\" là khoảng thời gian san hô vẫn phục hồi được; \"six years\" là khoảng cách giữa các đợt tẩy trắng."
+            },
+            {
+              "q": "What do scientists do in assisted evolution?",
+              "options": [
+                "Breed the most heat-tolerant corals",
+                "Move corals to cooler water",
+                "Add algae to bleached corals",
+                "Remove corals from shallow lagoons"
+              ],
+              "answer": 0,
+              "explain": "Assisted evolution: nhân giống những san hô chịu nhiệt tốt nhất rồi trồng lên rạn bị hại."
+            },
+            {
+              "q": "What do critics say about assisted evolution?",
+              "options": [
+                "It makes corals less colourful",
+                "It harms other marine life",
+                "It works only in lagoons",
+                "It is slow and expensive"
+              ],
+              "answer": 3,
+              "explain": "Giảng viên nói các nhà phê bình cho rằng phương pháp này chậm, đắt và không thể thay thế việc giảm khí thải."
+            }
+          ]
+        },
+        {
+          "id": "ielts-l-s4-02",
+          "title": "Part 4 · Bài giảng về \"nudge\" trong kinh tế học hành vi",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Last week we discussed how people don't always behave like the rational decision-makers of classical economics. This week I want to focus on one of the most practical ideas to come out of behavioural economics: the nudge."
+            },
+            {
+              "who": "W",
+              "en": "A nudge is a small change in how choices are presented that steers people towards a better option, without banning anything or changing prices significantly."
+            },
+            {
+              "who": "W",
+              "en": "The classic example is the default option. Imagine a company where employees must fill in a form to join the pension scheme, and only about forty per cent do. Now change one thing: everyone is enrolled automatically, but can leave if they wish. Participation typically jumps to above ninety per cent."
+            },
+            {
+              "who": "W",
+              "en": "Nothing has been forced. People simply stay with what is set up for them, partly through inertia and partly because the default seems to carry a recommendation."
+            },
+            {
+              "who": "W",
+              "en": "A second type of nudge uses social norms. Households were sent letters comparing their energy use with that of their neighbours. Those using more than average cut their consumption."
+            },
+            {
+              "who": "W",
+              "en": "Interestingly, households using less than average then increased their consumption, a so-called boomerang effect. This was corrected by adding a smiley face to the letters of efficient households, signalling approval."
+            },
+            {
+              "who": "W",
+              "en": "Third, there is simplification. Complicated application forms reduce take-up, so shortening and simplifying them can increase the number of people who apply for support."
+            },
+            {
+              "who": "W",
+              "en": "Nudges do have critics. The first criticism is ethical: who decides what is best for people? The second is about effectiveness, since the effects of a nudge can fade over time."
+            },
+            {
+              "who": "W",
+              "en": "A third concern is that nudges can distract attention from stronger measures, such as taxes or regulation."
+            },
+            {
+              "who": "W",
+              "en": "Supporters respond that nudges are cheap, easy to test, and leave freedom of choice intact."
+            },
+            {
+              "who": "W",
+              "en": "For your assignment, choose one public policy area, such as health, transport or recycling, and design a nudge. You must also explain how you would test whether it works."
+            },
+            {
+              "who": "W",
+              "en": "The assignment is due at the end of week ten and should be fifteen hundred words long."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is a nudge, according to the lecturer?",
+              "options": [
+                "A reward for good behaviour",
+                "A large increase in prices",
+                "A small change in how choices are presented",
+                "A ban on harmful choices"
+              ],
+              "answer": 2,
+              "explain": "Nudge là thay đổi nhỏ trong cách trình bày lựa chọn để hướng người ta tới phương án tốt hơn, không cấm đoán hay đổi giá đáng kể."
+            },
+            {
+              "q": "What happens when employees are enrolled in the pension scheme automatically?",
+              "options": [
+                "Most employees leave the scheme",
+                "About forty per cent take part",
+                "Participation rises above ninety per cent",
+                "Participation stays the same"
+              ],
+              "answer": 2,
+              "explain": "Khi tự động đăng ký, mức tham gia thường vượt chín mươi phần trăm. Forty per cent là mức khi nhân viên phải tự điền form."
+            },
+            {
+              "q": "What was the boomerang effect?",
+              "options": [
+                "Households stopped reading the letters",
+                "Households with low use increased their consumption",
+                "Households with high use cut their consumption",
+                "Households complained to the energy company"
+              ],
+              "answer": 1,
+              "explain": "Hộ dùng ít hơn mức trung bình lại tăng tiêu thụ — tác dụng ngược. Hộ dùng nhiều giảm đi là hiệu quả mong muốn, không phải boomerang."
+            },
+            {
+              "q": "How was the boomerang effect corrected?",
+              "options": [
+                "By removing the comparison",
+                "By offering lower prices",
+                "By sending fewer letters",
+                "By adding a smiley face for efficient households"
+              ],
+              "answer": 3,
+              "explain": "Thêm mặt cười vào thư của hộ tiết kiệm để thể hiện sự tán thành."
+            },
+            {
+              "q": "What must students include in their assignment?",
+              "options": [
+                "A method for testing the nudge",
+                "A comparison of two countries",
+                "A history of behavioural economics",
+                "A survey of public opinion"
+              ],
+              "answer": 0,
+              "explain": "Sinh viên phải thiết kế một nudge và giải thích cách kiểm tra xem nó có hiệu quả không. Bài nộp cuối tuần mười, dài 1.500 từ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ielts-reading",
+      "skill": "reading",
+      "title": "Reading · Đọc",
+      "about": "Bài đọc học thuật gồm các đoạn văn dài 450–650 từ, với nhiều dạng câu hỏi: True/False/Not Given, trắc nghiệm, tìm đoạn chứa thông tin. Chiến lược: với True/False/Not Given, tìm câu tương ứng trong bài rồi so sánh — \"False\" nghĩa là bài nói NGƯỢC lại, \"Not Given\" nghĩa là bài KHÔNG đề cập; đừng dùng kiến thức bên ngoài để trả lời.",
+      "items": [
+        {
+          "id": "ielts-r-01",
+          "title": "Bạch tuộc và khả năng giải quyết vấn đề",
+          "passage": "Paragraph A\nOctopuses belong to a group of animals with no backbone, yet their behaviour regularly surprises researchers. An octopus has roughly five hundred million neurons, a figure comparable to that of a dog. What makes the animal truly unusual is how those neurons are arranged. About two thirds of them are found not in the central brain but in the arms, so each arm can sense, taste and make simple decisions with a good deal of independence. Scientists often describe the octopus as having a distributed mind rather than a single command centre. This design may help the animal to manage its soft, flexible body, which can change shape and squeeze through gaps no larger than its eye. Researchers who design robots have even studied octopus arms for ideas about how machines might move.\n\nParagraph B\nIn laboratories, octopuses have shown a talent for solving practical problems. They can unscrew jars to reach food placed inside, and some individuals have learned to open containers designed to stop young children from getting at medicine. In the wild, the veined octopus has been filmed collecting discarded coconut shells, carrying them across the seabed, and assembling them into a shelter when danger appeared. Some researchers regard this as a clear example of tool use. Others argue that the shells are simply a form of armour, and that the behaviour does not meet the strict definition. The debate shows how difficult it is to apply human categories to animals whose bodies and lives are so different from our own.\n\nParagraph C\nLearning by observation is a more controversial question. An early study reported that octopuses could copy a neighbour that had solved a puzzle, but later experiments failed to repeat the result, and the question remains open. A deeper puzzle concerns lifespan. Most octopus species live only one to two years, and females usually die soon after their eggs hatch, so young octopuses never meet their parents. In other intelligent animals, such as apes and crows, long childhoods in which young animals learn from adults seem to be important. The octopus appears to have found a different route to complex behaviour. Understanding how this happened is one reason why so many biologists have become interested in the animal in recent years.\n\nParagraph D\nOne explanation for this intelligence is that the ancestors of the octopus lost their protective shells millions of years ago. Without armour, they had to rely on speed, camouflage and cunning to avoid predators, while hunting a wide range of prey on complicated reef habitats called for flexible thinking. The growing evidence of octopus intelligence has also had practical consequences. A number of countries now treat octopuses as sentient animals in their research regulations, which means that laboratories must consider their welfare and limit any pain they may experience during experiments. Some scientists even suggest that studying such a different kind of mind may help us to recognise intelligence in unfamiliar forms.",
+          "questions": [
+            {
+              "q": "An octopus has more neurons in its central brain than in its arms.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Bài nói khoảng hai phần ba nơ-ron nằm ở các cánh tay, không phải ở não trung tâm — ngược với câu nhận định nên là False. (Not Given sẽ là khi bài không hề nhắc đến vị trí các nơ-ron.)"
+            },
+            {
+              "q": "Some octopuses have opened containers designed to keep children out.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn B nói một số cá thể đã học cách mở các hộp được thiết kế để trẻ nhỏ không mở được thuốc — khớp với câu nhận định, nên True."
+            },
+            {
+              "q": "Octopuses live longer in captivity than they do in the wild.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 2,
+              "explain": "Bài chỉ nói phần lớn loài sống một đến hai năm, không so sánh tuổi thọ trong môi trường nuôi nhốt và tự nhiên. Không có thông tin nên là Not Given (không phải False vì bài không bác bỏ)."
+            },
+            {
+              "q": "What does the writer say about learning by observation in octopuses?",
+              "options": [
+                "It happens only between related animals",
+                "It was reported once but has not been confirmed",
+                "It is less common than in apes and crows",
+                "It has been proved in several experiments"
+              ],
+              "answer": 1,
+              "explain": "Đoạn C: nghiên cứu đầu tiên báo cáo bạch tuộc bắt chước được, nhưng các thí nghiệm sau không lặp lại được kết quả, câu hỏi vẫn còn bỏ ngỏ."
+            },
+            {
+              "q": "According to the writer, why might octopuses have become intelligent?",
+              "options": [
+                "They live in groups on reefs",
+                "They lost their shells and had to avoid predators in other ways",
+                "They gained intelligence from their parents",
+                "They developed larger brains than other invertebrates"
+              ],
+              "answer": 1,
+              "explain": "Đoạn D: tổ tiên mất vỏ bảo vệ nên phải dựa vào tốc độ, ngụy trang và sự khôn khéo; môi trường rạn phức tạp cũng đòi hỏi tư duy linh hoạt."
+            },
+            {
+              "q": "Which paragraph mentions a rule connected with animal welfare in research?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 3,
+              "explain": "Đoạn D cuối nói một số quốc gia coi bạch tuộc là loài có cảm nhận (sentient) trong quy định nghiên cứu."
+            },
+            {
+              "q": "Which paragraph explains how the nervous system of the octopus is organised?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A mô tả sự phân bố nơ-ron — hai phần ba ở các cánh tay."
+            }
+          ]
+        },
+        {
+          "id": "ielts-r-02",
+          "title": "Máy in và thói quen đọc ở châu Âu",
+          "passage": "Paragraph A\nBefore the middle of the fifteenth century, books in Europe were copied by hand, usually by monks or professional scribes. A single volume could take months to complete, and its price put it far beyond the means of most families. Only churches, universities and the very wealthy owned libraries of any size. The arrival of movable type printing, usually associated with the German craftsman Johannes Gutenberg, changed this situation. Printers could now produce hundreds of identical copies from a single setting of metal letters, and the cost of each copy fell sharply. Reading was therefore a skill needed by a small minority, and most people met written texts only when they were read aloud to them.\n\nParagraph B\nThe effect on the number of books in circulation was dramatic. Within fifty years, printing workshops had been established in hundreds of European towns, and millions of volumes had been produced. Early printers mainly chose texts that they were confident would sell, such as religious works and school grammar books, but they soon added cheap pamphlets, almanacs and popular stories. As books became more affordable, more people had a reason to learn to read, although historians disagree about how quickly literacy actually rose, and it clearly varied from region to region. Competition between printers also encouraged them to improve the quality of their work, and some became well known for the clarity of their type.\n\nParagraph C\nPrinting also helped to standardise languages. Hand-copied manuscripts often reflected the local dialect and spelling habits of the scribe, but printers wanted a text that would sell across a wide area. They gradually settled on common spellings and forms, which later appeared in dictionaries and grammar books. In the sixteenth century, religious reformers made full use of the new technology. Pamphlets and translated Bibles spread their ideas faster than any authority could suppress them, a development that contributed to lasting divisions within the Church. In this way, a shared written form helped to build a sense of common identity among speakers of the same language, even when they lived far apart.\n\nParagraph D\nRulers and church leaders were quick to notice the power of print. Many introduced licensing systems, which required printers to obtain permission before publishing, and lists of banned books were drawn up. These measures had limited success, since a forbidden text printed in one town could easily be smuggled into another. Scholars also began to share discoveries more widely, because errors could now be corrected in new editions and results could be checked by readers in distant cities. Few historians today would claim that printing alone caused the social changes of the period, but most agree that it made them far harder to reverse. The long-term result was a culture in which information could travel further and faster than ever before.",
+          "questions": [
+            {
+              "q": "Before printing, only a small number of people owned large collections of books.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A: chỉ nhà thờ, đại học và người rất giàu mới có thư viện cỡ đáng kể — khớp với câu nhận định, True."
+            },
+            {
+              "q": "Gutenberg invented the first printing press in Europe.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 2,
+              "explain": "Bài chỉ nói in chữ rời \"thường được gắn với\" Gutenberg, không khẳng định ông là người phát minh máy in đầu tiên ở châu Âu. Bài không xác nhận cũng không phủ nhận nên là Not Given."
+            },
+            {
+              "q": "Historians agree that literacy rose quickly after printing began.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Đoạn B: sử gia \"disagree about how quickly literacy actually rose\" — bài nói ngược lại là không đồng thuận, nên False (không phải Not Given vì bài có đề cập trực tiếp)."
+            },
+            {
+              "q": "Governments were completely successful in controlling what was printed.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Đoạn D: các biện pháp kiểm duyệt chỉ thành công hạn chế vì sách cấm dễ được tuồn sang thị trấn khác — trái với \"completely successful\", nên False."
+            },
+            {
+              "q": "What does the writer say about early printers?",
+              "options": [
+                "They preferred to publish new scientific ideas",
+                "They refused to print pamphlets",
+                "They chose texts they expected to sell well",
+                "They were mostly monks"
+              ],
+              "answer": 2,
+              "explain": "Đoạn B: các thợ in ban đầu chọn những văn bản chắc chắn bán được như sách tôn giáo và sách ngữ pháp, sau đó mới thêm cuốn sách mỏng và truyện phổ thông."
+            },
+            {
+              "q": "Which paragraph refers to the standardisation of spelling?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 2,
+              "explain": "Đoạn C nói các thợ in dần thống nhất chính tả và hình thức chung, về sau xuất hiện trong từ điển và sách ngữ pháp."
+            },
+            {
+              "q": "Which paragraph mentions efforts to ban certain books?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 3,
+              "explain": "Đoạn D nhắc hệ thống cấp phép và danh sách sách bị cấm."
+            }
+          ]
+        },
+        {
+          "id": "ielts-r-03",
+          "title": "Mái nhà xanh trong đô thị",
+          "passage": "Paragraph A\nAs cities grow, the amount of land covered by concrete and asphalt grows with them. These dark surfaces absorb heat during the day and release it slowly at night, so city centres can be several degrees warmer than the surrounding countryside, a pattern known as the urban heat island effect. One response is the green roof, in which a waterproof membrane is covered with a layer of soil and plants. Green roofs are not a new idea, since turf-covered houses have existed in northern Europe for centuries, but modern versions use lightweight growing materials and carefully selected plants. Cities from Tokyo to Toronto have experimented with them, often on public buildings, in order to test how well they work.\n\nParagraph B\nThe benefits are well documented. Plants shade the roof and release water vapour, which cools the air around the building. In summer, a green roof can keep the rooms underneath noticeably cooler, reducing the need for air conditioning. They also absorb a large share of the rain that falls on them and release it slowly, which reduces pressure on drains during heavy storms. In cities that suffer from flash floods, this can be a considerable advantage. Roofs planted with a variety of flowers can also provide food and a refuge for insects and birds. Some studies also suggest that a planted roof lasts longer than a bare one, because the plants protect the waterproof layer from sunlight and sudden changes in temperature.\n\nParagraph C\nHowever, green roofs are not without problems. Installation costs are higher than for a conventional roof, and the extra weight of soil and water means that many older buildings would need expensive structural reinforcement. Poorly built roofs may leak, and roots can damage waterproofing if the wrong plants are chosen. Maintenance, including watering during droughts and removing weeds, adds to the long-term cost. For these reasons, building owners often hesitate, especially where the savings on energy are modest, as in cooler climates. Owners also worry about who will be responsible if something goes wrong, since a roof garden needs both a builder and a gardener.\n\nParagraph D\nSome city governments have therefore decided to encourage green roofs rather than leave the decision to individual owners. Several have introduced grants that cover part of the installation cost, while others require new buildings above a certain size to include a planted roof. Supporters point out that the benefits go well beyond the building itself, since cooler air and reduced flooding serve the whole neighbourhood. Critics counter that the same money might achieve more if spent on parks and street trees, which are easier to maintain. At present there is little firm evidence to show which approach gives the better value. Whatever the outcome, many planners agree that cities will need a combination of measures to stay cool as temperatures rise.",
+          "questions": [
+            {
+              "q": "Urban areas can be warmer than the countryside around them.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A: trung tâm thành phố có thể nóng hơn vùng nông thôn xung quanh vài độ (hiệu ứng đảo nhiệt đô thị) — True."
+            },
+            {
+              "q": "Green roofs are a recent invention.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Đoạn A nói nhà phủ cỏ đã tồn tại hàng thế kỷ ở bắc Âu, tức mái xanh không phải ý tưởng mới. Bài nói ngược nên False; chỉ có phiên bản hiện đại dùng vật liệu nhẹ là mới."
+            },
+            {
+              "q": "What is said about green roofs and heavy rain?",
+              "options": [
+                "They stop all water from reaching the drains",
+                "They release the rainwater they absorb slowly",
+                "They are damaged by flash floods",
+                "They work better in dry cities"
+              ],
+              "answer": 1,
+              "explain": "Đoạn B: mái xanh hấp thụ phần lớn nước mưa và giải phóng từ từ nên giảm áp lực lên hệ thống thoát nước. Không phải \"stop all\" — chỉ giảm."
+            },
+            {
+              "q": "Why might owners of older buildings hesitate to install a green roof?",
+              "options": [
+                "They would need to strengthen the structure",
+                "Regulations forbid it",
+                "The plants attract insects",
+                "Older roofs are too small"
+              ],
+              "answer": 0,
+              "explain": "Đoạn C: trọng lượng đất và nước thường đòi hỏi gia cố kết cấu tốn kém ở các công trình cũ."
+            },
+            {
+              "q": "What is the writer's conclusion about the best policy for cities?",
+              "options": [
+                "It is not yet clear which approach is better value",
+                "Parks are better than green roofs",
+                "Green roofs should be compulsory everywhere",
+                "Grants are better than rules"
+              ],
+              "answer": 0,
+              "explain": "Câu cuối đoạn D: hiện chưa có nhiều bằng chứng chắc chắn cho thấy cách tiếp cận nào có giá trị tốt hơn."
+            },
+            {
+              "q": "Which paragraph mentions the extra cost of looking after a green roof?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 2,
+              "explain": "Đoạn C nhắc bảo trì như tưới nước lúc hạn hán và nhổ cỏ làm tăng chi phí lâu dài."
+            },
+            {
+              "q": "Which paragraph describes financial support offered by city authorities?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 3,
+              "explain": "Đoạn D nói một số thành phố đưa ra khoản trợ cấp cho một phần chi phí lắp đặt."
+            }
+          ]
+        },
+        {
+          "id": "ielts-r-04",
+          "title": "Vì sao chúng ta trì hoãn?",
+          "passage": "Paragraph A\nAlmost everyone has put off an important task in favour of something more pleasant, yet procrastination is often misunderstood. It is commonly seen as laziness or poor time management, but many psychologists now think the problem is mainly one of emotion. When a task provokes anxiety, boredom or self-doubt, avoiding it brings immediate relief, and that relief rewards the habit. The feelings return, usually stronger, as the deadline approaches, and the cycle begins again. Seen in this light, the problem is less about managing the clock than about managing uncomfortable feelings. Surveys of university students suggest that a large majority admit to delaying their coursework at least occasionally.\n\nParagraph B\nA second explanation concerns the way people value time. Researchers use the term present bias to describe the tendency to overvalue rewards that arrive soon and undervalue those that arrive later. A student deciding whether to revise or watch a film is comparing a certain pleasure tonight with a benefit that lies weeks away. The future self who will suffer from the delay feels like another person, which makes it easier to hand them the  burden. This helps to explain why saving for retirement or starting a long project is so often postponed, even by people who know that they should begin. Studies suggest that people who think of their future selves in vivid detail are better at making long-term plans.\n\nParagraph C\nSeveral practical strategies have been tested. One of the most effective is the implementation intention, in which a person decides in advance exactly when, where and how a task will be done, for example, \"After lunch, I will open the report at my desk and write the first paragraph.\" This removes the need to make a decision at the moment when motivation is weakest. Another approach is to divide a large task into very small steps, so that starting feels less threatening. Many people find that the first few minutes are the hardest and that progress comes more easily once they have begun. A third technique is to remove distractions in advance, such as switching off notifications or working in a different room.\n\nParagraph D\nNot all delay is harmful. Some people deliberately put off work and perform well under pressure, and a short delay can allow ideas to develop. However, evidence from large surveys indicates that habitual procrastinators report higher levels of stress and poorer sleep, and in some studies, more health problems. The researchers stress that these results show an association rather than proof of cause, because stressed people might also be more likely to procrastinate. What seems clear is that the habit is better understood with sympathy than with criticism, since being harsh with oneself tends to increase avoidance rather than reduce it. Treating a lapse as a normal human experience, rather than as a personal failure, seems to help people return to the task sooner.",
+          "questions": [
+            {
+              "q": "Most psychologists believe that procrastination is caused by laziness.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Đoạn A nói nhiều nhà tâm lý học hiện nay cho rằng vấn đề chủ yếu là cảm xúc, không phải lười biếng. Bài nói ngược nên False."
+            },
+            {
+              "q": "Thinking about the future self in detail can improve long-term planning.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn B: những người hình dung bản thân tương lai thật chi tiết lập kế hoạch dài hạn tốt hơn — True."
+            },
+            {
+              "q": "Implementation intentions work better for men than for women.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 2,
+              "explain": "Bài không hề so sánh theo giới tính. Không có thông tin nên là Not Given."
+            },
+            {
+              "q": "What is the main idea of the implementation intention strategy?",
+              "options": [
+                "Avoiding tasks that cause anxiety",
+                "Rewarding yourself after finishing",
+                "Making a plan for when and where to act",
+                "Working only when feeling motivated"
+              ],
+              "answer": 2,
+              "explain": "Đoạn C: quyết định trước chính xác khi nào, ở đâu và làm thế nào, nhờ vậy không cần ra quyết định lúc động lực yếu nhất."
+            },
+            {
+              "q": "What do the researchers say about the link between procrastination and stress?",
+              "options": [
+                "Stress clearly causes procrastination",
+                "There is no link between them",
+                "Procrastination clearly causes stress",
+                "The link does not prove which causes which"
+              ],
+              "answer": 3,
+              "explain": "Đoạn D: kết quả chỉ cho thấy mối liên hệ chứ không phải bằng chứng nhân quả, vì người căng thẳng cũng có thể dễ trì hoãn hơn."
+            },
+            {
+              "q": "Which paragraph explains why avoiding a task feels rewarding?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A: tránh việc gây lo âu mang lại sự nhẹ nhõm tức thì và sự nhẹ nhõm đó củng cố thói quen."
+            },
+            {
+              "q": "Which paragraph gives an example of a plan made in advance?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 2,
+              "explain": "Đoạn C có ví dụ \"After lunch, I will open the report at my desk...\" làm minh họa."
+            }
+          ]
+        },
+        {
+          "id": "ielts-r-05",
+          "title": "Tái chế pin xe điện",
+          "passage": "Paragraph A\nAs more drivers switch to electric cars, a new question is becoming urgent: what happens to the batteries when they wear out? A typical electric car battery lasts between ten and fifteen years, and the first large wave of vehicles sold in the last decade is now approaching retirement. These batteries contain valuable metals, including lithium, nickel and cobalt, whose mining can cause serious environmental and social damage. Recovering these materials would reduce the need for new mining, and it would also protect manufacturers from sudden price rises and shortages of supply. Demand for these materials is expected to grow rapidly over the coming decades as more car factories open.\n\nParagraph B\nMany old batteries still hold a large part of their original capacity, which is too little for a car but enough for other uses. Some companies collect them and reuse them in homes and businesses to store electricity from solar panels. This second life can last another decade before the battery is finally recycled. Because of this, the number of batteries needing immediate recycling is lower than the number reaching the end of their first use. The delay gives the recycling industry valuable time to build capacity before the major surge arrives. Several car makers have started their own programmes for this purpose, working with energy companies to find a use for older packs.\n\nParagraph C\nRecycling itself is technically challenging. Most plants use one of two methods. In the first, batteries are heated to very high temperatures to melt out the metals, which is simple but uses a great deal of energy and loses the lithium. In the second, the batteries are shredded and treated with chemicals to dissolve the metals, which recovers more material but produces waste liquids that must be handled carefully. A further difficulty is that batteries come in many designs, and workers must often take them apart by hand because the packs are glued or welded together to make them safe in a crash. Safety is a further concern, since damaged batteries can catch fire and need to be stored and transported with great care.\n\nParagraph D\nGovernments and industry are searching for solutions. Some regions now require carmakers to collect used batteries and recover a minimum share of the materials, while manufacturers are beginning to design packs that are easier to take apart. Researchers are also developing methods that recover materials in a form pure enough to go straight into new batteries. Whether recycling will become profitable depends on the price of raw metals, and as designs shift towards cheaper materials with less cobalt, the value of the recovered metals may fall. Experts therefore argue that regulation, rather than market forces alone, will probably be needed to ensure that the batteries are collected. Without such measures, there is a danger that valuable materials will be thrown away or exported to places with weaker environmental controls.",
+          "questions": [
+            {
+              "q": "Electric car batteries normally last for more than twenty years.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 1,
+              "explain": "Đoạn A nói pin xe điện thường dùng được từ mười đến mười lăm năm, không phải hơn hai mươi năm. Bài nói khác với câu nhận định nên là False."
+            },
+            {
+              "q": "Mining the metals used in batteries can harm people and the environment.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A: việc khai thác lithium, nickel và cobalt có thể gây thiệt hại nghiêm trọng về môi trường và xã hội — True."
+            },
+            {
+              "q": "Reusing old batteries to store solar power is cheaper than recycling them.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 2,
+              "explain": "Bài nói pin cũ được dùng để lưu điện mặt trời, nhưng không so sánh chi phí giữa tái sử dụng và tái chế. Không có thông tin nên Not Given."
+            },
+            {
+              "q": "Heating batteries to melt out metals loses the lithium.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn C: phương pháp nung nóng đơn giản nhưng tốn nhiều năng lượng và làm mất lithium — khớp nên True."
+            },
+            {
+              "q": "Why do workers often have to dismantle battery packs by hand?",
+              "options": [
+                "The packs contain dangerous liquids",
+                "Machines cannot lift the heavy packs",
+                "Carmakers refuse to share their designs",
+                "The packs are glued or welded to make them crash-safe"
+              ],
+              "answer": 3,
+              "explain": "Đoạn C: các bộ pin được dán hoặc hàn để an toàn khi va chạm, nên thường phải tháo thủ công. Bài không nói đến chất lỏng nguy hiểm hay hãng xe từ chối chia sẻ thiết kế."
+            },
+            {
+              "q": "Which paragraph suggests that regulation may be necessary?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 3,
+              "explain": "Đoạn D kết luận các chuyên gia cho rằng cần quy định pháp luật chứ không chỉ cơ chế thị trường."
+            },
+            {
+              "q": "Which paragraph explains why recycling is needed less urgently than expected?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 1,
+              "explain": "Đoạn B: nhiều pin được tái sử dụng thêm khoảng một thập kỷ nên lượng pin cần tái chế ngay thấp hơn lượng pin hết đời đầu."
+            }
+          ]
+        },
+        {
+          "id": "ielts-r-06",
+          "title": "Lớp học đảo ngược",
+          "passage": "Paragraph A\nIn a traditional classroom, the teacher explains new material during the lesson, and students practise it later at home through exercises. The flipped classroom reverses this order. Students first meet new content outside class, usually through short videos or readings, and then use lesson time for discussion, problem solving and projects, with the teacher on hand to give help. The idea became popular in the early 2000s, when online video made it easy for teachers to share recorded explanations, and it has since been adopted in subjects as varied as mathematics, medicine and language learning. In practice, versions of the model differ widely from one school to another. Teachers who adopt it often start by flipping only one unit of a course, in order to see how their students respond.\n\nParagraph B\nSupporters give several reasons for preferring the approach. Students can pause and replay a video as many times as they need, so they do not fall behind during a fast explanation. In class, teachers notice common mistakes at once, because they are moving among the students as they work, and weaker students receive support at the moment when they most need it. Many teachers also report that lessons become more lively and cooperative, since students are working actively rather than listening for most of the period. Some also value the fact that absent students can catch up by watching what they missed.\n\nParagraph C\nCritics, however, raise some concerns. The model depends on students actually watching the material before the lesson, and in many classes a large proportion arrive unprepared, which wastes the time set aside for activities. Not every family has a reliable internet connection or a quiet place to study, so the approach may widen the gap between advantaged and disadvantaged students. Teachers also point out that making good videos takes considerable time, and some students find it harder to concentrate on a screen than on a live explanation. Others note that students who are used to passive listening may need time to adjust to taking more responsibility for their own learning.\n\nParagraph D\nThe research evidence so far is mixed. Several reviews have found small gains in test results for flipped classes, but the improvements are often limited to particular subjects or age groups, and in some studies they disappear when the quality of teaching is taken into account. Many experts conclude that the format matters less than the quality of the activities in the classroom. A flipped lesson built around demanding problems may help students a great deal, while one that simply moves a boring lecture onto video offers little benefit. Teachers who have used the approach for several years often say that it takes time to find a balance that suits their students. Schools considering the model are therefore advised to start with a small pilot and measure the results carefully.",
+          "questions": [
+            {
+              "q": "The flipped classroom requires students to learn new content before the lesson.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A: học sinh gặp nội dung mới ngoài lớp (video, bài đọc) rồi dùng giờ học để thảo luận và giải quyết vấn đề — True."
+            },
+            {
+              "q": "The flipped classroom has been used in subjects such as medicine.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 0,
+              "explain": "Đoạn A kể mô hình được dùng ở nhiều môn như toán, y khoa và học ngôn ngữ — True."
+            },
+            {
+              "q": "Most teachers who use the model prefer to record videos themselves.",
+              "options": [
+                "True",
+                "False",
+                "Not Given"
+              ],
+              "answer": 2,
+              "explain": "Bài chỉ nói làm video tốn nhiều thời gian; không nói giáo viên thích tự quay hay dùng video có sẵn. Không có thông tin nên Not Given."
+            },
+            {
+              "q": "What is one criticism of the flipped classroom?",
+              "options": [
+                "It is only suitable for young children",
+                "The videos are always too long",
+                "Students cannot ask questions in class",
+                "Many students arrive without having studied the material"
+              ],
+              "answer": 3,
+              "explain": "Đoạn C: ở nhiều lớp, một tỷ lệ lớn học sinh đến lớp mà chưa xem tài liệu, làm lãng phí thời gian dành cho hoạt động."
+            },
+            {
+              "q": "What do many experts conclude about the research?",
+              "options": [
+                "Flipped classes are worse than traditional ones",
+                "Videos are better than live teaching",
+                "The quality of classroom activities matters more than the format",
+                "Flipped classes always raise test scores"
+              ],
+              "answer": 2,
+              "explain": "Đoạn D: nhiều chuyên gia kết luận chất lượng hoạt động trong lớp quan trọng hơn hình thức; bằng chứng hiện còn lẫn lộn."
+            },
+            {
+              "q": "Which paragraph mentions a possible effect on equality between students?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 2,
+              "explain": "Đoạn C nói không phải gia đình nào cũng có internet ổn định, nên mô hình có thể nới rộng khoảng cách giữa học sinh có và không có điều kiện."
+            },
+            {
+              "q": "Which paragraph says how teachers can spot mistakes quickly?",
+              "options": [
+                "Paragraph A",
+                "Paragraph B",
+                "Paragraph C",
+                "Paragraph D"
+              ],
+              "answer": 1,
+              "explain": "Đoạn B: giáo viên đi giữa các học sinh khi các em làm bài nên nhận ra lỗi phổ biến ngay."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ielts-writing",
+      "skill": "writing",
+      "title": "Writing · Viết",
+      "about": "Bài viết gồm Task 1 (mô tả biểu đồ/bảng/quy trình, ≥150 từ, khoảng 20 phút) và Task 2 (bài luận, ≥250 từ, khoảng 40 phút, chiếm điểm nhiều hơn). Chiến lược: Task 1 luôn có đoạn Overview nêu xu hướng chính; Task 2 lập dàn ý 3 phút (quan điểm + 2 ý chính + ví dụ) trước khi viết.",
+      "items": [
+        {
+          "id": "ielts-w-01",
+          "kind": "write",
+          "prompt": "You should spend about 20 minutes on this task.\n\nThe graph data below shows the percentage of households with internet access in three countries (A, B and C) in 2000, 2010 and 2020.\n\nCountry A: 2000 = 45%, 2010 = 80%, 2020 = 95%\nCountry B: 2000 = 20%, 2010 = 55%, 2020 = 85%\nCountry C: 2000 = 5%, 2010 = 25%, 2020 = 60%\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.",
+          "promptVi": "Task 1 (biểu đồ đường): tỷ lệ hộ gia đình có internet ở 3 quốc gia năm 2000, 2010, 2020. Tóm tắt các đặc điểm chính và so sánh.",
+          "minWords": 150,
+          "sample": "The line graph compares the proportion of households with internet access in three countries, A, B and C, at ten-year intervals between 2000 and 2020.\n\nOverall, access rose substantially in every country. Country A remained in the lead throughout, while Country C began from the lowest base and recorded the fastest relative growth.\n\nIn 2000, 45% of households in Country A were online, compared with 20% in Country B and only 5% in Country C. Over the following decade, Country A's figure climbed to 80%, and Country B's rose to 55%. Country C lagged well behind at 25%.\n\nBetween 2010 and 2020, growth in Country A slowed as the market approached saturation, reaching 95% by the end of the period. Country B continued to expand rapidly, gaining thirty percentage points to reach 85%, which narrowed the gap with the leader to just 10 points. Country C more than doubled its figure again, finishing at 60%, although it still trailed the other two countries considerably.",
+          "checklist": [
+            "Task Achievement: đoạn mở bài diễn đạt lại đề (paraphrase) và có đoạn Overview nêu xu hướng/đặc điểm chính, không đưa ý kiến cá nhân.",
+            "Số liệu: chọn và so sánh các số liệu nổi bật (cao nhất, thấp nhất, thay đổi lớn), có đơn vị đúng, không liệt kê hết từng con số.",
+            "Coherence & Cohesion: chia 4 đoạn rõ ràng (mở bài, overview, 2 đoạn chi tiết) và dùng từ nối so sánh như whereas, while, in contrast, by comparison.",
+            "Lexical Resource: dùng đa dạng từ chỉ thay đổi/so sánh (rise, climb, double, lag behind, account for) và tránh lặp một từ nhiều lần.",
+            "Grammar: dùng đúng thì (quá khứ cho mốc thời gian đã qua), câu phức, cấu trúc so sánh; soát lỗi mạo từ và số ít/số nhiều.",
+            "Đủ ít nhất 150 từ và đã dành 2 phút kiểm tra lại số liệu so với đề."
+          ]
+        },
+        {
+          "id": "ielts-w-02",
+          "kind": "write",
+          "prompt": "You should spend about 20 minutes on this task.\n\nThe table data below shows the average number of hours per week that people in four age groups spent on four leisure activities.\n\nAge 16-24: watching TV 8, exercising 5, reading 2, social media 14\nAge 25-44: watching TV 12, exercising 3, reading 3, social media 9\nAge 45-64: watching TV 18, exercising 3, reading 5, social media 4\nAge 65 and over: watching TV 25, exercising 4, reading 8, social media 2\n\nSummarise the information by selecting and reporting the main features, and make comparisons where relevant.\n\nWrite at least 150 words.",
+          "promptVi": "Task 1 (bảng số liệu): số giờ mỗi tuần dành cho 4 hoạt động giải trí ở 4 nhóm tuổi. Chọn đặc điểm nổi bật và so sánh.",
+          "minWords": 150,
+          "sample": "The table compares how many hours per week four age groups devoted to watching television, exercising, reading and using social media.\n\nOverall, the pattern changes sharply with age: younger people spent far more time on social media, whereas older groups favoured television and reading. Exercise remained the least variable activity.\n\nSocial media was by far the most popular pastime among 16 to 24 year olds, at 14 hours a week, well above television at 8 hours. This figure fell steadily with age, dropping to just 2 hours among those aged 65 and over.\n\nTelevision showed the opposite trend. Viewing time tripled from 8 hours in the youngest group to 25 hours in the oldest, making it the single largest activity for everyone aged 25 and above.\n\nReading also rose with age, from 2 hours for the youngest group to 8 hours for the oldest. By contrast, time spent exercising varied little, ranging between 3 and 5 hours, with young adults the most active and the two middle groups the least.",
+          "checklist": [
+            "Task Achievement: đoạn mở bài diễn đạt lại đề (paraphrase) và có đoạn Overview nêu xu hướng/đặc điểm chính, không đưa ý kiến cá nhân.",
+            "Số liệu: chọn và so sánh các số liệu nổi bật (cao nhất, thấp nhất, thay đổi lớn), có đơn vị đúng, không liệt kê hết từng con số.",
+            "Coherence & Cohesion: chia 4 đoạn rõ ràng (mở bài, overview, 2 đoạn chi tiết) và dùng từ nối so sánh như whereas, while, in contrast, by comparison.",
+            "Lexical Resource: dùng đa dạng từ chỉ thay đổi/so sánh (rise, climb, double, lag behind, account for) và tránh lặp một từ nhiều lần.",
+            "Grammar: dùng đúng thì (quá khứ cho mốc thời gian đã qua), câu phức, cấu trúc so sánh; soát lỗi mạo từ và số ít/số nhiều.",
+            "Đủ ít nhất 150 từ và đã dành 2 phút kiểm tra lại số liệu so với đề."
+          ]
+        },
+        {
+          "id": "ielts-w-03",
+          "kind": "write",
+          "prompt": "You should spend about 20 minutes on this task.\n\nThe process below describes how recycled paper is made. The steps are shown in order.\n\nStep 1: Waste paper is collected from homes and offices and sorted by type.\nStep 2: The paper is mixed with water and chemicals in a large tank and broken down into a wet pulp.\nStep 3: The pulp passes through screens, which remove staples, plastic and other waste.\nStep 4: Ink is removed by blowing air through the pulp, so that the ink rises in a foam that is skimmed off.\nStep 5: The cleaned pulp is bleached and refined.\nStep 6: The pulp is sprayed onto a moving mesh, pressed between rollers and dried with hot air.\nStep 7: The new paper is wound into large rolls and cut into sheets.\n\nSummarise the information by selecting and reporting the main features.\n\nWrite at least 150 words.",
+          "promptVi": "Task 1 (quy trình): các bước sản xuất giấy tái chế từ giấy phế liệu đến thành phẩm. Mô tả các bước chính.",
+          "minWords": 150,
+          "sample": "The diagram illustrates the seven stages involved in producing recycled paper from waste paper.\n\nOverall, the process is linear and begins with the collection of used paper and ends with the cutting of finished sheets. The middle stages focus on cleaning the material, which is the most demanding part of the process.\n\nFirst, waste paper is gathered from homes and offices and sorted according to type. It is then combined with water and chemicals in a large tank, where it is broken down into a wet pulp. Next, the pulp is passed through screens, which filter out unwanted items such as staples and plastic.\n\nThe following stage removes ink. Air is blown through the pulp, causing the ink to rise in a foam that is skimmed off the surface. The clean pulp is then bleached and refined to improve its quality.\n\nIn the final stages, the pulp is sprayed onto a moving mesh, squeezed between rollers and dried with hot air. Finally, the newly formed paper is wound onto large rolls and cut into sheets, ready for use.",
+          "checklist": [
+            "Task Achievement: có Overview nêu số bước và mô tả quy trình là tuyến tính, nêu điểm bắt đầu và kết thúc.",
+            "Đủ cả 7 bước theo đúng thứ tự, không bỏ bước và không thêm thông tin không có trong đề.",
+            "Coherence & Cohesion: dùng từ chỉ trình tự (First, Next, Then, Following this, Finally) và nối các bước thành câu, không viết thành danh sách.",
+            "Lexical Resource: dùng thể bị động cho quy trình (is sorted, is broken down) và paraphrase các động từ trong đề.",
+            "Grammar: dùng thì hiện tại đơn bị động nhất quán; kiểm tra lỗi mệnh đề quan hệ và giới từ.",
+            "Đủ ít nhất 150 từ và không đưa ý kiến cá nhân."
+          ]
+        },
+        {
+          "id": "ielts-w-04",
+          "kind": "write",
+          "prompt": "You should spend about 40 minutes on this task.\n\nSome people think that governments should spend money on public transport rather than on building new roads.\n\nTo what extent do you agree or disagree?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.",
+          "promptVi": "Task 2 (nêu quan điểm): chính phủ nên chi tiền cho giao thông công cộng thay vì xây thêm đường mới. Bạn đồng ý đến mức nào?",
+          "minWords": 250,
+          "sample": "In many cities, traffic jams have become a daily misery, and the instinctive reaction of many officials is to build more roads. I largely agree, however, that investing in public transport is the wiser use of public money.\n\nThe main weakness of new roads is that they rarely solve the problem they are built to address. Wider motorways attract additional drivers, a phenomenon known as induced demand, so congestion typically returns within a few years. By contrast, a single metro train can carry as many passengers as hundreds of cars, and a reliable network gives commuters a genuine alternative. Cities such as Singapore, which combine heavy investment in rail with road pricing, show that traffic can be managed without constantly adding tarmac.\n\nPublic transport also brings wider social and environmental benefits. Fewer cars mean cleaner air and lower carbon emissions, which is vital for cities struggling with pollution. Moreover, affordable buses and trains give mobility to people who cannot drive, such as the elderly, students and low-income families, helping them reach jobs and services that would otherwise be out of reach.\n\nThat said, roads should not be neglected altogether. Rural communities and emergency services depend on them, and a well-maintained network is essential for freight. Buses, of course, need good roads to run on. A sensible budget would therefore prioritise public transport while still funding repairs and targeted improvements.\n\nIn conclusion, building ever more roads is a short-term fix that tends to make congestion worse, whereas investment in public transport offers lasting benefits for the economy, the environment and social equality. Governments should therefore give it priority.",
+          "checklist": [
+            "Task Response: nêu rõ mức độ đồng ý ở mở bài và giữ quan điểm nhất quán đến kết bài; nếu có phần nhượng bộ thì phải ngắn và không làm lạc hướng.",
+            "Mở bài paraphrase đề và nêu rõ quan điểm/cấu trúc bài; kết bài nhắc lại quan điểm, không thêm ý mới.",
+            "Mỗi đoạn thân bài có một ý chính (topic sentence), sau đó giải thích và có ví dụ cụ thể, không chung chung.",
+            "Coherence & Cohesion: dùng từ nối đa dạng và tự nhiên (moreover, by contrast, as a result) thay vì lạm dụng \"Firstly, Secondly\".",
+            "Lexical Resource: dùng collocation chính xác và từ vựng chủ đề; tránh lặp từ khóa của đề; không dùng từ khó nếu không chắc nghĩa.",
+            "Grammar: kết hợp câu đơn và câu phức (mệnh đề quan hệ, điều kiện, bị động), kiểm tra lỗi chia động từ và mạo từ.",
+            "Đủ ít nhất 250 từ; còn 3–5 phút cuối để đọc lại."
+          ]
+        },
+        {
+          "id": "ielts-w-05",
+          "kind": "write",
+          "prompt": "You should spend about 40 minutes on this task.\n\nSome people believe that children should start learning a foreign language at primary school. Others think it is better to wait until secondary school.\n\nDiscuss both views and give your own opinion.\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.",
+          "promptVi": "Task 2 (thảo luận hai quan điểm): trẻ nên học ngoại ngữ từ tiểu học hay đợi đến trung học? Thảo luận cả hai quan điểm và nêu ý kiến của bạn.",
+          "minWords": 250,
+          "sample": "Whether children should begin a foreign language in primary school or later is a question that divides parents and educators. While there are reasonable arguments for waiting, I believe an early start is more beneficial.\n\nThose who prefer secondary school argue that young children have a limited attention span and are still developing their mother tongue. Teaching a second language too early, they claim, may confuse pupils or take time away from core subjects such as reading and mathematics. In addition, many primary schools lack specialist language teachers, so lessons may be of poor quality and could even teach bad habits that are difficult to correct later.\n\nHowever, the case for an early start is stronger. Young children are remarkably good at absorbing pronunciation and rhythm, and they usually learn through songs, games and stories, which makes the process enjoyable rather than stressful. Children who begin early also build up many more hours of exposure over their school years, which is crucial because language learning is cumulative. In countries such as the Netherlands, where English is introduced early, young people tend to reach a high level of fluency by the time they leave school.\n\nMoreover, learning another language at a young age develops confidence and curiosity about other cultures, attitudes that are valuable in an increasingly connected world. The concern about quality is a genuine one, but it can be addressed by training teachers rather than by delaying the subject.\n\nIn conclusion, although a later start has some merits, I believe the benefits of beginning in primary school outweigh the drawbacks, provided that lessons are playful and taught by qualified teachers.",
+          "checklist": [
+            "Task Response: bàn đủ cả hai quan điểm (mỗi quan điểm ít nhất một đoạn) và nêu rõ ý kiến riêng ở mở bài và kết bài.",
+            "Mở bài paraphrase đề và nêu rõ quan điểm/cấu trúc bài; kết bài nhắc lại quan điểm, không thêm ý mới.",
+            "Mỗi đoạn thân bài có một ý chính (topic sentence), sau đó giải thích và có ví dụ cụ thể, không chung chung.",
+            "Coherence & Cohesion: dùng từ nối đa dạng và tự nhiên (moreover, by contrast, as a result) thay vì lạm dụng \"Firstly, Secondly\".",
+            "Lexical Resource: dùng collocation chính xác và từ vựng chủ đề; tránh lặp từ khóa của đề; không dùng từ khó nếu không chắc nghĩa.",
+            "Grammar: kết hợp câu đơn và câu phức (mệnh đề quan hệ, điều kiện, bị động), kiểm tra lỗi chia động từ và mạo từ.",
+            "Đủ ít nhất 250 từ; còn 3–5 phút cuối để đọc lại."
+          ]
+        },
+        {
+          "id": "ielts-w-06",
+          "kind": "write",
+          "prompt": "You should spend about 40 minutes on this task.\n\nIn many countries, young people are spending more and more time on phones, tablets and computers.\n\nWhat problems does this cause, and what measures can be taken to deal with them?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.",
+          "promptVi": "Task 2 (vấn đề - giải pháp): giới trẻ dành ngày càng nhiều thời gian cho thiết bị điện tử. Những vấn đề nào phát sinh và có thể làm gì?",
+          "minWords": 250,
+          "sample": "It is common to see teenagers with their eyes glued to a screen, even when they are with friends. This trend creates a number of problems, but there are practical steps that families and schools can take.\n\nThe most obvious problem is physical health. Hours of sitting reduce exercise and contribute to obesity, while late-night screen use often disrupts sleep, leaving students tired and unable to concentrate in class. A second problem is the impact on social and emotional development. Young people who communicate mainly through messages may find face-to-face conversation more difficult, and constant exposure to the polished lives of others on social media can damage self-esteem and increase anxiety.\n\nThere are several ways to tackle these issues. First, parents can set clear boundaries, such as keeping phones out of bedrooms at night and creating screen-free family meals. These rules work best when adults follow them too, since children copy what they see. Second, schools can play a part by limiting phone use in lessons and offering attractive alternatives, such as sports clubs and music groups, so that young people have enjoyable reasons to put their devices down. Some schools that have banned phones during the school day report that pupils talk to each other more at break times.\n\nFinally, teaching young people to use technology wisely is more effective than banning it altogether. Lessons on online habits and mental health can help them recognise when their usage has become harmful.\n\nIn conclusion, excessive screen time harms both physical health and social development, but a combination of family rules, school policies and education can help young people strike a healthier balance.",
+          "checklist": [
+            "Task Response: trả lời đủ cả hai phần của đề (các vấn đề VÀ các giải pháp) và các giải pháp phải gắn trực tiếp với từng vấn đề đã nêu.",
+            "Mở bài paraphrase đề và nêu rõ quan điểm/cấu trúc bài; kết bài nhắc lại quan điểm, không thêm ý mới.",
+            "Mỗi đoạn thân bài có một ý chính (topic sentence), sau đó giải thích và có ví dụ cụ thể, không chung chung.",
+            "Coherence & Cohesion: dùng từ nối đa dạng và tự nhiên (moreover, by contrast, as a result) thay vì lạm dụng \"Firstly, Secondly\".",
+            "Lexical Resource: dùng collocation chính xác và từ vựng chủ đề; tránh lặp từ khóa của đề; không dùng từ khó nếu không chắc nghĩa.",
+            "Grammar: kết hợp câu đơn và câu phức (mệnh đề quan hệ, điều kiện, bị động), kiểm tra lỗi chia động từ và mạo từ.",
+            "Đủ ít nhất 250 từ; còn 3–5 phút cuối để đọc lại."
+          ]
+        },
+        {
+          "id": "ielts-w-07",
+          "kind": "write",
+          "prompt": "You should spend about 40 minutes on this task.\n\nMore and more people are choosing to work from home instead of travelling to an office.\n\nWhat are the advantages and disadvantages of this trend?\n\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.\n\nWrite at least 250 words.",
+          "promptVi": "Task 2 (ưu - nhược điểm): ngày càng nhiều người làm việc tại nhà thay vì đến văn phòng. Nêu ưu điểm và nhược điểm của xu hướng này.",
+          "minWords": 250,
+          "sample": "Advances in technology have made it possible for many employees to do their jobs from a spare room or kitchen table. This trend has clear benefits, but it also brings drawbacks that should not be ignored.\n\nThe most significant advantage is the time and money saved on commuting. Workers who no longer spend two hours a day on crowded trains can use that time for rest, family or exercise, and they avoid the cost of fuel or tickets. Flexibility is another benefit. Employees can arrange their working hours around childcare or personal appointments, which often increases job satisfaction and may even raise productivity. Employers gain too, as they can reduce expenditure on office space and recruit staff from a much wider area.\n\nOn the other hand, working at home can be isolating. Without casual conversations with colleagues, some people feel lonely and disconnected, and younger employees miss the chance to learn by observing more experienced staff. In addition, the boundary between work and private life becomes blurred. Because the laptop is always within reach, many people find it hard to switch off and end up working longer hours, which can lead to stress and burnout. Not everyone has a quiet space at home, either, so distractions can reduce the quality of work.\n\nIn my view, the advantages outweigh the disadvantages, particularly when employees split their week between home and the office. This arrangement preserves flexibility while allowing the teamwork and social contact that most people need.\n\nIn conclusion, working from home saves time and offers freedom, but it can cause isolation and overwork, so a balanced approach is likely to be the most effective.",
+          "checklist": [
+            "Task Response: nêu đủ ưu điểm và nhược điểm, mỗi mặt có ít nhất hai ý được phát triển, và (nếu đề hỏi) nêu nhận định bên nào nặng hơn.",
+            "Mở bài paraphrase đề và nêu rõ quan điểm/cấu trúc bài; kết bài nhắc lại quan điểm, không thêm ý mới.",
+            "Mỗi đoạn thân bài có một ý chính (topic sentence), sau đó giải thích và có ví dụ cụ thể, không chung chung.",
+            "Coherence & Cohesion: dùng từ nối đa dạng và tự nhiên (moreover, by contrast, as a result) thay vì lạm dụng \"Firstly, Secondly\".",
+            "Lexical Resource: dùng collocation chính xác và từ vựng chủ đề; tránh lặp từ khóa của đề; không dùng từ khó nếu không chắc nghĩa.",
+            "Grammar: kết hợp câu đơn và câu phức (mệnh đề quan hệ, điều kiện, bị động), kiểm tra lỗi chia động từ và mạo từ.",
+            "Đủ ít nhất 250 từ; còn 3–5 phút cuối để đọc lại."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ielts-speaking",
+      "skill": "speaking",
+      "title": "Speaking · Nói",
+      "about": "Bài nói gồm 3 phần: Part 1 (4–5 phút) hỏi về bản thân và đời sống quen thuộc; Part 2 (3–4 phút) nói một mình theo thẻ gợi ý sau 1 phút chuẩn bị; Part 3 (4–5 phút) thảo luận trừu tượng hơn. Chiến lược: trả lời đầy đủ ý (câu trả lời + lý do + ví dụ ngắn), nói trôi chảy và tự nhiên hơn là dùng từ khó; nếu quên từ, hãy diễn đạt lại bằng từ đơn giản thay vì dừng lại.",
+      "items": [
+        {
+          "id": "ielts-s1-01",
+          "kind": "speak",
+          "prompt": "Part 1: Where are you from? Do you like living there?",
+          "promptVi": "Part 1: Bạn đến từ đâu? Bạn có thích sống ở đó không?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "I'm from a coastal city in central Vietnam, and I'd say it's a lovely place to live. The pace of life is slower than in the big cities, and the beaches are only a short ride away, although it can get really crowded in the summer holidays.",
+          "tips": [
+            "Trả lời ngay câu hỏi chính, rồi thêm một lý do và một chi tiết cụ thể.",
+            "Có thể thêm điểm chưa hoàn hảo (although...) để câu trả lời tự nhiên, không như đọc thuộc lòng.",
+            "Tránh trả lời một từ như \"Yes\" hoặc \"No\" rồi dừng."
+          ]
+        },
+        {
+          "id": "ielts-s1-02",
+          "kind": "speak",
+          "prompt": "Part 1: Do you work or are you a student? What do you enjoy most about it?",
+          "promptVi": "Part 1: Bạn đi làm hay đi học? Bạn thích điều gì nhất ở công việc/việc học đó?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "I work as a software tester at a small company. What I enjoy most is the problem-solving side of it, because every day I get to figure out where things might break, which feels a bit like detective work.",
+          "tips": [
+            "Nêu công việc/ngành học bằng từ đơn giản, rồi giải thích điều bạn thích.",
+            "Dùng hình ảnh so sánh ngắn (it feels like...) để câu trả lời sinh động.",
+            "Nếu là học sinh, đổi thành \"I'm studying...\" và nói môn bạn thích."
+          ]
+        },
+        {
+          "id": "ielts-s1-03",
+          "kind": "speak",
+          "prompt": "Part 1: What do you usually do in your free time?",
+          "promptVi": "Part 1: Bạn thường làm gì vào thời gian rảnh?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "I'm really into cooking at the moment, so on weekends I try out new recipes, mostly dishes from other countries. When I'm not in the kitchen, I tend to go for a long walk or catch up on a series, just to switch off after a busy week.",
+          "tips": [
+            "Dùng cụm \"I'm into... / I tend to... / I like to...\" thay vì lặp \"I like\".",
+            "Đưa 2 hoạt động và một lý do (switch off, relax).",
+            "Nói về tần suất: on weekends, every now and then, most evenings."
+          ]
+        },
+        {
+          "id": "ielts-s1-04",
+          "kind": "speak",
+          "prompt": "Part 1: What kind of food do you enjoy eating? Is it important to eat healthily?",
+          "promptVi": "Part 1: Bạn thích ăn loại đồ ăn nào? Ăn uống lành mạnh có quan trọng không?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "I'm a big fan of spicy noodle dishes, although I know I shouldn't eat them too often. I do think eating healthily is important, so I try to balance it out with plenty of vegetables and fruit during the week.",
+          "tips": [
+            "Câu hỏi có hai ý, hãy trả lời cả hai thay vì chỉ ý đầu.",
+            "Dùng \"although I know...\" để thể hiện câu phức.",
+            "Dùng từ về chủ đề: balanced diet, junk food, home-cooked meals."
+          ]
+        },
+        {
+          "id": "ielts-s1-05",
+          "kind": "speak",
+          "prompt": "Part 1: How often do you use a smartphone? What do you use it for?",
+          "promptVi": "Part 1: Bạn dùng điện thoại thông minh thường xuyên đến mức nào? Dùng để làm gì?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "Honestly, I'm on my phone pretty much all day, mainly for messaging, checking the news and listening to podcasts on my commute. I'd say it has become so useful that I'd feel a bit lost without it.",
+          "tips": [
+            "Dùng \"Honestly\" hoặc \"To be honest\" để mở đầu tự nhiên.",
+            "Liệt kê 2–3 mục đích bằng ví dụ cụ thể.",
+            "Thêm một cảm nhận ngắn cuối câu để câu trả lời có chiều sâu."
+          ]
+        },
+        {
+          "id": "ielts-s1-06",
+          "kind": "speak",
+          "prompt": "Part 1: What is the weather like in your hometown? Which season do you like best?",
+          "promptVi": "Part 1: Thời tiết ở quê bạn thế nào? Bạn thích mùa nào nhất?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 30,
+          "sample": "It's warm and humid for most of the year, with a rainy season that usually starts in the autumn. My favourite season is spring, because the weather is mild and the whole city seems to come alive with outdoor events.",
+          "tips": [
+            "Miêu tả thời tiết bằng 2–3 tính từ (warm, humid, mild).",
+            "Với câu hỏi \"Which...best?\", hãy chọn rõ một mùa và giải thích vì sao.",
+            "Tránh từ quá chung như \"good weather\"; hãy cụ thể hơn."
+          ]
+        },
+        {
+          "id": "ielts-s2-01",
+          "kind": "speak",
+          "prompt": "Describe a person who has had an important influence on you.\n\nYou should say:\n- who this person is\n- how you know them\n- what they have done or taught you\n- and explain why they have been so influential.",
+          "promptVi": "Part 2: Mô tả một người có ảnh hưởng lớn đến bạn: là ai, bạn biết họ thế nào, họ đã làm/dạy bạn điều gì và vì sao họ có ảnh hưởng.",
+          "readAloud": false,
+          "prepareSeconds": 60,
+          "speakSeconds": 120,
+          "sample": "I'd like to talk about my old English teacher, Mrs Lan, who taught me when I was about fifteen. I met her at a point when I was really shy and honestly quite afraid of making mistakes in front of the class.\n\nWhat made her special was the way she treated errors. Instead of correcting us harshly, she would smile and say that mistakes were simply proof that we were trying. She also set up little speaking games every Friday, and slowly I started to put my hand up without feeling my heart pounding.\n\nShe taught me far more than grammar, though. She often told us that being curious was more important than being perfect, and that stuck with me. Whenever I feel nervous about something new, like starting a different job or speaking in a meeting, I remember her advice and just give it a go.\n\nI think she has been so influential because she changed the way I see myself. I went from someone who avoided speaking to someone who actually enjoys it. I still keep in touch with her, and last year I visited her to say thank you. She probably didn't realise how much difference she made, but I certainly haven't forgotten.",
+          "tips": [
+            "Dùng 1 phút chuẩn bị để ghi từ khóa cho 4 gạch đầu dòng (who, how, what, why), không viết cả câu.",
+            "Kể một câu chuyện nhỏ cụ thể thay vì liệt kê tính cách chung chung.",
+            "Nói đủ 2 phút; nếu hết ý, quay lại phần \"why\" để mở rộng ảnh hưởng đến hiện tại.",
+            "Dùng thì quá khứ cho kỷ niệm, hiện tại cho ảnh hưởng đến nay."
+          ]
+        },
+        {
+          "id": "ielts-s2-02",
+          "kind": "speak",
+          "prompt": "Describe a place you would like to visit in the future.\n\nYou should say:\n- where it is\n- how you would travel there\n- what you would do there\n- and explain why you would like to go.",
+          "promptVi": "Part 2: Mô tả một nơi bạn muốn đến trong tương lai: ở đâu, đi bằng cách nào, sẽ làm gì và vì sao muốn đến.",
+          "readAloud": false,
+          "prepareSeconds": 60,
+          "speakSeconds": 120,
+          "sample": "One place I've always dreamed of visiting is Iceland. It's a small island country in the North Atlantic, and I've been fascinated by it ever since I saw photos of its waterfalls and black sand beaches.\n\nIdeally, I'd fly there from Asia with a stopover somewhere in Europe, and once I arrived I'd hire a car and drive along the ring road, which circles the whole island. That way I could stop whenever I felt like it instead of sticking to a rigid tour.\n\nAs for what I'd do, I'd love to soak in the geothermal hot springs, hike around a glacier and, if I'm lucky, see the northern lights. I'd also try some local food, although I've heard it can be quite expensive, so I'd probably save up for it for a couple of years.\n\nThe main reason I'd like to go is that the landscape looks so different from anything I've seen. I live in a busy, crowded city, so the idea of standing in huge open spaces with hardly anyone around is incredibly appealing. I think it would be a real chance to slow down, clear my head and come back feeling refreshed.",
+          "tips": [
+            "Chọn nơi bạn thật sự biết đôi chút để có đủ ý nói đủ 2 phút.",
+            "Dùng thể điều kiện (I would..., I'd love to...) vì đây là kế hoạch tương lai giả định.",
+            "Dùng các cụm nối: as for, the main reason, that way, ideally.",
+            "Mỗi gạch đầu dòng nói khoảng 30 giây."
+          ]
+        },
+        {
+          "id": "ielts-s2-03",
+          "kind": "speak",
+          "prompt": "Describe a useful skill that you learned.\n\nYou should say:\n- what the skill is\n- when and how you learned it\n- who helped you learn it\n- and explain why it has been useful to you.",
+          "promptVi": "Part 2: Mô tả một kỹ năng hữu ích bạn đã học: là kỹ năng gì, học khi nào và bằng cách nào, ai giúp bạn và vì sao nó hữu ích.",
+          "readAloud": false,
+          "prepareSeconds": 60,
+          "speakSeconds": 120,
+          "sample": "The skill I'd like to describe is cooking, or more precisely, learning to cook proper meals from scratch. I started in my early twenties, when I moved to a different city for work and suddenly had to feed myself.\n\nAt first, it was a disaster. I burnt rice, over-salted soup, and once nearly set off the smoke alarm. But I was lucky because my aunt, who is a fantastic cook, taught me over the phone. She would patiently talk me through each step, and I also watched a lot of online videos to pick up techniques like how to chop vegetables quickly and safely.\n\nIt took a few months before I felt confident, but by the end of the year I could cook about ten dishes without looking at a recipe.\n\nThis skill has been useful in many ways. It has saved me a lot of money, since eating out every day adds up. It has also improved my health, because I know exactly what goes into my food. And, perhaps most importantly, it has become a way of relaxing and of bringing friends together. Cooking for others makes me feel connected, and that's something I never expected when I first started.",
+          "tips": [
+            "Kể theo trình tự thời gian: lúc đầu, sau đó, cuối cùng.",
+            "Một vài thất bại hài hước giúp bài nói chân thực và có chi tiết để nói.",
+            "Phần \"why useful\" hãy nêu 2–3 lợi ích rõ ràng.",
+            "Dùng collocation: from scratch, pick up a skill, talk someone through."
+          ]
+        },
+        {
+          "id": "ielts-s2-04",
+          "kind": "speak",
+          "prompt": "Describe a memorable gift you gave or received.\n\nYou should say:\n- what the gift was\n- who gave it to whom\n- what the occasion was\n- and explain why it was memorable.",
+          "promptVi": "Part 2: Mô tả một món quà đáng nhớ bạn đã tặng hoặc nhận: là gì, ai tặng ai, dịp nào và vì sao đáng nhớ.",
+          "readAloud": false,
+          "prepareSeconds": 60,
+          "speakSeconds": 120,
+          "sample": "The gift I'd like to talk about is a hand-made photo album that my friends gave me when I left my previous job. It wasn't expensive, but it meant the world to me.\n\nIt was my last day at the company, and the whole team had organised a small farewell lunch. At the end, my manager handed me a rather heavy parcel wrapped in plain brown paper. When I opened it, I found an album filled with photos from team trips and office parties over the past five years, and next to each picture someone had written a little caption or a funny memory.\n\nI actually got a bit emotional, because I realised how much effort they'd put in. Some of the photos I'd completely forgotten about, and the captions had me laughing and tearing up at the same time.\n\nWhat makes it so memorable is that it was thoughtful rather than costly. Someone had clearly taken the time to collect the pictures and think about what each one meant to me. I still keep it on my bookshelf, and whenever I feel down or nostalgic, I flip through it. It reminds me that the people I worked with genuinely cared.",
+          "tips": [
+            "Mô tả hoàn cảnh nhận quà (không khí, cảm xúc) để bài nói sinh động.",
+            "Dùng cụm cảm xúc: meant the world to me, got a bit emotional, it was the thought that counted.",
+            "Kết bằng giá trị hiện tại của món quà (vẫn giữ, vẫn nhớ).",
+            "Có thể chọn quà không đắt tiền để dễ kể chi tiết cá nhân."
+          ]
+        },
+        {
+          "id": "ielts-s3-01",
+          "kind": "speak",
+          "prompt": "Part 3: Why do some people become role models for young people? Do you think celebrities make good role models?",
+          "promptVi": "Part 3: Vì sao một số người trở thành hình mẫu cho giới trẻ? Theo bạn người nổi tiếng có phải hình mẫu tốt không?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 60,
+          "sample": "I think people become role models when they show qualities that young people admire, like hard work, kindness or courage, especially when they overcome difficulties. As for celebrities, it's a mixed picture. Some use their fame for positive causes, such as raising money for charity, but others only show a glamorous side of life, which can create unrealistic expectations. So I'd say it depends on the person rather than on being famous. After all, the young people who look up to them are watching how they behave when things go wrong, not just when they win. I'd even argue that ordinary people, like teachers or older siblings, are often better role models because their example feels more achievable.",
+          "tips": [
+            "Trả lời cả hai câu hỏi, dùng \"it depends\" để thể hiện quan điểm cân bằng.",
+            "Đưa lý do và ví dụ chung, không cần nêu tên người cụ thể.",
+            "Dùng \"I think / I'd say / it's a mixed picture\" để mở câu tự nhiên."
+          ]
+        },
+        {
+          "id": "ielts-s3-02",
+          "kind": "speak",
+          "prompt": "Part 3: How has tourism affected local communities in popular destinations?",
+          "promptVi": "Part 3: Du lịch đã ảnh hưởng thế nào đến cộng đồng địa phương ở các điểm đến nổi tiếng?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 60,
+          "sample": "It's had both positive and negative effects. On the plus side, tourism creates jobs and brings money into the area, which can pay for better roads and services. However, in places that become extremely popular, ordinary residents often get priced out, because rents go up and shops start catering only to visitors. There's also the pressure on the environment and local culture. I think the best approach is to limit visitor numbers and make sure the profits actually benefit local people. Some cities have already started doing this, for example by charging a small entry fee or by encouraging visitors to stay in locally owned guesthouses, and it seems to be working reasonably well.",
+          "tips": [
+            "Cấu trúc \"positive - however negative - my view\" rất hợp cho Part 3.",
+            "Dùng từ chủ đề: cater to, priced out, pressure on, benefit locals.",
+            "Kết bằng một giải pháp ngắn để câu trả lời hoàn chỉnh."
+          ]
+        },
+        {
+          "id": "ielts-s3-03",
+          "kind": "speak",
+          "prompt": "Part 3: Should schools teach practical skills, such as cooking or managing money?",
+          "promptVi": "Part 3: Trường học có nên dạy kỹ năng thực hành như nấu ăn hay quản lý tiền không?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 60,
+          "sample": "Definitely. Many young people leave school able to solve complex equations but unable to budget their salary or prepare a simple meal. These skills affect daily life far more directly than some academic subjects. That said, the curriculum is already crowded, so schools would have to decide what to drop. Perhaps a good compromise would be short practical modules, taught through projects, so that students learn while doing something enjoyable. It would also help if parents reinforced those lessons at home, because skills like saving money are learned best through everyday habits rather than through a one-off class.",
+          "tips": [
+            "Mở bằng quan điểm rõ ràng (Definitely / I'm not so sure).",
+            "Nêu sự đánh đổi (the curriculum is already crowded) để thể hiện tư duy phản biện.",
+            "Đưa giải pháp dung hòa (compromise) ở cuối."
+          ]
+        },
+        {
+          "id": "ielts-s3-04",
+          "kind": "speak",
+          "prompt": "Part 3: How have gift-giving traditions changed in recent years?",
+          "promptVi": "Part 3: Truyền thống tặng quà đã thay đổi thế nào trong những năm gần đây?",
+          "readAloud": false,
+          "prepareSeconds": 5,
+          "speakSeconds": 60,
+          "sample": "I think the biggest change is that people now shop online and send gifts directly, so the personal touch is sometimes lost. Gift cards and money have also become more common, because they're convenient and let people choose for themselves. At the same time, some people are going back to experiences instead of objects, like concert tickets or a weekend away, partly because they're more memorable and partly because there's less clutter at home. Personally, I find that a thoughtful, personal gift still beats anything bought online, however convenient it is, because it shows that someone has really paid attention to what you like.",
+          "tips": [
+            "Dùng \"I think the biggest change is...\" để nêu ý chính ngay.",
+            "So sánh xưa và nay bằng thì hiện tại hoàn thành (have become, have changed).",
+            "Thêm xu hướng ngược lại (some people are going back to...) để câu trả lời có chiều sâu."
+          ]
+        }
+      ]
+    }
+  ],
+  "test": {
+    "title": "Đề luyện IELTS rút gọn (Listening + Reading)",
+    "minutes": 40,
+    "pick": {
+      "ielts-listening": 4,
+      "ielts-reading": 2
+    }
+  }
+}

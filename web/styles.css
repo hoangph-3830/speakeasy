@@ -476,3 +476,17 @@ canvas.wave { width: 100%; height: 110px; display: block; background: var(--canv
 .ipa-big { font-size: 36px; font-weight: 800; color: var(--lavender); }
 .twister-head { text-align: left; width: 100%; }
 .twister .center { padding-top: 8px; }
+
+/* ---- Exam practice (TOEIC / IELTS) ---- */
+.exam .card { margin-bottom: 12px; }
+.exam-audio { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.exam-passage p { margin: 0 0 10px; line-height: 1.6; }
+.exam-q { margin: 14px 0; }
+.exam-q .stack { margin-top: 8px; }
+.option.picked { border-color: var(--a); background: var(--al); font-weight: 700; }
+.exam-explain { background: var(--sun-l); border-radius: 12px; padding: 8px 12px; }
+.exam-sample { background: var(--mint-l); }
+.exam-write { min-height: 200px; font-size: 16px; line-height: 1.5; }
+.exam-clock { font-variant-numeric: tabular-nums; }
+.exam-result .h-md { color: var(--coral); }
+.shortcuts { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }

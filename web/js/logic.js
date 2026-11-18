@@ -254,6 +254,8 @@ export const defaultProgress = () => ({
   history: {}, // epoch day -> XP earned that day, for the study calendar
   placedLevel: null, // placement test result: null = not taken, '' = start from A1, else the level passed
   reminderTime: '20:00',
+  examBest: {}, // exam section id -> best % in practice
+  examHistory: [], // last timed tests: { exam, day, results }
   twisterBest: {}, // tongue twister id -> best score
   audience: 'adult', // 'adult' or 'kids': which learning path Home shows
   daily: null, // today's word puzzle: { day, guesses }

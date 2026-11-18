@@ -20,6 +20,9 @@ import { hangmanScreen, memoryScreen } from './screens/challenge-puzzles.js';
 import { anagramScreen, clozeScreen, spellingScreen } from './screens/challenge-words.js';
 import { placementScreen } from './screens/placement-test.js';
 import { dailyWordScreen } from './screens/daily-word-screen.js';
+import { examListScreen, examScreen } from './screens/exam-hub.js';
+import { examPracticeScreen } from './screens/exam-practice.js';
+import { examTestScreen } from './screens/exam-test.js';
 import { ipaScreen, twistersScreen } from './screens/lab-extras.js';
 import { buildIndex } from './dict.js';
 import { speechEngineMayBeSilent } from './online-voice.js';
@@ -59,6 +62,10 @@ const ROUTES = [
   [/^challenge\/spelling$/, spellingScreen],
   [/^placement$/, placementScreen],
   [/^daily$/, dailyWordScreen],
+  [/^exam$/, examListScreen],
+  [/^exam\/([^/]+)\/test$/, examTestScreen],
+  [/^exam\/([^/]+)\/s\/([^/]+)$/, examPracticeScreen],
+  [/^exam\/([^/]+)$/, examScreen],
   [/^video\/(.+)$/, videos.videoScreen],
   [/^ai\/(.+)$/, aiChat.chatScreen],
   [/^topic\/([^/]+)$/, lesson.topicScreen],

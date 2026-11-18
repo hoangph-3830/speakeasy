@@ -43,6 +43,10 @@ import com.speakeasy.app.ui.screens.DailyWordScreen
 import com.speakeasy.app.ui.screens.IpaChartScreen
 import com.speakeasy.app.ui.screens.TongueTwistersScreen
 import com.speakeasy.app.ui.screens.DialogueScreen
+import com.speakeasy.app.ui.screens.ExamDetailScreen
+import com.speakeasy.app.ui.screens.ExamListScreen
+import com.speakeasy.app.ui.screens.ExamPracticeScreen
+import com.speakeasy.app.ui.screens.ExamTestScreen
 import com.speakeasy.app.ui.screens.GameHubScreen
 import com.speakeasy.app.ui.screens.GameScreen
 import com.speakeasy.app.ui.screens.HomeScreen
@@ -112,7 +116,17 @@ fun AppNav() {
                     openNews = { nav.switchTab("news") },
                     openVideos = { nav.navigate("videos") },
                     openPlacement = { nav.navigate("placement") },
+                    openExam = { nav.navigate("exam") },
                 )
+            }
+            screen("exam") { ExamListScreen(onBack = nav::popBackStack, openExam = { nav.navigate("exam/$it") }) }
+            screen("exam/{id}") {
+                val id = it.arguments!!.getString("id")!!
+                ExamDetailScreen(id, onBack = nav::popBackStack, openTest = { nav.navigate("exam/$id/test") }, openSection = { s -> nav.navigate("exam/$id/s/$s") })
+            }
+            screen("exam/{id}/test") { ExamTestScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }
+            screen("exam/{id}/s/{section}") {
+                ExamPracticeScreen(it.arguments!!.getString("id")!!, it.arguments!!.getString("section")!!, onBack = nav::popBackStack)
             }
             screen("vocab") { VocabHubScreen(onBack = nav::popBackStack, openGroup = { nav.navigate("vocab/$it") }) }
             screen("vocab/{id}") { VocabGroupScreen(it.arguments!!.getString("id")!!, onBack = nav::popBackStack) }

@@ -826,6 +826,240 @@
           "vi": "Bạn của chúng mình chơi thể thao ở trường."
         }
       ]
+    },
+    {
+      "id": "schwa-weak",
+      "title": "Âm schwa & dạng yếu (to, for, can, and)",
+      "ipa": "/ə/",
+      "emoji": "😶",
+      "tip": "Trong câu, các từ chức năng như to, for, can, and, of, a thường bị đọc yếu và rất ngắn, nguyên âm thành /ə/ (miệng thả lỏng, như 'ơ' nhẹ). Người Việt hay đọc rõ từng chữ như 'tu', 'phò', 'ken' nên nghe cứng và chậm. Hãy nhấn vào từ mang nghĩa (danh từ, động từ), còn từ chức năng thì lướt nhanh.",
+      "pairs": [],
+      "sentences": [
+        {
+          "en": "I need to go to the store for some bread.",
+          "vi": "Mình cần đi ra cửa hàng mua ít bánh mì.",
+          "sounds": "I need ta go ta the store fer some bread"
+        },
+        {
+          "en": "She can swim and he can dance.",
+          "vi": "Cô ấy biết bơi còn anh ấy biết nhảy.",
+          "sounds": "She kn swim 'n he kn dance"
+        },
+        {
+          "en": "A cup of tea and a piece of cake, please.",
+          "vi": "Cho mình một tách trà và một miếng bánh.",
+          "sounds": "a cuppa tea 'n a pieca cake, please"
+        },
+        {
+          "en": "What did you do at the weekend?",
+          "vi": "Cuối tuần bạn đã làm gì?",
+          "sounds": "whaddid ya do at the weekend"
+        },
+        {
+          "en": "We were waiting for her to come back.",
+          "vi": "Chúng mình đang đợi cô ấy quay lại.",
+          "sounds": "we wer waiting fer her ta come back"
+        }
+      ]
+    },
+    {
+      "id": "flap-t",
+      "title": "Âm T nảy kiểu Mỹ (water, better)",
+      "ipa": "/ɾ/",
+      "emoji": "🇺🇸",
+      "tip": "Trong tiếng Anh Mỹ, chữ t hoặc d nằm giữa hai nguyên âm (water, better, city) được đọc rất nhanh, giống âm 'đ' nhẹ hoặc 'r' lướt, không bật hơi như 't' tiếng Việt. Vì vậy 'better' nghe gần như 'bedder'. Người Việt hay đọc rõ /t/ nên nghe lơ lớ; hãy chạm nhanh đầu lưỡi lên lợi rồi thả ra.",
+      "pairs": [],
+      "sentences": [
+        {
+          "en": "I'll have a bottle of water.",
+          "vi": "Cho mình một chai nước.",
+          "sounds": "I'll have a boddle of wadder"
+        },
+        {
+          "en": "This is a better city to live in.",
+          "vi": "Đây là thành phố tốt hơn để sống.",
+          "sounds": "this is a bedder cidy to live in"
+        },
+        {
+          "en": "Get a little butter for the potatoes.",
+          "vi": "Lấy ít bơ cho món khoai tây.",
+          "sounds": "geh a liddle budder for the podayduz"
+        },
+        {
+          "en": "It's getting late, so write it later.",
+          "vi": "Trời muộn rồi, nên viết nó sau nhé.",
+          "sounds": "it's geding layt, so ride it layder"
+        },
+        {
+          "en": "My daughter wants a pretty notebook.",
+          "vi": "Con gái mình muốn một cuốn sổ đẹp.",
+          "sounds": "my dawder wanz a priddy nodebook"
+        }
+      ]
+    },
+    {
+      "id": "silent-letters",
+      "title": "Chữ cái câm (knife, listen, island)",
+      "ipa": "silent",
+      "emoji": "🤫",
+      "tip": "Nhiều từ có chữ cái viết ra nhưng không đọc: k trong knife, knee, know; t trong listen, often, castle; s trong island; b trong climb, doubt; w trong write, answer; l trong walk, talk, half. Người Việt hay đọc theo mặt chữ ('k-nai-f', 'lít-ten') nên sai. Khi học từ mới, hãy nghe phát âm trước rồi mới nhìn mặt chữ.",
+      "pairs": [],
+      "sentences": [
+        {
+          "en": "Listen, I know the answer.",
+          "vi": "Nghe này, mình biết đáp án.",
+          "sounds": "lisn, I no the anser"
+        },
+        {
+          "en": "The knife is on the island in the kitchen.",
+          "vi": "Con dao nằm trên đảo bếp.",
+          "sounds": "the nife is on the ailand in the kitchen"
+        },
+        {
+          "en": "We often talk while we walk.",
+          "vi": "Chúng mình hay vừa đi bộ vừa nói chuyện.",
+          "sounds": "we offen tawk wile we wawk"
+        },
+        {
+          "en": "I have no doubt he can climb that wall.",
+          "vi": "Mình không nghi ngờ gì anh ấy trèo được bức tường đó.",
+          "sounds": "I have no dout he can clime that wall"
+        },
+        {
+          "en": "Write the answer on the whiteboard, please.",
+          "vi": "Hãy viết đáp án lên bảng trắng nhé.",
+          "sounds": "rite the anser on the whiteboard, please"
+        }
+      ]
+    },
+    {
+      "id": "ai-ei",
+      "title": "Âm /aɪ/ và /eɪ/ (like - lake)",
+      "ipa": "/aɪ/ /eɪ/",
+      "emoji": "🌊",
+      "tip": "/aɪ/ (like) bắt đầu bằng miệng mở rộng 'a' rồi trượt lên 'i'. /eɪ/ (lake) bắt đầu từ 'ê' rồi trượt lên 'i', miệng mở vừa. Người Việt hay đọc cả hai thành 'ai' hoặc 'ây' lẫn lộn. Hãy nghe kỹ điểm xuất phát của hai âm này.",
+      "pairs": [
+        [
+          "like",
+          "lake"
+        ],
+        [
+          "time",
+          "tame"
+        ],
+        [
+          "right",
+          "rate"
+        ],
+        [
+          "white",
+          "wait"
+        ],
+        [
+          "mine",
+          "main"
+        ],
+        [
+          "pie",
+          "pay"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "I like to wait by the lake.",
+          "vi": "Mình thích đợi bên hồ."
+        },
+        {
+          "en": "It's time to pay for my pie.",
+          "vi": "Đến lúc trả tiền chiếc bánh của mình rồi."
+        },
+        {
+          "en": "The main road is on my right.",
+          "vi": "Con đường chính ở bên phải mình."
+        }
+      ]
+    },
+    {
+      "id": "oi-ou",
+      "title": "Âm /ɔɪ/, /aʊ/ và /oʊ/ (oil - owl - bowl)",
+      "ipa": "/ɔɪ/ /aʊ/ /oʊ/",
+      "emoji": "🦉",
+      "tip": "/ɔɪ/ (oil, boy) đi từ 'o' tròn môi sang 'i'. /aʊ/ (owl, town) đi từ 'a' sang 'u'. /oʊ/ (bowl, nose) đi từ 'ô' sang 'u', môi tròn dần. Người Việt hay đọc 'oil' thành 'ô-in', 'town' thành 'tao' và bỏ phần trượt cuối. Hãy giữ nguyên âm đầu rồi trượt hẳn sang âm sau.",
+      "pairs": [
+        [
+          "boil",
+          "bowl"
+        ],
+        [
+          "coin",
+          "cone"
+        ],
+        [
+          "toy",
+          "toe"
+        ],
+        [
+          "oil",
+          "owl"
+        ],
+        [
+          "noise",
+          "nose"
+        ],
+        [
+          "town",
+          "tone"
+        ]
+      ],
+      "sentences": [
+        {
+          "en": "The boy found a coin in the town.",
+          "vi": "Cậu bé tìm thấy một đồng xu trong thị trấn."
+        },
+        {
+          "en": "Don't make noise near the old owl.",
+          "vi": "Đừng làm ồn gần con cú già."
+        },
+        {
+          "en": "Pour the oil into the bowl.",
+          "vi": "Rót dầu vào cái bát."
+        }
+      ]
+    },
+    {
+      "id": "question-intonation",
+      "title": "Ngữ điệu câu hỏi lên và xuống",
+      "ipa": "↗ ↘",
+      "emoji": "❓",
+      "tip": "Câu hỏi Yes/No (Are you ready?) thường lên giọng ở cuối ↗. Câu hỏi có từ để hỏi (What, Where, Why, How) thường xuống giọng ↘. Tiếng Việt có thanh điệu nên người Việt hay giữ giọng phẳng hoặc lên xuống theo từ, làm câu nghe như tuyên bố. Hãy để giọng đi lên hoặc xuống ở từ nhấn cuối cùng.",
+      "pairs": [],
+      "sentences": [
+        {
+          "en": "Are you ready to go?",
+          "vi": "Bạn sẵn sàng đi chưa?",
+          "sounds": "Are you READY to go ↗"
+        },
+        {
+          "en": "Where do you work?",
+          "vi": "Bạn làm việc ở đâu?",
+          "sounds": "Where do you WORK ↘"
+        },
+        {
+          "en": "Do you want tea or coffee?",
+          "vi": "Bạn muốn trà hay cà phê?",
+          "sounds": "Do you want TEA ↗ or COFFEE ↘"
+        },
+        {
+          "en": "You live here, right?",
+          "vi": "Bạn sống ở đây, đúng không?",
+          "sounds": "You live HERE ↘ right ↗"
+        },
+        {
+          "en": "Why didn't you call me?",
+          "vi": "Sao bạn không gọi cho mình?",
+          "sounds": "Why didn't you CALL me ↘"
+        }
+      ]
     }
   ],
   "twisters": [

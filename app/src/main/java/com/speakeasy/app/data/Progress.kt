@@ -41,6 +41,10 @@ data class Progress(
     /** Today's word puzzle, and the record over all days played. */
     val daily: DailyBoard? = null,
     val dailyStats: DailyStats = DailyStats(),
+    /** Exam section id → best % in practice. */
+    val examBest: Map<String, Int> = emptyMap(),
+    /** The last timed tests, oldest first, at most [Exams.HISTORY_SIZE]. */
+    val examHistory: List<ExamRecord> = emptyList(),
 ) {
     fun isDone(topicId: String, activity: Activity) = "$topicId:${activity.name}" in done
 

@@ -70,6 +70,7 @@ export function homeScreen(app) {
       ${tile('📖', 'Truyện', 'stories')}
       ${tile('📰', 'Đọc báo', 'news')}
       ${tile('🎬', 'Video', 'videos')}
+      ${tile('🎓', 'Luyện thi', 'exam')}
     </div>`;
   };
 
