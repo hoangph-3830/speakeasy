@@ -1,0 +1,2387 @@
+{
+  "id": "toeic",
+  "title": "TOEIC",
+  "emoji": "💼",
+  "about": "Luyện đủ 4 kỹ năng TOEIC với nội dung tự soạn theo văn phong đề thi: Nghe (Part 2-4), Đọc (Part 5-7), Nói và Viết, kèm giải thích tiếng Việt cho từng câu.",
+  "sections": [
+    {
+      "id": "toeic-p2",
+      "skill": "listening",
+      "title": "Part 2 · Hỏi – đáp",
+      "about": "Part 2 kiểm tra khả năng nghe một câu hỏi hoặc câu nói ngắn rồi chọn phản hồi hợp lý nhất trong 3 lựa chọn (chỉ nghe, không đọc). Mẹo: nghe kỹ từ đầu câu (Who/When/Where/Why/How) để biết loại thông tin cần tìm, và cảnh giác với đáp án lặp lại từ trong câu hỏi hoặc có âm gần giống - đó thường là bẫy.",
+      "items": [
+        {
+          "id": "p2-01",
+          "title": "Câu 1",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "When is the quarterly budget report due?"
+            },
+            {
+              "who": "W",
+              "en": "A. By the end of this week. B. In the conference room. C. Yes, it's very detailed."
+            }
+          ],
+          "questions": [
+            {
+              "q": "When is the quarterly budget report due?",
+              "options": [
+                "By the end of this week.",
+                "In the conference room.",
+                "Yes, it's very detailed."
+              ],
+              "answer": 0,
+              "explain": "'When' cần mốc thời gian: 'By the end of this week'. 'In the conference room' trả lời 'Where'; 'Yes, it's very detailed' là câu Yes/No không hợp với câu hỏi Wh-."
+            }
+          ]
+        },
+        {
+          "id": "p2-02",
+          "title": "Câu 2",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Who's organizing the client dinner on Friday?"
+            },
+            {
+              "who": "M",
+              "en": "A. At the Italian restaurant downtown. B. Ms. Tanaka from Sales is. C. I'd like to see the dinner menu, please."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Who's organizing the client dinner on Friday?",
+              "options": [
+                "At the Italian restaurant downtown.",
+                "Ms. Tanaka from Sales is.",
+                "I'd like to see the dinner menu, please."
+              ],
+              "answer": 1,
+              "explain": "'Who' cần tên người: Ms. Tanaka. 'At the Italian restaurant' trả lời 'Where'; câu có 'dinner menu' lặp từ 'dinner' để đánh lạc hướng."
+            }
+          ]
+        },
+        {
+          "id": "p2-03",
+          "title": "Câu 3",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "Could you send me the updated schedule?"
+            },
+            {
+              "who": "W",
+              "en": "A. The train leaves at nine. B. He updated it yesterday. C. Sure, I'll email it this afternoon."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Could you send me the updated schedule?",
+              "options": [
+                "The train leaves at nine.",
+                "He updated it yesterday.",
+                "Sure, I'll email it this afternoon."
+              ],
+              "answer": 2,
+              "explain": "Đây là lời yêu cầu, đáp lại bằng 'Sure, I'll email it...'. 'He updated it yesterday' lặp từ 'updated' nhưng nói về người khác; 'The train leaves at nine' lạc đề."
+            }
+          ]
+        },
+        {
+          "id": "p2-04",
+          "title": "Câu 4",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Why was the shipment delayed?"
+            },
+            {
+              "who": "M",
+              "en": "A. Two large boxes. B. Because of the heavy snow. C. It's on the loading dock."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Why was the shipment delayed?",
+              "options": [
+                "Two large boxes.",
+                "Because of the heavy snow.",
+                "It's on the loading dock."
+              ],
+              "answer": 1,
+              "explain": "'Why' cần lý do: 'Because of the heavy snow'. 'Two large boxes' trả lời 'What/How many', 'It's on the loading dock' trả lời 'Where'."
+            }
+          ]
+        },
+        {
+          "id": "p2-05",
+          "title": "Câu 5",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "Haven't you finished the sales presentation yet?"
+            },
+            {
+              "who": "W",
+              "en": "A. Yes, the presents were wonderful. B. At the sales department. C. Almost, I just need to add the charts."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Haven't you finished the sales presentation yet?",
+              "options": [
+                "Yes, the presents were wonderful.",
+                "At the sales department.",
+                "Almost, I just need to add the charts."
+              ],
+              "answer": 2,
+              "explain": "Câu hỏi phủ định vẫn trả lời theo nội dung: gần xong rồi. 'presents' là bẫy âm thanh với 'presentation'; 'At the sales department' trả lời 'Where'."
+            }
+          ]
+        },
+        {
+          "id": "p2-06",
+          "title": "Câu 6",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Where should I put these invoices?"
+            },
+            {
+              "who": "M",
+              "en": "A. In the blue folder on Ms. Lee's desk. B. About two hundred dollars. C. I'll invite them."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Where should I put these invoices?",
+              "options": [
+                "In the blue folder on Ms. Lee's desk.",
+                "About two hundred dollars.",
+                "I'll invite them."
+              ],
+              "answer": 0,
+              "explain": "'Where' cần địa điểm: 'In the blue folder...'. 'I'll invite them' là bẫy âm thanh 'invoices' - 'invite'; 'About two hundred dollars' nói về số tiền."
+            }
+          ]
+        },
+        {
+          "id": "p2-07",
+          "title": "Câu 7",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "How much does the monthly parking pass cost?"
+            },
+            {
+              "who": "W",
+              "en": "A. From the first of the month. B. Just park in the garage. C. It's forty-five dollars."
+            }
+          ],
+          "questions": [
+            {
+              "q": "How much does the monthly parking pass cost?",
+              "options": [
+                "From the first of the month.",
+                "Just park in the garage.",
+                "It's forty-five dollars."
+              ],
+              "answer": 2,
+              "explain": "'How much' hỏi giá: 'forty-five dollars'. 'From the first of the month' lặp 'month' (chỉ thời điểm), 'Just park in the garage' lặp 'park' nhưng không nói giá."
+            }
+          ]
+        },
+        {
+          "id": "p2-08",
+          "title": "Câu 8",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Would you like to join us for lunch, or are you too busy?"
+            },
+            {
+              "who": "M",
+              "en": "A. The lunch menu is online. B. I'll come as soon as I send this fax. C. No, it was too long."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Would you like to join us for lunch, or are you too busy?",
+              "options": [
+                "The lunch menu is online.",
+                "I'll come as soon as I send this fax.",
+                "No, it was too long."
+              ],
+              "answer": 1,
+              "explain": "Câu hỏi lựa chọn: tham gia hay bận. 'I'll come as soon as I send this fax' tức là sẽ đi. 'The lunch menu is online' lặp 'lunch' nhưng không trả lời; 'No, it was too long' không hợp với câu hỏi."
+            }
+          ]
+        },
+        {
+          "id": "p2-09",
+          "title": "Câu 9",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "The printer on the second floor is out of toner."
+            },
+            {
+              "who": "W",
+              "en": "A. I'll call the supplier now. B. Print it on both sides. C. The florist is on the second floor."
+            }
+          ],
+          "questions": [
+            {
+              "q": "The printer on the second floor is out of toner.",
+              "options": [
+                "I'll call the supplier now.",
+                "Print it on both sides.",
+                "The florist is on the second floor."
+              ],
+              "answer": 0,
+              "explain": "Câu trần thuật báo sự cố, phản hồi hợp lý là sẽ gọi nhà cung cấp. 'Print it on both sides' lặp 'print', còn câu về 'florist' lặp 'second floor' nhưng lạc đề."
+            }
+          ]
+        },
+        {
+          "id": "p2-10",
+          "title": "Câu 10",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Do you want to take the train or drive to the conference?"
+            },
+            {
+              "who": "M",
+              "en": "A. Yes, the conference was great. B. I'll train the new staff. C. The parking is expensive downtown, so the train."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Do you want to take the train or drive to the conference?",
+              "options": [
+                "Yes, the conference was great.",
+                "I'll train the new staff.",
+                "The parking is expensive downtown, so the train."
+              ],
+              "answer": 2,
+              "explain": "Câu hỏi lựa chọn 'A or B' không trả lời bằng Yes/No. Đáp án đúng chọn 'the train' kèm lý do. 'Yes, the conference was great' lặp 'conference'; 'train the new staff' lặp 'train' nhưng là động từ."
+            }
+          ]
+        },
+        {
+          "id": "p2-11",
+          "title": "Câu 11",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "What time does the maintenance crew arrive?"
+            },
+            {
+              "who": "W",
+              "en": "A. Around eight, before the staff comes in. B. The elevator on the left. C. He's the crew leader."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What time does the maintenance crew arrive?",
+              "options": [
+                "Around eight, before the staff comes in.",
+                "The elevator on the left.",
+                "He's the crew leader."
+              ],
+              "answer": 0,
+              "explain": "'What time' cần giờ giấc: 'Around eight'. 'The elevator on the left' trả lời 'Where', 'He's the crew leader' lặp 'crew' nhưng nói về người."
+            }
+          ]
+        },
+        {
+          "id": "p2-12",
+          "title": "Câu 12",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Isn't Mr. Alvarez transferring to the Seoul office?"
+            },
+            {
+              "who": "M",
+              "en": "A. Seoul is far from here. B. The office is on Main Street. C. Yes, starting next month."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Isn't Mr. Alvarez transferring to the Seoul office?",
+              "options": [
+                "Seoul is far from here.",
+                "The office is on Main Street.",
+                "Yes, starting next month."
+              ],
+              "answer": 2,
+              "explain": "Câu hỏi phủ định kiểu xác nhận, đáp lại 'Yes, starting next month'. Hai câu còn lại lặp 'Seoul'/'office' nhưng không xác nhận thông tin."
+            }
+          ]
+        },
+        {
+          "id": "p2-13",
+          "title": "Câu 13",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "M",
+              "en": "Which candidate did the committee choose for the manager position?"
+            },
+            {
+              "who": "W",
+              "en": "A. The position paper is due Monday. B. The one with experience in logistics. C. At the committee meeting room."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Which candidate did the committee choose for the manager position?",
+              "options": [
+                "The position paper is due Monday.",
+                "The one with experience in logistics.",
+                "At the committee meeting room."
+              ],
+              "answer": 1,
+              "explain": "'Which candidate' cần chọn một người: 'The one with experience in logistics'. 'position paper' lặp 'position', 'committee meeting room' lặp 'committee'."
+            }
+          ]
+        },
+        {
+          "id": "p2-14",
+          "title": "Câu 14",
+          "hideOptions": true,
+          "audio": [
+            {
+              "who": "W",
+              "en": "Let's postpone the staff meeting until Thursday."
+            },
+            {
+              "who": "M",
+              "en": "A. Thursday works better for me, too. B. A new meeting room. C. Yes, the staff is on the third floor."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Let's postpone the staff meeting until Thursday.",
+              "options": [
+                "Thursday works better for me, too.",
+                "A new meeting room.",
+                "Yes, the staff is on the third floor."
+              ],
+              "answer": 0,
+              "explain": "Lời đề nghị, đồng ý bằng 'Thursday works better for me, too'. Hai câu còn lại lặp 'meeting'/'staff' nhưng không phản hồi đề nghị."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-p3",
+      "skill": "listening",
+      "title": "Part 3 · Hội thoại",
+      "about": "Part 3 là các đoạn hội thoại 2-3 người ở công sở hoặc nơi cung cấp dịch vụ, mỗi đoạn kèm 3 câu hỏi. Mẹo: đọc lướt 3 câu hỏi và đáp án trước khi nghe, câu hỏi thường đi theo thứ tự thông tin trong bài nên hãy dò từng câu theo lời thoại.",
+      "items": [
+        {
+          "id": "p3-01",
+          "title": "Brochure chưa giao kịp",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Hi Karen, did the printer deliver the new product brochures? We need them for tomorrow's trade show."
+            },
+            {
+              "who": "W",
+              "en": "Not yet, Paul. I called them this morning, and they said a machine broke down. They can only deliver on Thursday."
+            },
+            {
+              "who": "M",
+              "en": "Thursday? The show opens on Wednesday at nine."
+            },
+            {
+              "who": "W",
+              "en": "I know. I'm thinking of printing a hundred copies here in our own office as a backup."
+            },
+            {
+              "who": "M",
+              "en": "Good idea, but the color printer is out of ink."
+            },
+            {
+              "who": "W",
+              "en": "I'll ask Ms. Gupta in Purchasing to send someone to buy a new cartridge during lunch."
+            },
+            {
+              "who": "M",
+              "en": "Great. I'll check the files so the layout fits on both sides of the page."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What problem are the speakers discussing?",
+              "options": [
+                "A delivery of brochures will arrive late.",
+                "A trade show has been canceled.",
+                "A printing machine was stolen.",
+                "Some brochure files contain errors."
+              ],
+              "answer": 0,
+              "explain": "Người phụ nữ nói nhà in chỉ giao được vào thứ Năm, trong khi triển lãm khai mạc thứ Tư. Các đáp án còn lại không được nhắc tới."
+            },
+            {
+              "q": "What does the woman plan to do?",
+              "options": [
+                "Cancel the order",
+                "Print some copies in the office",
+                "Hire a designer",
+                "Postpone the show"
+              ],
+              "answer": 1,
+              "explain": "Bà nói 'I'm thinking of printing a hundred copies here in our own office as a backup.' - tự in dự phòng tại văn phòng."
+            },
+            {
+              "q": "What will Ms. Gupta arrange?",
+              "options": [
+                "A delivery to the trade show",
+                "A repair of the printer",
+                "A meeting with the printing company",
+                "The purchase of an ink cartridge"
+              ],
+              "answer": 3,
+              "explain": "Cô ấy sẽ cử người đi mua hộp mực mới ('send someone to buy a new cartridge'). Máy in hết mực chứ không hỏng, nên 'repair' là bẫy."
+            }
+          ]
+        },
+        {
+          "id": "p3-02",
+          "title": "Tiệc nghỉ hưu",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Thanks for coming, everyone. We need to finalize the plans for Mr. Dawson's retirement party."
+            },
+            {
+              "who": "M",
+              "en": "The conference room can hold forty people, but the catering company says we must confirm the headcount by Friday."
+            },
+            {
+              "who": "W",
+              "en": "So far, thirty-two people have said yes. I'll send a reminder email today."
+            },
+            {
+              "who": "W",
+              "en": "What about the gift? Last week we agreed on a watch."
+            },
+            {
+              "who": "M",
+              "en": "The one we picked costs more than our budget, though. It's three hundred dollars, and we have two hundred and fifty."
+            },
+            {
+              "who": "W",
+              "en": "I can ask each department head to chip in a little."
+            },
+            {
+              "who": "W",
+              "en": "Please do. And I'll order a cake from the bakery on Elm Street."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is the meeting mainly about?",
+              "options": [
+                "Hiring a caterer for a trade show",
+                "Moving into a larger conference room",
+                "Planning a retirement party",
+                "Selecting a new department head"
+              ],
+              "answer": 2,
+              "explain": "Ngay câu đầu: 'finalize the plans for Mr. Dawson's retirement party' - bàn việc tổ chức tiệc nghỉ hưu."
+            },
+            {
+              "q": "What problem does the man mention?",
+              "options": [
+                "The gift costs more than the budget.",
+                "The room is too small.",
+                "The caterer is unavailable.",
+                "Too few people have replied."
+              ],
+              "answer": 0,
+              "explain": "Người đàn ông nói chiếc đồng hồ giá 300 USD trong khi ngân sách chỉ có 250 USD. Phòng chứa được 40 người, đã có 32 người đăng ký nên không thiếu chỗ."
+            },
+            {
+              "q": "What does one of the women offer to do to solve the gift problem?",
+              "options": [
+                "Order a cake from a bakery",
+                "Ask department heads for contributions",
+                "Send a reminder email",
+                "Choose a cheaper watch"
+              ],
+              "answer": 1,
+              "explain": "Một người phụ nữ nói 'I can ask each department head to chip in a little' - xin các trưởng phòng góp thêm tiền. Đặt bánh và gửi email nhắc không liên quan tới vấn đề quà."
+            }
+          ]
+        },
+        {
+          "id": "p3-03",
+          "title": "Đổi laptop",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Hello, I bought this laptop here two weeks ago, but the battery only lasts about an hour."
+            },
+            {
+              "who": "M",
+              "en": "I'm sorry to hear that. Do you have your receipt?"
+            },
+            {
+              "who": "W",
+              "en": "Yes, here it is. I'd like to exchange it for a different model if possible."
+            },
+            {
+              "who": "M",
+              "en": "Our policy allows exchanges within thirty days, so that's fine. The model you bought is no longer in stock, though. The next one up costs eighty dollars more."
+            },
+            {
+              "who": "W",
+              "en": "Hmm. Does it come with a longer warranty?"
+            },
+            {
+              "who": "M",
+              "en": "Yes, three years instead of one. And I can take ten percent off, since you're a rewards member."
+            },
+            {
+              "who": "W",
+              "en": "In that case, I'll take it."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Where most likely are the speakers?",
+              "options": [
+                "At a bank",
+                "At a travel agency",
+                "At a furniture store",
+                "At an electronics store"
+              ],
+              "answer": 3,
+              "explain": "Người phụ nữ mang laptop đến đổi, người đàn ông nói về chính sách đổi hàng và bảo hành - đây là cửa hàng điện tử."
+            },
+            {
+              "q": "What does the man say about the new model?",
+              "options": [
+                "It is no longer sold.",
+                "It costs more than the original.",
+                "It has a shorter warranty.",
+                "It is available only online."
+              ],
+              "answer": 1,
+              "explain": "Ông nói mẫu tiếp theo 'costs eighty dollars more' (đắt hơn 80 USD). Mẫu cũ mới là mẫu hết hàng; bảo hành mẫu mới dài hơn (3 năm)."
+            },
+            {
+              "q": "What does the man offer the woman?",
+              "options": [
+                "A discount for members",
+                "A free battery",
+                "A refund in cash",
+                "An extended return period"
+              ],
+              "answer": 0,
+              "explain": "'I can take ten percent off, since you're a rewards member' - giảm 10% cho hội viên."
+            }
+          ]
+        },
+        {
+          "id": "p3-04",
+          "title": "Đổi chuyến bay",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Travel desk, this is Omar."
+            },
+            {
+              "who": "W",
+              "en": "Hi Omar, it's Linda Park from Accounting. I need to change my flight to the Chicago workshop. My meeting with the auditors was moved to Tuesday morning."
+            },
+            {
+              "who": "M",
+              "en": "Your current flight leaves Tuesday at seven a.m. There's another at one thirty that afternoon, and it has an open aisle seat."
+            },
+            {
+              "who": "W",
+              "en": "One thirty works. Will I still arrive before the opening dinner?"
+            },
+            {
+              "who": "M",
+              "en": "Yes, you'll land at three fifteen. The dinner starts at six thirty at the hotel."
+            },
+            {
+              "who": "W",
+              "en": "Perfect. Please also email the new itinerary to my manager."
+            },
+            {
+              "who": "M",
+              "en": "Will do. There's a fifty-dollar change fee, which I'll charge to your department."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Why is the woman calling?",
+              "options": [
+                "To book a hotel room",
+                "To change a flight reservation",
+                "To cancel a workshop",
+                "To request an aisle seat"
+              ],
+              "answer": 1,
+              "explain": "Bà muốn đổi chuyến bay vì cuộc họp với kiểm toán bị dời sang sáng thứ Ba."
+            },
+            {
+              "q": "What time will the woman arrive in Chicago?",
+              "options": [
+                "7:00 a.m.",
+                "1:30 p.m.",
+                "3:15 p.m.",
+                "6:30 p.m."
+              ],
+              "answer": 2,
+              "explain": "Người đàn ông nói 'you'll land at three fifteen'. 1:30 là giờ cất cánh, 6:30 là giờ bữa tối."
+            },
+            {
+              "q": "What will the man charge to the woman's department?",
+              "options": [
+                "A hotel deposit",
+                "A meal allowance",
+                "A seat upgrade",
+                "A change fee"
+              ],
+              "answer": 3,
+              "explain": "'There's a fifty-dollar change fee, which I'll charge to your department' - phí đổi vé 50 USD."
+            }
+          ]
+        },
+        {
+          "id": "p3-05",
+          "title": "Ra mắt website",
+          "audio": [
+            {
+              "who": "M",
+              "en": "Thanks for joining. Our new website launches in two weeks, and the testing team found several issues."
+            },
+            {
+              "who": "W",
+              "en": "The biggest one is the checkout page, Mr. Reyes. It freezes when customers use certain mobile browsers."
+            },
+            {
+              "who": "W",
+              "en": "My developers are already working on it. We should have a fix by Monday."
+            },
+            {
+              "who": "M",
+              "en": "Good. Is the product video ready, Ana?"
+            },
+            {
+              "who": "W",
+              "en": "Almost. The narrator re-recorded the script, and I'm waiting for the final version."
+            },
+            {
+              "who": "M",
+              "en": "Let me know if you need extra budget for editing."
+            },
+            {
+              "who": "W",
+              "en": "One more thing. Should we tell current customers about the launch date?"
+            },
+            {
+              "who": "M",
+              "en": "Yes, Ana, please include it in next week's newsletter."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is the main topic of the conversation?",
+              "options": [
+                "The launch of a new website",
+                "The hiring of a video narrator",
+                "A change in a delivery date",
+                "The budget for a newsletter"
+              ],
+              "answer": 0,
+              "explain": "Câu đầu tiên đã nêu: website mới ra mắt sau hai tuần và nhóm kiểm thử tìm thấy một số lỗi."
+            },
+            {
+              "q": "What does one of the women say about the developers?",
+              "options": [
+                "They are fixing a checkout problem.",
+                "They have finished testing.",
+                "They need more money.",
+                "They are recording a video."
+              ],
+              "answer": 0,
+              "explain": "'My developers are already working on it' - 'it' là lỗi trang thanh toán, dự kiến xong vào thứ Hai."
+            },
+            {
+              "q": "What is Ana asked to do?",
+              "options": [
+                "Hire more developers",
+                "Announce the launch date to customers",
+                "Edit the product video",
+                "Test the checkout page"
+              ],
+              "answer": 1,
+              "explain": "Ông Reyes bảo Ana đưa ngày ra mắt vào bản tin tuần sau ('include it in next week's newsletter')."
+            }
+          ]
+        },
+        {
+          "id": "p3-06",
+          "title": "Bãi đỗ xe đóng cửa",
+          "audio": [
+            {
+              "who": "W",
+              "en": "Mr. Ito, I'm calling about the parking garage. A notice says it will close next week."
+            },
+            {
+              "who": "M",
+              "en": "Yes, the garage is being repainted from Monday to Wednesday. Employees can use the lot behind the library instead."
+            },
+            {
+              "who": "W",
+              "en": "Is that lot free?"
+            },
+            {
+              "who": "M",
+              "en": "It is for our staff. Just show your company ID at the gate. There's also a shuttle every fifteen minutes."
+            },
+            {
+              "who": "W",
+              "en": "That sounds convenient. I have a client visiting on Tuesday, though. Where should she park?"
+            },
+            {
+              "who": "M",
+              "en": "Visitors can use the spaces in front of the lobby. I'll ask security to reserve one for her."
+            },
+            {
+              "who": "W",
+              "en": "Thank you. Do you need her name?"
+            },
+            {
+              "who": "M",
+              "en": "Yes, just send it to me by email and I'll pass it along."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What will happen to the garage next week?",
+              "options": [
+                "It will be sold.",
+                "It will be repainted.",
+                "It will be expanded.",
+                "It will be inspected."
+              ],
+              "answer": 1,
+              "explain": "'The garage is being repainted from Monday to Wednesday' - garage được sơn lại."
+            },
+            {
+              "q": "What must employees show at the gate?",
+              "options": [
+                "A parking receipt",
+                "A shuttle ticket",
+                "A company ID",
+                "A visitor pass"
+              ],
+              "answer": 2,
+              "explain": "'Just show your company ID at the gate' - xuất trình thẻ nhân viên."
+            },
+            {
+              "q": "What does the man offer to do?",
+              "options": [
+                "Ask security to reserve a space",
+                "Call the client directly",
+                "Extend the shuttle schedule",
+                "Move the woman's car"
+              ],
+              "answer": 0,
+              "explain": "'I'll ask security to reserve one for her' - nhờ bảo vệ giữ một chỗ cho khách của bà."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-p4",
+      "skill": "listening",
+      "title": "Part 4 · Bài nói ngắn",
+      "about": "Part 4 gồm bài nói một người (thông báo, tin nhắn thoại, quảng cáo, hướng dẫn tham quan, bản tin) kèm 3 câu hỏi. Mẹo: xác định ngay người nói, người nghe và mục đích từ 1-2 câu đầu; thông tin 'sắp làm gì' thường nằm ở những câu cuối.",
+      "items": [
+        {
+          "id": "p4-01",
+          "title": "Thông báo nội bộ",
+          "audio": [
+            {
+              "who": "N",
+              "en": "Attention, all Harbor Point Logistics employees."
+            },
+            {
+              "who": "N",
+              "en": "The company email system will be offline for maintenance this Saturday from ten p.m. until two a.m. on Sunday."
+            },
+            {
+              "who": "N",
+              "en": "During that time, you will not be able to send or receive messages, or open shared calendars."
+            },
+            {
+              "who": "N",
+              "en": "If you need to send an urgent document to a client, please do so before six p.m. on Friday."
+            },
+            {
+              "who": "N",
+              "en": "The IT department also reminds everyone to change their passwords before the update. Instructions are posted on the intranet."
+            },
+            {
+              "who": "N",
+              "en": "If you have any questions, contact the help desk at extension four-four-one-seven. Thank you for your cooperation."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is being announced?",
+              "options": [
+                "A new company policy",
+                "A system maintenance period",
+                "A change in office hours",
+                "A software purchase"
+              ],
+              "answer": 1,
+              "explain": "Bài nói thông báo hệ thống email sẽ ngừng để bảo trì vào tối thứ Bảy."
+            },
+            {
+              "q": "What are employees advised to do before Friday evening?",
+              "options": [
+                "Send urgent documents to clients",
+                "Contact the help desk",
+                "Update their calendars",
+                "Save files on the intranet"
+              ],
+              "answer": 0,
+              "explain": "'If you need to send an urgent document to a client, please do so before six p.m. on Friday.'"
+            },
+            {
+              "q": "Where can employees find password instructions?",
+              "options": [
+                "On the help desk",
+                "On the company intranet",
+                "In an email message",
+                "In a printed manual"
+              ],
+              "answer": 1,
+              "explain": "'Instructions are posted on the intranet' - hướng dẫn nằm trên mạng nội bộ. Email sẽ bị gián đoạn nên không phải đáp án."
+            }
+          ]
+        },
+        {
+          "id": "p4-02",
+          "title": "Tin nhắn thoại",
+          "audio": [
+            {
+              "who": "N",
+              "en": "Hello, this message is for Ms. Rivera. This is Daniel from Brightline Office Supplies."
+            },
+            {
+              "who": "N",
+              "en": "I'm calling about your order of twelve office chairs."
+            },
+            {
+              "who": "N",
+              "en": "Unfortunately, the black model is out of stock until the end of the month."
+            },
+            {
+              "who": "N",
+              "en": "We do have the same chair in gray, and I can deliver it by Thursday at no extra charge."
+            },
+            {
+              "who": "N",
+              "en": "If you'd rather wait for the black one, I can give you a ten percent discount."
+            },
+            {
+              "who": "N",
+              "en": "Please call me back at five-five-five, zero-one-three-six, before noon tomorrow so I can confirm the delivery."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Why is the speaker calling?",
+              "options": [
+                "An item is unavailable.",
+                "A payment is late.",
+                "An order was canceled.",
+                "A delivery has arrived."
+              ],
+              "answer": 0,
+              "explain": "Mẫu ghế màu đen hết hàng đến cuối tháng - đó là lý do gọi."
+            },
+            {
+              "q": "What does the speaker offer?",
+              "options": [
+                "A different color at no extra delivery charge",
+                "Free repairs",
+                "A larger order",
+                "A refund of the deposit"
+              ],
+              "answer": 0,
+              "explain": "Ghế màu xám có sẵn, giao trước thứ Năm và không tính thêm phí ('at no extra charge')."
+            },
+            {
+              "q": "What does the speaker ask Ms. Rivera to do?",
+              "options": [
+                "Visit a store",
+                "Return the call by tomorrow noon",
+                "Send a payment",
+                "Choose a new supplier"
+              ],
+              "answer": 1,
+              "explain": "'Please call me back ... before noon tomorrow' - gọi lại trước trưa mai."
+            }
+          ]
+        },
+        {
+          "id": "p4-03",
+          "title": "Quảng cáo khóa học",
+          "audio": [
+            {
+              "who": "N",
+              "en": "Are your spreadsheets slowing you down?"
+            },
+            {
+              "who": "N",
+              "en": "At Kessler Business Academy, our one-day workshops teach you the shortcuts that save hours every week."
+            },
+            {
+              "who": "N",
+              "en": "Classes are held on the second Saturday of every month, and each group is limited to fifteen people, so you get personal attention."
+            },
+            {
+              "who": "N",
+              "en": "Register online before March thirty-first and receive a twenty percent discount."
+            },
+            {
+              "who": "N",
+              "en": "Visit kessler academy dot com, or call five-five-five, zero-one-eight-two."
+            },
+            {
+              "who": "N",
+              "en": "Kessler Business Academy. Work smarter."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is being advertised?",
+              "options": [
+                "Spreadsheet software",
+                "Office furniture",
+                "Business workshops",
+                "An online magazine"
+              ],
+              "answer": 2,
+              "explain": "Quảng cáo giới thiệu các buổi workshop một ngày của Kessler Business Academy. 'Spreadsheet' chỉ là nội dung được dạy, không phải sản phẩm."
+            },
+            {
+              "q": "What is mentioned as a benefit of the classes?",
+              "options": [
+                "Small group size",
+                "Free materials",
+                "Evening schedules",
+                "Online access"
+              ],
+              "answer": 0,
+              "explain": "Mỗi nhóm tối đa 15 người 'so you get personal attention' - lớp nhỏ nên được kèm kỹ."
+            },
+            {
+              "q": "How can listeners get a discount?",
+              "options": [
+                "By bringing a friend",
+                "By calling after March",
+                "By registering online early",
+                "By attending two classes"
+              ],
+              "answer": 2,
+              "explain": "'Register online before March thirty-first and receive a twenty percent discount' - đăng ký trực tuyến sớm."
+            }
+          ]
+        },
+        {
+          "id": "p4-04",
+          "title": "Tham quan nhà máy",
+          "audio": [
+            {
+              "who": "N",
+              "en": "Welcome to the Alderbrook Chocolate Factory tour. My name is Gina, and I'll be your guide this morning."
+            },
+            {
+              "who": "N",
+              "en": "We'll begin in the roasting room, where the cocoa beans are prepared."
+            },
+            {
+              "who": "N",
+              "en": "Please stay behind the yellow line, and note that photography is not allowed in the packaging area."
+            },
+            {
+              "who": "N",
+              "en": "The tour lasts about forty-five minutes, so please keep your visitor badges visible at all times."
+            },
+            {
+              "who": "N",
+              "en": "When we finish, we'll walk to the gift shop, where you can taste our new dark chocolate."
+            }
+          ],
+          "questions": [
+            {
+              "q": "Who is the speaker?",
+              "options": [
+                "A factory manager",
+                "A tour guide",
+                "A chef",
+                "A sales representative"
+              ],
+              "answer": 1,
+              "explain": "'I'll be your guide this morning' - cô là hướng dẫn viên."
+            },
+            {
+              "q": "What are listeners not allowed to do in the packaging area?",
+              "options": [
+                "Touch the equipment",
+                "Talk loudly",
+                "Take photographs",
+                "Wear visitor badges"
+              ],
+              "answer": 2,
+              "explain": "'Photography is not allowed in the packaging area' - cấm chụp ảnh. Huy hiệu khách thì phải đeo."
+            },
+            {
+              "q": "What will listeners do at the end of the tour?",
+              "options": [
+                "Sample a product",
+                "Watch a video",
+                "Meet the owner",
+                "Receive a discount card"
+              ],
+              "answer": 0,
+              "explain": "'In the gift shop, you can taste our new dark chocolate' - nếm thử sản phẩm mới."
+            }
+          ]
+        },
+        {
+          "id": "p4-05",
+          "title": "Bản tin kinh doanh",
+          "audio": [
+            {
+              "who": "N",
+              "en": "In business news, Fairview Electronics announced today that it will open a second factory in Greenfield, creating about three hundred new jobs."
+            },
+            {
+              "who": "N",
+              "en": "The company's chief executive, Marta Silva, said construction will begin in April and the factory should be operating by next year."
+            },
+            {
+              "who": "N",
+              "en": "Local officials welcomed the plan, noting that unemployment in the area has risen over the past year."
+            },
+            {
+              "who": "N",
+              "en": "Residents can learn more at a public meeting at Greenfield Town Hall on Thursday evening."
+            },
+            {
+              "who": "N",
+              "en": "Now, let's turn to the weather."
+            }
+          ],
+          "questions": [
+            {
+              "q": "What is the news report about?",
+              "options": [
+                "A factory closing",
+                "A new factory",
+                "A city election",
+                "A product recall"
+              ],
+              "answer": 1,
+              "explain": "Công ty Fairview Electronics sẽ mở nhà máy thứ hai ở Greenfield, tạo khoảng 300 việc làm."
+            },
+            {
+              "q": "What does the speaker say about the schedule?",
+              "options": [
+                "Construction starts in April.",
+                "The factory opens this month.",
+                "Hiring begins on Thursday.",
+                "The plan has been postponed."
+              ],
+              "answer": 0,
+              "explain": "'Construction will begin in April and the factory should be operating by next year.'"
+            },
+            {
+              "q": "What can residents do on Thursday evening?",
+              "options": [
+                "Apply for jobs",
+                "Visit the factory",
+                "Vote on the plan",
+                "Attend a public meeting"
+              ],
+              "answer": 3,
+              "explain": "'Residents can learn more at a public meeting ... on Thursday evening.'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-p5",
+      "skill": "reading",
+      "title": "Part 5 · Hoàn thành câu",
+      "about": "Part 5 kiểm tra ngữ pháp và từ vựng qua câu có một chỗ trống, chọn 1 trong 4 đáp án (từ loại, thì, giới từ, liên từ, đại từ, từ vựng). Mẹo: nhìn các đáp án cùng gốc từ để biết đây là câu hỏi từ loại, xác định vị trí chỗ trống (trước danh từ, sau 'be'...) rồi chọn nhanh trong khoảng 20 giây.",
+      "items": [
+        {
+          "id": "p5-01",
+          "questions": [
+            {
+              "q": "The new hires received _____ training on the company's accounting software.",
+              "options": [
+                "extension",
+                "extensive",
+                "extend",
+                "extensively"
+              ],
+              "answer": 1,
+              "explain": "Chỗ trống đứng trước danh từ 'training' nên cần tính từ: 'extensive' (toàn diện). 'extension' là danh từ, 'extend' là động từ, 'extensively' là trạng từ."
+            }
+          ]
+        },
+        {
+          "id": "p5-02",
+          "questions": [
+            {
+              "q": "Ms. Okafor was _____ praised for her handling of the Peterson account.",
+              "options": [
+                "highly",
+                "high",
+                "height",
+                "heighten"
+              ],
+              "answer": 0,
+              "explain": "Trước động từ phân từ 'praised' cần trạng từ bổ nghĩa: 'highly praised' (được khen ngợi hết lời). 'high' là tính từ/trạng từ chỉ độ cao nên không hợp."
+            }
+          ]
+        },
+        {
+          "id": "p5-03",
+          "questions": [
+            {
+              "q": "The _____ of the new inventory system will take place over the weekend.",
+              "options": [
+                "installation",
+                "install",
+                "installed",
+                "installing"
+              ],
+              "answer": 0,
+              "explain": "Sau mạo từ 'The' và trước 'of' cần danh từ: 'installation' (việc cài đặt). Các dạng còn lại là động từ hoặc phân từ."
+            }
+          ]
+        },
+        {
+          "id": "p5-04",
+          "questions": [
+            {
+              "q": "Customers are _____ to return items within thirty days for a full refund.",
+              "options": [
+                "encourage",
+                "encouraging",
+                "encouraged",
+                "encouragement"
+              ],
+              "answer": 2,
+              "explain": "Cấu trúc bị động 'be encouraged to + V': khách hàng được khuyến khích trả hàng. 'encouraging' mang nghĩa chủ động nên sai."
+            }
+          ]
+        },
+        {
+          "id": "p5-05",
+          "questions": [
+            {
+              "q": "Please submit your expense reports _____ by the fifteenth of each month.",
+              "options": [
+                "prompt",
+                "promptness",
+                "prompted",
+                "promptly"
+              ],
+              "answer": 3,
+              "explain": "Cần trạng từ bổ nghĩa cho động từ 'submit': 'promptly' (đúng hạn, ngay). 'prompt' là tính từ, 'promptness' là danh từ."
+            }
+          ]
+        },
+        {
+          "id": "p5-06",
+          "questions": [
+            {
+              "q": "The marketing team's _____ proposal impressed the board of directors.",
+              "options": [
+                "creativity",
+                "create",
+                "creative",
+                "creatively"
+              ],
+              "answer": 2,
+              "explain": "Trước danh từ 'proposal' cần tính từ: 'creative' (sáng tạo). 'creativity' là danh từ, 'creatively' là trạng từ."
+            }
+          ]
+        },
+        {
+          "id": "p5-07",
+          "questions": [
+            {
+              "q": "Employees who wish to attend the seminar must complete the _____ form online.",
+              "options": [
+                "register",
+                "registration",
+                "registered",
+                "registering"
+              ],
+              "answer": 1,
+              "explain": "Danh từ ghép 'registration form' (mẫu đăng ký): danh từ bổ nghĩa cho danh từ. 'registered form' không tự nhiên trong ngữ cảnh này."
+            }
+          ]
+        },
+        {
+          "id": "p5-08",
+          "questions": [
+            {
+              "q": "By the time the auditors arrive next Monday, we _____ all the records.",
+              "options": [
+                "organized",
+                "will have organized",
+                "have organized",
+                "are organizing"
+              ],
+              "answer": 1,
+              "explain": "'By the time + hiện tại đơn (arrive)' chỉ tương lai, mệnh đề chính dùng tương lai hoàn thành: 'will have organized'."
+            }
+          ]
+        },
+        {
+          "id": "p5-09",
+          "questions": [
+            {
+              "q": "Since Ms. Duarte joined the company in 2019, sales in the Brazilian market _____ by nearly forty percent.",
+              "options": [
+                "grew",
+                "are growing",
+                "will grow",
+                "have grown"
+              ],
+              "answer": 3,
+              "explain": "'Since + mốc quá khứ' đi với hiện tại hoàn thành; chủ ngữ 'sales' số nhiều nên dùng 'have grown'."
+            }
+          ]
+        },
+        {
+          "id": "p5-10",
+          "questions": [
+            {
+              "q": "When the power went out, the technicians _____ the servers.",
+              "options": [
+                "were upgrading",
+                "upgrade",
+                "will upgrade",
+                "have upgraded"
+              ],
+              "answer": 0,
+              "explain": "Hành động đang diễn ra thì bị một sự việc khác xen vào ('went out'): dùng quá khứ tiếp diễn 'were upgrading'."
+            }
+          ]
+        },
+        {
+          "id": "p5-11",
+          "questions": [
+            {
+              "q": "If the supplier _____ the shipment by Friday, we will miss the product launch.",
+              "options": [
+                "didn't deliver",
+                "doesn't deliver",
+                "wouldn't deliver",
+                "hadn't delivered"
+              ],
+              "answer": 1,
+              "explain": "Câu điều kiện loại 1 (mệnh đề chính 'will miss') thì mệnh đề If dùng hiện tại đơn: 'doesn't deliver'."
+            }
+          ]
+        },
+        {
+          "id": "p5-12",
+          "questions": [
+            {
+              "q": "All visitors _____ to sign in at the front desk before entering the building.",
+              "options": [
+                "require",
+                "requiring",
+                "have required",
+                "are required"
+              ],
+              "answer": 3,
+              "explain": "'Visitors' là đối tượng chịu tác động nên dùng bị động: 'are required to + V' (được yêu cầu phải)."
+            }
+          ]
+        },
+        {
+          "id": "p5-13",
+          "questions": [
+            {
+              "q": "The annual shareholders' meeting is scheduled _____ April 12.",
+              "options": [
+                "in",
+                "at",
+                "by",
+                "on"
+              ],
+              "answer": 3,
+              "explain": "Dùng 'on' trước ngày cụ thể (April 12). 'in' dùng với tháng/năm, 'at' với giờ."
+            }
+          ]
+        },
+        {
+          "id": "p5-14",
+          "questions": [
+            {
+              "q": "Ms. Tran has been responsible _____ the Asia-Pacific accounts since last year.",
+              "options": [
+                "of",
+                "to",
+                "for",
+                "with"
+              ],
+              "answer": 2,
+              "explain": "Cụm cố định 'be responsible for' (chịu trách nhiệm về)."
+            }
+          ]
+        },
+        {
+          "id": "p5-15",
+          "questions": [
+            {
+              "q": "All applications must be received _____ Friday, June 3, to be considered.",
+              "options": [
+                "during",
+                "for",
+                "by",
+                "among"
+              ],
+              "answer": 2,
+              "explain": "'by + mốc thời gian' nghĩa là chậm nhất vào lúc đó, đúng với thông báo hạn nộp hồ sơ. 'during' đi với khoảng thời gian."
+            }
+          ]
+        },
+        {
+          "id": "p5-16",
+          "questions": [
+            {
+              "q": "The new office is located _____ the street from the central post office.",
+              "options": [
+                "across",
+                "through",
+                "beyond",
+                "against"
+              ],
+              "answer": 0,
+              "explain": "'across the street from' nghĩa là ở phía đối diện đường. Các giới từ còn lại không tạo cụm này."
+            }
+          ]
+        },
+        {
+          "id": "p5-17",
+          "questions": [
+            {
+              "q": "Mr. Kim will be on vacation _____ two weeks beginning next Monday.",
+              "options": [
+                "since",
+                "for",
+                "at",
+                "on"
+              ],
+              "answer": 1,
+              "explain": "'for + khoảng thời gian' (for two weeks). 'since' đi với mốc thời gian trong quá khứ."
+            }
+          ]
+        },
+        {
+          "id": "p5-18",
+          "questions": [
+            {
+              "q": "_____ the weather was bad, the outdoor event went ahead as planned.",
+              "options": [
+                "Because",
+                "Unless",
+                "Although",
+                "So"
+              ],
+              "answer": 2,
+              "explain": "Hai vế đối lập (thời tiết xấu nhưng sự kiện vẫn diễn ra) nên dùng 'Although' (mặc dù)."
+            }
+          ]
+        },
+        {
+          "id": "p5-19",
+          "questions": [
+            {
+              "q": "Please call the help desk _____ you have trouble logging in to the system.",
+              "options": [
+                "if",
+                "unless",
+                "although",
+                "whereas"
+              ],
+              "answer": 0,
+              "explain": "Điều kiện: 'nếu bạn gặp sự cố đăng nhập' thì hãy gọi. 'unless' (trừ khi) làm câu sai nghĩa."
+            }
+          ]
+        },
+        {
+          "id": "p5-20",
+          "questions": [
+            {
+              "q": "The store will remain open late _____ all customers have been served.",
+              "options": [
+                "while",
+                "since",
+                "during",
+                "until"
+              ],
+              "answer": 3,
+              "explain": "'until' (cho đến khi) + mệnh đề. 'during' là giới từ nên không đi với mệnh đề; 'while' và 'since' sai nghĩa."
+            }
+          ]
+        },
+        {
+          "id": "p5-21",
+          "questions": [
+            {
+              "q": "Applicants must submit _____ a résumé and two letters of recommendation.",
+              "options": [
+                "either",
+                "both",
+                "neither",
+                "not only"
+              ],
+              "answer": 1,
+              "explain": "Cặp 'both ... and ...' (cả ... lẫn ...). 'either' cần 'or', 'neither' cần 'nor'."
+            }
+          ]
+        },
+        {
+          "id": "p5-22",
+          "questions": [
+            {
+              "q": "The company plans to _____ its product line to include several eco-friendly items.",
+              "options": [
+                "explain",
+                "expire",
+                "expand",
+                "express"
+              ],
+              "answer": 2,
+              "explain": "'expand' (mở rộng) hợp với 'product line'. Các từ còn lại chỉ giống hình thức: giải thích, hết hạn, bày tỏ."
+            }
+          ]
+        },
+        {
+          "id": "p5-23",
+          "questions": [
+            {
+              "q": "The hotel offers a _____ breakfast to all guests staying more than two nights.",
+              "options": [
+                "complementary",
+                "compliant",
+                "competent",
+                "complimentary"
+              ],
+              "answer": 3,
+              "explain": "'complimentary' = miễn phí, tặng kèm. 'complementary' (bổ sung) là từ dễ nhầm."
+            }
+          ]
+        },
+        {
+          "id": "p5-24",
+          "questions": [
+            {
+              "q": "Because of a scheduling _____, two meetings were booked in the same room.",
+              "options": [
+                "conflict",
+                "collision",
+                "competition",
+                "contest"
+              ],
+              "answer": 0,
+              "explain": "'scheduling conflict' là cụm cố định, nghĩa là trùng lịch."
+            }
+          ]
+        },
+        {
+          "id": "p5-25",
+          "questions": [
+            {
+              "q": "The finance department will _____ all travel expenses within five business days.",
+              "options": [
+                "reproduce",
+                "reimburse",
+                "reserve",
+                "resume"
+              ],
+              "answer": 1,
+              "explain": "'reimburse expenses' (hoàn trả chi phí). Các động từ còn lại không hợp nghĩa."
+            }
+          ]
+        },
+        {
+          "id": "p5-26",
+          "questions": [
+            {
+              "q": "The _____ of the contract include a thirty-day cancellation notice.",
+              "options": [
+                "terminals",
+                "tones",
+                "terms",
+                "turns"
+              ],
+              "answer": 2,
+              "explain": "'the terms of the contract' là các điều khoản hợp đồng."
+            }
+          ]
+        },
+        {
+          "id": "p5-27",
+          "questions": [
+            {
+              "q": "Ms. Hall asked Mr. Wu to send _____ the sales figures before the meeting.",
+              "options": [
+                "she",
+                "hers",
+                "herself",
+                "her"
+              ],
+              "answer": 3,
+              "explain": "Sau động từ 'send' cần tân ngữ: 'her'. 'she' là chủ ngữ, 'hers' là đại từ sở hữu, 'herself' là đại từ phản thân."
+            }
+          ]
+        },
+        {
+          "id": "p5-28",
+          "questions": [
+            {
+              "q": "Our clients appreciate that we always return _____ calls within one hour.",
+              "options": [
+                "their",
+                "they",
+                "them",
+                "theirs"
+              ],
+              "answer": 0,
+              "explain": "Trước danh từ 'calls' cần tính từ sở hữu: 'their calls' (cuộc gọi của họ)."
+            }
+          ]
+        },
+        {
+          "id": "p5-29",
+          "questions": [
+            {
+              "q": "The manager reviewed the proposal _____ before approving the budget.",
+              "options": [
+                "him",
+                "himself",
+                "he",
+                "his"
+              ],
+              "answer": 1,
+              "explain": "Đại từ phản thân 'himself' nhấn mạnh chính người quản lý tự xem xét đề xuất."
+            }
+          ]
+        },
+        {
+          "id": "p5-30",
+          "questions": [
+            {
+              "q": "The two departments share an office, and _____ often work together on projects.",
+              "options": [
+                "them",
+                "themselves",
+                "they",
+                "their"
+              ],
+              "answer": 2,
+              "explain": "Làm chủ ngữ của động từ 'work' nên dùng 'they'."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-p6",
+      "skill": "reading",
+      "title": "Part 6 · Hoàn thành đoạn văn",
+      "about": "Part 6 là đoạn văn ngắn (email, thông báo, memo) có 4 chỗ trống: điền từ/cụm từ hoặc chọn câu thích hợp. Mẹo: với câu chèn vào, hãy đọc câu trước và câu sau chỗ trống, tìm đáp án khớp về chủ đề và có từ nối (this, also, however...) với hai câu đó.",
+      "items": [
+        {
+          "id": "p6-01",
+          "title": "Email: quy định đỗ xe",
+          "passage": "To: All Employees\nFrom: Facilities Office\nSubject: New parking permits\n\nStarting on March 1, all employees who park in the Delmar Street garage [1] to display a permit on the windshield. Permits can be picked up at the Facilities Office on the second floor [2] 9 a.m. and 5 p.m. on weekdays. [3] Employees who arrive without a valid permit will be asked to move their vehicles. Please note that visitor parking is [4] on the north side of the building.",
+          "questions": [
+            {
+              "q": "Chọn từ/câu cho chỗ trống [1]",
+              "options": [
+                "require",
+                "are required",
+                "requiring",
+                "requirement"
+              ],
+              "answer": 1,
+              "explain": "Chủ ngữ 'all employees' chịu tác động nên dùng bị động 'are required to display' (được yêu cầu phải dán)."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [2]",
+              "options": [
+                "among",
+                "during",
+                "between",
+                "from"
+              ],
+              "answer": 2,
+              "explain": "Cấu trúc 'between 9 a.m. and 5 p.m.' (từ 9 giờ sáng đến 5 giờ chiều). 'from' phải đi với 'to'."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [3]",
+              "options": [
+                "Please note that enforcement will begin on March 8.",
+                "The Facilities Office has moved to the first floor.",
+                "Last year's permits were blue.",
+                "The cafeteria will close early on March 1."
+              ],
+              "answer": 0,
+              "explain": "Câu sau nói về nhân viên không có thẻ sẽ bị yêu cầu dời xe, nên câu điền vào phải nói về việc bắt đầu áp dụng quy định. Câu về tầng 1 mâu thuẫn với 'second floor'."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [4]",
+              "options": [
+                "availably",
+                "availability",
+                "avail",
+                "available"
+              ],
+              "answer": 3,
+              "explain": "Sau 'is' cần tính từ: 'available' (có sẵn)."
+            }
+          ]
+        },
+        {
+          "id": "p6-02",
+          "title": "Thông báo: sửa sảnh tòa nhà",
+          "passage": "NOTICE TO TENANTS\n\nBeginning June 10, the lobby of the Kingsford Building will undergo renovation. The work [1] approximately three weeks. During this time, the main entrance on Park Avenue will be closed, and all visitors should [2] the side entrance on Wells Street. [3] The elevators will remain in service throughout the project. We apologize for any inconvenience and thank you for your [4]. Questions may be directed to the building manager, Ms. Nadia Brooks, at 555-0147.",
+          "questions": [
+            {
+              "q": "Chọn từ/câu cho chỗ trống [1]",
+              "options": [
+                "is expected to last",
+                "expects to last",
+                "has expected lasting",
+                "expecting to last"
+              ],
+              "answer": 0,
+              "explain": "Chủ ngữ 'The work' là vật nên dùng bị động 'is expected to last' (dự kiến kéo dài). 'expects' cần chủ ngữ là người."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [2]",
+              "options": [
+                "using",
+                "use",
+                "uses",
+                "to use"
+              ],
+              "answer": 1,
+              "explain": "Sau 'should' dùng động từ nguyên mẫu: 'should use'."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [3]",
+              "options": [
+                "The building was constructed in 1985.",
+                "Parking fees will increase in July.",
+                "Signs will be posted to show visitors the way.",
+                "Tenants must renew their leases by May."
+              ],
+              "answer": 2,
+              "explain": "Sau khi nói lối vào chính đóng, câu hợp lý là sẽ có biển chỉ dẫn. Các câu còn lại không liên quan tới việc sửa sảnh."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [4]",
+              "options": [
+                "patient",
+                "patiently",
+                "patients",
+                "patience"
+              ],
+              "answer": 3,
+              "explain": "Sau 'your' cần danh từ: 'patience' (sự kiên nhẫn). 'patients' nghĩa là bệnh nhân."
+            }
+          ]
+        },
+        {
+          "id": "p6-03",
+          "title": "Memo: báo cáo chi phí",
+          "passage": "MEMO\nTo: Sales Team\nFrom: Rebecca Thornton, Finance Director\nDate: October 4\nRe: Expense reports\n\nBeginning next month, all expense reports must be submitted through the new online system [1] paper forms. Each report should include scanned copies of receipts for [2] purchase over twenty dollars. [3] Reports that are incomplete will be returned to the sender, which may delay reimbursement. A training session will be held on October 18, and attendance is [4] for all sales staff.",
+          "questions": [
+            {
+              "q": "Chọn từ/câu cho chỗ trống [1]",
+              "options": [
+                "whereas",
+                "unless",
+                "instead of",
+                "because"
+              ],
+              "answer": 2,
+              "explain": "'instead of + danh từ' nghĩa là thay vì. Các từ còn lại là liên từ, không đứng trước 'paper forms'."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [2]",
+              "options": [
+                "all",
+                "every",
+                "many",
+                "several"
+              ],
+              "answer": 1,
+              "explain": "Sau chỗ trống là danh từ đếm được số ít 'purchase' nên dùng 'every'. 'all/many/several' đi với danh từ số nhiều."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [3]",
+              "options": [
+                "Receipts must be clear enough to show the date and amount.",
+                "The new system was developed in Canada.",
+                "Sales have risen steadily since spring.",
+                "Our offices will be closed on Friday."
+              ],
+              "answer": 0,
+              "explain": "Câu trước nhắc tới biên lai và câu sau nói báo cáo thiếu sẽ bị trả lại, nên câu điền vào nên nói về yêu cầu với biên lai."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [4]",
+              "options": [
+                "mandate",
+                "mandatorily",
+                "mandating",
+                "mandatory"
+              ],
+              "answer": 3,
+              "explain": "Sau 'is' cần tính từ: 'mandatory' (bắt buộc)."
+            }
+          ]
+        },
+        {
+          "id": "p6-04",
+          "title": "Email: mời phỏng vấn",
+          "passage": "To: Hiroshi Mori\nFrom: Cathy Lindgren, Human Resources\nSubject: Your application\n\nDear Mr. Mori,\n\nThank you for [1] for the Project Coordinator position at Silverline Engineering. We were impressed by your résumé and would like to invite you for an interview on Wednesday, November 9, at 10 a.m. [2] you are unable to attend at that time, please let me know and we will arrange another date. [3] Please bring a photo ID, as you will need to sign in at the security desk. We [4] forward to meeting you.",
+          "questions": [
+            {
+              "q": "Chọn từ/câu cho chỗ trống [1]",
+              "options": [
+                "applying",
+                "apply",
+                "applied",
+                "application"
+              ],
+              "answer": 0,
+              "explain": "Sau giới từ 'for' dùng V-ing: 'Thank you for applying'."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [2]",
+              "options": [
+                "Unless",
+                "If",
+                "Because",
+                "While"
+              ],
+              "answer": 1,
+              "explain": "Mệnh đề điều kiện 'Nếu bạn không thể đến vào giờ đó thì hãy báo cho tôi': 'If'. 'Unless' làm đảo nghĩa."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [3]",
+              "options": [
+                "Silverline was founded in 1998.",
+                "Your salary will be paid monthly.",
+                "The interview will last about one hour and will be held in Room 402.",
+                "Your references will not be needed."
+              ],
+              "answer": 2,
+              "explain": "Câu sau bàn việc mang theo giấy tờ khi đến phỏng vấn, nên câu điền vào phải cho thông tin về buổi phỏng vấn."
+            },
+            {
+              "q": "Chọn từ/câu cho chỗ trống [4]",
+              "options": [
+                "looks",
+                "looked",
+                "looking",
+                "look"
+              ],
+              "answer": 3,
+              "explain": "Chủ ngữ 'We' dùng động từ nguyên mẫu: 'We look forward to meeting you'. 'looking' đứng riêng mà không có 'are' thì sai."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-p7",
+      "skill": "reading",
+      "title": "Part 7 · Đọc hiểu",
+      "about": "Part 7 gồm các văn bản thực tế (email, quảng cáo, bài báo, tin nhắn, cặp văn bản liên quan) kèm 2-5 câu hỏi. Mẹo: đọc câu hỏi trước, gạch từ khóa rồi dò trong bài; với hai văn bản, câu hỏi suy luận thường cần ghép thông tin từ cả hai.",
+      "items": [
+        {
+          "id": "p7-01",
+          "title": "Email: kiểm tra an toàn",
+          "passage": "From: Teresa Molina\nTo: All Department Managers\nDate: September 12\nSubject: Annual safety inspection\n\nDear Managers,\n\nThis is a reminder that the annual fire-safety inspection of our Riverside campus will take place on Tuesday, September 24. Inspectors from the city fire department will visit every floor between 9:00 a.m. and 3:00 p.m.\n\nPlease make sure that hallways and emergency exits in your areas are clear of boxes and equipment. Each department must also confirm that its fire extinguishers have been checked since last March; the tag on each unit shows the date. If a tag is out of date, contact Facilities by September 18 so that a technician can replace the unit before the inspection.\n\nEmployees do not need to leave the building, but the inspectors may ask a few questions about evacuation procedures. A short guide is attached.\n\nThank you for your cooperation.\n\nTeresa Molina\nFacilities Director",
+          "questions": [
+            {
+              "q": "What is the purpose of the email?",
+              "options": [
+                "To prepare managers for an inspection",
+                "To announce a new safety policy",
+                "To request a repair of the building",
+                "To introduce a new city regulation"
+              ],
+              "answer": 0,
+              "explain": "Email nhắc các quản lý chuẩn bị cho đợt kiểm tra an toàn phòng cháy ('This is a reminder...')."
+            },
+            {
+              "q": "What are managers asked to do if an extinguisher tag is out of date?",
+              "options": [
+                "Replace it themselves",
+                "Call Facilities by September 18",
+                "Move it to another floor",
+                "Report it to the fire department"
+              ],
+              "answer": 1,
+              "explain": "'If a tag is out of date, contact Facilities by September 18' - liên hệ bộ phận Facilities chậm nhất ngày 18/9."
+            },
+            {
+              "q": "What is indicated about the inspection?",
+              "options": [
+                "It will take place at several campuses.",
+                "It will be conducted by company staff.",
+                "Employees may be asked about evacuation procedures.",
+                "It will require employees to leave the building."
+              ],
+              "answer": 2,
+              "explain": "'The inspectors may ask a few questions about evacuation procedures' - nhân viên có thể bị hỏi về quy trình sơ tán. Nhân viên không cần rời tòa nhà, và người kiểm tra là sở cứu hỏa thành phố."
+            }
+          ]
+        },
+        {
+          "id": "p7-02",
+          "title": "Quảng cáo dịch vụ ăn uống",
+          "passage": "GREENLEAF CATERING\nFresh food for your next business event\n\nPlanning a staff luncheon, product launch, or client reception? Greenleaf Catering has served the Hartford area for twelve years.\n\n• Choose from three menus: Classic, Vegetarian, and Chef's Choice.\n• Free delivery and setup for events within 15 miles of our kitchen.\n• Orders for 50 or more guests receive a 10% discount.\n• Reserve at least five days in advance. Cancellations made 48 hours before the event are fully refundable.\n\nNew this season: our boxed lunches now come in recyclable packaging.\n\nCall 555-0193 or visit greenleafcatering.example to request a quote. Mention this ad when you book and receive a free dessert tray with any event over $500.",
+          "questions": [
+            {
+              "q": "What is being advertised?",
+              "options": [
+                "A food service for events",
+                "A restaurant opening",
+                "A cooking school",
+                "A recycling program"
+              ],
+              "answer": 0,
+              "explain": "Greenleaf Catering phục vụ tiệc cho các sự kiện công ty: tiệc trưa, ra mắt sản phẩm, tiếp khách."
+            },
+            {
+              "q": "Who can receive free delivery?",
+              "options": [
+                "Customers ordering for 50 guests",
+                "Customers whose events are within 15 miles",
+                "Customers who cancel early",
+                "Customers who order boxed lunches"
+              ],
+              "answer": 1,
+              "explain": "'Free delivery and setup for events within 15 miles of our kitchen' - sự kiện trong bán kính 15 dặm. Giảm giá 10% mới áp dụng cho 50 khách trở lên."
+            },
+            {
+              "q": "What is new this season?",
+              "options": [
+                "A free dessert tray",
+                "A vegetarian menu",
+                "Recyclable lunch packaging",
+                "Longer delivery hours"
+              ],
+              "answer": 2,
+              "explain": "'New this season: our boxed lunches now come in recyclable packaging.' Khay tráng miệng miễn phí là ưu đãi khi nhắc quảng cáo, không phải điều mới của mùa này."
+            }
+          ]
+        },
+        {
+          "id": "p7-03",
+          "title": "Bài báo: tiệm bánh mở chi nhánh",
+          "passage": "Local Bakery Opens Second Shop\n\nWESTBROOK (May 3) - Sunrise Bakery, a family-owned business known for its sourdough bread, opened its second location on Maple Street on Saturday. Owner Luis Fernandez said the new shop was made possible by a small-business loan he received last autumn.\n\n\"Our original shop on Fifth Avenue has been so busy that customers often wait in line for thirty minutes,\" Mr. Fernandez said. \"The new location has more seating and a larger kitchen, so we can bake more bread each morning.\"\n\nThe new shop has hired eight employees, most of them recent graduates of the culinary program at Westbrook Community College. Mr. Fernandez plans to offer baking classes for the public on Sunday afternoons beginning in June.\n\nBoth shops are open from 6 a.m. to 6 p.m., Monday through Saturday.",
+          "questions": [
+            {
+              "q": "Why did Mr. Fernandez open a second shop?",
+              "options": [
+                "The first shop had too many customers.",
+                "His loan was due.",
+                "The Fifth Avenue lease ended.",
+                "A college asked him to."
+              ],
+              "answer": 0,
+              "explain": "Ông nói cửa hàng gốc quá đông, khách phải xếp hàng khoảng 30 phút."
+            },
+            {
+              "q": "What is suggested about the new employees?",
+              "options": [
+                "They have worked at the original shop.",
+                "Many studied at a local college.",
+                "They will teach baking classes.",
+                "They work only on weekends."
+              ],
+              "answer": 1,
+              "explain": "'Most of them recent graduates of the culinary program at Westbrook Community College' - phần lớn vừa tốt nghiệp chương trình ẩm thực của trường địa phương."
+            },
+            {
+              "q": "What will happen in June?",
+              "options": [
+                "Both shops will extend their hours.",
+                "A third shop will open.",
+                "Public classes will begin.",
+                "Sourdough bread will go on sale."
+              ],
+              "answer": 2,
+              "explain": "'Baking classes for the public on Sunday afternoons beginning in June' - lớp học làm bánh bắt đầu vào tháng Sáu."
+            }
+          ]
+        },
+        {
+          "id": "p7-04",
+          "title": "Chat hỗ trợ kỹ thuật",
+          "passage": "Online Chat - Meridian Tech Support\n\nAmir Hassan (10:02 a.m.): Hello, I'm having trouble connecting to the office VPN from home. It keeps saying \"authentication failed.\"\nLena Cho (10:03 a.m.): Hi Amir, I can help. Did you change your network password recently?\nAmir Hassan (10:04 a.m.): Yes, on Monday. I haven't updated it on my laptop, though.\nLena Cho (10:05 a.m.): That's probably the cause. Please open the VPN settings and enter the new password.\nAmir Hassan (10:08 a.m.): I did that, but it's still not working.\nLena Cho (10:09 a.m.): Sometimes the old login is saved. Could you delete the saved profile and restart the program?\nAmir Hassan (10:12 a.m.): That worked! I'm connected now. Thank you.\nLena Cho (10:13 a.m.): Great. I'll send you a short guide so you can do it yourself next time. Is there anything else I can help with?\nAmir Hassan (10:13 a.m.): No, that's all. Thanks again.",
+          "questions": [
+            {
+              "q": "What problem did Mr. Hassan report?",
+              "options": [
+                "He forgot his email password.",
+                "He could not connect to the VPN.",
+                "His laptop would not start.",
+                "His account was deleted."
+              ],
+              "answer": 1,
+              "explain": "Ông Hassan nói không kết nối được VPN văn phòng từ nhà, báo lỗi 'authentication failed'."
+            },
+            {
+              "q": "At 10:05 a.m., what does Ms. Cho most likely mean when she writes, \"That's probably the cause\"?",
+              "options": [
+                "The VPN program is out of date.",
+                "The password was never changed.",
+                "The laptop still has the old password.",
+                "The network is down today."
+              ],
+              "answer": 2,
+              "explain": "Ông Hassan đổi mật khẩu hôm thứ Hai nhưng chưa cập nhật trên laptop, nên 'the cause' là laptop vẫn lưu mật khẩu cũ."
+            },
+            {
+              "q": "What will Ms. Cho do next?",
+              "options": [
+                "Send a guide",
+                "Call Mr. Hassan",
+                "Reset his password",
+                "Visit his home office"
+              ],
+              "answer": 0,
+              "explain": "'I'll send you a short guide so you can do it yourself next time.'"
+            }
+          ]
+        },
+        {
+          "id": "p7-05",
+          "title": "Hai email: đơn hàng giao trễ",
+          "passage": "Email 1\nFrom: Daniela Ruiz <druiz@novabooks.example>\nTo: Customer Service <help@quickship.example>\nDate: March 3\nSubject: Order #48215\n\nTo whom it may concern,\n\nI ordered forty copies of our company handbook to be printed and delivered to our Denver office. The delivery was scheduled for March 1, but nothing has arrived. I need the books for a training session on March 8. Could you tell me where my order is? If it cannot arrive by March 7, I would like to cancel and receive a refund.\n\nDaniela Ruiz\nOffice Manager, Nova Books\n\n━━━━━━━━━━\n\nEmail 2\nFrom: Customer Service <help@quickship.example>\nTo: Daniela Ruiz\nDate: March 4\nSubject: RE: Order #48215\n\nDear Ms. Ruiz,\n\nWe apologize for the delay. Your order was held at our Omaha warehouse because the shipping label listed an incomplete street address. We have corrected it and sent the package by express service. It should arrive at your office by Friday, March 6, at no extra cost. You can follow its progress using tracking number 7745-2901 on our website. As a courtesy, we have also applied a 15 percent credit to your account for your next order.\n\nSincerely,\nGlenn Parker\nQuickShip Customer Service",
+          "questions": [
+            {
+              "q": "Why did Ms. Ruiz write to QuickShip?",
+              "options": [
+                "To ask about a late delivery",
+                "To change a delivery address",
+                "To order more handbooks",
+                "To complain about a price"
+              ],
+              "answer": 0,
+              "explain": "Bà viết vì hàng dự kiến giao ngày 1/3 mà chưa tới: 'Could you tell me where my order is?'"
+            },
+            {
+              "q": "What caused the delay?",
+              "options": [
+                "A warehouse closure",
+                "A printing error",
+                "A missing payment",
+                "An incomplete address"
+              ],
+              "answer": 3,
+              "explain": "'The shipping label listed an incomplete street address' - nhãn gửi hàng ghi thiếu địa chỉ."
+            },
+            {
+              "q": "What is suggested about the books?",
+              "options": [
+                "They will arrive before the training session.",
+                "They were damaged in shipping.",
+                "They will be sent to Omaha.",
+                "They must be paid for again."
+              ],
+              "answer": 0,
+              "explain": "Sách dự kiến tới trước thứ Sáu 6/3, còn buổi đào tạo diễn ra ngày 8/3, nên sách kịp trước buổi đó."
+            },
+            {
+              "q": "What does QuickShip offer Ms. Ruiz?",
+              "options": [
+                "A full refund",
+                "A credit toward a future order",
+                "A free handbook",
+                "A discounted shipping label"
+              ],
+              "answer": 1,
+              "explain": "'We have also applied a 15 percent credit to your account for your next order.' Bà không bị hủy đơn nên không có hoàn tiền."
+            }
+          ]
+        },
+        {
+          "id": "p7-06",
+          "title": "Tin tuyển dụng và email ứng tuyển",
+          "passage": "Job Posting\nHarlow Home Furnishings - Store Supervisor (Seattle)\n\nHarlow Home Furnishings is looking for an experienced Store Supervisor to lead a team of twenty sales associates at our new Seattle store, opening in August.\n\nRequirements:\n• At least three years of retail experience, including one year in a supervisory role\n• Strong communication and scheduling skills\n• Availability to work weekends\n\nBenefits include health insurance, a 25 percent employee discount, and paid relocation assistance for candidates living outside Washington State.\n\nTo apply, send a résumé and cover letter to jobs@harlow.example by June 15.\n\n━━━━━━━━━━\n\nEmail\nFrom: Marcus Bell <mbell@mailbox.example>\nTo: jobs@harlow.example\nDate: June 10\nSubject: Store Supervisor application\n\nDear Hiring Manager,\n\nPlease find attached my résumé for the Store Supervisor position. For the past four years I have worked at Dunmore Department Store in Portland, Oregon, where I have managed a team of fourteen associates for the last two years. I improved our weekend scheduling system, which reduced overtime costs by eight percent.\n\nI am very interested in moving to Seattle and would be available to start in July. Unfortunately, I could not finish my cover letter in time to attach it to this message, but I will send it tomorrow.\n\nSincerely,\nMarcus Bell",
+          "questions": [
+            {
+              "q": "What is indicated about the Seattle store?",
+              "options": [
+                "It is hiring twenty new associates.",
+                "It has not opened yet.",
+                "It sells only furniture.",
+                "It is open on weekends only."
+              ],
+              "answer": 1,
+              "explain": "Tin tuyển dụng ghi 'our new Seattle store, opening in August' - cửa hàng chưa khai trương. Hai mươi nhân viên bán hàng là đội ngũ người giám sát sẽ quản lý, không phải số tuyển mới."
+            },
+            {
+              "q": "What benefit is offered to applicants from outside Washington State?",
+              "options": [
+                "Help with moving costs",
+                "A higher salary",
+                "Free health insurance",
+                "A larger discount"
+              ],
+              "answer": 0,
+              "explain": "'Paid relocation assistance for candidates living outside Washington State' - hỗ trợ chi phí chuyển chỗ ở."
+            },
+            {
+              "q": "What qualification does Mr. Bell most likely have?",
+              "options": [
+                "Experience supervising a team",
+                "A degree in business",
+                "A license to teach",
+                "Previous work in Seattle"
+              ],
+              "answer": 0,
+              "explain": "Ông đã quản lý đội 14 nhân viên trong hai năm, đáp ứng yêu cầu ít nhất một năm kinh nghiệm giám sát."
+            },
+            {
+              "q": "What was missing from Mr. Bell's application on June 10?",
+              "options": [
+                "His résumé",
+                "His cover letter",
+                "His references",
+                "His start date"
+              ],
+              "answer": 1,
+              "explain": "Ông nói chưa kịp hoàn thành thư xin việc nên chưa đính kèm ('I could not finish my cover letter')."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-speaking",
+      "skill": "speaking",
+      "title": "Speaking · Nói",
+      "about": "Phần Nói gồm đọc to đoạn văn, trả lời câu hỏi ngắn và nêu ý kiến trong 60 giây. Mẹo: ưu tiên nói trôi chảy, rõ ràng và đủ ý; khi nêu ý kiến hãy theo khuôn: quan điểm, hai lý do có ví dụ, kết luận.",
+      "items": [
+        {
+          "id": "s-ra-1",
+          "kind": "speak",
+          "prompt": "Read the text aloud.",
+          "promptVi": "Thông báo ở sân bay: chuyến bay bị hoãn do sương mù.",
+          "readAloud": true,
+          "prepareSeconds": 45,
+          "speakSeconds": 45,
+          "sample": "Attention, passengers on flight 218 to Denver. Because of heavy fog, departure has been delayed by approximately forty minutes. We apologize for the inconvenience. Passengers who wish to change their travel plans may speak with an agent at gate twelve. Free refreshments are available in the lounge. Please keep your boarding pass with you at all times.",
+          "tips": [
+            "Dùng 45 giây chuẩn bị để đọc lướt, đánh dấu chỗ ngắt hơi và các từ khó (số, tên riêng).",
+            "Lên giọng ở cuối câu hỏi hoặc danh sách, xuống giọng ở cuối câu trần thuật.",
+            "Đọc rõ phụ âm cuối (-s, -ed, -t) và nhấn đúng trọng âm từ dài."
+          ]
+        },
+        {
+          "id": "s-ra-2",
+          "kind": "speak",
+          "prompt": "Read the text aloud.",
+          "promptVi": "Quảng cáo phòng tập thể dục.",
+          "readAloud": true,
+          "prepareSeconds": 45,
+          "speakSeconds": 45,
+          "sample": "Welcome to Maplewood Fitness Center, the neighborhood's newest place to stay healthy. Our modern gym offers over fifty weekly classes, from yoga to cycling, and personal trainers are available seven days a week. Sign up this month and enjoy your first three months at half price. Visit our website to reserve your free trial session today.",
+          "tips": [
+            "Dùng 45 giây chuẩn bị để đọc lướt, đánh dấu chỗ ngắt hơi và các từ khó (số, tên riêng).",
+            "Lên giọng ở cuối câu hỏi hoặc danh sách, xuống giọng ở cuối câu trần thuật.",
+            "Đọc rõ phụ âm cuối (-s, -ed, -t) và nhấn đúng trọng âm từ dài."
+          ]
+        },
+        {
+          "id": "s-ra-3",
+          "kind": "speak",
+          "prompt": "Read the text aloud.",
+          "promptVi": "Lời mở đầu một buổi đào tạo nội bộ.",
+          "readAloud": true,
+          "prepareSeconds": 45,
+          "speakSeconds": 45,
+          "sample": "Good morning, everyone, and thank you for joining today's training session. Before we begin, please turn off your mobile phones and sign the attendance sheet near the door. We will first review the new customer service policy, then spend an hour practicing with real examples. Lunch will be served at noon in the cafeteria.",
+          "tips": [
+            "Dùng 45 giây chuẩn bị để đọc lướt, đánh dấu chỗ ngắt hơi và các từ khó (số, tên riêng).",
+            "Lên giọng ở cuối câu hỏi hoặc danh sách, xuống giọng ở cuối câu trần thuật.",
+            "Đọc rõ phụ âm cuối (-s, -ed, -t) và nhấn đúng trọng âm từ dài."
+          ]
+        },
+        {
+          "id": "s-ra-4",
+          "kind": "speak",
+          "prompt": "Read the text aloud.",
+          "promptVi": "Thông báo tại bảo tàng khoa học.",
+          "readAloud": true,
+          "prepareSeconds": 45,
+          "speakSeconds": 45,
+          "sample": "Thank you for visiting the Riverside Science Museum. Our newest exhibit, Journey Through Space, is located on the second floor and is open until eight o'clock tonight. Guided tours depart every thirty minutes from the main lobby. Please remember that food and drinks are not allowed in the exhibit halls. We hope you enjoy your visit.",
+          "tips": [
+            "Dùng 45 giây chuẩn bị để đọc lướt, đánh dấu chỗ ngắt hơi và các từ khó (số, tên riêng).",
+            "Lên giọng ở cuối câu hỏi hoặc danh sách, xuống giọng ở cuối câu trần thuật.",
+            "Đọc rõ phụ âm cuối (-s, -ed, -t) và nhấn đúng trọng âm từ dài."
+          ]
+        },
+        {
+          "id": "s-rq-1",
+          "kind": "speak",
+          "prompt": "Imagine that a marketing firm is conducting a survey about shopping habits. You have agreed to answer some questions.\n1. How often do you shop online?\n2. What kinds of products do you usually buy online?\n3. Describe a good or bad experience you have had when shopping online.",
+          "promptVi": "Trả lời 3 câu hỏi khảo sát về thói quen mua sắm trực tuyến (thật sự thi: không có thời gian chuẩn bị, 15 giây, 15 giây và 30 giây cho từng câu).",
+          "readAloud": false,
+          "prepareSeconds": 0,
+          "speakSeconds": 60,
+          "sample": "1. I shop online about twice a week, mostly in the evening after work.\n2. I usually buy clothes, books and small household items. Sometimes I also order groceries when I am too busy to go to the supermarket.\n3. Last month I ordered a pair of shoes that arrived two days earlier than promised. When they did not fit, the company let me return them for free and sent a replacement the next day. It was such a smooth experience that I have bought from them again since then.",
+          "tips": [
+            "Trả lời ngay, đi thẳng vào ý chính ở câu đầu rồi thêm một lý do hoặc ví dụ.",
+            "Mỗi câu chỉ có khoảng 15-30 giây: nói 1-3 câu hoàn chỉnh, đừng im lặng.",
+            "Dùng thì phù hợp với câu hỏi (hiện tại đơn cho thói quen, quá khứ đơn cho trải nghiệm)."
+          ]
+        },
+        {
+          "id": "s-rq-2",
+          "kind": "speak",
+          "prompt": "Imagine that a colleague from another city is planning to visit your office. You are talking on the phone.\n1. What time of year is best to visit your city?\n2. How can your colleague travel from the airport to your office?\n3. Which restaurant would you recommend for a business lunch, and why?",
+          "promptVi": "Trả lời 3 câu hỏi của đồng nghiệp sắp đến thăm văn phòng bạn.",
+          "readAloud": false,
+          "prepareSeconds": 0,
+          "speakSeconds": 60,
+          "sample": "1. I think spring is the best time because the weather is mild and the streets are full of flowers.\n2. The easiest way is to take the airport bus, which runs every twenty minutes and stops two blocks from our office. A taxi is faster, but it costs about three times as much.\n3. I would recommend Lotus Garden, which is a ten-minute walk from our building. The food is fresh and the service is quick, so you can finish a meeting over lunch without feeling rushed. The tables are also spaced far enough apart that it is quiet.",
+          "tips": [
+            "Trả lời ngay, đi thẳng vào ý chính ở câu đầu rồi thêm một lý do hoặc ví dụ.",
+            "Mỗi câu chỉ có khoảng 15-30 giây: nói 1-3 câu hoàn chỉnh, đừng im lặng.",
+            "Dùng thì phù hợp với câu hỏi (hiện tại đơn cho thói quen, quá khứ đơn cho trải nghiệm)."
+          ]
+        },
+        {
+          "id": "s-rq-3",
+          "kind": "speak",
+          "prompt": "Imagine that a local newspaper is writing an article about commuting to work. You have agreed to answer some questions.\n1. How do you usually get to work or school?\n2. How long does your trip usually take?\n3. If the city could improve one thing about public transportation, what should it be?",
+          "promptVi": "Trả lời 3 câu hỏi của tờ báo địa phương về việc đi làm, đi học hằng ngày.",
+          "readAloud": false,
+          "prepareSeconds": 0,
+          "speakSeconds": 60,
+          "sample": "1. I usually go by motorbike because it is flexible and easy to park.\n2. It takes about thirty minutes in the morning, but in the evening it can take nearly an hour because of heavy traffic.\n3. I think the city should add more bus routes and make them run more often. If buses came every ten minutes and reached the main business areas, many people would leave their motorbikes at home. That would reduce traffic and pollution, and everyone's trip would be shorter.",
+          "tips": [
+            "Trả lời ngay, đi thẳng vào ý chính ở câu đầu rồi thêm một lý do hoặc ví dụ.",
+            "Mỗi câu chỉ có khoảng 15-30 giây: nói 1-3 câu hoàn chỉnh, đừng im lặng.",
+            "Dùng thì phù hợp với câu hỏi (hiện tại đơn cho thói quen, quá khứ đơn cho trải nghiệm)."
+          ]
+        },
+        {
+          "id": "s-op-1",
+          "kind": "speak",
+          "prompt": "Some people prefer to work from home, while others prefer to work in an office. Which do you prefer? Give reasons and examples to support your opinion.",
+          "promptVi": "Bạn thích làm việc ở nhà hay ở văn phòng? Nêu lý do và ví dụ.",
+          "readAloud": false,
+          "prepareSeconds": 15,
+          "speakSeconds": 60,
+          "sample": "I prefer working in an office, for two main reasons. First of all, I find it easier to concentrate there. At home I am often distracted by housework or by the television, but in the office everyone is focused on work, so I finish tasks faster. Second, an office makes teamwork much simpler. When I have a question, I can walk to a colleague's desk and get an answer in one minute, instead of waiting for a reply to a message. Last year, my team solved a difficult customer problem in a single afternoon because we were all in the same room. Of course, working from home saves commuting time, but for me the benefits of the office are greater. That is why I prefer it.",
+          "tips": [
+            "Dùng 15 giây chuẩn bị để ghi 2 ý chính và 1 ví dụ cho mỗi ý.",
+            "Cấu trúc gợi ý: nêu quan điểm - lý do 1 + ví dụ - lý do 2 + ví dụ - kết luận ngắn.",
+            "Nối ý bằng 'First of all', 'In addition', 'For example', 'In conclusion' và nói hết 60 giây."
+          ]
+        },
+        {
+          "id": "s-op-2",
+          "kind": "speak",
+          "prompt": "Do you agree or disagree with the following statement? Companies should provide training courses for employees during working hours. Give reasons and examples to support your opinion.",
+          "promptVi": "Bạn có đồng ý rằng công ty nên tổ chức khóa đào tạo trong giờ làm việc không?",
+          "readAloud": false,
+          "prepareSeconds": 15,
+          "speakSeconds": 60,
+          "sample": "I agree that companies should provide training during working hours. To begin with, employees are usually tired after a full day, so they learn very little if a course is held in the evening. During the day, they are fresh and can pay full attention. In addition, training during work shows that the company really values its staff. For example, my cousin's company offers a language course every Tuesday morning, and the employees there are proud of their skills and seldom leave for another job. Some managers worry that training reduces productivity in the short term. However, better skills lead to fewer mistakes and faster work later. For these reasons, I believe training should take place during the working day.",
+          "tips": [
+            "Dùng 15 giây chuẩn bị để ghi 2 ý chính và 1 ví dụ cho mỗi ý.",
+            "Cấu trúc gợi ý: nêu quan điểm - lý do 1 + ví dụ - lý do 2 + ví dụ - kết luận ngắn.",
+            "Nối ý bằng 'First of all', 'In addition', 'For example', 'In conclusion' và nói hết 60 giây."
+          ]
+        },
+        {
+          "id": "s-op-3",
+          "kind": "speak",
+          "prompt": "Some people prefer a job with a high salary even if it is stressful. Others prefer a lower salary with less stress. Which do you prefer? Give reasons and examples to support your opinion.",
+          "promptVi": "Bạn thích lương cao nhưng áp lực, hay lương thấp hơn nhưng nhẹ nhàng?",
+          "readAloud": false,
+          "prepareSeconds": 15,
+          "speakSeconds": 60,
+          "sample": "Personally, I would choose a lower salary with less stress. The main reason is health. When people work under constant pressure, they often sleep badly and get sick more easily, and no amount of money can fix that. My uncle worked as a sales director for ten years with a very large income, but he was exhausted all the time and finally had to take a long break. Another reason is time for family and friends. If a job is calm, I can leave at a regular hour, cook dinner and spend the evening with people I care about. A higher salary is attractive, but I believe a balanced life is worth more than extra money. That is why I would accept a smaller paycheck.",
+          "tips": [
+            "Dùng 15 giây chuẩn bị để ghi 2 ý chính và 1 ví dụ cho mỗi ý.",
+            "Cấu trúc gợi ý: nêu quan điểm - lý do 1 + ví dụ - lý do 2 + ví dụ - kết luận ngắn.",
+            "Nối ý bằng 'First of all', 'In addition', 'For example', 'In conclusion' và nói hết 60 giây."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "toeic-writing",
+      "skill": "writing",
+      "title": "Writing · Viết",
+      "about": "Phần Viết gồm trả lời email theo yêu cầu (tối thiểu 80 từ) và viết bài luận nêu ý kiến (tối thiểu 300 từ). Mẹo: với email, đánh dấu từng yêu cầu trong thư gốc và trả lời lần lượt; với bài luận, lập dàn ý 4 đoạn trước khi viết.",
+      "items": [
+        {
+          "id": "w-em-1",
+          "kind": "write",
+          "prompt": "Read the email below.\n\nFrom: Anita Patel, Sales Manager\nTo: Operations Team\nSubject: Client visit on Thursday\n\nHello,\nAn important client, Mr. Hollis, will visit our office this Thursday. I would like to give him a short tour of the warehouse, but I am not sure which time suits you. Could you tell me when the warehouse is least busy? Also, please let me know whether visitors need safety equipment and where I can get it.\n\nThanks,\nAnita\n\nWrite an email in response. In your email, give TWO pieces of information and ask ONE question.",
+          "promptVi": "Trả lời email của quản lý kinh doanh về chuyến tham quan kho của khách hàng: nêu 2 thông tin và đặt 1 câu hỏi (tối thiểu 80 từ).",
+          "minWords": 80,
+          "sample": "Subject: RE: Client visit on Thursday\n\nHello Anita,\n\nThank you for your message. The warehouse is quietest on Thursday between 10:00 and 11:30 a.m., because the morning deliveries have been unloaded by then. That would be the best time for a tour with Mr. Hollis.\n\nVisitors do need to wear a safety vest and a helmet. We keep them in the cabinet beside the main entrance, and I will set out two sets for you on Wednesday afternoon.\n\nCould you tell me how many people will join the tour? If there are more than four, I would like to ask a supervisor to guide a second group.\n\nBest regards,\nDavid Kim\nOperations Team",
+          "checklist": [
+            "Có chào đầu thư và ký tên cuối thư không?",
+            "Đã trả lời đủ các yêu cầu/câu hỏi trong email gốc chưa?",
+            "Giọng văn lịch sự, phù hợp với người nhận (đồng nghiệp, khách hàng)?",
+            "Mỗi ý nằm trong một câu hoặc đoạn rõ ràng, có từ nối đơn giản?",
+            "Đạt tối thiểu 80 từ; đã soát lại lỗi chính tả và ngữ pháp?"
+          ]
+        },
+        {
+          "id": "w-em-2",
+          "kind": "write",
+          "prompt": "Read the email below.\n\nFrom: Customer Service, Brightway Internet\nTo: You\nSubject: Your recent complaint\n\nDear customer,\nWe are sorry that your internet connection has been unstable this month. A technician can visit your home on either Monday morning or Wednesday afternoon. Please tell us which time you prefer and who will be at home to let the technician in. We also need to know what problems you have noticed.\n\nSincerely,\nBrightway Customer Service\n\nWrite an email in response. In your email, answer ALL the questions and make ONE request.",
+          "promptVi": "Trả lời email của nhà cung cấp internet: chọn lịch hẹn, nói ai ở nhà, mô tả sự cố và nêu 1 yêu cầu (tối thiểu 80 từ).",
+          "minWords": 80,
+          "sample": "Subject: RE: Your recent complaint\n\nDear Brightway Customer Service,\n\nThank you for your quick reply. I would prefer the technician to come on Wednesday afternoon, because I work from the office on Monday. My wife, Linh, will be at home and can let the technician in.\n\nOver the past three weeks, the connection has dropped about five times a day, usually in the evening. It also becomes very slow when two or more devices are in use, and the router light turns orange when this happens.\n\nCould you please give me a discount on this month's bill, since I could not work from home properly? I look forward to hearing from you.\n\nSincerely,\nPham Minh",
+          "checklist": [
+            "Có chào đầu thư và ký tên cuối thư không?",
+            "Đã trả lời đủ các yêu cầu/câu hỏi trong email gốc chưa?",
+            "Giọng văn lịch sự, phù hợp với người nhận (đồng nghiệp, khách hàng)?",
+            "Mỗi ý nằm trong một câu hoặc đoạn rõ ràng, có từ nối đơn giản?",
+            "Đạt tối thiểu 80 từ; đã soát lại lỗi chính tả và ngữ pháp?"
+          ]
+        },
+        {
+          "id": "w-em-3",
+          "kind": "write",
+          "prompt": "Read the email below.\n\nFrom: Rachel Moore, Human Resources\nTo: All Staff\nSubject: Volunteer day\n\nHello everyone,\nThe company will hold a volunteer day on May 18, when staff can help clean a local park. Please tell me whether you can join us, and if so, whether you need transportation. Also, let me know if you have any suggestions for activities to do after the cleaning.\n\nRegards,\nRachel\n\nWrite an email in response. In your email, give TWO pieces of information and make ONE suggestion.",
+          "promptVi": "Trả lời email của phòng nhân sự về ngày tình nguyện: cho biết bạn có tham gia không, có cần xe không và đề xuất hoạt động sau đó (tối thiểu 80 từ).",
+          "minWords": 80,
+          "sample": "Subject: RE: Volunteer day\n\nHello Rachel,\n\nThank you for organizing the volunteer day. I would be happy to join the park cleaning on May 18, and I plan to bring two colleagues from my team as well.\n\nI do not need transportation, because the park is only a ten-minute walk from my apartment. However, some colleagues who live farther away may appreciate a shuttle from the office.\n\nAs for activities after the cleaning, I suggest that we have a simple picnic lunch in the park. It would be a good chance for people from different departments to talk, and we could invite the park staff to join us.\n\nBest wishes,\nTuan Nguyen",
+          "checklist": [
+            "Có chào đầu thư và ký tên cuối thư không?",
+            "Đã trả lời đủ các yêu cầu/câu hỏi trong email gốc chưa?",
+            "Giọng văn lịch sự, phù hợp với người nhận (đồng nghiệp, khách hàng)?",
+            "Mỗi ý nằm trong một câu hoặc đoạn rõ ràng, có từ nối đơn giản?",
+            "Đạt tối thiểu 80 từ; đã soát lại lỗi chính tả và ngữ pháp?"
+          ]
+        },
+        {
+          "id": "w-es-1",
+          "kind": "write",
+          "prompt": "Do you agree or disagree with the following statement? Companies should allow employees to work flexible hours. Use specific reasons and examples to support your opinion. Write at least 300 words.",
+          "promptVi": "Công ty có nên cho nhân viên làm việc giờ giấc linh hoạt không? Nêu quan điểm, lý do và ví dụ (tối thiểu 300 từ).",
+          "minWords": 300,
+          "sample": "I strongly agree that companies should allow employees to work flexible hours, provided that the work is still completed on time. In my view, this policy benefits both workers and employers.\n\nFirst, flexible hours help employees manage their personal lives. Many people have responsibilities outside the office, such as taking children to school or caring for elderly relatives. If a company lets them start work at ten o'clock instead of eight, they can handle these duties without stress. A calmer employee is usually more focused and makes fewer mistakes. In addition, workers who live far from the office can avoid the busiest traffic, which saves them time and money every week.\n\nSecond, flexibility can actually raise productivity. People do not all have the same energy levels during the day. Some are most creative in the early morning, while others work best in the afternoon or evening. When employees choose the hours that suit them, they can do their most demanding tasks at their best time. At my previous company, our design team switched to flexible schedules, and the number of projects delivered ahead of the deadline rose noticeably within six months.\n\nThird, a flexible policy helps a company attract and keep talented staff. Job seekers today often ask about working conditions before they ask about salary. A company that trusts its employees will have a better reputation and will lose fewer people to competitors. Hiring and training new staff is expensive, so keeping good workers saves money.\n\nOf course, there are some risks. Teams may find it harder to schedule meetings if everyone arrives at different times. However, this problem can be solved by setting core hours, for example from eleven to three, when everyone must be available. Managers can also use shared calendars and messaging tools to stay in touch.\n\nIn conclusion, flexible working hours make employees happier and more productive, and they give companies a real advantage in the job market. With clear rules about core hours and deadlines, the benefits far outweigh the difficulties.",
+          "checklist": [
+            "Có câu nêu rõ quan điểm ở mở bài và nhắc lại ở kết bài?",
+            "Mỗi đoạn thân bài có một ý chính và một ví dụ cụ thể?",
+            "Có xét đến ý kiến ngược lại hoặc điều kiện (dù chỉ một câu)?",
+            "Dùng từ nối (First, In addition, However, In conclusion) đúng chỗ?",
+            "Đạt tối thiểu 300 từ; đã soát chính tả, thì động từ và mạo từ?"
+          ]
+        },
+        {
+          "id": "w-es-2",
+          "kind": "write",
+          "prompt": "Some people think a company should hire experienced workers, while others believe it is better to hire recent graduates and train them. Which do you think is better? Use specific reasons and examples to support your opinion. Write at least 300 words.",
+          "promptVi": "Công ty nên tuyển người có kinh nghiệm hay tuyển sinh viên mới ra trường rồi đào tạo? (tối thiểu 300 từ).",
+          "minWords": 300,
+          "sample": "In my opinion, a company should hire a mixture of experienced professionals and new graduates, but if it must choose only one, training graduates is often the wiser long-term investment.\n\nExperienced employees clearly have advantages. They already know how to do the job, so they need little supervision and can start producing results almost immediately. This is especially important for senior positions, where mistakes can cost a company a great deal of money. For example, a hospital cannot afford to wait while a new manager learns the basics of patient scheduling. Experienced workers also bring ideas and contacts from their previous employers, which can help the business grow.\n\nHowever, they also have disadvantages. Experienced candidates usually expect higher salaries and may be less willing to change their habits. If they have worked in a different company culture for many years, they sometimes find it difficult to accept new procedures. In contrast, recent graduates are generally more flexible and eager to learn. They are comfortable with new technology and often have fresh ideas because they have not yet formed fixed opinions about how things should be done.\n\nTraining graduates can also build loyalty. When a company invests time in teaching young people, they tend to feel grateful and stay longer. Over five or ten years, the company may end up with managers who understand its values and products better than any outsider could. A software firm I know hires graduates every summer and promotes the best of them within three years. As a result, it rarely needs to recruit from outside.\n\nOn the other hand, training takes time and money, and not every company can afford it. A small business with only a few employees may not have anyone who can teach a beginner. In that case, hiring someone with experience is the more practical choice.\n\nTo sum up, experienced staff provide immediate skills, while graduates provide energy and long-term loyalty. The best approach is to combine the two groups so that they can learn from each other.",
+          "checklist": [
+            "Có câu nêu rõ quan điểm ở mở bài và nhắc lại ở kết bài?",
+            "Mỗi đoạn thân bài có một ý chính và một ví dụ cụ thể?",
+            "Có xét đến ý kiến ngược lại hoặc điều kiện (dù chỉ một câu)?",
+            "Dùng từ nối (First, In addition, However, In conclusion) đúng chỗ?",
+            "Đạt tối thiểu 300 từ; đã soát chính tả, thì động từ và mạo từ?"
+          ]
+        },
+        {
+          "id": "w-es-3",
+          "kind": "write",
+          "prompt": "Do you agree or disagree with the following statement? Online meetings are just as effective as face-to-face meetings. Use specific reasons and examples to support your opinion. Write at least 300 words.",
+          "promptVi": "Họp trực tuyến có hiệu quả ngang họp trực tiếp không? (tối thiểu 300 từ).",
+          "minWords": 300,
+          "sample": "I partly agree that online meetings can be as effective as face-to-face meetings, but this depends on the purpose of the meeting and the people involved.\n\nFor routine tasks, online meetings are very effective. Weekly progress updates or short planning sessions do not require everyone to be in the same room. By using video calls, a team can save the time and money spent on travelling. For instance, my company has offices in three cities, and a single video call replaces what once required a day of travel. Online tools also make it easy to share documents on the screen, record the discussion and send notes to everyone afterward, which reduces misunderstandings.\n\nOnline meetings are also more inclusive in some ways. Employees who work from home or live in other countries can join with no extra cost. Quiet people who dislike speaking in a crowded room sometimes feel more comfortable typing their ideas into the chat window.\n\nNevertheless, there are situations where meeting in person is clearly better. When people are negotiating a contract or solving a sensitive problem, body language and tone of voice are very important. On a screen, it is harder to notice small signs that someone is confused or unhappy. Connection problems can also interrupt the discussion, and people often become distracted by their phones or emails when they are not in the same room. Building trust with a new client is another case. A handshake and a shared lunch usually create a stronger relationship than a series of video calls.\n\nTherefore, I believe companies should decide case by case. Short, practical meetings can be held online, while important discussions that involve trust, creativity or conflict should take place face to face. If managers choose the right format for each meeting, they will use time wisely and keep their teams productive.\n\nIn conclusion, online meetings are a valuable tool, but they cannot completely replace meeting in person. By combining both formats sensibly, a company can enjoy the savings of technology without losing the human connection that makes teams work well.",
+          "checklist": [
+            "Có câu nêu rõ quan điểm ở mở bài và nhắc lại ở kết bài?",
+            "Mỗi đoạn thân bài có một ý chính và một ví dụ cụ thể?",
+            "Có xét đến ý kiến ngược lại hoặc điều kiện (dù chỉ một câu)?",
+            "Dùng từ nối (First, In addition, However, In conclusion) đúng chỗ?",
+            "Đạt tối thiểu 300 từ; đã soát chính tả, thì động từ và mạo từ?"
+          ]
+        }
+      ]
+    }
+  ],
+  "test": {
+    "title": "Đề luyện TOEIC rút gọn (Nghe + Đọc)",
+    "minutes": 35,
+    "pick": {
+      "toeic-p2": 7,
+      "toeic-p3": 3,
+      "toeic-p4": 2,
+      "toeic-p5": 12,
+      "toeic-p6": 2,
+      "toeic-p7": 3
+    }
+  }
+}

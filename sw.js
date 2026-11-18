@@ -1,6 +1,6 @@
 // Offline support: the whole app and its lessons are cached on first visit.
 // Bump VERSION whenever any file below changes so devices pick up the update.
-const VERSION = 'speakeasy-v18';
+const VERSION = 'speakeasy-v19';
 // Picture-book illustrations come from a CDN; pages read once stay available offline.
 const IMAGES = 'speakeasy-images';
 const FILES = [
@@ -18,6 +18,8 @@ const FILES = [
   'data/vocab.json',
   'data/picturebooks.json',
   'data/videos.json',
+  'data/exam-toeic.json',
+  'data/exam-ielts.json',
   'js/app.js',
   'js/logic.js',
   'js/store.js',
@@ -37,6 +39,11 @@ const FILES = [
   'js/daily-word.js',
   'js/screens/daily-word-screen.js',
   'js/screens/lab-extras.js',
+  'js/exam.js',
+  'js/screens/exam-hub.js',
+  'js/screens/exam-views.js',
+  'js/screens/exam-practice.js',
+  'js/screens/exam-test.js',
   'js/audio.js',
   'js/recorder.js',
   'js/screens/home.js',

@@ -9,6 +9,7 @@ import * as C from '../js/challenges.js';
 import * as P from '../js/learning-plan.js';
 import * as O from '../js/online-voice.js';
 import * as D from '../js/daily-word.js';
+import * as X from '../js/exam.js';
 
 const json = (f) => JSON.parse(readFileSync(new URL(`../data/${f}.json`, import.meta.url), 'utf8'));
 const content = json('content');
@@ -376,6 +377,42 @@ test('word of the day: same word for a day, letter colours with repeats, streaks
   assert.equal(D.recordResult(s, 103, true, 2).streak, 1); // skipped a day
   assert.deepEqual([D.recordResult(s, 102, false, 6).streak, D.recordResult(s, 102, false, 6).best], [0, 2]);
   assert.equal(D.shareText(['crate', 'crane'], 'crane', 7), 'SpeakEasy · Từ của ngày #7 2/6\n🟩🟩🟩⬜🟩\n🟩🟩🟩🟩🟩');
+});
+
+test('exam engine: drawing a test, scoring by skill, TOEIC and IELTS estimates, file checks', () => {
+  const q = (answer = 0) => ({ q: 'Q?', options: ['a', 'b', 'c', 'd'], answer, explain: 'x' });
+  const exam = {
+    id: 'toeic', title: 'TOEIC',
+    sections: [
+      { id: 'l', skill: 'listening', items: [{ id: 'l1', audio: [{ who: 'M', en: 'Hi' }], questions: [q(1), q(2)] }, { id: 'l2', questions: [q()] }] },
+      { id: 'r', skill: 'reading', items: [{ id: 'r1', passage: 'Text', questions: [q(3)] }, { id: 'r2', questions: [q()] }] },
+      { id: 's', skill: 'speaking', items: [{ id: 's1', kind: 'speak', prompt: 'Say', sample: 'Hello' }] },
+    ],
+    test: { minutes: 10, pick: { l: 1, r: 2 } },
+  };
+  assert.deepEqual(X.examProblems(exam), []);
+  const entries = X.buildTest(exam);
+  assert.deepEqual(entries.map((e) => e.section.id), ['l', 'r', 'r']);
+  const full = [{ section: exam.sections[0], item: exam.sections[0].items[0] }, { section: exam.sections[1], item: exam.sections[1].items[0] }];
+  assert.deepEqual(X.scoreBySkill(full, { 'l1:0': 1, 'l1:1': 0, 'r1:0': 3 }), { listening: { correct: 1, total: 2 }, reading: { correct: 1, total: 1 } });
+  assert.deepEqual([X.toeicEstimate(0, 10), X.toeicEstimate(10, 10), X.toeicEstimate(5, 10), X.toeicEstimate(0, 0)], [5, 495, 250, 5]);
+  assert.deepEqual([X.ieltsBand('listening', 40, 40), X.ieltsBand('listening', 30, 40), X.ieltsBand('reading', 30, 40), X.ieltsBand('reading', 26, 40), X.ieltsBand('listening', 0, 40)], [9, 7, 7, 6, 0]);
+  assert.equal(X.ieltsBand('listening', 15, 20), 7); // a short test is scaled up to 40 questions
+  assert.deepEqual(X.estimate('ielts', { reading: { correct: 20, total: 20 } }), [{ skill: 'reading', correct: 20, total: 20, score: 9 }]);
+  assert.equal(X.wordCount("It's a well-known fact, isn't it?"), 6);
+  const bad = { ...exam, sections: [{ id: 'x', skill: 'cooking', items: [{ id: 'a', questions: [{ q: 'Q', options: ['a'], answer: 2 }] }, { id: 'a', kind: 'write', prompt: 'P' }] }], test: { pick: { y: 1 } } };
+  assert.equal(X.examProblems(bad).length, 5);
+  assert.ok(X.examProblems(null).length && X.examProblems({}).length);
+});
+
+test('built-in TOEIC and IELTS files are valid, original-format exams', () => {
+  for (const id of ['toeic', 'ielts']) {
+    const exam = json(`exam-${id}`);
+    assert.equal(exam.id, id);
+    assert.deepEqual(X.examProblems(exam), [], id);
+    assert.deepEqual(new Set(exam.sections.map((s) => s.skill)), new Set(Object.keys(X.SKILLS)), id);
+    assert.ok(X.buildTest(exam).length >= 5, id);
+  }
 });
 
 console.log(`\n${n} tests passed`);
